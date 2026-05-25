@@ -1,0 +1,18 @@
+{
+  "id": "2603.10165v2",
+  "title": "OpenClaw-RL: Train Any Agent Simply by Talking",
+  "authors": [
+    "Yinjie Wang",
+    "Xuyang Chen",
+    "Xiaolong Jin",
+    "Mengdi Wang",
+    "Ling Yang"
+  ],
+  "published": "2026-03-10",
+  "categories": [],
+  "abstract": "Every agent interaction generates a next-state signal, namely the user reply, tool output, terminal or GUI state change that follows each action, yet no existing agentic RL system recovers it as a live, online learning source. We present OpenClaw-RL, a framework that employs next-state signals to optimize personal agents online through infrastructure and methodology innovations. On the infrastructure side, we extend existing RL systems to a server-client architecture where the RL server hosts the policy behind an inference API and user terminals stream interaction data back over HTTP. From each observed next state, the system extracts two complementary training signals, evaluative and directive, via a separate asynchronous server so that neither signal extraction nor optimization blocks inference. On the methodology side, we introduce a hybrid RL objective that unifies both signal types in a single update: directive signals provide richer, token-level supervision but are sparser, while evaluative signals are more broadly available. To stabilize distillation under teacher-student mismatch, we propose overlap-guided hint selection, which picks the hint whose induced teacher distribution maximally overlaps with the student's top-$k$ tokens, together with a log-probability-difference clip that bounds per-token advantages. Applied to personal agents, OpenClaw-RL enables an agent to improve simply by being used, recovering conversational signals from user re-queries, corrections, and explicit feedback. Applied to general agents, OpenClaw-RL is the first RL framework to unify real-world agent settings spanning terminal, GUI, SWE, and tool-call environments, where we additionally demonstrate the utility of next-state signals in long-horizon settings.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2603.10165v2",
+    "pdf": "https://arxiv.org/pdf/2603.10165v2"
+  }
+}

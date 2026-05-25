@@ -1,0 +1,23 @@
+{
+  "id": "2605.15556v1",
+  "title": "TopoClaw: A Human-Centric and Topology-Aware Agent Operating System",
+  "authors": [
+    "Heyuan Huang",
+    "Yeyi Guan",
+    "Jihong Wang",
+    "Mingzhi Wang",
+    "Jiamu Zhou",
+    "Xiangmou Qu",
+    "Jiaxin Yin",
+    "Xin Liao",
+    "Xingyu Lou",
+    "Jun Wang"
+  ],
+  "published": "2026-05-15",
+  "categories": [],
+  "abstract": "Large language models (LLMs) have evolved AI assistants into autonomous reasoning engines that maintain context, invoke tools, and pursue long-horizon tasks. This has spurred Agent Operating Systems (Agent OS) as kernel-like layers for lifecycle management, memory, scheduling, and access control. Yet most designs remain agent-centric, treating the OS as a single-host runtime for internal reasoning and tool use, leaving open how autonomous actions integrate with distributed, collaborative, permission-sensitive workflows.\n  TopoClaw is an open-source, human-centric, topology-aware Agent OS modeling the user's ecosystem as two coupled structures: a physical device topology of heterogeneous surfaces and a social relationship topology of shared spaces, teams, and delegated roles. It unifies device operation, messaging, and skills around accountable cross-boundary execution, with three core contributions: (1) cross-device action placement, decoupling intent from actuation and routing distributed actions across the device cluster based on hardware affordances and user context; (2) cross-user identity attribution, treating agents as socially situated \"Digital Twins\" that coordinate in multi-user spaces while preserving provenance, role-aware permissions, and human accountability; (3) cross-context authority governance, pairing broad capability with distributed, context-aware policy enforcement across physical and social trust boundaries to bound proactive autonomy at the OS layer.\n  This report presents TopoClaw as an engineering-oriented reference architecture, covering its design principles, runtime, cross-device execution, collaboration mechanisms, security model, and deployment outlook.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2605.15556v1",
+    "pdf": "https://arxiv.org/pdf/2605.15556v1"
+  }
+}

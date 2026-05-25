@@ -1,0 +1,36 @@
+{
+  "id": "2603.07980v1",
+  "title": "\\$OneMillion-Bench: How Far are Language Agents from Human Experts?",
+  "authors": [
+    "Qianyu Yang",
+    "Yang Liu",
+    "Jiaqi Li",
+    "Jun Bai",
+    "Hao Chen",
+    "Kaiyuan Chen",
+    "Tiliang Duan",
+    "Jiayun Dong",
+    "Xiaobo Hu",
+    "Zixia Jia",
+    "Yang Liu",
+    "Tao Peng",
+    "Yixin Ren",
+    "Ran Tian",
+    "Zaiyuan Wang",
+    "Yanglihong Xiao",
+    "Gang Yao",
+    "Lingyue Yin",
+    "Ge Zhang",
+    "Chun Zhang",
+    "Jianpeng Jiao",
+    "Zilong Zheng",
+    "Yuan Gong"
+  ],
+  "published": "2026-03-09",
+  "categories": [],
+  "abstract": "As language models (LMs) evolve from chat assistants to long-horizon agents capable of multi-step reasoning and tool use, existing benchmarks remain largely confined to structured or exam-style tasks that fall short of real-world professional demands. To this end, we introduce \\$OneMillion-Bench \\$OneMillion-Bench, a benchmark of 400 expert-curated tasks spanning Law, Finance, Industry, Healthcare, and Natural Science, built to evaluate agents across economically consequential scenarios. Unlike prior work, the benchmark requires retrieving authoritative sources, resolving conflicting evidence, applying domain-specific rules, and making constraint decisions, where correctness depends as much on the reasoning process as the final answer. We adopt a rubric-based evaluation protocol scoring factual accuracy, logical coherence, practical feasibility, and professional compliance, focused on expert-level problems to ensure meaningful differentiation across agents. Together, \\$OneMillion-Bench provides a unified testbed for assessing agentic reliability, professional depth, and practical readiness in domain-intensive scenarios.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2603.07980v1",
+    "pdf": "https://arxiv.org/pdf/2603.07980v1"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "2604.19211v1",
+  "title": "ClawNet: Human-Symbiotic Agent Network for Cross-User Autonomous Cooperation",
+  "authors": [
+    "Zhiqin Yang",
+    "Zhenyuan Zhang",
+    "Xianzhang Jia",
+    "Jun Song",
+    "Wei Xue",
+    "Yonggang Zhang",
+    "Yike Guo"
+  ],
+  "published": "2026-04-21",
+  "categories": [],
+  "abstract": "Current AI agent frameworks have made remarkable progress in automating individual tasks, yet all existing systems serve a single user. Human productivity rests on the social and organizational relationships through which people coordinate, negotiate, and delegate. When agents move beyond performing tasks for one person to representing that person in collaboration with others, the infrastructure for cross-user agent collaboration is entirely absent, let alone the governance mechanisms needed to secure it. We argue that the next frontier for AI agents lies not in stronger individual capability, but in the digitization of human collaborative relationships. To this end, we propose a human-symbiotic agent paradigm. Each user owns a permanently bound agent system that collaborates on the owner's behalf, forming a network whose nodes are humans rather than agents. This paradigm rests on three governance primitives. A layered identity architecture separates a Manager Agent from multiple context-specific Identity Agents; the Manager Agent holds global knowledge but is architecturally isolated from external communication. Scoped authorization enforces per-identity access control and escalates boundary violations to the owner. Action-level accountability logs every operation against its owner's identity and authorization, ensuring full auditability. We instantiate this paradigm in ClawNet, an identity-governed agent collaboration framework that enforces identity binding and authorization verification through a central orchestrator, enabling multiple users to collaborate securely through their respective agents.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2604.19211v1",
+    "pdf": "https://arxiv.org/pdf/2604.19211v1"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "2603.17187v1",
+  "title": "MetaClaw: Just Talk -- An Agent That Meta-Learns and Evolves in the Wild",
+  "authors": [
+    "Peng Xia",
+    "Jianwen Chen",
+    "Xinyu Yang",
+    "Haoqin Tu",
+    "Jiaqi Liu",
+    "Kaiwen Xiong",
+    "Siwei Han",
+    "Shi Qiu",
+    "Haonian Ji",
+    "Yuyin Zhou",
+    "Zeyu Zheng",
+    "Cihang Xie",
+    "Huaxiu Yao"
+  ],
+  "published": "2026-03-17",
+  "categories": [],
+  "abstract": "Large language model (LLM) agents are increasingly used for complex tasks, yet deployed agents often remain static, failing to adapt as user needs evolve. This creates a tension between the need for continuous service and the necessity of updating capabilities to match shifting task distributions. On platforms like OpenClaw, which handle diverse workloads across 20+ channels, existing methods either store raw trajectories without distilling knowledge, maintain static skill libraries, or require disruptive downtime for retraining. We present MetaClaw, a continual meta-learning framework that jointly evolves a base LLM policy and a library of reusable behavioral skills. MetaClaw employs two complementary mechanisms. Skill-driven fast adaptation analyzes failure trajectories via an LLM evolver to synthesize new skills, enabling immediate improvement with zero downtime. Opportunistic policy optimization performs gradient-based updates via cloud LoRA fine-tuning and Reinforcement Learning with a Process Reward Model (RL-PRM). This is triggered during user-inactive windows by the Opportunistic Meta-Learning Scheduler (OMLS), which monitors system inactivity and calendar data. These mechanisms are mutually reinforcing: a refined policy generates better trajectories for skill synthesis, while richer skills provide higher-quality data for policy optimization. To prevent data contamination, a versioning mechanism separates support and query data. Built on a proxy-based architecture, MetaClaw scales to production-size LLMs without local GPUs. Experiments on MetaClaw-Bench and AutoResearchClaw show that skill-driven adaptation improves accuracy by up to 32% relative. The full pipeline advances Kimi-K2.5 accuracy from 21.4% to 40.6% and increases composite robustness by 18.3%. Code is available at https://github.com/aiming-lab/MetaClaw.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2603.17187v1",
+    "pdf": "https://arxiv.org/pdf/2603.17187v1"
+  }
+}
