@@ -24,7 +24,7 @@ Implement a repeatable research loop that grows this repository into a general k
 
 **Performance Goals**: Not latency-sensitive; a single loop iteration is expected to take minutes (research-bound), not seconds
 
-**Constraints**: No write access to this repository yet (owner-pending collaborator invite) — every run commits locally and never pushes; no writes to `~/brain` under any circumstance; no PII; commits scoped by explicit pathspec, never a broad `git add`
+**Constraints**: No write access to the canonical repo yet (owner-pending collaborator invite) — every run commits and pushes to the operator's own `backup` remote (`github.com/haidmoham/knowledge-backup`) instead, switching to `origin` once access lands; no writes to `~/brain` under any circumstance; no PII; commits scoped by explicit pathspec, never a broad `git add`
 
 **Scale/Scope**: Personal-to-small-team research corpus; expected concurrent invocation < 1 (single operator, sequential runs)
 
@@ -39,7 +39,7 @@ The `.specify/memory/constitution.md` in this repo is the Blue Swallow Society c
 | Security-First | PASS (N/A scope) | No user input, no network-facing surface; only file writes and outbound research reads |
 | Privacy/Anonymity | PASS | No PII collected or transmitted; articles are generalized, never tied to an individual project or person |
 | Defense in Depth | PASS (N/A scope) | Single-writer local filesystem; no attack surface to layer defenses on |
-| Secure Defaults | PASS | Never pushes by default; never writes to the vault by default; pathspec-scoped commits by default |
+| Secure Defaults | PASS | Never writes to the vault by default; auto-pushes only to the operator's own backup remote (never to a remote it lacks access to); pathspec-scoped commits by default |
 | Continuous Monitoring | N/A | No running service; nothing to monitor between invocations |
 
 No constitution violation blocks this feature. The mismatch between this feature's actual risk profile (a markdown-writing research loop) and the constitution's actual scope (a security/anonymity web app) is itself worth flagging to the repo owner as a candidate to write a corpus-specific constitution later, rather than silently ignoring the gate.
