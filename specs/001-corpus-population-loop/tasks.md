@@ -105,7 +105,7 @@
 **Purpose**: Improvements that affect the loop as a whole, not one user story
 
 - [ ] T020 [P] Fix the dangling `~/.claude/skills/*` symlinks in the operator's personal environment (found during T005; out of scope for this repo, flagged separately)
-- [ ] T021 [P] Once collaborator (push) access is granted by the repo owner, confirm the same local clone pushes cleanly with no remote reconfiguration needed
+- [x] T021 [P] Once collaborator (push) access is granted by the repo owner, confirm the same local clone pushes cleanly with no remote reconfiguration needed — done 2026-07-01: access granted, 5 local commits fast-forwarded to `origin/main` cleanly, upstream repointed to `origin`
 - [ ] T022 Consider a repo-specific constitution once the corpus grows past the seed set, given `.specify/memory/constitution.md` is inherited from an unrelated project (see plan.md Constitution Check)
 
 ---

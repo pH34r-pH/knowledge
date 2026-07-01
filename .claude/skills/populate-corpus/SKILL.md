@@ -13,7 +13,7 @@ Full rationale and requirements: [specs/001-corpus-population-loop/spec.md](../.
 
 ## Boundaries (read first)
 
-- **Back up every run — this is a durable knowledge base, not a one-off artifact.** Each run ends by committing (pathspec-scoped, never a broad `git add`) *and pushing* to the writable remote so the corpus is never stranded on one machine. Push access to the canonical repo (`origin` → `pH34r-pH/knowledge`) is pending a collaborator invite from its owner, so until that lands, push to the operator's own backup remote (`backup` → `github.com/haidmoham/knowledge-backup`). Never attempt to push to a remote you lack access to. Once the owner grants access, push to `origin` too (see Step 6).
+- **Back up every run — this is a durable knowledge base, not a one-off artifact.** Each run ends by committing (pathspec-scoped, never a broad `git add`) *and pushing* to the canonical remote so the corpus is never stranded on one machine. Push to `origin` (`pH34r-pH/knowledge`) — collaborator access was granted 2026-07-01. A personal mirror also exists at `backup` (`github.com/haidmoham/knowledge-backup`) from before access landed; keep it as a secondary safety net but `origin` is now the source of truth (see Step 6).
 - **Read from `~/brain`, never write to it.** The vault is a personal, curated knowledge base with its own ownership and gating rules (see `~/brain/CLAUDE.md`). This loop may read vault pages for grounding and cross-link to them, but a corpus article here must never cause a vault write — that direction of flow belongs to the vault's own `/paper` and `/librarian` skills, not to this one.
 - **Quality over throughput.** One well-sourced, well-reasoned article beats five thin ones. If a candidate topic turns out to be too shallow, too faddish, or already well covered elsewhere in the corpus, say so in the output and pick the next one rather than force a low-value entry.
 
@@ -89,11 +89,12 @@ Write for the persona in this skill's description: someone who already codes wel
 
 From the repo root, stage and commit only what this run touched, then push to the writable remote:
 ```bash
+git pull --rebase --autostash origin main
 git add -- corpus/<pillar>/<slug>.md README.md corpus/LEDGER.md TOPICS.md
 git commit -m "corpus: add <topic>" -- corpus/<pillar>/<slug>.md README.md corpus/LEDGER.md TOPICS.md
-git push backup main
+git push origin main
 ```
-Never `git add -A` or stage files this run didn't touch — this working tree may hold other in-progress changes. Pushing is part of the loop, not an optional extra: the run is not done until the corpus is backed up to a remote. Push to `backup` while `origin` (the canonical `pH34r-pH/knowledge`) still denies write; once the owner grants collaborator access, push to `origin` as well (or repoint) so the canonical repo is the one that grows. If a push is rejected for permissions, report it plainly rather than silently dropping the backup.
+Never `git add -A` or stage files this run didn't touch — this working tree may hold other in-progress changes. Pushing is part of the loop, not an optional extra: the run is not done until the corpus is backed up. Push to `origin` (the canonical `pH34r-pH/knowledge`, now write-accessible); `git pull --rebase --autostash` first since this is now a shared repo with another collaborator. If a push is rejected, report it plainly rather than silently dropping the backup.
 
 ## Output
 
