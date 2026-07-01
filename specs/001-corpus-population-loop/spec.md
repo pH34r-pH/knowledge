@@ -85,6 +85,8 @@ The loop's definition must live in the repository itself, not only in a chat tra
 - **FR-009**: System MUST NOT write to `~/brain` under any circumstance; vault interaction is read-only
 - **FR-010**: System MUST encode this entire workflow in a repo-native, re-invocable artifact (`.claude/skills/populate-corpus/SKILL.md`), not only as ephemeral chat instructions
 - **FR-011**: System MUST follow this repository's existing spec-kit conventions for feature documentation, per the precedent set by `000-raw-ingestion`
+- **FR-012**: System MUST run a citation-integrity gate (Step 5) before an article counts as done, applying, in order: (a) deterministic reference resolution (DOI via CrossRef, arXiv id, or title via OpenAlex/Semantic Scholar) that drops any reference resolving to nothing or to a *different* work; (b) quote-span matching of each cited claim against the fetched source; (c) URL liveness (live 200 or Wayback, else block); (d) entailment checking by a verifier that is NOT the writer, answered factored (without the draft in context). Zero unresolved references and zero dead URLs are hard commit blocks. Evidence base: `.claude/skills/populate-corpus/references/citation-integrity.md`
+- **FR-013**: System MUST constrain the writer to cite only from the pre-resolved source pool the research stage produced — a citation to any source the pipeline has not already resolved is a failure — and MUST record the citation-audit tally (references resolved/unresolved, URLs live/dead, entailment result) in the `corpus/LEDGER.md` entry on commit
 
 ### Key Entities *(include if feature involves data)*
 - **Topic Backlog Entry**: one line in `TOPICS.md` — topic, one-line justification, suggested harness, done/unchecked status
@@ -99,6 +101,7 @@ The loop's definition must live in the repository itself, not only in a chat tra
 - **SC-002**: Zero duplicate articles exist for the same topic across repeated invocations, verified against `corpus/LEDGER.md`
 - **SC-003**: 100% of articles carry a `method` field and, for `deep-research`/`storm` methods, a non-empty Further Reading section with real, checkable sources
 - **SC-004**: A fresh session with no chat history can invoke the skill and reproduce the same workflow, verified by inspecting `.claude/skills/populate-corpus/SKILL.md` in isolation
+- **SC-005**: 100% of citations in committed articles resolve to a real, correct source and carry a live (or archived) URL; the citation-audit tally in each ledger entry shows zero unresolved references and zero dead URLs, or the article was not committed
 
 ## Assumptions
 - The operator has read access to this repository and to `~/brain`; write/push access to this repository is pending a collaborator invite from its owner

@@ -13,7 +13,7 @@ Full rationale and requirements: [specs/001-corpus-population-loop/spec.md](../.
 
 ## Boundaries (read first)
 
-- **Back up every run — this is a durable knowledge base, not a one-off artifact.** Each run ends by committing (pathspec-scoped, never a broad `git add`) *and pushing* to the canonical remote so the corpus is never stranded on one machine. Push to `origin` (`pH34r-pH/knowledge`) — collaborator access was granted 2026-07-01. A personal mirror also exists at `backup` (`github.com/haidmoham/knowledge-backup`) from before access landed; keep it as a secondary safety net but `origin` is now the source of truth (see Step 6).
+- **Back up every run — this is a durable knowledge base, not a one-off artifact.** Each run ends by committing (pathspec-scoped, never a broad `git add`) *and pushing* to the canonical remote so the corpus is never stranded on one machine. Push to `origin` (`pH34r-pH/knowledge`) — collaborator access was granted 2026-07-01. A personal mirror also exists at `backup` (`github.com/haidmoham/knowledge-backup`) from before access landed; keep it as a secondary safety net but `origin` is now the source of truth (see Step 7).
 - **Read from `~/brain`, never write to it.** The vault is a personal, curated knowledge base with its own ownership and gating rules (see `~/brain/CLAUDE.md`). This loop may read vault pages for grounding and cross-link to them, but a corpus article here must never cause a vault write — that direction of flow belongs to the vault's own `/paper` and `/librarian` skills, not to this one.
 - **Quality over throughput.** One well-sourced, well-reasoned article beats five thin ones. If a candidate topic turns out to be too shallow, too faddish, or already well covered elsewhere in the corpus, say so in the output and pick the next one rather than force a low-value entry.
 
@@ -77,15 +77,34 @@ Body structure — adapt headers to fit the topic, but keep this shape:
 - **In practice** — a small worked example, or a pointer to where the pattern shows up in a real, citable system.
 - **Further reading** — sources, numbered and linked, exactly as STORM/deep-research produced them. Every non-obvious claim in the body should trace to one of these.
 
+**Cite only from the verified pool.** The article may cite *only* sources that the research stage already resolved and fetched — never introduce a reference at write time that the pipeline has not seen. Fabrication is induced by the instruction to cite, so grounding must be forced structurally, not hoped for. Each cited sentence should be traceable to a specific fetched passage, so the Step 5 gate can check it. See [references/citation-integrity.md](references/citation-integrity.md) for the evidence.
+
 Write for the persona in this skill's description: someone who already codes well and wants the mechanism, not someone who needs the topic explained from zero.
 
-## Step 5 — Update the index and ledger
+## Step 5 — Citation integrity gate (run before committing)
+
+The corpus is only as trustworthy as its citations; a fabricated or misgrounded reference is worse than no article. Before the article counts as done, audit every citation. The full evidence base and the ranked guard list are in [references/citation-integrity.md](references/citation-integrity.md) — this is the operational checklist. Run cheap deterministic checks first (they can't be gamed), then the model-based ones.
+
+**Deterministic (MUST — no model judgment):**
+1. **Resolve every reference.** DOI → `GET https://api.crossref.org/works/{doi}` (expect HTTP 200 + fuzzy-matching title); arXiv id → the arXiv abstract page; otherwise resolve the title via OpenAlex/Semantic Scholar or a direct fetch. Any reference that resolves to nothing — or to a *different* paper than cited — is a phantom: drop or replace it, never ship it.
+2. **Quote-span match.** Each cited sentence must be backed by text that actually appears in the fetched source (exact substring for direct quotes; ~0.8 fuzzy for paraphrase). A claim whose support is not in the source is a misquote even if it reads perfectly — resolution alone will not catch this.
+3. **URL liveness.** Every citation URL must fetch a live 200; on failure, check the Wayback Machine and repair a stale-but-real link, but block anything with no live and no archived copy.
+
+**Model-based (MUST/SHOULD — catches misgrounding):**
+4. **Entailment (MUST).** A verifier that is **not** the writer fetches each cited passage and answers, factored (without the draft in context), "does this source — and only this — support this exact statement?" Fail any sentence its citations do not entail. Do not let the writer grade its own citations.
+5. **Contradiction check (SHOULD).** Instruct the verifier to distinguish supports / unrelated / *contradicts*, hard-fail a topically-relevant-but-refuting citation, and give claims hinging on specific numbers or dates a second look — that fine-grained slice is where automated checkers miss most.
+
+**Record the result (SHOULD).** Emit a small audit tally — references resolved/unresolved, sentences entailed/not, URLs live/dead — and carry it into the ledger entry (Step 6). Gate the commit on it: zero unresolved references and zero dead URLs are hard blocks. If a topic cannot clear the gate, cut the unsupported claims rather than shipping them; report what was cut.
+
+When running this loop as a workflow, implement these as pipeline stages: the research stage emits the resolved source pool, the write stage cites only from it, and a distinct verify/audit stage runs checks 1–5 before the writer's file is accepted.
+
+## Step 6 — Update the index and ledger
 
 1. Add or update the article's one-line entry under a `## Corpus` section in `README.md` (create the section on first run if it doesn't exist), mirroring the vault's own "one line per page, summary-first" convention: `- [title](corpus/<pillar>/<slug>.md) — one-line hook`.
-2. Append an entry to `corpus/LEDGER.md` using the template already in that file.
+2. Append an entry to `corpus/LEDGER.md` using the template already in that file, including the Step 5 citation-audit tally.
 3. Check the box for this topic in `TOPICS.md` — keep the row; don't delete history.
 
-## Step 6 — Commit and push
+## Step 7 — Commit and push
 
 From the repo root, stage and commit only what this run touched, then push to the writable remote:
 ```bash

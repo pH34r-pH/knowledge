@@ -16,6 +16,7 @@ Status legend: **current** (trustworthy as-is) · **stale** (the field may have 
 - **Method:** vault-adapt | deep-research | storm | deep-research + storm
 - **Sources:** <count> · **Confidence:** high | medium | low
 - **File:** [corpus/<pillar>/<slug>.md](<pillar>/<slug>.md)
+- **Citation audit:** <refs resolved>/<total> resolved · <urls live>/<total> URLs live · entailment <pass note> (Step 5 gate)
 - **Vault cross-links:** <links, or "none">
 - **Builds on / supersedes:** — (or link to the prior entry)
 
