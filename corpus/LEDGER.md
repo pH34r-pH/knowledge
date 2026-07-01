@@ -13,7 +13,7 @@ Status legend: **current** (trustworthy as-is) · **stale** (the field may have 
 ### YYYY-MM-DD — <topic>
 - **Status:** current
 - **Pillar:** design-patterns | ml-techniques | adjacent-knowledge
-- **Method:** vault-adapt | deep-research | storm
+- **Method:** vault-adapt | deep-research | storm | deep-research + storm
 - **Sources:** <count> · **Confidence:** high | medium | low
 - **File:** [corpus/<pillar>/<slug>.md](<pillar>/<slug>.md)
 - **Vault cross-links:** <links, or "none">

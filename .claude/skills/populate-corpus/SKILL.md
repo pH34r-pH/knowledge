@@ -37,13 +37,20 @@ If a pillar has no unchecked topics left, propose 3-5 new candidates for that pi
 
 ## Step 3 — Decide the research harness
 
-Not every topic deserves the same weight. Pick one path:
+Match the harness to the topic's shape. There are four modes; the two fresh-research methods (`deep-research` and `storm`) do genuinely different jobs, so don't default to one.
 
-- **Vault-adapt (no fresh research).** The topic is already a mature, `experience`-tier page in `~/brain/wiki/`. Read it, generalize it for this corpus's audience (strip anything personal — project names, individual decisions, company specifics), and cite it as the source. Use this whenever it genuinely applies rather than re-researching something already owned and tested.
-- **`deep-research` skill (built in).** The topic has a converged, mostly-agreed technical exposition — an algorithm, a mechanism, an established technique — where the value is breadth and correct sourcing, not adversarial framing. Invoke it with the topic as the research question.
-- **`storm` skill** (`/Users/haidmoham/brain/agent-config/skills/storm/SKILL.md`). The topic is genuinely contested — real practitioners disagree, and the disagreement is itself the valuable content (e.g. "when does CQRS earn its complexity", "monolith vs. microservices for a team of N", "RAG vs. long-context vs. fine-tuning for this class of problem"). Follow STORM's own workflow, sized to 3-4 perspectives for a corpus article (lighter than a full briefing) unless the topic clearly needs more. STORM's non-negotiable rule still applies: every claim in the final article must trace to a retrieved source — no answering from memory.
+- **Vault-adapt (reuse).** The topic is already a mature, `experience`-tier page in `~/brain/wiki/`. Read it, generalize for this corpus (strip personal specifics — project names, individual decisions, companies), cite it as internal provenance, and corroborate with a few public sources. Use whenever it genuinely applies rather than re-researching owned, tested knowledge. You may layer a light fresh pass on top to extend it (e.g. grounding a vault methodology in this repo's own `arxiv/` papers).
+- **deep-research (the built-in `/deep-research` skill).** The topic has a converged, mostly-agreed technical exposition — an algorithm, a mechanism, an established technique — where the value is breadth and correct sourcing, not adversarial framing. Invoke `/deep-research` with the topic as the question, **or** reproduce its method (fan-out search → adversarial verify → synthesize) as workflow stages; both count as this harness.
+- **storm (the `storm` skill at `/Users/haidmoham/brain/agent-config/skills/storm/SKILL.md`).** The topic is genuinely contested — real practitioners disagree and the disagreement itself is the content (e.g. "when does CQRS earn its complexity", "RAG vs long-context vs fine-tuning"). Run STORM's multi-perspective, retrieval-grounded workflow, sized to 3–4 perspectives for a corpus article. Every claim still traces to a retrieved source — no answering from memory.
+- **Dual-harness reconcile (deep-research AND storm).** For a topic that is BOTH mechanism-rich AND genuinely contested — real technical machinery to explain *and* a live practitioner debate over when/whether to use it — run both and reconcile. This mode is deliberately reserved for that overlap: running both on a clearly-converged topic just makes STORM invent perspectives that don't exist, and running only one on a both-shaped topic under-serves it. Reconciliation:
+  1. deep-research → mechanism + breadth + sources (feeds *What it is* / *How it works*).
+  2. STORM → perspectives + contradiction map + sources (feeds *Trade-offs*).
+  3. Merge into ONE article: dedupe and renumber sources across both; take the mechanism from deep-research and the debate map from STORM. Where the two disagree on a *checkable* fact, surface the disagreement and prefer the better-sourced side with a confidence note — do not smooth it over.
+  4. Record `method: deep-research + storm` and one ledger entry.
 
-Before either fresh-research path, check `corpus/LEDGER.md` **and** `/Users/haidmoham/brain/wiki/meta/research-log.md` for a prior run on this or a closely adjacent question — extend it instead of re-paying for research that already exists and is still fresh.
+Decision signal, in order: mature tested vault page → vault-adapt; the debate is the point and the mechanism is thin → storm; substantial mechanism with no real camps → deep-research; substantial mechanism *and* a genuine debate → dual reconcile.
+
+Before any fresh-research path, check `corpus/LEDGER.md` **and** `/Users/haidmoham/brain/wiki/meta/research-log.md` for a prior run on this or an adjacent question — extend it rather than re-pay for research that already exists and is still fresh.
 
 ## Step 4 — Write the article
 
@@ -54,7 +61,7 @@ Frontmatter:
 ---
 title: <topic>
 pillar: design-patterns | ml-techniques | adjacent-knowledge
-method: vault-adapt | deep-research | storm
+method: vault-adapt | deep-research | storm | deep-research + storm
 date: <YYYY-MM-DD>
 sources: <count>
 confidence: high | medium | low

@@ -35,7 +35,8 @@ The loop must choose among three research paths (vault reuse, `deep-research`, `
 1. **Given** a topic with an existing, mature `experience`-tier page in `~/brain/wiki/`, **When** the loop selects a harness, **Then** it adapts that page (`method: vault-adapt`) instead of running fresh research
 2. **Given** a topic with a converged, single-throughline technical exposition, **When** the loop selects a harness, **Then** it invokes the built-in `deep-research` skill (`method: deep-research`)
 3. **Given** a topic where practitioners genuinely disagree, **When** the loop selects a harness, **Then** it invokes the `storm` skill (`method: storm`) and the resulting article's Trade-offs section reflects the contradiction map
-4. **Given** any fresh-research path, **When** the loop starts, **Then** it first checks `corpus/LEDGER.md` and the vault's `research-log.md` for a reusable prior run
+4. **Given** a topic that is both mechanism-rich and genuinely contested, **When** the loop selects a harness, **Then** it runs both `deep-research` and `storm` (`method: deep-research + storm`), deriving How-it-works from the former and the Trade-offs contradiction map from the latter, with source lists deduped across both
+5. **Given** any fresh-research path, **When** the loop starts, **Then** it first checks `corpus/LEDGER.md` and the vault's `research-log.md` for a reusable prior run
 
 ### User Story 3 - Deduplication and Backlog Management (Priority: P2)
 
@@ -66,7 +67,7 @@ The loop's definition must live in the repository itself, not only in a chat tra
 
 - What happens when `TOPICS.md` or `corpus/LEDGER.md` doesn't exist yet (first-ever run)? The loop creates them if missing, seeded per the templates in this spec.
 - What happens when the vault (`~/brain`) is unreachable or absent (e.g. a different machine)? Fall back to `deep-research`/`storm` only, and note in the article that vault cross-linking was skipped.
-- What happens when both `storm` and `deep-research` would apply reasonably well? Prefer `storm` only when the disagreement itself is part of the value; default to `deep-research` otherwise, since it is cheaper.
+- What happens when both `storm` and `deep-research` would apply reasonably well? If the topic has a substantial mechanism to explain *and* a genuine practitioner debate, use the dual-harness reconcile mode (run both, deep-research for the mechanism and STORM for the contradiction map, merged into one article). If only the debate carries value and the mechanism is thin, use `storm` alone; if there is a mechanism but no real camps, use `deep-research` alone (cheaper). Do not run both on a clearly-converged topic — STORM will manufacture perspectives that don't exist.
 - What happens when a topic turns out to be too thin or already well covered elsewhere in the corpus mid-research? Abandon it, log why in the run's output, and select the next topic rather than force a low-value entry.
 - How are stale `done` topics handled if the underlying technique gets superseded? Note the staleness in the ledger entry rather than silently rewriting history (same discipline as the vault's "don't silently overwrite a fact that changed" convention).
 
@@ -75,7 +76,7 @@ The loop's definition must live in the repository itself, not only in a chat tra
 ### Functional Requirements
 - **FR-001**: System MUST maintain a prioritized, human-readable topic backlog at `TOPICS.md`, grouped into exactly three pillars: design patterns, ML techniques, adjacent high-value knowledge
 - **FR-002**: System MUST select one topic per invocation and mark it done in `TOPICS.md` only after the corresponding article and ledger entry exist
-- **FR-003**: System MUST choose a research method per topic from exactly three options — vault-adapt, `deep-research`, `storm` — using the selection rule in Step 3 of the skill
+- **FR-003**: System MUST choose a research method per topic from four options — vault-adapt, `deep-research`, `storm`, or dual-harness reconcile (`deep-research` AND `storm`) — using the selection rule in Step 3 of the skill. The dual mode is reserved for topics that are both mechanism-rich and genuinely contested; deep-research supplies the mechanism, STORM the contradiction map, reconciled into one article
 - **FR-004**: System MUST check both `corpus/LEDGER.md` and the vault's `wiki/meta/research-log.md` before any fresh-research invocation, to avoid re-paying for existing coverage
 - **FR-005**: System MUST write each article to `corpus/<pillar>/<slug>.md` with the frontmatter and body sections defined in the skill
 - **FR-006**: System MUST cite a source for every non-obvious claim; STORM-sourced and deep-research-sourced articles carry a numbered Further Reading section
@@ -89,7 +90,7 @@ The loop's definition must live in the repository itself, not only in a chat tra
 - **Topic Backlog Entry**: one line in `TOPICS.md` — topic, one-line justification, suggested harness, done/unchecked status
 - **Corpus Article**: a markdown file under `corpus/<pillar>/` with frontmatter (title, pillar, method, date, sources, confidence, optional vault-links) and the six required body sections
 - **Ledger Entry**: one record in `corpus/LEDGER.md` capturing what was researched, how, at what confidence, and what it cross-links to — the audit trail that makes re-invocation safe
-- **Research Harness**: one of vault-adapt (reuse), `deep-research` (built-in skill), or `storm` (vault skill at `~/brain/agent-config/skills/storm/`)
+- **Research Harness**: one of vault-adapt (reuse), `deep-research` (built-in skill), `storm` (vault skill at `~/brain/agent-config/skills/storm/`), or a dual-harness reconcile that runs `deep-research` and `storm` together and merges their outputs into one article
 
 ## Success Criteria *(mandatory)*
 
