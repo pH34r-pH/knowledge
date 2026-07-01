@@ -6,11 +6,11 @@ Each line: `- [ ] Topic — why it matters (harness: hint)`. The harness hint is
 
 ## Software Engineering Design Patterns
 
-- [ ] Saga pattern for distributed transactions — replaces two-phase commit across service boundaries; foundational to any service-decomposition project (harness: deep-research)
+- [x] Saga pattern for distributed transactions — replaces two-phase commit across service boundaries; foundational to any service-decomposition project (harness: deep-research)
 - [x] CQRS and event sourcing — the split only pays for itself past a specific complexity threshold; genuinely contested among practitioners (harness: storm)
 - [x] Resilience patterns: circuit breaker, retry-with-jitter, timeout budgets — the three that actually stop cascading failure (harness: deep-research)
 - [ ] Outbox pattern for reliable event publishing — the standard fix for the dual-write problem (harness: deep-research)
-- [ ] Idempotency keys and exactly-once-effect APIs — how to make retries safe at the API boundary (harness: deep-research)
+- [x] Idempotency keys and exactly-once-effect APIs — how to make retries safe at the API boundary (harness: deep-research)
 - [ ] Structured concurrency vs. thread pools and async callbacks — why the newer model composes better under cancellation and error propagation (harness: storm)
 - [ ] Actor model vs. CSP/channels for concurrent systems — two mature answers to the same problem, different tradeoffs (harness: storm)
 - [ ] API pagination and versioning strategies at scale — cursor vs. offset, and how real APIs evolve without breaking clients (harness: deep-research)
@@ -23,17 +23,17 @@ Each line: `- [ ] Topic — why it matters (harness: hint)`. The harness hint is
 - [x] Backpropagation and automatic differentiation, from first principles — the mechanism, not just the name (harness: deep-research)
 - [ ] PCA and eigendecomposition — the intuition behind the math and where it actually gets used (harness: deep-research)
 - [ ] Regularization: L1/L2, dropout, early stopping — why each one works, not just what it does (harness: deep-research)
-- [ ] Attention and the Transformer architecture, internals — the mechanism the whole current wave is built on (harness: deep-research)
-- [ ] RAG architectures: vector vs. graph vs. hybrid retrieval — directly relevant to this repo's own stated purpose; genuinely contested tradeoffs (harness: storm)
+- [x] Attention and the Transformer architecture, internals — the mechanism the whole current wave is built on (harness: deep-research)
+- [x] RAG architectures: vector vs. graph vs. hybrid retrieval — directly relevant to this repo's own stated purpose; genuinely contested tradeoffs (harness: storm)
 - [ ] Fine-tuning strategies: full fine-tune vs. LoRA/QLoRA vs. RLHF/DPO — when each is worth its cost (harness: storm)
-- [ ] Agent evaluation methodology — grounded in Claw-Eval, $OneMillion-Bench, Terminal-Bench already sitting in `arxiv/` (harness: vault-adapt + deep-research)
+- [x] Agent evaluation methodology — grounded in Claw-Eval, $OneMillion-Bench, Terminal-Bench already sitting in `arxiv/` (harness: vault-adapt + deep-research)
 - [ ] Agent memory architectures — grounded in MemEvolve and GenericAgent already sitting in `arxiv/` (harness: vault-adapt + deep-research)
 - [ ] Bias-variance tradeoff and the double-descent wrinkle — the classical framing plus the part modern deep learning complicates (harness: deep-research)
 - [ ] Self-evolving agent systems: harness-layer vs. text-mutable-layer adaptation — this repo's own seed paper (MOSS) makes the core argument; write it up properly (harness: vault-adapt)
 
 ## Adjacent High-Value Knowledge
 
-- [ ] System design fundamentals: load balancing, caching, sharding, consistent hashing — the vocabulary every scaling conversation assumes (harness: deep-research)
+- [x] System design fundamentals: load balancing, caching, sharding, consistent hashing — the vocabulary every scaling conversation assumes (harness: deep-research)
 - [ ] Threat modeling and least privilege for engineers who aren't security specialists — the 20% that prevents 80% of incidents (harness: deep-research)
 - [ ] Testing strategy: property-based testing, contract testing, mutation testing — past unit vs. integration (harness: deep-research)
 - [ ] Analytics engineering patterns (staging → marts) — the vault already has a tested dbt-based take; generalize it (harness: vault-adapt)
