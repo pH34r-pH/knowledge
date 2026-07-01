@@ -57,6 +57,10 @@ Frontmatter: `title`, `pillar`, `method`, `date`, `sources` (count), `confidence
 - `backup` → `github.com/haidmoham/knowledge-backup` (personal mirror, kept in sync as a secondary safety net).
 - Read from `~/brain` for grounding, but **never write to it** — that vault has its own ownership and gating.
 
+## Does feeding the corpus actually help?
+
+A pre-registered blind eval ([corpus/EVAL-corpus-leverage-2026-07-01.md](corpus/EVAL-corpus-leverage-2026-07-01.md)) tested whether giving an LLM the relevant article improves its design answers, against a no-article control and an unrelated-article placebo. Result: **directional yes** — treatment won 100% of blind comparisons and beat the placebo by +1.62 quality, so the lift is content-specific, not context-stuffing. Caveats kept it from "proven": the rubric was corpus-derived (partly circular), the grader was the same model family, and the value was *completeness* (coverage 73%→99%), not the predicted blunder-avoidance (the base model avoided every trap unaided). Treat it as a promising signal to harden, not a settled result.
+
 ## Current state (2026-07-01)
 
 10 articles written (4 design-patterns, 4 ml-techniques, 2 adjacent-knowledge), all citation-audited (119 citations, zero fabricated). Backlog in `TOPICS.md` has ~14 unchecked topics remaining — the outbox/actor-model/structured-concurrency cluster, core ML (PCA, regularization, fine-tuning strategies), and adjacent (observability, threat modeling, testing strategy) plus the vault-adapt generalizations.
