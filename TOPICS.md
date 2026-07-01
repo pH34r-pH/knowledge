@@ -7,8 +7,8 @@ Each line: `- [ ] Topic — why it matters (harness: hint)`. The harness hint is
 ## Software Engineering Design Patterns
 
 - [ ] Saga pattern for distributed transactions — replaces two-phase commit across service boundaries; foundational to any service-decomposition project (harness: deep-research)
-- [ ] CQRS and event sourcing — the split only pays for itself past a specific complexity threshold; genuinely contested among practitioners (harness: storm)
-- [ ] Resilience patterns: circuit breaker, retry-with-jitter, timeout budgets — the three that actually stop cascading failure (harness: deep-research)
+- [x] CQRS and event sourcing — the split only pays for itself past a specific complexity threshold; genuinely contested among practitioners (harness: storm)
+- [x] Resilience patterns: circuit breaker, retry-with-jitter, timeout budgets — the three that actually stop cascading failure (harness: deep-research)
 - [ ] Outbox pattern for reliable event publishing — the standard fix for the dual-write problem (harness: deep-research)
 - [ ] Idempotency keys and exactly-once-effect APIs — how to make retries safe at the API boundary (harness: deep-research)
 - [ ] Structured concurrency vs. thread pools and async callbacks — why the newer model composes better under cancellation and error propagation (harness: storm)
@@ -20,7 +20,7 @@ Each line: `- [ ] Topic — why it matters (harness: hint)`. The harness hint is
 
 ## Machine Learning Techniques
 
-- [ ] Backpropagation and automatic differentiation, from first principles — the mechanism, not just the name (harness: deep-research)
+- [x] Backpropagation and automatic differentiation, from first principles — the mechanism, not just the name (harness: deep-research)
 - [ ] PCA and eigendecomposition — the intuition behind the math and where it actually gets used (harness: deep-research)
 - [ ] Regularization: L1/L2, dropout, early stopping — why each one works, not just what it does (harness: deep-research)
 - [ ] Attention and the Transformer architecture, internals — the mechanism the whole current wave is built on (harness: deep-research)
@@ -40,6 +40,6 @@ Each line: `- [ ] Topic — why it matters (harness: hint)`. The harness hint is
 - [ ] Observability: structured logging, distributed tracing, SLI/SLO design — what "instrument everything" actually means in practice (harness: deep-research)
 - [ ] Monorepo vs. polyrepo and build system design (Bazel/Buck/Nx) — real tradeoffs, not tooling fashion (harness: storm)
 - [ ] Secrets management and the point-of-use principle — the vault already has a tested take; generalize it (harness: vault-adapt)
-- [ ] Graceful degradation and fallback chains — the vault already has a tested take; generalize it (harness: vault-adapt)
+- [x] Graceful degradation and fallback chains — the vault already has a tested take; generalize it (harness: vault-adapt)
 - [ ] Incremental, idempotent ingestion for polling sources you don't control — the vault already has a tested take; generalize it (harness: vault-adapt)
 - [ ] Cost-aware LLM system design: model routing, caching, fair-use caps — the vault has two tested product-specific takes; generalize past any one product (harness: vault-adapt + deep-research)
