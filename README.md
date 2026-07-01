@@ -1,5 +1,19 @@
 Structured research corpus for experiments with graph-based lookup and retrieval, automated research, and RAG pipelines
 
+**Continue building:** [BUILDING.md](BUILDING.md) — how to run the loop, the four research harnesses, and where all state lives.
+
+## Citation integrity: how the corpus avoids hallucinated references
+
+Every citation in this corpus passes a gate before it is committed, because a fabricated or misgrounded reference is worse than no article. Deterministic, un-gameable checks run first; model-based checks catch the rest. Full evidence base and guard list: [citation-integrity.md](.claude/skills/populate-corpus/references/citation-integrity.md).
+
+- **Resolve every reference** *(deterministic)* — each DOI / arXiv id / URL is mechanically resolved (CrossRef, arXiv, OpenAlex); anything resolving to nothing, or to a *different* work than cited, is dropped. Fabrication is prompt-induced, so this is the highest-leverage guard.
+- **Quote-span match** *(deterministic)* — the supporting text must actually appear in the fetched source; a plausible claim absent from the source is a misquote, however well it reads.
+- **URL liveness** *(deterministic)* — every link must resolve live (or via the Wayback Machine); a `403` from a canonical host such as ACM or USENIX is treated as bot-blocking and re-checked via DOI, never called dead.
+- **Entailment by a separate verifier** *(model-based)* — a checker that is **not** the writer, answering factored (without the draft in context), confirms each source genuinely supports its claim; this catches the "real source, wrong claim" misgrounding the deterministic layer can't.
+- **Writer constrained to a verified pool** *(process)* — the writer may cite only sources the pipeline has already resolved, so fabrication is structurally impossible at write time rather than something to catch afterward.
+
+First full audit (119 citations across all 10 articles, 2026-07-01): **zero fabricated sources**; 6 over-citation / misattribution issues found and fixed. Report: [corpus/CITATION-AUDIT-2026-07-01.md](corpus/CITATION-AUDIT-2026-07-01.md).
+
 ## Corpus
 
 General-knowledge articles on software engineering design patterns, ML techniques, and adjacent high-value engineering knowledge — separate from the arXiv paper pipeline in `arxiv/`/`reports/`. Backlog: [TOPICS.md](TOPICS.md). Run ledger: [corpus/LEDGER.md](corpus/LEDGER.md). Protocol: [specs/001-corpus-population-loop/spec.md](specs/001-corpus-population-loop/spec.md), runnable as the `populate-corpus` skill.
