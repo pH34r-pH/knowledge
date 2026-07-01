@@ -6,6 +6,10 @@ Status legend: **current** (trustworthy as-is) · **stale** (the field may have 
 
 ---
 
+## Citation integrity
+
+All 119 citations across the 10 articles below were audited on 2026-07-01 against the [citation-integrity gate](../.claude/skills/populate-corpus/references/citation-integrity.md) — independent per-article auditors resolved every reference (URL / arXiv id / DOI) and verified claim support, with a second independent re-check on every flag. **Zero fabricated sources; 6 over-citation/misattribution problems found and fixed, 5 false alarms dismissed.** Full report: [CITATION-AUDIT-2026-07-01.md](CITATION-AUDIT-2026-07-01.md).
+
 ## Entries
 
 <!-- newest first. Template per run:

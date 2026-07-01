@@ -3,7 +3,7 @@ title: "System design fundamentals: load balancing, caching, sharding, consisten
 pillar: adjacent-knowledge
 method: deep-research
 date: 2026-07-01
-sources: 15
+sources: 16
 confidence: high
 ---
 
@@ -37,7 +37,7 @@ Reach for **caching** when reads dominate and recomputation or a round-trip to t
 
 **The herd is the failure mode caching creates.** When a hot key expires, every concurrent reader misses at once and stampedes the DB. Facebook's memcache **leases** solve this and stale sets with one mechanism: on a miss, the server hands the client a 64-bit token bound to the key, and the client must present that token to set the value. The server issues a lease at most once every 10 seconds per key, so concurrent missers wait rather than all recomputing. On a delete, outstanding lease tokens for that key are invalidated, which prevents an out-of-order (stale) set from persisting [4][5].
 
-**Sharding and the hot-key wall.** Horizontal sharding partitions rows across nodes. **Range partitioning** (contiguous key ranges) gives efficient range scans but hot-spots on sequential or skewed keys — timestamps, or many customers whose surnames start with the same letter [8]. **Hash partitioning** spreads load evenly but destroys efficient range queries [8]. **Hash-range sharding** is the adaptive middle: assign ranges of *hash* values to shards and split a shard only when it grows hot [9]. But no scheme auto-fixes a single hot key — the **celebrity problem**. One account with millions of followers concentrates all its traffic on one partition no matter how you hash. DDIA's mitigation is *application-level*: prefix the hot key with a small random number (e.g. 2 digits) to spread it across ~100 keys, accepting that reads must now fan out to all 100 and recombine [10].
+**Sharding and the hot-key wall.** Horizontal sharding partitions rows across nodes. **Range partitioning** (contiguous key ranges) gives efficient range scans but hot-spots on sequential or skewed keys — timestamps, or many customers whose surnames start with the same letter [8]. **Hash partitioning** spreads load evenly but destroys efficient range queries [8]. **Hash-range sharding** is the adaptive middle: assign ranges of *hash* values to shards and split a shard only when it grows hot [9]. But no scheme auto-fixes a single hot key — the **celebrity problem**. One account with millions of followers concentrates all its traffic on one partition no matter how you hash [10]. DDIA's mitigation is *application-level*: prefix the hot key with a small random number (e.g. 2 digits) to spread it across ~100 keys, accepting that reads must now fan out to all 100 and recombine [16].
 
 **Consistent hashing, the connective tissue.** Introduced by Karger et al. in 1997 to relieve web hot spots, a consistent hash function is one that changes minimally as its output range (the server set) changes [11]. With `hash mod N`, changing `N` remaps nearly every key. With consistent hashing, only about `K/N` keys (of `K` keys over `N` servers) remap when a node joins or leaves — an average-case bound, not an absolute guarantee [11][12]. Because placing nodes randomly on the ring produces uneven load, real systems add **virtual nodes**: multiple ring positions per physical server, which cut load variance and let capacity be tuned per node. Dynamo does exactly this — a consistent-hashing ring, each physical node mapped to multiple virtual nodes whose count scales with its capacity, plus quorum replication and gossip membership [13].
 
@@ -51,7 +51,7 @@ The contradiction map here is sharp, because "consistent hashing" names a family
 
 **Caching's dangerous trade is availability for a hidden coupling.** Amazon's Builders' Library warns a service can become "addicted to its cache," where the cache is inadvertently elevated "from a helpful addition to the service to a necessary and critical part of its ability to operate" [7]. The root risk is **modal behavior** — different behavior on hit versus miss — so an unanticipated shift in hit-rate distribution (a cold cache after a node comes up empty) can overload the backing store and "lead to disaster" [7]. A cache sized to hide the DB's true load is a latent outage.
 
-**The blind spot most sources miss:** caching hot keys and sharding hot ranges get framed as separate problems, but they are the *same* problem — a single hot key or hot range that no hashing scheme can spread. That is why the ultimate mitigation (application-level key splitting [10]) lives *above* the infrastructure layer, not inside any balancer or partitioner. Consistent hashing, leases, and bounded loads all attack correlated load concentration under topology change; none of them can un-concentrate load that is intrinsically concentrated in one key.
+**The blind spot most sources miss:** caching hot keys and sharding hot ranges get framed as separate problems, but they are the *same* problem — a single hot key or hot range that no hashing scheme can spread. That is why the ultimate mitigation (application-level key splitting [16]) lives *above* the infrastructure layer, not inside any balancer or partitioner. Consistent hashing, leases, and bounded loads all attack correlated load concentration under topology change; none of them can un-concentrate load that is intrinsically concentrated in one key.
 
 ## In practice
 
@@ -70,7 +70,7 @@ One operational warning worth internalizing from Amazon: not all cache client li
 3. Cache invalidation: TTL, write-through, write-behind, cache-aside — https://www.kunalganglani.com/learning-paths/backend-developer/be-caching-invalidation
 4. MIT 6.824 Lecture 16 notes — Scaling Memcache at Facebook (leases) — https://timilearning.com/posts/mit-6.824/lecture-16-memcache-at-facebook/
 5. Scaling Memcache at Facebook — paper summary (leases, stale sets) — https://www.micahlerner.com/2021/05/31/scaling-memcache-at-facebook.html
-6. Nishtala et al., Scaling Memcache at Facebook, NSDI 2013 (primary; qps figure via summaries) — https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf
+6. Nishtala et al., Scaling Memcache at Facebook, NSDI 2013 (primary; qps figure via summaries) — https://www.usenix.org/conference/nsdi13/technical-sessions/presentation/nishtala
 7. Caching challenges and strategies — Amazon Builders' Library — https://aws.amazon.com/builders-library/caching-challenges-and-strategies/
 8. Database Sharding Explained for Scalable Systems — Aerospike — https://aerospike.com/blog/database-sharding-scalable-systems/
 9. From Hot Keys to Rebalancing: A Deep Dive into Sharding — https://medium.com/startlovingyourself/from-hot-keys-to-rebalancing-a-deep-dive-into-sharding-dcb48c69bab7
@@ -80,3 +80,4 @@ One operational warning worth internalizing from Amazon: not all cache client li
 13. DeCandia et al., Dynamo: Amazon's Highly Available Key-value Store, SOSP 2007 — https://www.cs.cornell.edu/courses/cs5414/2017fa/papers/dynamo.pdf
 14. Eisenbud et al., Maglev: A Fast and Reliable Software Network Load Balancer, NSDI 2016 — https://www.usenix.org/sites/default/files/nsdi16-paper-eisenbud.pdf
 15. Consistent Hashing with Bounded Loads — Google Research blog — https://research.google/blog/consistent-hashing-with-bounded-loads/
+16. Kleppmann — Designing Data-Intensive Applications, Ch. 6 (Partitioning): "Skewed Workloads and Relieving Hot Spots" (the random-prefix hot-key mitigation) — https://dataintensive.net/

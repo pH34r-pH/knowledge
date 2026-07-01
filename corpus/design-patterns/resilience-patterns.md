@@ -3,7 +3,7 @@ title: Resilience patterns: circuit breaker, retry with jitter, timeout budgets
 pillar: design-patterns
 method: deep-research
 date: 2026-07-01
-sources: 11
+sources: 12
 confidence: high
 ---
 
@@ -39,7 +39,7 @@ In AWS's simulation with many contending clients, the jittered strategies cut to
 
 **The circuit breaker.** Fowler's canonical mechanism: wrap the call; count failures; once failures cross a threshold the breaker *trips* to **OPEN** and rejects calls immediately without touching the downstream; after a reset timeout it moves to **HALF-OPEN** and lets a probe call through, closing on success and re-opening on failure [3]. Not every error should count — a business-logic 4xx is a normal outcome handled by ordinary code; the breaker should count only failures that indicate the dependency itself is unhealthy, such as timeouts and 5xx [3][4].
 
-Two production implementations concretize this. **Hystrix** trips only when request volume in a rolling window exceeds a threshold (default 20 requests / 10s) *and* the error percentage exceeds a threshold (default >50%); after a sleep window it lets a single probe through. It also bundles the **bulkhead** pattern — each dependency gets its own thread pool, so latency in one dependency saturates only its pool and cannot exhaust the caller's threads — and fires fallbacks on any of four conditions: exception, open circuit, pool/semaphore rejection, or timeout [4]. **Resilience4j**, the modern successor to the now-dormant Hystrix, exposes the same state machine with defaults `failureRateThreshold` 50%, `minimumNumberOfCalls` 100 before the rate is computed, `waitDurationInOpenState` 60s, `permittedNumberOfCallsInHalfOpenState` 10, a count- or time-based sliding window, and adds **slow-call detection** (`slowCallRateThreshold` / `slowCallDurationThreshold`) so calls that succeed but are consistently slow can also trip the breaker [5].
+Two production implementations concretize this. **Hystrix** trips only when request volume in a rolling window exceeds a threshold (default 20 requests / 10s) *and* the error percentage exceeds a threshold (default >50%) [12]; after a sleep window it lets a single probe through. It also bundles the **bulkhead** pattern — each dependency gets its own thread pool, so latency in one dependency saturates only its pool and cannot exhaust the caller's threads — and fires fallbacks on any of four conditions: exception, open circuit, pool/semaphore rejection, or timeout [4]. **Resilience4j**, the modern successor to the now-dormant Hystrix, exposes the same state machine with defaults `failureRateThreshold` 50%, `minimumNumberOfCalls` 100 before the rate is computed, `waitDurationInOpenState` 60s, `permittedNumberOfCallsInHalfOpenState` 10, a count- or time-based sliding window, and adds **slow-call detection** (`slowCallRateThreshold` / `slowCallDurationThreshold`) so calls that succeed but are consistently slow can also trip the breaker [5].
 
 ## Trade-offs
 
@@ -68,3 +68,4 @@ Composed around a single outbound call, a resilient path layers the patterns rou
 9. Marc Brooker — Fixing retries with token buckets and circuit breakers — https://brooker.co.za/blog/2022/02/28/retries.html
 10. gRPC Blog — gRPC and Deadlines — https://grpc.io/blog/deadlines/
 11. AWS SDKs and Tools — Retry behavior — https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html
+12. Netflix Hystrix Wiki — Configuration (default thresholds: requestVolumeThreshold 20, rolling window 10000ms, errorThresholdPercentage 50) — https://github.com/Netflix/Hystrix/wiki/Configuration

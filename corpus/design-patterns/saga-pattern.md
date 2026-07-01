@@ -77,4 +77,4 @@ The through-line: whether you hand-roll or adopt an engine, the saga contract is
 10. Making retries safe with idempotent APIs — Amazon Builders' Library — https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/
 11. The limits of the Saga pattern — Uwe Friedrichsen — https://www.ufried.com/blog/limits_of_saga_pattern/
 12. Two-Phase Commit: The Good, the Bad, and the Blocking — Sylvain Tiset — https://medium.com/@sylvain.tiset/two-phase-commit-the-good-the-bad-and-the-blocking-eee29e1f5a84
-13. Saga Design Pattern Explained for Distributed Systems — Temporal — https://temporal.io/blog/saga-pattern-made-easy
+13. Saga design pattern explained: Benefits, use cases, and implementation — Temporal — https://temporal.io/blog/saga-pattern-made-easy

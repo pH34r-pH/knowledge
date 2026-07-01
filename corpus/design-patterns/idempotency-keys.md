@@ -20,7 +20,7 @@ HTTP already bakes idempotency into its method semantics, and knowing where that
 Reach for idempotency keys whenever a mutating request crosses a boundary where the caller can retry but cannot observe whether the first attempt landed: payment APIs, resource-creation endpoints, and any consumer of an at-least-once event stream. The three delivery guarantees frame the design space [6][8][9]:
 
 - **At-most-once** — no retries; may lose data, never duplicates.
-- **At-least-once** — retries; may duplicate, never loses. This is the default for queues, webhooks, and event buses (SQS, EventBridge, and webhook delivery all give you this) [6][9].
+- **At-least-once** — retries; may duplicate, never loses. This is the default for queues, webhooks, and event buses (SQS, EventBridge, and webhook delivery all give you this) [9].
 - **Exactly-once** — achievable only as an *effect/processing* guarantee, never as a raw delivery guarantee.
 
 If your infrastructure hands you at-least-once — and almost all of it does — the receiver *must* be idempotent. That is not optional hardening; it is the other half of the contract the delivery layer assumes you will hold up.
@@ -51,7 +51,7 @@ Stripe's API reference is the most precise citable specification of a production
 
 - Send the **same key with different request parameters** and you get an error — the server refuses to let one key mean two different operations.
 - **Results are saved only after the endpoint begins execution**, so parameter-validation failures and concurrent-request conflicts are *not* cached; a client that hit one of those can safely retry rather than being permanently stuck with a cached failure.
-- Keys may be **up to 255 characters**; the recommended format is a V4 UUID or a random string with enough entropy to avoid collisions [4][6]. Do not use sensitive data as a key — it is stored and logged.
+- Keys may be **up to 255 characters**; the recommended format is a V4 UUID or a random string with enough entropy to avoid collisions [4]. Do not use sensitive data as a key — it is stored and logged.
 
 Brandur's Postgres write-up is the companion piece: it shows the actual table design (an `idempotency_keys` table carrying the `recovery_point`, `locked_at`, and the serialized response), the `SERIALIZABLE` transaction discipline, and the atomic-phase state machine that makes the pattern survive crashes mid-flight against a foreign API [2]. AWS's Builders' Library article by Malcolm Featonby is the third leg — it names the primitive (`ClientToken` on EC2's `RunInstances`), states the ACID all-or-nothing requirement as the core invariant, and makes the "returning an error is itself a client-visible side effect" argument that reframes how you handle the duplicate case [1]. Read together, they give you the contract (AWS), the wire behavior (Stripe), and the storage-layer implementation (Brandur).
 
