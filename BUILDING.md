@@ -11,7 +11,7 @@ The authoritative step-by-step is [.claude/skills/populate-corpus/SKILL.md](.cla
 ## The loop, in seven steps
 
 1. **Load state** — read [TOPICS.md](TOPICS.md) (backlog), [corpus/LEDGER.md](corpus/LEDGER.md) (what's done + how), the README index, and `~/brain/README.md` (the vault, for grounding — read-only).
-2. **Select one topic** — highest-value unchecked item in `TOPICS.md`; skip anything already in the ledger and still fresh. If a pillar's backlog is empty, propose 3–5 new candidates, append them, then pick one.
+2. **Select one topic** — highest expected-value unchecked item in `TOPICS.md`, **biased toward recent / post-cutoff material** (that's where a model with a training cutoff gains the most; see the eval below). Skip anything already in the ledger and still fresh. If a pillar's backlog is empty, propose 3–5 new candidates (recent-leaning), append them, then pick one.
 3. **Choose a harness** (see below).
 4. **Write the article** to `corpus/<pillar>/<slug>.md` — cite **only** from the sources the research stage already resolved.
 5. **Citation integrity gate** (see below) — audit every citation before the article counts as done.

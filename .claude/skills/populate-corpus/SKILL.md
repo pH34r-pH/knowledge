@@ -27,13 +27,22 @@ Read, in order:
 
 ## Step 2 — Select the topic
 
-Pick exactly one unchecked topic from `TOPICS.md`, highest-value first, skipping anything already covered per the ledger. Prioritize topics that:
-- recur across multiple independent authoritative sources, not one blog's opinion,
-- are foundational rather than tied to one vendor or one framework version,
-- either fill a gap in the vault's own stated ML weak spots (`/Users/haidmoham/brain/wiki/concepts/self-study-ml-engineering.md`, `/Users/haidmoham/brain/wiki/concepts/ml-pivot-diagnostic-2026-07-01.md`) or extend the live research cluster already sitting in `arxiv/`/`reports/` (agent harnesses, self-evolving agents, agent evaluation methodology),
-- have staying power — prefer the durable mechanism over the fast-moving tool built on top of it.
+Pick exactly one unchecked topic from `TOPICS.md`, highest expected-value first, skipping anything already covered per the ledger.
 
-If a pillar has no unchecked topics left, propose 3-5 new candidates for that pillar (one-line justification each), append them to `TOPICS.md` as new unchecked items, then pick one — keep the backlog self-sustaining rather than stalling the loop.
+**Rank by marginal value to an LLM, not by importance in the abstract.** The corpus exists to be fed to a model that already has a training cutoff, so the highest-EV topics are the ones the model knows *least*: recent and fast-moving material. A pre-registered eval ([corpus/EVAL-corpus-leverage-2026-07-01.md](../../../corpus/EVAL-corpus-leverage-2026-07-01.md)) found even well-covered foundational topics get a real completeness lift — but recent/post-cutoff topics are where the corpus adds knowledge the model doesn't already hold, so they carry the highest EV. Rank:
+
+1. **Recency first (the steering bias).** Prefer topics whose load-bearing content is recent — roughly the last 12–18 months, and especially anything that postdates common model training cutoffs: new techniques, new tooling/protocol standards, shifted best practices, results that weren't settled at training time. Highest-EV band.
+2. **Contested or newly-synthesized second.** Where no clean authoritative summary existed yet, or practitioners still disagree — the model's parametric take is thin or averaged-out.
+3. **Foundational only with a fresh angle.** A canonical topic still earns a slot if it carries a genuinely contested trade-off, a recent development, or a synthesis the model won't reproduce cold; a plain "what is X" explainer on a saturated, stable topic is the *lowest* EV — deprioritize it.
+
+Quality bars that still apply regardless of recency:
+- recurs across multiple independent authoritative sources, not one blog's opinion;
+- substantive enough to still matter in ~1–2 years (recent ≠ ephemeral — skip anything obsolete in six months);
+- fills a vault ML gap (`/Users/haidmoham/brain/wiki/concepts/self-study-ml-engineering.md`, `/Users/haidmoham/brain/wiki/concepts/ml-pivot-diagnostic-2026-07-01.md`) or extends the live `arxiv/`/`reports/` research cluster where relevant.
+
+**Recency and citation integrity reinforce each other.** Recent papers/tools are exactly where a model is most likely to misremember or fabricate, so a recent topic MUST go through a live-retrieval harness (`deep-research` or `storm`), never `vault-adapt`-from-memory, and its citations get the full Step 5 gate.
+
+If a pillar has no unchecked topics left, propose 3–5 new candidates, **biased toward recent/post-cutoff material**, append them to `TOPICS.md` (one-line justification each), then pick one — keep the backlog self-sustaining rather than stalling the loop.
 
 ## Step 3 — Decide the research harness
 
