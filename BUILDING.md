@@ -44,6 +44,7 @@ The corpus is only as trustworthy as its citations; a fabricated or misgrounded 
 | [corpus/LEDGER.md](corpus/LEDGER.md) | one entry per completed article — method, sources, confidence, citation-audit tally |
 | [.claude/skills/populate-corpus/SKILL.md](.claude/skills/populate-corpus/SKILL.md) | the full executable protocol |
 | `.claude/skills/populate-corpus/references/citation-integrity.md` | citation-hallucination evidence base + guard list |
+| `.claude/skills/populate-corpus/references/harness-options.md` | evaluation of external harnesses/skills (skillsmp.com) — what was adopted, deferred, or skipped and why |
 | [specs/001-corpus-population-loop/](specs/001-corpus-population-loop/) | spec / plan / tasks (spec-kit) for the loop |
 | `corpus/CITATION-AUDIT-*.md` | dated citation-audit reports |
 
