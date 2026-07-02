@@ -26,6 +26,28 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 -->
 
+### 2026-07-02 — Reasoning / test-time-compute models
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** storm (3 perspectives: test-time-compute proponent / cost-generality skeptic / deployment practitioner)
+- **Sources:** 22 · **Confidence:** high
+- **File:** [corpus/ml-techniques/reasoning-models.md](ml-techniques/reasoning-models.md)
+- **Citation audit:** 22/22 resolved · 20/22 directly fetchable (2 bot-blocked, confirmed real via search/mirror) · gate fixed 1 real misattribution (a rebuttal URL pointing at a *different* rebuttal — re-pointed to Opus & Lawsen arXiv:2506.09250), softened an overstated tracker annotation, corrected "Anthropic-led" to Anthropic Fellows program, pinned the R1 citation to v1 so its 71.0% figure stays checkable
+- **Vault cross-links:** none
+- **Builds on / supersedes:** —
+- **Open question:** whether the overthinking/inverse-scaling failure modes are a fixable reward-design problem or structural — the field is not settled; the collapse-vs-measurement-artifact dispute (Apple vs the rebuttals) is live.
+
+### 2026-07-02 — Preference optimization: RLHF vs DPO vs GRPO
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research + storm (first dual-harness reconcile: mechanism from deep-research, DPO-vs-PPO contradiction map from STORM)
+- **Sources:** 13 · **Confidence:** high
+- **File:** [corpus/ml-techniques/preference-optimization.md](ml-techniques/preference-optimization.md)
+- **Citation audit:** 13/13 resolved · 13/13 live · every load-bearing number checked against source full text · gate fixed 1 author misattribution (Yan et al., not Feng), 1 paraphrase-in-quotation-marks (replaced with the verbatim sentence), and an unsourced "16–64 samples" lower bound
+- **Vault cross-links:** none
+- **Builds on / supersedes:** —
+- **Open question:** the DPO-vs-PPO gap itself — the re-runs favoring PPO lean on math/code evals where PPO's edge is biggest, and much of the disagreement traces to eval-suite and length-normalization choices rather than the optimizer.
+
 ### 2026-07-01 — Prompt injection and the lethal trifecta
 - **Status:** current
 - **Pillar:** adjacent-knowledge

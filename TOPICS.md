@@ -11,9 +11,9 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 ## Recent & fast-moving (highest EV — post-cutoff)
 
 - [x] Model Context Protocol (MCP): the agent–tool integration standard — client/server/transport model, and where it fits vs plain function-calling (harness: deep-research)
-- [ ] Reasoning / test-time-compute models (o1-style): what changed, when extended reasoning pays vs wastes tokens, how it reshapes prompting and evals (harness: storm)
+- [x] Reasoning / test-time-compute models (o1-style): what changed, when extended reasoning pays vs wastes tokens, how it reshapes prompting and evals (harness: storm)
 - [x] LLM inference optimization: continuous batching, paged KV-cache (vLLM), speculative decoding — the serving-cost levers (harness: deep-research)
-- [ ] Preference optimization past RLHF: DPO, GRPO, and when RL beats plain SFT (harness: storm)
+- [x] Preference optimization past RLHF: DPO, GRPO, and when RL beats plain SFT (harness used: dual deep-research + storm)
 - [x] Prompt injection & the lethal trifecta: securing tool-using agents (private data + untrusted content + egress), scope enforced in the runtime not the prompt (harness: deep-research)
 - [ ] Structured outputs & constrained decoding: grammar/JSON-schema-guided generation and its reliability failure modes (harness: deep-research)
 - [x] Durable execution engines (Temporal / Restate / DBOS): workflows-as-code, and how they absorb the saga "technical-failure" layer (extends the saga article's open question) (harness: deep-research)

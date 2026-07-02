@@ -30,6 +30,8 @@ General-knowledge articles on software engineering design patterns, ML technique
 - [LLM inference optimization: continuous batching, paged KV-cache, speculative decoding](corpus/ml-techniques/llm-inference-optimization.md) — decode is memory-bandwidth-bound; two techniques recover the waste, the third trades compute for latency with a sharp failure mode.
 - [Backpropagation and automatic differentiation](corpus/ml-techniques/backpropagation-autodiff.md) — AD is a third technique, not symbolic and not numeric; backprop is just reverse mode on a scalar loss.
 - [RAG retrieval architectures: vector, graph, and hybrid](corpus/ml-techniques/rag-retrieval-architectures.md) — retrieval splits into semantic matching and scale; graph and hybrid are what you add when the dense core provably runs out of mechanism.
+- [Preference optimization: RLHF vs DPO vs GRPO](corpus/ml-techniques/preference-optimization.md) — one axis: how much RL machinery you keep; route on the reward signal and data you actually have, not on which paper is newest.
+- [Reasoning / test-time-compute models](corpus/ml-techniques/reasoning-models.md) — inference-time reasoning is a real, separate scaling axis, but the gains concentrate in verifiable domains and more thinking is not monotonically better.
 - [Evaluating agents and models rigorously](corpus/ml-techniques/agent-evaluation-methodology.md) — the five-part discipline for not fooling yourself in evaluation, extended to agent-era trajectory grading and Pass^k reliability floors.
 
 **Adjacent knowledge**
