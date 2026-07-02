@@ -19,7 +19,7 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [ ] Durable execution engines (Temporal / Restate / DBOS): workflows-as-code, and how they absorb the saga "technical-failure" layer (extends the saga article's open question) (harness: deep-research)
 - [ ] State-space models & linear attention (Mamba et al.): the post-transformer challengers, where they win and lose (harness: storm)
 - [ ] Mixture-of-Experts routing: sparse activation, load-balancing losses, the serving trade-offs (harness: deep-research)
-- [ ] Context engineering as a discipline: prompt-caching economics, long-context vs retrieval, context-rot (harness: storm)
+- [ ] Context engineering as a discipline: prompt-caching economics, long-context vs retrieval, context-rot; include the "prompting as programming / LLMs as compilers" framing (DSPy's compile-declarative-calls line, structured prompting) and pressure-test where the compiler metaphor holds vs leaks (deterministic spec vs stochastic model) (harness: storm)
 - [ ] Software supply-chain security: SBOM, SLSA, sigstore/provenance — post-xz-attack best practice (harness: deep-research)
 - [ ] OpenTelemetry as the observability standard: unified traces/metrics/logs, semantic conventions (harness: deep-research)
 
