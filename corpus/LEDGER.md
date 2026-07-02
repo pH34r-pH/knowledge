@@ -26,6 +26,50 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 -->
 
+### 2026-07-01 — Prompt injection and the lethal trifecta
+- **Status:** current
+- **Pillar:** adjacent-knowledge
+- **Method:** deep-research
+- **Sources:** 7 · **Confidence:** high
+- **File:** [corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md](adjacent-knowledge/prompt-injection-lethal-trifecta.md)
+- **Citation audit:** 7/7 resolved · 7/7 live · entailment clean (all verbatim quotes confirmed in-source; no circular sourcing)
+- **Vault cross-links:** none (complements the llm-pentest-sop's runtime-enforcement rule)
+- **Builds on / supersedes:** —
+- **Open question:** whether CaMeL-style capability/taint runtimes can become ergonomic enough for real adoption — the AgentDojo utility figures and developer-authored policies are early evidence.
+
+### 2026-07-01 — LLM inference optimization: continuous batching, paged KV-cache, speculative decoding
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research
+- **Sources:** 12 · **Confidence:** high
+- **File:** [corpus/ml-techniques/llm-inference-optimization.md](ml-techniques/llm-inference-optimization.md)
+- **Citation audit:** 12/12 unique resolved · all live (1 via bot-block workaround, USENIX) · gate cut an unsupported ~175% mis-tuning figure (traced to an uncited single-config Medium post) and merged a duplicate source entry
+- **Vault cross-links:** none
+- **Builds on / supersedes:** —
+- **Open question:** the continuous-batching-vs-speculative-decoding architectural tension (high batch for throughput vs low batch for latency) — MagicDec-style resolutions unverified; exact PagedAttention gather overhead unquantified from a primary source.
+
+### 2026-07-01 — Durable execution engines (Temporal, Restate, DBOS)
+- **Status:** current
+- **Pillar:** design-patterns
+- **Method:** deep-research
+- **Sources:** 13 · **Confidence:** high
+- **File:** [corpus/design-patterns/durable-execution-engines.md](design-patterns/durable-execution-engines.md)
+- **Citation audit:** 13/13 resolved · 13/13 live · all load-bearing numbers verified verbatim; gate fixed 1 over-attribution (saga-gap framing recast as explicit synthesis) and 2 paraphrased titles
+- **Vault cross-links:** none
+- **Builds on / supersedes:** answers the open question in [saga-pattern](design-patterns/saga-pattern.md) (where the durable layer under a saga lives)
+- **Open question:** vendor-reported performance figures (Restate ~94K steps/s; DBOS ~25x vs Step Functions) have no independent reproduction; DBOS's exactly-once semantics for non-Postgres external calls not pinned from a single primary source.
+
+### 2026-07-01 — Model Context Protocol (MCP): the agent–tool integration standard
+- **Status:** current
+- **Pillar:** adjacent-knowledge
+- **Method:** deep-research
+- **Sources:** 9 · **Confidence:** high
+- **File:** [corpus/adjacent-knowledge/model-context-protocol.md](adjacent-knowledge/model-context-protocol.md)
+- **Citation audit:** 9/9 resolved · 9/9 live · gate fixed 3 entailment problems (spec-version relabel; Willison "lethal trifecta" attribution corrected to his June-2025 post, added as a source; N×M arithmetic de-cited to the framing source's actual claim)
+- **Vault cross-links:** none
+- **Builds on / supersedes:** —
+- **Open question:** how much of the self-reported adoption (10,000+ public servers, 97M+ monthly SDK downloads) reflects production use rather than experimentation — figures are Anthropic's own, no independent audit located.
+
 ### 2026-07-01 — Evaluating agents and models rigorously (baselines, significance, honest reporting)
 - **Status:** current
 - **Pillar:** ml-techniques

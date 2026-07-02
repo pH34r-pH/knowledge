@@ -10,13 +10,13 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 
 ## Recent & fast-moving (highest EV — post-cutoff)
 
-- [ ] Model Context Protocol (MCP): the agent–tool integration standard — client/server/transport model, and where it fits vs plain function-calling (harness: deep-research)
+- [x] Model Context Protocol (MCP): the agent–tool integration standard — client/server/transport model, and where it fits vs plain function-calling (harness: deep-research)
 - [ ] Reasoning / test-time-compute models (o1-style): what changed, when extended reasoning pays vs wastes tokens, how it reshapes prompting and evals (harness: storm)
-- [ ] LLM inference optimization: continuous batching, paged KV-cache (vLLM), speculative decoding — the serving-cost levers (harness: deep-research)
+- [x] LLM inference optimization: continuous batching, paged KV-cache (vLLM), speculative decoding — the serving-cost levers (harness: deep-research)
 - [ ] Preference optimization past RLHF: DPO, GRPO, and when RL beats plain SFT (harness: storm)
-- [ ] Prompt injection & the lethal trifecta: securing tool-using agents (private data + untrusted content + egress), scope enforced in the runtime not the prompt (harness: deep-research)
+- [x] Prompt injection & the lethal trifecta: securing tool-using agents (private data + untrusted content + egress), scope enforced in the runtime not the prompt (harness: deep-research)
 - [ ] Structured outputs & constrained decoding: grammar/JSON-schema-guided generation and its reliability failure modes (harness: deep-research)
-- [ ] Durable execution engines (Temporal / Restate / DBOS): workflows-as-code, and how they absorb the saga "technical-failure" layer (extends the saga article's open question) (harness: deep-research)
+- [x] Durable execution engines (Temporal / Restate / DBOS): workflows-as-code, and how they absorb the saga "technical-failure" layer (extends the saga article's open question) (harness: deep-research)
 - [ ] State-space models & linear attention (Mamba et al.): the post-transformer challengers, where they win and lose (harness: storm)
 - [ ] Mixture-of-Experts routing: sparse activation, load-balancing losses, the serving trade-offs (harness: deep-research)
 - [ ] Context engineering as a discipline: prompt-caching economics, long-context vs retrieval, context-rot; include the "prompting as programming / LLMs as compilers" framing (DSPy's compile-declarative-calls line, structured prompting) and pressure-test where the compiler metaphor holds vs leaks (deterministic spec vs stochastic model) (harness: storm)
