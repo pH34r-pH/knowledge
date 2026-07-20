@@ -173,5 +173,365 @@
     "mtime": 1779653019.6614537,
     "ast_hash": "9a52eecc2ae77845480d7a2caf83ee1f",
     "semantic_hash": "9a52eecc2ae77845480d7a2caf83ee1f"
+  },
+  ".claude/skills/populate-corpus/SKILL.md": {
+    "mtime": 1783558112.673176,
+    "ast_hash": "599d072cd0fbd2880f816c68371bcaef",
+    "semantic_hash": ""
+  },
+  ".claude/skills/populate-corpus/references/citation-integrity.md": {
+    "mtime": 1783558112.673176,
+    "ast_hash": "592202b2415919cd0458eade5254b42b",
+    "semantic_hash": ""
+  },
+  ".claude/skills/populate-corpus/references/harness-options.md": {
+    "mtime": 1783558112.673176,
+    "ast_hash": "777692987cadfe3c3cc262cee4063e90",
+    "semantic_hash": ""
+  },
+  ".specify/constitution.md": {
+    "mtime": 1779652906.23874,
+    "ast_hash": "32d01f6f78d716a8871701f7a17be392",
+    "semantic_hash": ""
+  },
+  ".specify/memory/constitution.md": {
+    "mtime": 1779652906.23874,
+    "ast_hash": "32d01f6f78d716a8871701f7a17be392",
+    "semantic_hash": ""
+  },
+  ".specify/templates/checklist-template.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "b650de2bbee92d4bd43b97e32eba1a7d",
+    "semantic_hash": ""
+  },
+  ".specify/templates/commands/analyze.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "2d44e1c8e4a98ac46695f0b1885a99b5",
+    "semantic_hash": ""
+  },
+  ".specify/templates/commands/checklist.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "3d3ce42b78709fc37bf18627af860823",
+    "semantic_hash": ""
+  },
+  ".specify/templates/commands/clarify.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "0b4f10fe5f3cf1aa995ea96b4eda91b9",
+    "semantic_hash": ""
+  },
+  ".specify/templates/commands/constitution.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "c261d72531f39c176b70427b84b9da2a",
+    "semantic_hash": ""
+  },
+  ".specify/templates/commands/implement.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "f2ed52827ec443cf1b09a111b6000518",
+    "semantic_hash": ""
+  },
+  ".specify/templates/commands/plan.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "28ef56506ad8ba409abc58486beec9c5",
+    "semantic_hash": ""
+  },
+  ".specify/templates/commands/specify.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "063349d4239dc89b3e984f9b2a9b358e",
+    "semantic_hash": ""
+  },
+  ".specify/templates/commands/tasks.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "274a8a4bb67b0d5bda3749ec20164a8e",
+    "semantic_hash": ""
+  },
+  ".specify/templates/commands/taskstoissues.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "d5a3897ff0219aeaa83e8046398c6598",
+    "semantic_hash": ""
+  },
+  ".specify/templates/constitution-template.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "dcefb6b60e7cb3db2e966977b6f02f18",
+    "semantic_hash": ""
+  },
+  ".specify/templates/plan-template.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "3ebc2ff73397d58c34a5b90a140617e6",
+    "semantic_hash": ""
+  },
+  ".specify/templates/spec-template.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "45ac8538bc1220324c9f0d610145b53f",
+    "semantic_hash": ""
+  },
+  ".specify/templates/tasks-template.md": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "955e2f945c392d2c2c04b71cfc1f8743",
+    "semantic_hash": ""
+  },
+  ".specify/workflows/speckit/workflow.yml": {
+    "mtime": 1779652906.24274,
+    "ast_hash": "eba6943b2a2f6407162ae12e0218bdac",
+    "semantic_hash": ""
+  },
+  "BUILDING.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "1933089cb76d5f44c8a6bc75eac98167",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "693b0481933c3ed4fd3847459ea4f531",
+    "semantic_hash": ""
+  },
+  "TOPICS.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "f3fdcaf93e4fbae07582be5f3bf42219",
+    "semantic_hash": ""
+  },
+  "corpus/CITATION-AUDIT-2026-07-01.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "4c457857a0af4548740a200195694070",
+    "semantic_hash": ""
+  },
+  "corpus/EVAL-corpus-leverage-2026-07-01.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "5528375a023a084f7e18de87862d7d4b",
+    "semantic_hash": ""
+  },
+  "corpus/LEDGER.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "80a5fc37b1ec488e199c993dbdc9cd65",
+    "semantic_hash": ""
+  },
+  "corpus/adjacent-knowledge/graceful-degradation.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "bc8c22748698cf4a0b881b66396f629d",
+    "semantic_hash": ""
+  },
+  "corpus/adjacent-knowledge/model-context-protocol.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "d6201efa4664edd92ddb32dd18fae40a",
+    "semantic_hash": ""
+  },
+  "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "e29e7c10cfd0cad0fbff7bf8198af9c0",
+    "semantic_hash": ""
+  },
+  "corpus/adjacent-knowledge/system-design-fundamentals.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "a619b0bfb9b1d9de6820118652d3c337",
+    "semantic_hash": ""
+  },
+  "corpus/design-patterns/cqrs-event-sourcing.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "42df83f070cb43a0d4eed2ff449e6d2d",
+    "semantic_hash": ""
+  },
+  "corpus/design-patterns/durable-execution-engines.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "312ee42e296ec6e607a08d0b5f7d57d6",
+    "semantic_hash": ""
+  },
+  "corpus/design-patterns/idempotency-keys.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "07a904ac0268cad4076e7108341022ef",
+    "semantic_hash": ""
+  },
+  "corpus/design-patterns/resilience-patterns.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "8df0def68022eb1d307f8c7195de2a41",
+    "semantic_hash": ""
+  },
+  "corpus/design-patterns/saga-pattern.md": {
+    "mtime": 1783558112.6771762,
+    "ast_hash": "060a98516b95e7138cf404c8613302a3",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/agent-evaluation-methodology.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "bb41f05debc6c27b3565d5c99a0523d8",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/attention-transformers.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "01056d394832f0b5e1647dc03b377999",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/backpropagation-autodiff.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "580fc99cadb2e83e09911416bf19882c",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/llm-inference-optimization.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "431df24db017facc918a6bd5d9fa3066",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/preference-optimization.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "544f39fc19d369cd36d4debbeb2eafa4",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/rag-retrieval-architectures.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "7e297671d0674f15a11b2233bacaef50",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/reasoning-models.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "f9063f85d4140a5d2ca9e7e911950bef",
+    "semantic_hash": ""
+  },
+  "specs/000-raw-ingestion/plan.md": {
+    "mtime": 1779653003.3650653,
+    "ast_hash": "f0d58ede607951afc1f92483e3d908f2",
+    "semantic_hash": ""
+  },
+  "specs/001-corpus-population-loop/plan.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "49332265174ad02f57445d0f617c81fb",
+    "semantic_hash": ""
+  },
+  "specs/001-corpus-population-loop/spec.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "41c61e8addca308d08e3cb96a10731cf",
+    "semantic_hash": ""
+  },
+  "specs/001-corpus-population-loop/tasks.md": {
+    "mtime": 1783558112.6811762,
+    "ast_hash": "d5e07cf73123ab1a58d9b14e420c0220",
+    "semantic_hash": ""
+  },
+  "arxiv/2512.18746.pdf": {
+    "mtime": 1779674781.3892455,
+    "ast_hash": "6ea0e19074dbf7aa7c4c40acd2e57707",
+    "semantic_hash": ""
+  },
+  "arxiv/2601.11868.pdf": {
+    "mtime": 1779674770.1889813,
+    "ast_hash": "a3555de1e677cf854699431d0198278b",
+    "semantic_hash": ""
+  },
+  "arxiv/2601.21557.pdf": {
+    "mtime": 1779674775.7491124,
+    "ast_hash": "e570e31833abe456e4f697d2c1b0035b",
+    "semantic_hash": ""
+  },
+  "arxiv/2602.07885.pdf": {
+    "mtime": 1779674848.9548404,
+    "ast_hash": "c4c6c4557598f9290d93a4da99c2717f",
+    "semantic_hash": ""
+  },
+  "arxiv/2603.07980.pdf": {
+    "mtime": 1779674764.6888516,
+    "ast_hash": "061c642a25bf7537be62035769ea7e2e",
+    "semantic_hash": ""
+  },
+  "arxiv/2603.10165.pdf": {
+    "mtime": 1779674818.5141215,
+    "ast_hash": "0c2a615d7a5651ecca32a7010ae26524",
+    "semantic_hash": ""
+  },
+  "arxiv/2603.17187.pdf": {
+    "mtime": 1779674812.7419853,
+    "ast_hash": "3a51446e81fa194815c04cc51d50dfed",
+    "semantic_hash": ""
+  },
+  "arxiv/2603.19461.pdf": {
+    "mtime": 1779674741.1002955,
+    "ast_hash": "edc95c97b203d76a6450ce664ed149ed",
+    "semantic_hash": ""
+  },
+  "arxiv/2603.28052.pdf": {
+    "mtime": 1779674735.2361572,
+    "ast_hash": "3d50366f7354e5716b91e22aad4bd6b0",
+    "semantic_hash": ""
+  },
+  "arxiv/2604.06132.pdf": {
+    "mtime": 1779674729.0760121,
+    "ast_hash": "06b0869c2e1eb08f0dcf3b2d4a93524a",
+    "semantic_hash": ""
+  },
+  "arxiv/2604.08377.pdf": {
+    "mtime": 1779674746.5404236,
+    "ast_hash": "6ed67ac8bb4de7c6fe6df40bfb92ea49",
+    "semantic_hash": ""
+  },
+  "arxiv/2604.13694.pdf": {
+    "mtime": 1779674854.578973,
+    "ast_hash": "e371f2b90845c82fbb010728878636e1",
+    "semantic_hash": ""
+  },
+  "arxiv/2604.17091.pdf": {
+    "mtime": 1779674752.068554,
+    "ast_hash": "323b3c57c8e61c3d4883c29a8de3aae8",
+    "semantic_hash": ""
+  },
+  "arxiv/2604.19211.pdf": {
+    "mtime": 1779674759.232723,
+    "ast_hash": "66efbd1f1c550cc92539c83a9b6d4cb2",
+    "semantic_hash": ""
+  },
+  "arxiv/2604.27691.pdf": {
+    "mtime": 1779674826.4023077,
+    "ast_hash": "ccb1a0b8f082ae7d862e7cdc03bbac2c",
+    "semantic_hash": ""
+  },
+  "arxiv/2605.10754.pdf": {
+    "mtime": 1779674807.097852,
+    "ast_hash": "3cf975dafbf3fe34aa9ad04cc8a841fe",
+    "semantic_hash": ""
+  },
+  "arxiv/2605.10813.pdf": {
+    "mtime": 1779674860.2950952,
+    "ast_hash": "35e59882af47d18c1bbc8982f85ffb05",
+    "semantic_hash": ""
+  },
+  "arxiv/2605.13821.pdf": {
+    "mtime": 1779674787.2733843,
+    "ast_hash": "fa63ae19c17b5a523f8044f7465b45c7",
+    "semantic_hash": ""
+  },
+  "arxiv/2605.15556.pdf": {
+    "mtime": 1779674832.522452,
+    "ast_hash": "7ead65f4ee73ff8da3d9fcadd062507f",
+    "semantic_hash": ""
+  },
+  "arxiv/2605.18747.pdf": {
+    "mtime": 1779674838.022582,
+    "ast_hash": "274a2c389510cd9c2fbfd50f7e4cc1f6",
+    "semantic_hash": ""
+  },
+  "arxiv/2605.19035.pdf": {
+    "mtime": 1779674843.5027115,
+    "ast_hash": "0f564e0df8d74657db270515bac2addd",
+    "semantic_hash": ""
+  },
+  "arxiv/2605.22794.pdf": {
+    "mtime": 1779653023.1215363,
+    "ast_hash": "66ede0454ded36f7cfc526423be98d35",
+    "semantic_hash": ""
+  },
+  "reports/2605.22794-summary.md": {
+    "mtime": 1779653110.3156073,
+    "ast_hash": "8fc84af5d36fdc30925297cf06597c23",
+    "semantic_hash": ""
+  },
+  "reports/research-corpus-2605.22794.md": {
+    "mtime": 1779654736.4566524,
+    "ast_hash": "b5124c011621a01f8c1acf1bacea7784",
+    "semantic_hash": ""
+  },
+  "specs/000-raw-ingestion/spec.md": {
+    "mtime": 1779652991.996794,
+    "ast_hash": "97013a4b57856d347d68e5a8391a7cfb",
+    "semantic_hash": ""
+  },
+  "specs/000-raw-ingestion/tasks.md": {
+    "mtime": 1779653014.173323,
+    "ast_hash": "c184b30026e7347af455b674f6c42520",
+    "semantic_hash": ""
   }
 }
