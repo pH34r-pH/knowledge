@@ -1,18 +1,13 @@
-# Graph Report - knowledge  (2026-07-22)
+# Graph Report - knowledge  (2026-07-12)
 
 ## Corpus Check
-- 81 files · ~431,198 words
+- 80 files · ~430,762 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 503 nodes · 524 edges · 51 communities (48 shown, 3 thin omitted)
+- 496 nodes · 518 edges · 55 communities (51 shown, 4 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `10a9929f`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - common.sh
@@ -45,11 +40,15 @@
 - tasks.md
 - graceful-degradation.md
 - model-context-protocol.md
+- prompt-injection-lethal-trifecta.md
 - system-design-fundamentals.md
 - cqrs-event-sourcing.md
 - durable-execution-engines.md
 - idempotency-keys.md
 - resilience-patterns.md
+- saga-pattern.md
+- agent-evaluation-methodology.md
+- attention-transformers.md
 - backpropagation-autodiff.md
 - Preference Optimization: RLHF vs DPO vs GRPO — Mechanism, Trade-offs, and Failure Modes
 - rag-retrieval-architectures.md
@@ -82,7 +81,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (51 total, 3 thin omitted)
+## Communities (55 total, 4 thin omitted)
 
 ### Community 0 - "common.sh"
 Cohesion: 0.12
@@ -123,10 +122,6 @@ Nodes (20): 2026-07-01 — Attention and the Transformer architecture, internals
 ### Community 15 - "Tasks: Corpus Population Research Loop"
 Cohesion: 0.11
 Nodes (17): Dependencies & Execution Order, Format: `[ID] [P?] [Story] Description`, Implementation for User Story 1, Implementation for User Story 2, Implementation for User Story 3 (recurring — not a one-time checklist), Implementation for User Story 4, Notes, Phase 1: Setup (Shared Infrastructure) (+9 more)
-
-### Community 16 - "README.md"
-Cohesion: 0.06
-Nodes (32): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it, Further reading, How it works (+24 more)
 
 ### Community 17 - "Feature Specification: [FEATURE NAME]"
 Cohesion: 0.15
@@ -190,7 +185,11 @@ Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, W
 
 ### Community 32 - "model-context-protocol.md"
 Cohesion: 0.29
-Nodes (6): Git and verification discipline, Knowledge Corpus — Project Context, Purpose and authority, Research integrity gates, Spec Kit contract, Vault, privacy, and provenance boundaries
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+
+### Community 33 - "prompt-injection-lethal-trifecta.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
 ### Community 34 - "system-design-fundamentals.md"
 Cohesion: 0.29
@@ -209,6 +208,18 @@ Cohesion: 0.29
 Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
 ### Community 38 - "resilience-patterns.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+
+### Community 39 - "saga-pattern.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+
+### Community 40 - "agent-evaluation-methodology.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+
+### Community 41 - "attention-transformers.md"
 Cohesion: 0.29
 Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
@@ -265,19 +276,19 @@ Cohesion: 0.50
 Nodes (3): Outline, Pre-Execution Checks, User Input
 
 ## Knowledge Gaps
-- **342 isolated node(s):** `check-prerequisites.sh script`, `common.sh script`, `create-new-feature.sh script`, `setup-plan.sh script`, `setup-tasks.sh script` (+337 more)
+- **337 isolated node(s):** `check-prerequisites.sh script`, `common.sh script`, `create-new-feature.sh script`, `setup-plan.sh script`, `setup-tasks.sh script` (+332 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Corpus Research Ledger` connect `Entries` to `README.md`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
 - **Why does `Feature Specification: Corpus Population Research Loop` connect `User Scenarios & Testing *(mandatory)*` to `README.md`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `check-prerequisites.sh script`, `common.sh script`, `create-new-feature.sh script` to the rest of the system?**
-  _342 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _337 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `common.sh` be split into smaller, more focused modules?**
   _Cohesion score 0.12418300653594772 - nodes in this community are weakly interconnected._
 - **Should `Tasks: [FEATURE NAME]` be split into smaller, more focused modules?**

@@ -1,0 +1,174 @@
+{
+  "communities": {
+    "0": [
+      "specify_scripts_bash_common",
+      "specify_scripts_bash_common_check_dir",
+      "specify_scripts_bash_common_check_feature_branch",
+      "specify_scripts_bash_common_check_file",
+      "specify_scripts_bash_common_feature_json_matches_feature_dir",
+      "specify_scripts_bash_common_find_feature_dir_by_prefix",
+      "specify_scripts_bash_common_find_specify_root",
+      "specify_scripts_bash_common_get_repo_root",
+      "specify_scripts_bash_common_has_jq",
+      "specify_scripts_bash_common_json_escape",
+      "specify_scripts_bash_common_read_feature_json_feature_directory",
+      "specify_scripts_bash_common_resolve_template",
+      "specify_scripts_bash_common_resolve_template_content",
+      "specify_scripts_bash_common_sh__entry",
+      "specify_scripts_bash_common_spec_kit_effective_branch_name"
+    ],
+    "1": [
+      "specify_scripts_bash_create_new_feature",
+      "specify_scripts_bash_create_new_feature_check_existing_branches",
+      "specify_scripts_bash_create_new_feature_clean_branch_name",
+      "specify_scripts_bash_create_new_feature_extract_highest_number",
+      "specify_scripts_bash_create_new_feature_generate_branch_name",
+      "specify_scripts_bash_create_new_feature_get_highest_from_branches",
+      "specify_scripts_bash_create_new_feature_get_highest_from_remote_refs",
+      "specify_scripts_bash_create_new_feature_get_highest_from_specs",
+      "specify_scripts_bash_create_new_feature_sh__entry"
+    ],
+    "2": [
+      "specify_scripts_powershell_create_new_feature",
+      "specify_scripts_powershell_create_new_feature_convertto_cleanbranchname",
+      "specify_scripts_powershell_create_new_feature_get_branchname",
+      "specify_scripts_powershell_create_new_feature_get_highestnumberfrombranches",
+      "specify_scripts_powershell_create_new_feature_get_highestnumberfromnames",
+      "specify_scripts_powershell_create_new_feature_get_highestnumberfromremoterefs",
+      "specify_scripts_powershell_create_new_feature_get_highestnumberfromspecs",
+      "specify_scripts_powershell_create_new_feature_get_nextbranchnumber"
+    ],
+    "3": [
+      "specify_scripts_powershell_common",
+      "specify_scripts_powershell_common_get_python3command",
+      "specify_scripts_powershell_common_resolve_template",
+      "specify_scripts_powershell_common_resolve_templatecontent",
+      "specify_scripts_powershell_common_test_dirhasfiles",
+      "specify_scripts_powershell_common_test_featurejsonmatchesfeaturedir",
+      "specify_scripts_powershell_common_test_fileexists"
+    ],
+    "4": [
+      "specify_scripts_powershell_common_find_specifyroot",
+      "specify_scripts_powershell_common_get_currentbranch",
+      "specify_scripts_powershell_common_get_featurepathsenv",
+      "specify_scripts_powershell_common_get_reporoot",
+      "specify_scripts_powershell_common_test_hasgit"
+    ],
+    "5": [
+      "specify_scripts_powershell_common_find_featuredirbyprefix",
+      "specify_scripts_powershell_common_get_featuredirfrombranchprefixorexit",
+      "specify_scripts_powershell_common_get_speckiteffectivebranchname",
+      "specify_scripts_powershell_common_test_featurebranch"
+    ],
+    "6": [
+      "specify_scripts_bash_common_get_current_branch",
+      "specify_scripts_bash_common_get_feature_paths",
+      "specify_scripts_bash_common_has_git"
+    ],
+    "7": [
+      "specify_scripts_bash_check_prerequisites",
+      "specify_scripts_bash_check_prerequisites_sh__entry"
+    ],
+    "8": [
+      "specify_scripts_bash_setup_plan",
+      "specify_scripts_bash_setup_plan_sh__entry"
+    ],
+    "9": [
+      "specify_scripts_bash_setup_tasks",
+      "specify_scripts_bash_setup_tasks_sh__entry"
+    ],
+    "10": [
+      "specify_scripts_powershell_check_prerequisites"
+    ],
+    "11": [
+      "specify_scripts_powershell_setup_plan"
+    ],
+    "12": [
+      "specify_scripts_powershell_setup_tasks"
+    ]
+  },
+  "cohesion": {
+    "0": 0.13333333333333333,
+    "1": 0.25,
+    "2": 0.4642857142857143,
+    "3": 0.3333333333333333,
+    "4": 0.7,
+    "5": 0.5,
+    "6": 0.6666666666666666,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0
+  },
+  "gods": [
+    {
+      "id": "specify_scripts_powershell_common_get_reporoot",
+      "label": "Get-RepoRoot()",
+      "degree": 5
+    },
+    {
+      "id": "specify_scripts_powershell_common_get_featurepathsenv",
+      "label": "Get-FeaturePathsEnv()",
+      "degree": 5
+    },
+    {
+      "id": "specify_scripts_powershell_common_get_currentbranch",
+      "label": "Get-CurrentBranch()",
+      "degree": 4
+    },
+    {
+      "id": "specify_scripts_powershell_common_test_hasgit",
+      "label": "Test-HasGit()",
+      "degree": 4
+    },
+    {
+      "id": "specify_scripts_powershell_create_new_feature_get_nextbranchnumber",
+      "label": "Get-NextBranchNumber()",
+      "degree": 4
+    },
+    {
+      "id": "specify_scripts_bash_common_has_git",
+      "label": "has_git()",
+      "degree": 3
+    },
+    {
+      "id": "specify_scripts_powershell_common_get_speckiteffectivebranchname",
+      "label": "Get-SpecKitEffectiveBranchName()",
+      "degree": 3
+    },
+    {
+      "id": "specify_scripts_powershell_common_find_featuredirbyprefix",
+      "label": "Find-FeatureDirByPrefix()",
+      "degree": 3
+    },
+    {
+      "id": "specify_scripts_powershell_common_get_featuredirfrombranchprefixorexit",
+      "label": "Get-FeatureDirFromBranchPrefixOrExit()",
+      "degree": 3
+    },
+    {
+      "id": "specify_scripts_powershell_create_new_feature_get_highestnumberfromnames",
+      "label": "Get-HighestNumberFromNames()",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Get-FeaturePathsEnv()",
+      "target": "Get-FeatureDirFromBranchPrefixOrExit()",
+      "source_files": [
+        ".specify/scripts/powershell/common.ps1",
+        ".specify/scripts/powershell/common.ps1"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 5 \u2192 community 4"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

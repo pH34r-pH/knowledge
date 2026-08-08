@@ -2856,76 +2856,6 @@
       "norm_label": "notes"
     },
     {
-      "label": "AGENTS.md",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents",
-      "community": 32,
-      "norm_label": "agents.md"
-    },
-    {
-      "label": "Knowledge Corpus \u2014 Project Context",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_knowledge_corpus_project_context",
-      "community": 32,
-      "norm_label": "knowledge corpus \u2014 project context"
-    },
-    {
-      "label": "Purpose and authority",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "agents_purpose_and_authority",
-      "community": 32,
-      "norm_label": "purpose and authority"
-    },
-    {
-      "label": "Research integrity gates",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "agents_research_integrity_gates",
-      "community": 32,
-      "norm_label": "research integrity gates"
-    },
-    {
-      "label": "Vault, privacy, and provenance boundaries",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "agents_vault_privacy_and_provenance_boundaries",
-      "community": 32,
-      "norm_label": "vault, privacy, and provenance boundaries"
-    },
-    {
-      "label": "Spec Kit contract",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "agents_spec_kit_contract",
-      "community": 32,
-      "norm_label": "spec kit contract"
-    },
-    {
-      "label": "Git and verification discipline",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L38",
-      "_origin": "ast",
-      "id": "agents_git_and_verification_discipline",
-      "community": 32,
-      "norm_label": "git and verification discipline"
-    },
-    {
       "label": "BUILDING.md",
       "file_type": "document",
       "source_file": "BUILDING.md",
@@ -3562,7 +3492,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_model_context_protocol",
-      "community": 16,
+      "community": 32,
       "norm_label": "model-context-protocol.md"
     },
     {
@@ -3572,7 +3502,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_model_context_protocol_what_it_is",
-      "community": 16,
+      "community": 32,
       "norm_label": "what it is"
     },
     {
@@ -3582,7 +3512,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_model_context_protocol_when_to_reach_for_it",
-      "community": 16,
+      "community": 32,
       "norm_label": "when to reach for it"
     },
     {
@@ -3592,7 +3522,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_model_context_protocol_how_it_works",
-      "community": 16,
+      "community": 32,
       "norm_label": "how it works"
     },
     {
@@ -3602,7 +3532,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_model_context_protocol_trade_offs",
-      "community": 16,
+      "community": 32,
       "norm_label": "trade-offs"
     },
     {
@@ -3612,7 +3542,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_model_context_protocol_in_practice",
-      "community": 16,
+      "community": 32,
       "norm_label": "in practice"
     },
     {
@@ -3622,7 +3552,7 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_model_context_protocol_further_reading",
-      "community": 16,
+      "community": 32,
       "norm_label": "further reading"
     },
     {
@@ -3632,7 +3562,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta",
-      "community": 16,
+      "community": 33,
       "norm_label": "prompt-injection-lethal-trifecta.md"
     },
     {
@@ -3642,7 +3572,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_what_it_is",
-      "community": 16,
+      "community": 33,
       "norm_label": "what it is"
     },
     {
@@ -3652,7 +3582,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_when_to_reach_for_it",
-      "community": 16,
+      "community": 33,
       "norm_label": "when to reach for it"
     },
     {
@@ -3662,7 +3592,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_how_it_works",
-      "community": 16,
+      "community": 33,
       "norm_label": "how it works"
     },
     {
@@ -3672,7 +3602,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_trade_offs",
-      "community": 16,
+      "community": 33,
       "norm_label": "trade-offs"
     },
     {
@@ -3682,7 +3612,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_in_practice",
-      "community": 16,
+      "community": 33,
       "norm_label": "in practice"
     },
     {
@@ -3692,7 +3622,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_further_reading",
-      "community": 16,
+      "community": 33,
       "norm_label": "further reading"
     },
     {
@@ -4052,7 +3982,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "corpus_design_patterns_saga_pattern",
-      "community": 16,
+      "community": 39,
       "norm_label": "saga-pattern.md"
     },
     {
@@ -4062,7 +3992,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "corpus_design_patterns_saga_pattern_what_it_is",
-      "community": 16,
+      "community": 39,
       "norm_label": "what it is"
     },
     {
@@ -4072,7 +4002,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "corpus_design_patterns_saga_pattern_when_to_reach_for_it",
-      "community": 16,
+      "community": 39,
       "norm_label": "when to reach for it"
     },
     {
@@ -4082,7 +4012,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "corpus_design_patterns_saga_pattern_how_it_works",
-      "community": 16,
+      "community": 39,
       "norm_label": "how it works"
     },
     {
@@ -4092,7 +4022,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "corpus_design_patterns_saga_pattern_trade_offs",
-      "community": 16,
+      "community": 39,
       "norm_label": "trade-offs"
     },
     {
@@ -4102,7 +4032,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "corpus_design_patterns_saga_pattern_in_practice",
-      "community": 16,
+      "community": 39,
       "norm_label": "in practice"
     },
     {
@@ -4112,7 +4042,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "corpus_design_patterns_saga_pattern_further_reading",
-      "community": 16,
+      "community": 39,
       "norm_label": "further reading"
     },
     {
@@ -4122,7 +4052,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "corpus_ml_techniques_agent_evaluation_methodology",
-      "community": 16,
+      "community": 40,
       "norm_label": "agent-evaluation-methodology.md"
     },
     {
@@ -4132,7 +4062,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "corpus_ml_techniques_agent_evaluation_methodology_what_it_is",
-      "community": 16,
+      "community": 40,
       "norm_label": "what it is"
     },
     {
@@ -4142,7 +4072,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "corpus_ml_techniques_agent_evaluation_methodology_when_to_reach_for_it",
-      "community": 16,
+      "community": 40,
       "norm_label": "when to reach for it"
     },
     {
@@ -4152,7 +4082,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "corpus_ml_techniques_agent_evaluation_methodology_how_it_works",
-      "community": 16,
+      "community": 40,
       "norm_label": "how it works"
     },
     {
@@ -4162,7 +4092,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "corpus_ml_techniques_agent_evaluation_methodology_trade_offs",
-      "community": 16,
+      "community": 40,
       "norm_label": "trade-offs"
     },
     {
@@ -4172,7 +4102,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "corpus_ml_techniques_agent_evaluation_methodology_in_practice",
-      "community": 16,
+      "community": 40,
       "norm_label": "in practice"
     },
     {
@@ -4182,7 +4112,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "corpus_ml_techniques_agent_evaluation_methodology_further_reading",
-      "community": 16,
+      "community": 40,
       "norm_label": "further reading"
     },
     {
@@ -4192,7 +4122,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "corpus_ml_techniques_attention_transformers",
-      "community": 16,
+      "community": 41,
       "norm_label": "attention-transformers.md"
     },
     {
@@ -4202,7 +4132,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "corpus_ml_techniques_attention_transformers_what_it_is",
-      "community": 16,
+      "community": 41,
       "norm_label": "what it is"
     },
     {
@@ -4212,7 +4142,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "corpus_ml_techniques_attention_transformers_when_to_reach_for_it",
-      "community": 16,
+      "community": 41,
       "norm_label": "when to reach for it"
     },
     {
@@ -4222,7 +4152,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "corpus_ml_techniques_attention_transformers_how_it_works",
-      "community": 16,
+      "community": 41,
       "norm_label": "how it works"
     },
     {
@@ -4232,7 +4162,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "corpus_ml_techniques_attention_transformers_trade_offs",
-      "community": 16,
+      "community": 41,
       "norm_label": "trade-offs"
     },
     {
@@ -4242,7 +4172,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "corpus_ml_techniques_attention_transformers_in_practice",
-      "community": 16,
+      "community": 41,
       "norm_label": "in practice"
     },
     {
@@ -4252,7 +4182,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "corpus_ml_techniques_attention_transformers_further_reading",
-      "community": 16,
+      "community": 41,
       "norm_label": "further reading"
     },
     {
@@ -7903,66 +7833,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "agents",
-      "target": "agents_knowledge_corpus_project_context",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L38",
-      "weight": 1.0,
-      "source": "agents_knowledge_corpus_project_context",
-      "target": "agents_git_and_verification_discipline",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "agents_knowledge_corpus_project_context",
-      "target": "agents_purpose_and_authority",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "agents_knowledge_corpus_project_context",
-      "target": "agents_research_integrity_gates",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "agents_knowledge_corpus_project_context",
-      "target": "agents_spec_kit_contract",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L20",
-      "weight": 1.0,
-      "source": "agents_knowledge_corpus_project_context",
-      "target": "agents_vault_privacy_and_provenance_boundaries",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "BUILDING.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -10411,6 +10281,5 @@
       "confidence_score": 1.0
     }
   ],
-  "hyperedges": [],
-  "built_at_commit": "10a9929f28809a45337abf4a790a5a977e75b699"
+  "hyperedges": []
 }
