@@ -26,6 +26,107 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 -->
 
+### 2026-08-07 — Actor model versus CSP channels
+- **Status:** current
+- **Pillar:** design-patterns
+- **Method:** storm
+- **Sources:** 4 · **Confidence:** medium
+- **File:** [corpus/design-patterns/actor-model-vs-csp.md](design-patterns/actor-model-vs-csp.md)
+- **Citation audit:** 4/4 resolved · 4/4 URLs live · source pool independently retrieved with quote spans; recommendations limited to ownership, topology, and failure-model trade-offs
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** —
+
+### 2026-08-07 — Structured concurrency
+- **Status:** current
+- **Pillar:** design-patterns
+- **Method:** deep-research + storm
+- **Sources:** 5 · **Confidence:** high
+- **File:** [corpus/design-patterns/structured-concurrency.md](design-patterns/structured-concurrency.md)
+- **Citation audit:** 5/5 resolved · 5/5 URLs live · source pool independently retrieved with quote spans; Java version claims pinned to cited JEPs
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** —
+
+### 2026-08-07 — OpenTelemetry interoperability
+- **Status:** current
+- **Pillar:** adjacent-knowledge
+- **Method:** deep-research
+- **Sources:** 6 · **Confidence:** high
+- **File:** [corpus/adjacent-knowledge/opentelemetry-interoperability.md](adjacent-knowledge/opentelemetry-interoperability.md)
+- **Citation audit:** 6/6 resolved · 6/6 URLs live · source pool independently retrieved with quote spans; backend and storage claims deliberately excluded
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** —
+
+### 2026-08-07 — Software supply-chain security
+- **Status:** current
+- **Pillar:** adjacent-knowledge
+- **Method:** deep-research
+- **Sources:** 6 · **Confidence:** high
+- **File:** [corpus/adjacent-knowledge/software-supply-chain-security.md](adjacent-knowledge/software-supply-chain-security.md)
+- **Citation audit:** 6/6 resolved · 6/6 URLs live · source pool independently retrieved with quote spans; inventory, provenance, and enforcement claims kept separate
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** —
+
+### 2026-08-07 — Fine-tuning strategies
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research + storm
+- **Sources:** 6 · **Confidence:** high
+- **File:** [corpus/ml-techniques/fine-tuning-strategies.md](ml-techniques/fine-tuning-strategies.md)
+- **Citation audit:** 6/6 resolved · 6/6 URLs live · source pool independently retrieved with quote spans; reported quality gains scoped to their evaluated setups
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** extends preference-optimization with parameter-surface and data-signal selection
+
+### 2026-08-07 — Self-evolving agent systems
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** vault-adapt + deep-research
+- **Sources:** 5 · **Confidence:** medium
+- **File:** [corpus/ml-techniques/self-evolving-agent-systems.md](ml-techniques/self-evolving-agent-systems.md)
+- **Citation audit:** 5/5 resolved · 5/5 URLs live · source pool independently retrieved with quote spans; preprint results marked benchmark-specific
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** —
+
+### 2026-08-07 — Agent memory architectures
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research + storm
+- **Sources:** 6 · **Confidence:** medium
+- **File:** [corpus/ml-techniques/agent-memory-architectures.md](ml-techniques/agent-memory-architectures.md)
+- **Citation audit:** 6/6 resolved · 6/6 URLs live · source pool independently retrieved with quote spans; “memory” mechanisms kept as distinct architectural categories
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** —
+
+### 2026-08-07 — State-space models and linear attention
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research + storm
+- **Sources:** 7 · **Confidence:** medium
+- **File:** [corpus/ml-techniques/state-space-models-linear-attention.md](ml-techniques/state-space-models-linear-attention.md)
+- **Citation audit:** 7/7 resolved · 7/7 URLs live · source pool independently retrieved with quote spans; architecture categories and benchmark claims kept qualified
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** extends attention-transformers with long-sequence alternatives
+
+### 2026-08-07 — Mixture-of-Experts routing
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research
+- **Sources:** 6 · **Confidence:** high
+- **File:** [corpus/ml-techniques/mixture-of-experts-routing.md](ml-techniques/mixture-of-experts-routing.md)
+- **Citation audit:** 6/6 resolved · 6/6 URLs live · source pool independently retrieved with quote spans; total parameters, active computation, and serving cost distinguished
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** —
+
+### 2026-08-07 — Structured outputs and constrained decoding
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research
+- **Sources:** 3 · **Confidence:** high
+- **File:** [corpus/ml-techniques/structured-outputs-constrained-decoding.md](ml-techniques/structured-outputs-constrained-decoding.md)
+- **Citation audit:** 3/3 resolved via arXiv metadata · 3/3 URLs live · entailment checked against the fetched abstracts; claims are limited to syntax constraints, the practitioner study, and the schema-key experiment
+- **Vault cross-links:** none (protocol path unavailable on this host)
+- **Builds on / supersedes:** —
+- **Open question:** how much grammar-constrained decoding latency varies by grammar complexity and serving runtime; the cited guided-generation result does not establish a universal cost bound.
+
 ### 2026-07-02 — Reasoning / test-time-compute models
 - **Status:** current
 - **Pillar:** ml-techniques

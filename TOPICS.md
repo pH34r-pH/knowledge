@@ -15,13 +15,13 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] LLM inference optimization: continuous batching, paged KV-cache (vLLM), speculative decoding — the serving-cost levers (harness: deep-research)
 - [x] Preference optimization past RLHF: DPO, GRPO, and when RL beats plain SFT (harness used: dual deep-research + storm)
 - [x] Prompt injection & the lethal trifecta: securing tool-using agents (private data + untrusted content + egress), scope enforced in the runtime not the prompt (harness: deep-research)
-- [ ] Structured outputs & constrained decoding: grammar/JSON-schema-guided generation and its reliability failure modes (harness: deep-research)
+- [x] Structured outputs & constrained decoding: grammar/JSON-schema-guided generation and its reliability failure modes (harness: deep-research)
 - [x] Durable execution engines (Temporal / Restate / DBOS): workflows-as-code, and how they absorb the saga "technical-failure" layer (extends the saga article's open question) (harness: deep-research)
-- [ ] State-space models & linear attention (Mamba et al.): the post-transformer challengers, where they win and lose (harness: storm)
-- [ ] Mixture-of-Experts routing: sparse activation, load-balancing losses, the serving trade-offs (harness: deep-research)
+- [x] State-space models & linear attention (Mamba et al.): the post-transformer challengers, where they win and lose (harness: storm)
+- [x] Mixture-of-Experts routing: sparse activation, load-balancing losses, the serving trade-offs (harness: deep-research)
 - [ ] Context engineering as a discipline: prompt-caching economics, long-context vs retrieval, context-rot; include the "prompting as programming / LLMs as compilers" framing (DSPy's compile-declarative-calls line, structured prompting) and pressure-test where the compiler metaphor holds vs leaks (deterministic spec vs stochastic model) (harness: storm)
-- [ ] Software supply-chain security: SBOM, SLSA, sigstore/provenance — post-xz-attack best practice (harness: deep-research)
-- [ ] OpenTelemetry as the observability standard: unified traces/metrics/logs, semantic conventions (harness: deep-research)
+- [x] Software supply-chain security: SBOM, SLSA, sigstore/provenance — post-xz-attack best practice (harness: deep-research)
+- [x] OpenTelemetry as the observability standard: unified traces/metrics/logs, semantic conventions (harness: deep-research)
 
 ## Software Engineering Design Patterns
 
@@ -30,8 +30,8 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Resilience patterns: circuit breaker, retry-with-jitter, timeout budgets — the three that actually stop cascading failure (harness: deep-research)
 - [ ] Outbox pattern for reliable event publishing — the standard fix for the dual-write problem (harness: deep-research)
 - [x] Idempotency keys and exactly-once-effect APIs — how to make retries safe at the API boundary (harness: deep-research)
-- [ ] Structured concurrency vs. thread pools and async callbacks — why the newer model composes better under cancellation and error propagation (harness: storm)
-- [ ] Actor model vs. CSP/channels for concurrent systems — two mature answers to the same problem, different tradeoffs (harness: storm)
+- [x] Structured concurrency vs. thread pools and async callbacks — why the newer model composes better under cancellation and error propagation (harness: storm)
+- [x] Actor model vs. CSP/channels for concurrent systems — two mature answers to the same problem, different tradeoffs (harness: storm)
 - [ ] API pagination and versioning strategies at scale — cursor vs. offset, and how real APIs evolve without breaking clients (harness: deep-research)
 - [ ] Agentic design patterns, extended — Gulli's 2025 catalog is already an authority prior in the vault; extend it with harness-layer patterns from this repo's own arxiv cluster (MOSS, SkillClaw, Meta-Harness) (harness: vault-adapt + deep-research)
 - [ ] Bulkhead and backpressure patterns for resource isolation — containing failure blast radius under load (harness: deep-research)
@@ -44,11 +44,11 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [ ] Regularization: L1/L2, dropout, early stopping — why each one works, not just what it does (harness: deep-research)
 - [x] Attention and the Transformer architecture, internals — the mechanism the whole current wave is built on (harness: deep-research)
 - [x] RAG architectures: vector vs. graph vs. hybrid retrieval — directly relevant to this repo's own stated purpose; genuinely contested tradeoffs (harness: storm)
-- [ ] Fine-tuning strategies: full fine-tune vs. LoRA/QLoRA vs. RLHF/DPO — when each is worth its cost (harness: storm)
+- [x] Fine-tuning strategies: full fine-tune vs. LoRA/QLoRA vs. RLHF/DPO — when each is worth its cost (harness: storm)
 - [x] Agent evaluation methodology — grounded in Claw-Eval, $OneMillion-Bench, Terminal-Bench already sitting in `arxiv/` (harness: vault-adapt + deep-research)
-- [ ] Agent memory architectures — grounded in MemEvolve and GenericAgent already sitting in `arxiv/` (harness: vault-adapt + deep-research)
+- [x] Agent memory architectures — grounded in MemEvolve and GenericAgent already sitting in `arxiv/` (harness: vault-adapt + deep-research)
 - [ ] Bias-variance tradeoff and the double-descent wrinkle — the classical framing plus the part modern deep learning complicates (harness: deep-research)
-- [ ] Self-evolving agent systems: harness-layer vs. text-mutable-layer adaptation — this repo's own seed paper (MOSS) makes the core argument; write it up properly (harness: vault-adapt)
+- [x] Self-evolving agent systems: harness-layer vs. text-mutable-layer adaptation — this repo's own seed paper (MOSS) makes the core argument; write it up properly (harness: vault-adapt)
 
 ## Adjacent High-Value Knowledge
 
