@@ -26,6 +26,17 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 -->
 
+### 2026-09-02 — Complex, phase-aware, and hyperspherical Transformer computation
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research + storm
+- **Sources:** 11 · **Confidence:** medium
+- **File:** [corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md](ml-techniques/complex-phase-aware-hyperspherical-transformers.md)
+- **Citation audit:** 11/11 resolved · 11/11 exact versioned URLs live · 35/35 citation-bearing claim groups independently entailed across 76 citation tokens; 0 unrelated, contradictory, or residual-overstatement findings after two verifier-required corrections ([audit](CITATION-AUDIT-2026-09-02-complex-phase-hyperspherical.md))
+- **Vault cross-links:** none (vault paths unavailable on this host; public literature synthesis only)
+- **Builds on / supersedes:** extends [representation–architecture co-design](ml-techniques/representation-architecture-co-design-language-models.md), [attention internals](ml-techniques/attention-transformers.md), and [state-space models and linear attention](ml-techniques/state-space-models-linear-attention.md) by separating positional phase, complex computation, spherical constraints, and depth semantics
+- **Open question:** no cited study runs one budget-matched factorial spanning real versus complex state, fixed versus selective rotation, free versus fixed radius, and untied versus shared versus equilibrium depth; PCT's broadest evidence remains a recent single-author preprint.
+
 ### 2026-09-02 — Representation–architecture co-design for language models
 - **Status:** current
 - **Pillar:** ml-techniques

@@ -933,7 +933,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 attention and the transformer architecture, internals",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L248"
+      "source_location": "L259"
     },
     {
       "id": "corpus_ledger_2026_07_01_backpropagation_and_automatic_differentiation",
@@ -945,7 +945,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 backpropagation and automatic differentiation",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L278"
+      "source_location": "L289"
     },
     {
       "id": "corpus_ledger_2026_07_01_cqrs_and_event_sourcing",
@@ -957,7 +957,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 cqrs and event sourcing",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L288"
+      "source_location": "L299"
     },
     {
       "id": "corpus_ledger_2026_07_01_durable_execution_engines_temporal_restate_dbos",
@@ -969,7 +969,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 durable execution engines (temporal, restate, dbos)",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L196"
+      "source_location": "L207"
     },
     {
       "id": "corpus_ledger_2026_07_01_evaluating_agents_and_models_rigorously_baselines_significance_honest_reporting",
@@ -981,7 +981,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 evaluating agents and models rigorously (baselines, significance, honest reporting)",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L218"
+      "source_location": "L229"
     },
     {
       "id": "corpus_ledger_2026_07_01_graceful_degradation_ranked_fallback_chains",
@@ -993,7 +993,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 graceful degradation: ranked fallback chains",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L308"
+      "source_location": "L319"
     },
     {
       "id": "corpus_ledger_2026_07_01_idempotency_keys_and_exactly_once_effect_apis",
@@ -1005,7 +1005,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 idempotency keys and exactly-once-effect apis",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L258"
+      "source_location": "L269"
     },
     {
       "id": "corpus_ledger_2026_07_01_llm_inference_optimization_continuous_batching_paged_kv_cache_speculative_decoding",
@@ -1017,7 +1017,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 llm inference optimization: continuous batching, paged kv-cache, speculative decoding",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L185"
+      "source_location": "L196"
     },
     {
       "id": "corpus_ledger_2026_07_01_model_context_protocol_mcp_the_agent_tool_integration_standard",
@@ -1029,7 +1029,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 model context protocol (mcp): the agent\u2013tool integration standard",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L207"
+      "source_location": "L218"
     },
     {
       "id": "corpus_ledger_2026_07_01_prompt_injection_and_the_lethal_trifecta",
@@ -1041,7 +1041,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 prompt injection and the lethal trifecta",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L174"
+      "source_location": "L185"
     },
     {
       "id": "corpus_ledger_2026_07_01_rag_retrieval_architectures_vector_graph_and_hybrid",
@@ -1053,7 +1053,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 rag retrieval architectures: vector, graph, and hybrid",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L238"
+      "source_location": "L249"
     },
     {
       "id": "corpus_ledger_2026_07_01_resilience_patterns_circuit_breaker_retry_with_jitter_timeout_budgets",
@@ -1065,7 +1065,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 resilience patterns: circuit breaker, retry with jitter, timeout budgets",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L298"
+      "source_location": "L309"
     },
     {
       "id": "corpus_ledger_2026_07_01_system_design_fundamentals_load_balancing_caching_sharding_consistent_hashing",
@@ -1077,7 +1077,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 system design fundamentals: load balancing, caching, sharding, consistent hashing",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L228"
+      "source_location": "L239"
     },
     {
       "id": "corpus_ledger_2026_07_01_the_saga_pattern_for_distributed_transactions",
@@ -1089,7 +1089,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-01 \u2014 the saga pattern for distributed transactions",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L268"
+      "source_location": "L279"
     },
     {
       "id": "corpus_ledger_2026_07_02_preference_optimization_rlhf_vs_dpo_vs_grpo",
@@ -1101,7 +1101,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-02 \u2014 preference optimization: rlhf vs dpo vs grpo",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L163"
+      "source_location": "L174"
     },
     {
       "id": "corpus_ledger_2026_07_02_reasoning_test_time_compute_models",
@@ -1113,7 +1113,7 @@
       "node_kind": "heading",
       "norm_label": "2026-07-02 \u2014 reasoning / test-time-compute models",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L152"
+      "source_location": "L163"
     },
     {
       "id": "corpus_ledger_2026_08_07_actor_model_versus_csp_channels",
@@ -1125,7 +1125,7 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 actor model versus csp channels",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L51"
+      "source_location": "L62"
     },
     {
       "id": "corpus_ledger_2026_08_07_agent_memory_architectures",
@@ -1137,7 +1137,7 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 agent memory architectures",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L111"
+      "source_location": "L122"
     },
     {
       "id": "corpus_ledger_2026_08_07_fine_tuning_strategies",
@@ -1149,7 +1149,7 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 fine-tuning strategies",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L91"
+      "source_location": "L102"
     },
     {
       "id": "corpus_ledger_2026_08_07_mixture_of_experts_routing",
@@ -1161,7 +1161,7 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 mixture-of-experts routing",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L131"
+      "source_location": "L142"
     },
     {
       "id": "corpus_ledger_2026_08_07_opentelemetry_interoperability",
@@ -1173,7 +1173,7 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 opentelemetry interoperability",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L71"
+      "source_location": "L82"
     },
     {
       "id": "corpus_ledger_2026_08_07_self_evolving_agent_systems",
@@ -1185,7 +1185,7 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 self-evolving agent systems",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L101"
+      "source_location": "L112"
     },
     {
       "id": "corpus_ledger_2026_08_07_software_supply_chain_security",
@@ -1197,7 +1197,7 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 software supply-chain security",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L81"
+      "source_location": "L92"
     },
     {
       "id": "corpus_ledger_2026_08_07_state_space_models_and_linear_attention",
@@ -1209,7 +1209,7 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 state-space models and linear attention",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L121"
+      "source_location": "L132"
     },
     {
       "id": "corpus_ledger_2026_08_07_structured_concurrency",
@@ -1221,7 +1221,7 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 structured concurrency",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L61"
+      "source_location": "L72"
     },
     {
       "id": "corpus_ledger_2026_08_07_structured_outputs_and_constrained_decoding",
@@ -1233,7 +1233,19 @@
       "node_kind": "heading",
       "norm_label": "2026-08-07 \u2014 structured outputs and constrained decoding",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L141"
+      "source_location": "L152"
+    },
+    {
+      "id": "corpus_ledger_2026_09_02_complex_phase_aware_and_hyperspherical_transformer_computation",
+      "label": "2026-09-02 \u2014 Complex, phase-aware, and hyperspherical Transformer computation",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "Entries",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2026-09-02 \u2014 complex, phase-aware, and hyperspherical transformer computation",
+      "source_file": "corpus/LEDGER.md",
+      "source_location": "L29"
     },
     {
       "id": "corpus_ledger_2026_09_02_logarithmic_and_closed_numerical_representations_for_neural_arithmetic",
@@ -1245,7 +1257,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-02 \u2014 logarithmic and closed numerical representations for neural arithmetic",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L40"
+      "source_location": "L51"
     },
     {
       "id": "corpus_ledger_2026_09_02_representation_architecture_co_design_for_language_models",
@@ -1257,7 +1269,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-02 \u2014 representation\u2013architecture co-design for language models",
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L29"
+      "source_location": "L40"
     },
     {
       "id": "corpus_ledger_citation_integrity",
@@ -1564,23 +1576,23 @@
       "source_location": "L1"
     },
     {
-      "id": "corpus_adjacent_knowledge_system_design_fundamentals",
-      "label": "system-design-fundamentals.md",
+      "id": "corpus_adjacent_knowledge_model_context_protocol",
+      "label": "model-context-protocol.md",
       "_origin": "ast",
       "community": 16,
       "community_name": "README.md",
       "file_type": "document",
       "frontmatter": {
-        "title": "System design fundamentals: load balancing, caching, sharding, consistent hashing",
+        "title": "Model Context Protocol (MCP): the agent\u2013tool integration standard",
         "pillar": "adjacent-knowledge",
         "method": "deep-research",
         "date": "2026-07-01",
-        "sources": "16",
+        "sources": "9",
         "confidence": "high"
       },
       "node_kind": "page",
-      "norm_label": "system-design-fundamentals.md",
-      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "norm_label": "model-context-protocol.md",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
       "source_location": "L1"
     },
     {
@@ -1604,23 +1616,43 @@
       "source_location": "L1"
     },
     {
-      "id": "corpus_design_patterns_cqrs_event_sourcing",
-      "label": "cqrs-event-sourcing.md",
+      "id": "corpus_design_patterns_saga_pattern",
+      "label": "saga-pattern.md",
       "_origin": "ast",
       "community": 16,
       "community_name": "README.md",
       "file_type": "document",
       "frontmatter": {
-        "title": "CQRS and event sourcing",
+        "title": "The Saga pattern for distributed transactions",
         "pillar": "design-patterns",
-        "method": "storm",
+        "method": "deep-research",
         "date": "2026-07-01",
-        "sources": "12",
+        "sources": "13",
         "confidence": "high"
       },
       "node_kind": "page",
-      "norm_label": "cqrs-event-sourcing.md",
-      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
+      "norm_label": "saga-pattern.md",
+      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_ml_techniques_backpropagation_autodiff",
+      "label": "backpropagation-autodiff.md",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "Backpropagation and automatic differentiation",
+        "pillar": "ml-techniques",
+        "method": "deep-research",
+        "date": "2026-07-01",
+        "sources": "8",
+        "confidence": "high"
+      },
+      "node_kind": "page",
+      "norm_label": "backpropagation-autodiff.md",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
       "source_location": "L1"
     },
     {
@@ -1785,26 +1817,6 @@
       "source_location": "L1"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures",
-      "label": "rag-retrieval-architectures.md",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "title": "RAG retrieval architectures \u2014 vector, graph, and hybrid, and when each stops working",
-        "pillar": "ml-techniques",
-        "method": "storm",
-        "date": "2026-07-01",
-        "sources": "20",
-        "confidence": "medium"
-      },
-      "node_kind": "page",
-      "norm_label": "rag-retrieval-architectures.md",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
-      "source_location": "L1"
-    },
-    {
       "id": "corpus_ml_techniques_agent_memory_architectures",
       "label": "agent-memory-architectures.md",
       "_origin": "ast",
@@ -1913,7 +1925,7 @@
       "source_location": "L1"
     },
     {
-      "id": "corpus_adjacent_knowledge_system_design_fundamentals_further_reading",
+      "id": "corpus_adjacent_knowledge_model_context_protocol_further_reading",
       "label": "Further reading",
       "_origin": "ast",
       "community": 16,
@@ -1921,11 +1933,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "further reading",
-      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
-      "source_location": "L66"
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L63"
     },
     {
-      "id": "corpus_adjacent_knowledge_system_design_fundamentals_how_it_works",
+      "id": "corpus_adjacent_knowledge_model_context_protocol_how_it_works",
       "label": "How it works",
       "_origin": "ast",
       "community": 16,
@@ -1933,11 +1945,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "how it works",
-      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
-      "source_location": "L22"
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L24"
     },
     {
-      "id": "corpus_adjacent_knowledge_system_design_fundamentals_in_practice",
+      "id": "corpus_adjacent_knowledge_model_context_protocol_in_practice",
       "label": "In practice",
       "_origin": "ast",
       "community": 16,
@@ -1945,11 +1957,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "in practice",
-      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
-      "source_location": "L56"
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L52"
     },
     {
-      "id": "corpus_adjacent_knowledge_system_design_fundamentals_trade_offs",
+      "id": "corpus_adjacent_knowledge_model_context_protocol_trade_offs",
       "label": "Trade-offs",
       "_origin": "ast",
       "community": 16,
@@ -1957,11 +1969,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "trade-offs",
-      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
-      "source_location": "L44"
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L38"
     },
     {
-      "id": "corpus_adjacent_knowledge_system_design_fundamentals_what_it_is",
+      "id": "corpus_adjacent_knowledge_model_context_protocol_what_it_is",
       "label": "What it is",
       "_origin": "ast",
       "community": 16,
@@ -1969,11 +1981,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "what it is",
-      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
       "source_location": "L10"
     },
     {
-      "id": "corpus_adjacent_knowledge_system_design_fundamentals_when_to_reach_for_it",
+      "id": "corpus_adjacent_knowledge_model_context_protocol_when_to_reach_for_it",
       "label": "When to reach for it",
       "_origin": "ast",
       "community": 16,
@@ -1981,7 +1993,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "when to reach for it",
-      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
       "source_location": "L16"
     },
     {
@@ -1995,78 +2007,6 @@
       "norm_label": "citation-audit-2026-07-01.md",
       "source_file": "corpus/CITATION-AUDIT-2026-07-01.md",
       "source_location": "L1"
-    },
-    {
-      "id": "corpus_design_patterns_cqrs_event_sourcing_further_reading",
-      "label": "Further reading",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "further reading",
-      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
-      "source_location": "L64"
-    },
-    {
-      "id": "corpus_design_patterns_cqrs_event_sourcing_how_it_works",
-      "label": "How it works",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how it works",
-      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
-      "source_location": "L28"
-    },
-    {
-      "id": "corpus_design_patterns_cqrs_event_sourcing_in_practice",
-      "label": "In practice",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "in practice",
-      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
-      "source_location": "L58"
-    },
-    {
-      "id": "corpus_design_patterns_cqrs_event_sourcing_trade_offs",
-      "label": "Trade-offs",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "trade-offs",
-      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
-      "source_location": "L38"
-    },
-    {
-      "id": "corpus_design_patterns_cqrs_event_sourcing_what_it_is",
-      "label": "What it is",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what it is",
-      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
-      "source_location": "L10"
-    },
-    {
-      "id": "corpus_design_patterns_cqrs_event_sourcing_when_to_reach_for_it",
-      "label": "When to reach for it",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "when to reach for it",
-      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
-      "source_location": "L20"
     },
     {
       "id": "corpus_design_patterns_resilience_patterns_further_reading",
@@ -2139,6 +2079,78 @@
       "norm_label": "when to reach for it",
       "source_file": "corpus/design-patterns/resilience-patterns.md",
       "source_location": "L16"
+    },
+    {
+      "id": "corpus_design_patterns_saga_pattern_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_location": "L66"
+    },
+    {
+      "id": "corpus_design_patterns_saga_pattern_how_it_works",
+      "label": "How it works",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how it works",
+      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "corpus_design_patterns_saga_pattern_in_practice",
+      "label": "In practice",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice",
+      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_location": "L56"
+    },
+    {
+      "id": "corpus_design_patterns_saga_pattern_trade_offs",
+      "label": "Trade-offs",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs",
+      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_location": "L46"
+    },
+    {
+      "id": "corpus_design_patterns_saga_pattern_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_design_patterns_saga_pattern_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_location": "L18"
     },
     {
       "id": "corpus_eval_corpus_leverage_2026_07_01",
@@ -2237,7 +2249,7 @@
       "source_location": "L23"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_further_reading",
+      "id": "corpus_ml_techniques_backpropagation_autodiff_further_reading",
       "label": "Further reading",
       "_origin": "ast",
       "community": 16,
@@ -2245,11 +2257,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "further reading",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
-      "source_location": "L74"
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L60"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_how_it_works",
+      "id": "corpus_ml_techniques_backpropagation_autodiff_how_it_works",
       "label": "How it works",
       "_origin": "ast",
       "community": 16,
@@ -2257,11 +2269,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "how it works",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
       "source_location": "L26"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_in_practice",
+      "id": "corpus_ml_techniques_backpropagation_autodiff_in_practice",
       "label": "In practice",
       "_origin": "ast",
       "community": 16,
@@ -2269,11 +2281,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "in practice",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
-      "source_location": "L62"
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L52"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_trade_offs",
+      "id": "corpus_ml_techniques_backpropagation_autodiff_trade_offs",
       "label": "Trade-offs",
       "_origin": "ast",
       "community": 16,
@@ -2281,11 +2293,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "trade-offs",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
-      "source_location": "L48"
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L40"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_what_it_is",
+      "id": "corpus_ml_techniques_backpropagation_autodiff_what_it_is",
       "label": "What it is",
       "_origin": "ast",
       "community": 16,
@@ -2293,11 +2305,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "what it is",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
       "source_location": "L10"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_when_to_reach_for_it",
+      "id": "corpus_ml_techniques_backpropagation_autodiff_when_to_reach_for_it",
       "label": "When to reach for it",
       "_origin": "ast",
       "community": 16,
@@ -2305,7 +2317,7 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "when to reach for it",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
       "source_location": "L18"
     },
     {
@@ -4474,96 +4486,204 @@
       "source_location": "L20"
     },
     {
-      "id": "corpus_adjacent_knowledge_model_context_protocol",
-      "label": "model-context-protocol.md",
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
+      "label": "complex-phase-aware-hyperspherical-transformers.md",
       "_origin": "ast",
       "community": 33,
-      "community_name": "model-context-protocol.md",
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
       "file_type": "document",
       "frontmatter": {
-        "title": "Model Context Protocol (MCP): the agent\u2013tool integration standard",
-        "pillar": "adjacent-knowledge",
-        "method": "deep-research",
-        "date": "2026-07-01",
-        "sources": "9",
-        "confidence": "high"
+        "title": "Complex, phase-aware, and hyperspherical Transformer computation",
+        "pillar": "ml-techniques",
+        "method": "deep-research + storm",
+        "date": "2026-09-02",
+        "sources": "11",
+        "confidence": "medium"
       },
       "node_kind": "page",
-      "norm_label": "model-context-protocol.md",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "norm_label": "complex-phase-aware-hyperspherical-transformers.md",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
       "source_location": "L1"
     },
     {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_further_reading",
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_a_hypersphere_changes_both_representation_and_update",
+      "label": "A hypersphere changes both representation and update",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "a hypersphere changes both representation and update",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L65"
+    },
+    {
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_a_matched_control_protocol",
+      "label": "A matched-control protocol",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "a matched-control protocol",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L99"
+    },
+    {
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_common_failure_modes",
+      "label": "Common failure modes",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "common failure modes",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L125"
+    },
+    {
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_complex_state_still_needs_real_decisions",
+      "label": "Complex state still needs real decisions",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "complex state still needs real decisions",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L39"
+    },
+    {
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_control_first",
+      "label": "Control-first",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "control-first",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L93"
+    },
+    {
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_further_reading",
       "label": "Further reading",
       "_origin": "ast",
       "community": 33,
-      "community_name": "model-context-protocol.md",
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "further reading",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L63"
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L155"
     },
     {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_how_it_works",
-      "label": "How it works",
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_geometry_first",
+      "label": "Geometry-first",
       "_origin": "ast",
       "community": 33,
-      "community_name": "model-context-protocol.md",
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "how it works",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L24"
+      "norm_label": "geometry-first",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L87"
     },
     {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_in_practice",
-      "label": "In practice",
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_how_the_mechanisms_differ",
+      "label": "How the mechanisms differ",
       "_origin": "ast",
       "community": 33,
-      "community_name": "model-context-protocol.md",
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "in practice",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L52"
+      "norm_label": "how the mechanisms differ",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L37"
     },
     {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_trade_offs",
-      "label": "Trade-offs",
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_in_practice_a_decision_sequence",
+      "label": "In practice: a decision sequence",
       "_origin": "ast",
       "community": 33,
-      "community_name": "model-context-protocol.md",
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "trade-offs",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L38"
+      "norm_label": "in practice: a decision sequence",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L141"
     },
     {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_what_it_is",
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_phase_first",
+      "label": "Phase-first",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "phase-first",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L81"
+    },
+    {
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_positional_phase_is_a_smaller_commitment",
+      "label": "Positional phase is a smaller commitment",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "positional phase is a smaller commitment",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L59"
+    },
+    {
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_sharing_weights_is_not_the_same_as_reaching_equilibrium",
+      "label": "Sharing weights is not the same as reaching equilibrium",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "sharing weights is not the same as reaching equilibrium",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L71"
+    },
+    {
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_trade_offs_three_defensible_perspectives",
+      "label": "Trade-offs: three defensible perspectives",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs: three defensible perspectives",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L79"
+    },
+    {
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_what_it_is",
       "label": "What it is",
       "_origin": "ast",
       "community": 33,
-      "community_name": "model-context-protocol.md",
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "what it is",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
       "source_location": "L10"
     },
     {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_when_to_reach_for_it",
+      "id": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_when_to_reach_for_it",
       "label": "When to reach for it",
       "_origin": "ast",
       "community": 33,
-      "community_name": "model-context-protocol.md",
+      "community_name": "complex-phase-aware-hyperspherical-transformers.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "when to reach for it",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L16"
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L25"
     },
     {
       "id": "corpus_design_patterns_durable_execution_engines",
@@ -4742,6 +4862,98 @@
       "source_location": "L18"
     },
     {
+      "id": "corpus_adjacent_knowledge_system_design_fundamentals",
+      "label": "system-design-fundamentals.md",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "system-design-fundamentals.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "System design fundamentals: load balancing, caching, sharding, consistent hashing",
+        "pillar": "adjacent-knowledge",
+        "method": "deep-research",
+        "date": "2026-07-01",
+        "sources": "16",
+        "confidence": "high"
+      },
+      "node_kind": "page",
+      "norm_label": "system-design-fundamentals.md",
+      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_system_design_fundamentals_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "system-design-fundamentals.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "source_location": "L66"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_system_design_fundamentals_how_it_works",
+      "label": "How it works",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "system-design-fundamentals.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how it works",
+      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "source_location": "L22"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_system_design_fundamentals_in_practice",
+      "label": "In practice",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "system-design-fundamentals.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice",
+      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "source_location": "L56"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_system_design_fundamentals_trade_offs",
+      "label": "Trade-offs",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "system-design-fundamentals.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs",
+      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "source_location": "L44"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_system_design_fundamentals_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "system-design-fundamentals.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_system_design_fundamentals_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "system-design-fundamentals.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/adjacent-knowledge/system-design-fundamentals.md",
+      "source_location": "L16"
+    },
+    {
       "id": "corpus_adjacent_knowledge_software_supply_chain_security_further_reading",
       "label": "Further reading",
       "_origin": "ast",
@@ -4824,6 +5036,98 @@
       "norm_label": "when to reach for it",
       "source_file": "corpus/adjacent-knowledge/software-supply-chain-security.md",
       "source_location": "L18"
+    },
+    {
+      "id": "corpus_design_patterns_cqrs_event_sourcing",
+      "label": "cqrs-event-sourcing.md",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "cqrs-event-sourcing.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "CQRS and event sourcing",
+        "pillar": "design-patterns",
+        "method": "storm",
+        "date": "2026-07-01",
+        "sources": "12",
+        "confidence": "high"
+      },
+      "node_kind": "page",
+      "norm_label": "cqrs-event-sourcing.md",
+      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_design_patterns_cqrs_event_sourcing_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "cqrs-event-sourcing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
+      "source_location": "L64"
+    },
+    {
+      "id": "corpus_design_patterns_cqrs_event_sourcing_how_it_works",
+      "label": "How it works",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "cqrs-event-sourcing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how it works",
+      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
+      "source_location": "L28"
+    },
+    {
+      "id": "corpus_design_patterns_cqrs_event_sourcing_in_practice",
+      "label": "In practice",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "cqrs-event-sourcing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice",
+      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
+      "source_location": "L58"
+    },
+    {
+      "id": "corpus_design_patterns_cqrs_event_sourcing_trade_offs",
+      "label": "Trade-offs",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "cqrs-event-sourcing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs",
+      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
+      "source_location": "L38"
+    },
+    {
+      "id": "corpus_design_patterns_cqrs_event_sourcing_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "cqrs-event-sourcing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_design_patterns_cqrs_event_sourcing_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "cqrs-event-sourcing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/design-patterns/cqrs-event-sourcing.md",
+      "source_location": "L20"
     },
     {
       "id": "corpus_design_patterns_actor_model_vs_csp_actor_model_versus_csp_channels_ownership_and_coordination",
@@ -5237,95 +5541,95 @@
       "source_location": "L180"
     },
     {
-      "id": "corpus_design_patterns_saga_pattern",
-      "label": "saga-pattern.md",
+      "id": "corpus_ml_techniques_rag_retrieval_architectures",
+      "label": "rag-retrieval-architectures.md",
       "_origin": "ast",
       "community": 40,
-      "community_name": "saga-pattern.md",
+      "community_name": "rag-retrieval-architectures.md",
       "file_type": "document",
       "frontmatter": {
-        "title": "The Saga pattern for distributed transactions",
-        "pillar": "design-patterns",
-        "method": "deep-research",
+        "title": "RAG retrieval architectures \u2014 vector, graph, and hybrid, and when each stops working",
+        "pillar": "ml-techniques",
+        "method": "storm",
         "date": "2026-07-01",
-        "sources": "13",
-        "confidence": "high"
+        "sources": "20",
+        "confidence": "medium"
       },
       "node_kind": "page",
-      "norm_label": "saga-pattern.md",
-      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "norm_label": "rag-retrieval-architectures.md",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
       "source_location": "L1"
     },
     {
-      "id": "corpus_design_patterns_saga_pattern_further_reading",
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_further_reading",
       "label": "Further reading",
       "_origin": "ast",
       "community": 40,
-      "community_name": "saga-pattern.md",
+      "community_name": "rag-retrieval-architectures.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "further reading",
-      "source_file": "corpus/design-patterns/saga-pattern.md",
-      "source_location": "L66"
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_location": "L74"
     },
     {
-      "id": "corpus_design_patterns_saga_pattern_how_it_works",
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_how_it_works",
       "label": "How it works",
       "_origin": "ast",
       "community": 40,
-      "community_name": "saga-pattern.md",
+      "community_name": "rag-retrieval-architectures.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "how it works",
-      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
       "source_location": "L26"
     },
     {
-      "id": "corpus_design_patterns_saga_pattern_in_practice",
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_in_practice",
       "label": "In practice",
       "_origin": "ast",
       "community": 40,
-      "community_name": "saga-pattern.md",
+      "community_name": "rag-retrieval-architectures.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "in practice",
-      "source_file": "corpus/design-patterns/saga-pattern.md",
-      "source_location": "L56"
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_location": "L62"
     },
     {
-      "id": "corpus_design_patterns_saga_pattern_trade_offs",
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_trade_offs",
       "label": "Trade-offs",
       "_origin": "ast",
       "community": 40,
-      "community_name": "saga-pattern.md",
+      "community_name": "rag-retrieval-architectures.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "trade-offs",
-      "source_file": "corpus/design-patterns/saga-pattern.md",
-      "source_location": "L46"
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_location": "L48"
     },
     {
-      "id": "corpus_design_patterns_saga_pattern_what_it_is",
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_what_it_is",
       "label": "What it is",
       "_origin": "ast",
       "community": 40,
-      "community_name": "saga-pattern.md",
+      "community_name": "rag-retrieval-architectures.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "what it is",
-      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
       "source_location": "L10"
     },
     {
-      "id": "corpus_design_patterns_saga_pattern_when_to_reach_for_it",
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_when_to_reach_for_it",
       "label": "When to reach for it",
       "_origin": "ast",
       "community": 40,
-      "community_name": "saga-pattern.md",
+      "community_name": "rag-retrieval-architectures.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "when to reach for it",
-      "source_file": "corpus/design-patterns/saga-pattern.md",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
       "source_location": "L18"
     },
     {
@@ -5410,98 +5714,6 @@
       "node_kind": "heading",
       "norm_label": "when to reach for it",
       "source_file": "corpus/design-patterns/structured-concurrency.md",
-      "source_location": "L18"
-    },
-    {
-      "id": "corpus_ml_techniques_backpropagation_autodiff",
-      "label": "backpropagation-autodiff.md",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "backpropagation-autodiff.md",
-      "file_type": "document",
-      "frontmatter": {
-        "title": "Backpropagation and automatic differentiation",
-        "pillar": "ml-techniques",
-        "method": "deep-research",
-        "date": "2026-07-01",
-        "sources": "8",
-        "confidence": "high"
-      },
-      "node_kind": "page",
-      "norm_label": "backpropagation-autodiff.md",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_further_reading",
-      "label": "Further reading",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "backpropagation-autodiff.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "further reading",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L60"
-    },
-    {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_how_it_works",
-      "label": "How it works",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "backpropagation-autodiff.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how it works",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L26"
-    },
-    {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_in_practice",
-      "label": "In practice",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "backpropagation-autodiff.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "in practice",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L52"
-    },
-    {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_trade_offs",
-      "label": "Trade-offs",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "backpropagation-autodiff.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "trade-offs",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L40"
-    },
-    {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_what_it_is",
-      "label": "What it is",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "backpropagation-autodiff.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what it is",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L10"
-    },
-    {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_when_to_reach_for_it",
-      "label": "When to reach for it",
-      "_origin": "ast",
-      "community": 42,
-      "community_name": "backpropagation-autodiff.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "when to reach for it",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
       "source_location": "L18"
     },
     {
@@ -10037,13 +10249,24 @@
     },
     {
       "source": "corpus_ledger_entries",
+      "target": "corpus_ledger_2026_08_07_fine_tuning_strategies",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/LEDGER.md",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ledger_entries",
       "target": "corpus_ledger_2026_08_07_self_evolving_agent_systems",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L101",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -10054,7 +10277,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L111",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -10065,7 +10288,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L121",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -10076,7 +10299,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L131",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -10087,23 +10310,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L141",
-      "weight": 1.0
-    },
-    {
-      "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_07_02_reasoning_test_time_compute_models",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "corpus/LEDGER.md",
       "source_location": "L152",
       "weight": 1.0
     },
     {
       "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_07_02_preference_optimization_rlhf_vs_dpo_vs_grpo",
+      "target": "corpus_ledger_2026_07_02_reasoning_test_time_compute_models",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10125,7 +10337,7 @@
     },
     {
       "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_07_01_prompt_injection_and_the_lethal_trifecta",
+      "target": "corpus_ledger_2026_07_02_preference_optimization_rlhf_vs_dpo_vs_grpo",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10136,7 +10348,7 @@
     },
     {
       "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_07_01_llm_inference_optimization_continuous_batching_paged_kv_cache_speculative_decoding",
+      "target": "corpus_ledger_2026_07_01_prompt_injection_and_the_lethal_trifecta",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10147,7 +10359,7 @@
     },
     {
       "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_07_01_durable_execution_engines_temporal_restate_dbos",
+      "target": "corpus_ledger_2026_07_01_llm_inference_optimization_continuous_batching_paged_kv_cache_speculative_decoding",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10158,7 +10370,7 @@
     },
     {
       "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_07_01_model_context_protocol_mcp_the_agent_tool_integration_standard",
+      "target": "corpus_ledger_2026_07_01_durable_execution_engines_temporal_restate_dbos",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10169,7 +10381,7 @@
     },
     {
       "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_07_01_evaluating_agents_and_models_rigorously_baselines_significance_honest_reporting",
+      "target": "corpus_ledger_2026_07_01_model_context_protocol_mcp_the_agent_tool_integration_standard",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10180,13 +10392,24 @@
     },
     {
       "source": "corpus_ledger_entries",
+      "target": "corpus_ledger_2026_07_01_evaluating_agents_and_models_rigorously_baselines_significance_honest_reporting",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/LEDGER.md",
+      "source_location": "L229",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ledger_entries",
       "target": "corpus_ledger_2026_07_01_system_design_fundamentals_load_balancing_caching_sharding_consistent_hashing",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L228",
+      "source_location": "L239",
       "weight": 1.0
     },
     {
@@ -10197,7 +10420,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L238",
+      "source_location": "L249",
       "weight": 1.0
     },
     {
@@ -10208,7 +10431,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L248",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -10219,7 +10442,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L258",
+      "source_location": "L269",
       "weight": 1.0
     },
     {
@@ -10230,7 +10453,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L268",
+      "source_location": "L279",
       "weight": 1.0
     },
     {
@@ -10241,23 +10464,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L278",
+      "source_location": "L289",
       "weight": 1.0
     },
     {
       "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_07_01_cqrs_and_event_sourcing",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "corpus/LEDGER.md",
-      "source_location": "L288",
-      "weight": 1.0
-    },
-    {
-      "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_09_02_representation_architecture_co_design_for_language_models",
+      "target": "corpus_ledger_2026_09_02_complex_phase_aware_and_hyperspherical_transformer_computation",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10268,13 +10480,24 @@
     },
     {
       "source": "corpus_ledger_entries",
+      "target": "corpus_ledger_2026_07_01_cqrs_and_event_sourcing",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/LEDGER.md",
+      "source_location": "L299",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ledger_entries",
       "target": "corpus_ledger_2026_07_01_resilience_patterns_circuit_breaker_retry_with_jitter_timeout_budgets",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L298",
+      "source_location": "L309",
       "weight": 1.0
     },
     {
@@ -10285,12 +10508,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L308",
+      "source_location": "L319",
       "weight": 1.0
     },
     {
       "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_09_02_logarithmic_and_closed_numerical_representations_for_neural_arithmetic",
+      "target": "corpus_ledger_2026_09_02_representation_architecture_co_design_for_language_models",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10301,7 +10524,7 @@
     },
     {
       "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_08_07_actor_model_versus_csp_channels",
+      "target": "corpus_ledger_2026_09_02_logarithmic_and_closed_numerical_representations_for_neural_arithmetic",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10312,13 +10535,24 @@
     },
     {
       "source": "corpus_ledger_entries",
+      "target": "corpus_ledger_2026_08_07_actor_model_versus_csp_channels",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/LEDGER.md",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ledger_entries",
       "target": "corpus_ledger_2026_08_07_structured_concurrency",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L61",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -10329,7 +10563,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L71",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -10340,18 +10574,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L81",
-      "weight": 1.0
-    },
-    {
-      "source": "corpus_ledger_entries",
-      "target": "corpus_ledger_2026_08_07_fine_tuning_strategies",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "corpus/LEDGER.md",
-      "source_location": "L91",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -10627,6 +10850,171 @@
       "confidence_score": 1.0,
       "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
       "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_what_it_is",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_common_failure_modes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_in_practice_a_decision_sequence",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_further_reading",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_when_to_reach_for_it",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_how_the_mechanisms_differ",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_trade_offs_three_defensible_perspectives",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_a_matched_control_protocol",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_how_the_mechanisms_differ",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_complex_state_still_needs_real_decisions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_how_the_mechanisms_differ",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_positional_phase_is_a_smaller_commitment",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_how_the_mechanisms_differ",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_a_hypersphere_changes_both_representation_and_update",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_how_the_mechanisms_differ",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_sharing_weights_is_not_the_same_as_reaching_equilibrium",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_trade_offs_three_defensible_perspectives",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_phase_first",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_trade_offs_three_defensible_perspectives",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_geometry_first",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_trade_offs_three_defensible_perspectives",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers_control_first",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -14734,13 +15122,13 @@
     },
     {
       "source": "corpus_ledger",
-      "target": "corpus_ml_techniques_self_evolving_agent_systems",
+      "target": "corpus_ml_techniques_fine_tuning_strategies",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L106",
+      "source_location": "L107",
       "weight": 1.0
     },
     {
@@ -14767,24 +15155,24 @@
     },
     {
       "source": "corpus_ledger",
+      "target": "corpus_ml_techniques_self_evolving_agent_systems",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/LEDGER.md",
+      "source_location": "L117",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ledger",
       "target": "corpus_ml_techniques_agent_memory_architectures",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L116",
-      "weight": 1.0
-    },
-    {
-      "source": "corpus_ledger",
-      "target": "corpus_ml_techniques_state_space_models_linear_attention",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "corpus/LEDGER.md",
-      "source_location": "L126",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -14795,7 +15183,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L136",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
@@ -14806,7 +15194,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L146",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -14817,7 +15205,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L157",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -14828,7 +15216,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L168",
+      "source_location": "L179",
       "weight": 1.0
     },
     {
@@ -14839,7 +15227,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L179",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -14850,7 +15238,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L190",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -14861,7 +15249,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L201",
+      "source_location": "L212",
       "weight": 1.0
     },
     {
@@ -14872,7 +15260,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L204",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -14883,7 +15271,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L212",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -14894,7 +15282,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L223",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -14905,7 +15293,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L233",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -14916,7 +15304,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L243",
+      "source_location": "L254",
       "weight": 1.0
     },
     {
@@ -14927,7 +15315,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L263",
+      "source_location": "L274",
       "weight": 1.0
     },
     {
@@ -14938,7 +15326,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L283",
+      "source_location": "L294",
       "weight": 1.0
     },
     {
@@ -14949,7 +15337,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L293",
+      "source_location": "L304",
       "weight": 1.0
     },
     {
@@ -14960,7 +15348,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L303",
+      "source_location": "L314",
       "weight": 1.0
     },
     {
@@ -14971,12 +15359,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L313",
+      "source_location": "L324",
       "weight": 1.0
     },
     {
       "source": "corpus_ledger",
-      "target": "corpus_ml_techniques_representation_architecture_co_design_language_models",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14998,18 +15386,29 @@
     },
     {
       "source": "corpus_ledger",
-      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_representation_architecture_co_design_language_models",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L45",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
       "source": "corpus_ledger",
-      "target": "corpus_design_patterns_actor_model_vs_csp",
+      "target": "corpus_ml_techniques_state_space_models_linear_attention",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/LEDGER.md",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ledger",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15020,13 +15419,24 @@
     },
     {
       "source": "corpus_ledger",
+      "target": "corpus_design_patterns_actor_model_vs_csp",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/LEDGER.md",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ledger",
       "target": "corpus_design_patterns_structured_concurrency",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L66",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -15037,7 +15447,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L76",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -15048,18 +15458,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "corpus/LEDGER.md",
-      "source_location": "L86",
-      "weight": 1.0
-    },
-    {
-      "source": "corpus_ledger",
-      "target": "corpus_ml_techniques_fine_tuning_strategies",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "corpus/LEDGER.md",
-      "source_location": "L96",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -15207,7 +15606,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_llm_inference_optimization",
+      "target": "corpus_ml_techniques_complex_phase_aware_hyperspherical_transformers",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15218,7 +15617,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_backpropagation_autodiff",
+      "target": "corpus_ml_techniques_llm_inference_optimization",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15229,7 +15628,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_rag_retrieval_architectures",
+      "target": "corpus_ml_techniques_backpropagation_autodiff",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15240,7 +15639,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_preference_optimization",
+      "target": "corpus_ml_techniques_rag_retrieval_architectures",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15251,7 +15650,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_reasoning_models",
+      "target": "corpus_ml_techniques_preference_optimization",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15262,7 +15661,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_agent_evaluation_methodology",
+      "target": "corpus_ml_techniques_reasoning_models",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15273,7 +15672,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_structured_outputs_constrained_decoding",
+      "target": "corpus_ml_techniques_agent_evaluation_methodology",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15284,7 +15683,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_mixture_of_experts_routing",
+      "target": "corpus_ml_techniques_structured_outputs_constrained_decoding",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15295,7 +15694,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_state_space_models_linear_attention",
+      "target": "corpus_ml_techniques_mixture_of_experts_routing",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15306,7 +15705,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_agent_memory_architectures",
+      "target": "corpus_ml_techniques_state_space_models_linear_attention",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15317,7 +15716,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_self_evolving_agent_systems",
+      "target": "corpus_ml_techniques_agent_memory_architectures",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15328,7 +15727,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_fine_tuning_strategies",
+      "target": "corpus_ml_techniques_self_evolving_agent_systems",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15339,7 +15738,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_fine_tuning_strategies",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15350,18 +15749,18 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_graceful_degradation",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L50",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_model_context_protocol",
+      "target": "corpus_adjacent_knowledge_graceful_degradation",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15372,7 +15771,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta",
+      "target": "corpus_adjacent_knowledge_model_context_protocol",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15383,7 +15782,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_system_design_fundamentals",
+      "target": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15394,7 +15793,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_software_supply_chain_security",
+      "target": "corpus_adjacent_knowledge_system_design_fundamentals",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15405,13 +15804,24 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_opentelemetry_interoperability",
+      "target": "corpus_adjacent_knowledge_software_supply_chain_security",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
       "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "corpus_adjacent_knowledge_opentelemetry_interoperability",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -15519,5 +15929,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6f570b8d545fc86661be28c63579049749a34b47"
+  "built_at_commit": "1f630cee1d8bb8177ce0858b38c8aeee85bf4615"
 }

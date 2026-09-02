@@ -336,15 +336,15 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1788315731.042025,
-    "seen": 1788316195.9076493,
-    "ast_hash": "360d1009574e7a0ff80328c3af6dc951",
+    "mtime": 1788326268.470997,
+    "seen": 1788326304.732167,
+    "ast_hash": "2f373c3c325da04200bc8f7a46f3ea78",
     "semantic_hash": ""
   },
   "TOPICS.md": {
-    "mtime": 1788315731.3260314,
-    "seen": 1788316195.9076505,
-    "ast_hash": "8391a765f33398263db29a4bc39cad64",
+    "mtime": 1788326268.7550035,
+    "seen": 1788326304.732168,
+    "ast_hash": "f2ceb55bffe971e92ba452cbad8fe717",
     "semantic_hash": ""
   },
   "corpus/CITATION-AUDIT-2026-07-01.md": {
@@ -360,9 +360,9 @@
     "semantic_hash": ""
   },
   "corpus/LEDGER.md": {
-    "mtime": 1788315731.6020377,
-    "seen": 1788316195.9077659,
-    "ast_hash": "1e278fcf457eaae32d182e2e12fe82a5",
+    "mtime": 1788326269.0590103,
+    "seen": 1788326304.7321706,
+    "ast_hash": "8edfeb2bf30290b01080f829d4753e83",
     "semantic_hash": ""
   },
   "corpus/adjacent-knowledge/graceful-degradation.md": {
@@ -1080,8 +1080,8 @@
     "semantic_hash": ""
   },
   "reports/domain-scaling-lab-literature-audit-2026-09-01.json": {
-    "mtime": 1788315938.919555,
-    "seen": 1788316195.9076269,
+    "mtime": 1788316503.8993254,
+    "seen": 1788326304.7321436,
     "ast_hash": "77ef8fcc7b76723aec029863ab3968eb",
     "semantic_hash": ""
   },
@@ -1458,8 +1458,8 @@
     "semantic_hash": ""
   },
   "reports/domain-scaling-lab-literature-audit-2026-09-01.md": {
-    "mtime": 1788315938.9198353,
-    "seen": 1788316195.9077678,
+    "mtime": 1788316503.8993254,
+    "seen": 1788326304.7322817,
     "ast_hash": "b38c6f6d26c1dcfec9f198a00b948785",
     "semantic_hash": ""
   },
@@ -1473,6 +1473,18 @@
     "mtime": 1788316443.3899817,
     "seen": 1788316458.66555,
     "ast_hash": "5fe05f246ef3b333543fe952635d51ff",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/representation-architecture-co-design-language-models.md": {
+    "mtime": 1788326128.107856,
+    "seen": 1788326304.7321968,
+    "ast_hash": "bae21635e423b4115dda8980c38b35d0",
+    "semantic_hash": ""
+  },
+  "corpus/CITATION-AUDIT-2026-09-02-representation-architecture.md": {
+    "mtime": 1788326252.2106316,
+    "seen": 1788326304.7322783,
+    "ast_hash": "9d67ee6b90a0d1cc28159c378763c98c",
     "semantic_hash": ""
   }
 }

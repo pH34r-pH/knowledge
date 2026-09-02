@@ -1,16 +1,16 @@
 # Graph Report - knowledge  (2026-09-02)
 
 ## Corpus Check
-- 156 files · ~142,189 words
+- 157 files · ~146,575 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 620 nodes · 698 edges · 59 communities
+- 637 nodes · 716 edges · 60 communities
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6f570b8d`
+- Built from commit: `1f630cee`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -45,14 +45,15 @@
 - commands/tasks.md
 - graceful-degradation.md
 - Knowledge Corpus — Project Context
-- model-context-protocol.md
+- complex-phase-aware-hyperspherical-transformers.md
 - durable-execution-engines.md
 - OpenTelemetry: telemetry interoperability, not an observability backend
+- system-design-fundamentals.md
 - Software supply-chain security: inventory, provenance, and policy
+- cqrs-event-sourcing.md
 - Actor model versus CSP channels: ownership and coordination
-- saga-pattern.md
+- rag-retrieval-architectures.md
 - Structured concurrency: lifetime-bounded task trees
-- backpropagation-autodiff.md
 - Preference Optimization: RLHF vs DPO vs GRPO — Mechanism, Trade-offs, and Failure Modes
 - Reasoning / Test-Time-Compute Models: Mechanism, Trade-offs, and Failure Modes
 - Harness & skill options
@@ -73,7 +74,7 @@
 - Structured outputs and constrained decoding: syntax guarantees, semantic limits
 
 ## God Nodes (most connected - your core abstractions)
-1. `Entries` - 30 edges
+1. `Entries` - 31 edges
 2. `Tasks: [FEATURE NAME]` - 13 edges
 3. `Tasks: Corpus Population Research Loop` - 11 edges
 4. `Populate Corpus — the researcher loop` - 10 edges
@@ -99,7 +100,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (59 total, 0 thin omitted)
+## Communities (60 total, 0 thin omitted)
 
 ### Community 0 - "common.sh"
 Cohesion: 0.14
@@ -147,7 +148,7 @@ Nodes (20): Additional Security Requirements, API Security, Authentication and A
 
 ### Community 14 - "Entries"
 Cohesion: 0.06
-Nodes (32): 2026-07-01 — Attention and the Transformer architecture, internals, 2026-07-01 — Backpropagation and automatic differentiation, 2026-07-01 — CQRS and event sourcing, 2026-07-01 — Durable execution engines (Temporal, Restate, DBOS), 2026-07-01 — Evaluating agents and models rigorously (baselines, significance, honest reporting), 2026-07-01 — Graceful degradation: ranked fallback chains, 2026-07-01 — Idempotency keys and exactly-once-effect APIs, 2026-07-01 — LLM inference optimization: continuous batching, paged KV-cache, speculative decoding (+24 more)
+Nodes (33): 2026-07-01 — Attention and the Transformer architecture, internals, 2026-07-01 — Backpropagation and automatic differentiation, 2026-07-01 — CQRS and event sourcing, 2026-07-01 — Durable execution engines (Temporal, Restate, DBOS), 2026-07-01 — Evaluating agents and models rigorously (baselines, significance, honest reporting), 2026-07-01 — Graceful degradation: ranked fallback chains, 2026-07-01 — Idempotency keys and exactly-once-effect APIs, 2026-07-01 — LLM inference optimization: continuous batching, paged KV-cache, speculative decoding (+25 more)
 
 ### Community 15 - "Tasks: Corpus Population Research Loop"
 Cohesion: 0.11
@@ -221,9 +222,9 @@ Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, W
 Cohesion: 0.29
 Nodes (6): Git and verification discipline, Knowledge Corpus — Project Context, Purpose and authority, Research integrity gates, Spec Kit contract, Vault, privacy, and provenance boundaries
 
-### Community 33 - "model-context-protocol.md"
-Cohesion: 0.29
-Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+### Community 33 - "complex-phase-aware-hyperspherical-transformers.md"
+Cohesion: 0.12
+Nodes (15): A hypersphere changes both representation and update, A matched-control protocol, Common failure modes, Complex state still needs real decisions, Control-first, Further reading, Geometry-first, How the mechanisms differ (+7 more)
 
 ### Community 34 - "durable-execution-engines.md"
 Cohesion: 0.29
@@ -233,25 +234,29 @@ Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, W
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, OpenTelemetry: telemetry interoperability, not an observability backend, Trade-offs, What it is, When to reach for it
 
+### Community 36 - "system-design-fundamentals.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+
 ### Community 37 - "Software supply-chain security: inventory, provenance, and policy"
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Software supply-chain security: inventory, provenance, and policy, Trade-offs, What it is, When to reach for it
+
+### Community 38 - "cqrs-event-sourcing.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
 ### Community 39 - "Actor model versus CSP channels: ownership and coordination"
 Cohesion: 0.29
 Nodes (7): Actor model versus CSP channels: ownership and coordination, Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
-### Community 40 - "saga-pattern.md"
+### Community 40 - "rag-retrieval-architectures.md"
 Cohesion: 0.29
 Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
 ### Community 41 - "Structured concurrency: lifetime-bounded task trees"
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Structured concurrency: lifetime-bounded task trees, Trade-offs, What it is, When to reach for it
-
-### Community 42 - "backpropagation-autodiff.md"
-Cohesion: 0.29
-Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
 ### Community 43 - "Preference Optimization: RLHF vs DPO vs GRPO — Mechanism, Trade-offs, and Failure Modes"
 Cohesion: 0.29
@@ -326,18 +331,18 @@ Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Structured outputs and constrained decoding: syntax guarantees, semantic limits, Trade-offs, What it is, When to reach for it
 
 ## Knowledge Gaps
-- **430 isolated node(s):** `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state`, `Step 2 — Select the topic`, `Step 3 — Decide the research harness` (+425 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 448 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **444 isolated node(s):** `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state`, `Step 2 — Select the topic`, `Step 3 — Decide the research harness` (+439 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 462 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Corpus Research Ledger` connect `Entries` to `README.md`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
 - **Why does `Feature Specification: Corpus Population Research Loop` connect `User Scenarios & Testing *(mandatory)*` to `README.md`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state` to the rest of the system?**
-  _430 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _444 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `common.sh` be split into smaller, more focused modules?**
   _Cohesion score 0.14393939393939395 - nodes in this community are weakly interconnected._
 - **Should `Tasks: [FEATURE NAME]` be split into smaller, more focused modules?**
