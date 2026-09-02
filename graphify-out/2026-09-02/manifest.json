@@ -336,15 +336,15 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1788303547.951942,
-    "seen": 1788303630.4270465,
-    "ast_hash": "251da43cdb28db8f598537a6711c5403",
+    "mtime": 1788315731.042025,
+    "seen": 1788316195.9076493,
+    "ast_hash": "360d1009574e7a0ff80328c3af6dc951",
     "semantic_hash": ""
   },
   "TOPICS.md": {
-    "mtime": 1788303547.6639354,
-    "seen": 1788303630.4270475,
-    "ast_hash": "e6040950fd1f12d5fbb3aae5518618ff",
+    "mtime": 1788315731.3260314,
+    "seen": 1788316195.9076505,
+    "ast_hash": "8391a765f33398263db29a4bc39cad64",
     "semantic_hash": ""
   },
   "corpus/CITATION-AUDIT-2026-07-01.md": {
@@ -360,9 +360,9 @@
     "semantic_hash": ""
   },
   "corpus/LEDGER.md": {
-    "mtime": 1788301219.6731207,
-    "seen": 1788303630.4270504,
-    "ast_hash": "c493bd555968bb95a669d389e3159573",
+    "mtime": 1788315731.6020377,
+    "seen": 1788316195.9077659,
+    "ast_hash": "1e278fcf457eaae32d182e2e12fe82a5",
     "semantic_hash": ""
   },
   "corpus/adjacent-knowledge/graceful-degradation.md": {
@@ -1080,9 +1080,9 @@
     "semantic_hash": ""
   },
   "reports/domain-scaling-lab-literature-audit-2026-09-01.json": {
-    "mtime": 1788303500.625948,
-    "seen": 1788303630.4270172,
-    "ast_hash": "90e87b6f514eb707c41825d7299b11fa",
+    "mtime": 1788315938.919555,
+    "seen": 1788316195.9076269,
+    "ast_hash": "77ef8fcc7b76723aec029863ab3968eb",
     "semantic_hash": ""
   },
   "arxiv/1312.6203.pdf": {
@@ -1458,9 +1458,21 @@
     "semantic_hash": ""
   },
   "reports/domain-scaling-lab-literature-audit-2026-09-01.md": {
-    "mtime": 1788303500.6302288,
-    "seen": 1788303630.427136,
-    "ast_hash": "7af3479294e55c55de916a3b433840bb",
+    "mtime": 1788315938.9198353,
+    "seen": 1788316195.9077678,
+    "ast_hash": "b38c6f6d26c1dcfec9f198a00b948785",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/logarithmic-closed-numerical-representations.md": {
+    "mtime": 1788316394.260888,
+    "seen": 1788316458.6654487,
+    "ast_hash": "a6d7d329fd29c457ae2dba9bd7184dab",
+    "semantic_hash": ""
+  },
+  "corpus/CITATION-AUDIT-2026-09-02.md": {
+    "mtime": 1788316443.3899817,
+    "seen": 1788316458.66555,
+    "ast_hash": "5fe05f246ef3b333543fe952635d51ff",
     "semantic_hash": ""
   }
 }

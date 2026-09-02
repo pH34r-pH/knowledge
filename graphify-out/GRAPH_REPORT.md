@@ -1,16 +1,16 @@
 # Graph Report - knowledge  (2026-09-02)
 
 ## Corpus Check
-- 154 files · ~138,501 words
+- 156 files · ~142,189 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 604 nodes · 680 edges · 58 communities
+- 620 nodes · 698 edges · 59 communities
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c3bf130b`
+- Built from commit: `6f570b8d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,6 +24,7 @@
 - Blue Swallow Society Constitution
 - prompt-injection-lethal-trifecta.md
 - idempotency-keys.md
+- representation-architecture-co-design-language-models.md
 - Blue Swallow Society Constitution
 - Entries
 - Tasks: Corpus Population Research Loop
@@ -42,9 +43,10 @@
 - commands/plan.md
 - specify.md
 - commands/tasks.md
+- graceful-degradation.md
 - Knowledge Corpus — Project Context
 - model-context-protocol.md
-- system-design-fundamentals.md
+- durable-execution-engines.md
 - OpenTelemetry: telemetry interoperability, not an observability backend
 - Software supply-chain security: inventory, provenance, and policy
 - Actor model versus CSP channels: ownership and coordination
@@ -52,7 +54,6 @@
 - Structured concurrency: lifetime-bounded task trees
 - backpropagation-autodiff.md
 - Preference Optimization: RLHF vs DPO vs GRPO — Mechanism, Trade-offs, and Failure Modes
-- rag-retrieval-architectures.md
 - Reasoning / Test-Time-Compute Models: Mechanism, Trade-offs, and Failure Modes
 - Harness & skill options
 - Citation audit — 2026-07-01
@@ -72,7 +73,7 @@
 - Structured outputs and constrained decoding: syntax guarantees, semantic limits
 
 ## God Nodes (most connected - your core abstractions)
-1. `Entries` - 28 edges
+1. `Entries` - 30 edges
 2. `Tasks: [FEATURE NAME]` - 13 edges
 3. `Tasks: Corpus Population Research Loop` - 11 edges
 4. `Populate Corpus — the researcher loop` - 10 edges
@@ -98,7 +99,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (58 total, 0 thin omitted)
+## Communities (59 total, 0 thin omitted)
 
 ### Community 0 - "common.sh"
 Cohesion: 0.14
@@ -136,13 +137,17 @@ Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, W
 Cohesion: 0.29
 Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
+### Community 9 - "representation-architecture-co-design-language-models.md"
+Cohesion: 0.14
+Nodes (13): Architecture-first, Common failure modes, Control-first, Coordinates define which operations are cheap and meaningful, Further reading, Granularity changes both information and cost, How the coupling works, In practice: a decision protocol (+5 more)
+
 ### Community 13 - "Blue Swallow Society Constitution"
 Cohesion: 0.10
 Nodes (20): Additional Security Requirements, API Security, Authentication and Authorization, Blue Swallow Society Constitution, Code Review Security Focus, Core Principles, Data Protection, Dependency Management (+12 more)
 
 ### Community 14 - "Entries"
-Cohesion: 0.07
-Nodes (30): 2026-07-01 — Attention and the Transformer architecture, internals, 2026-07-01 — Backpropagation and automatic differentiation, 2026-07-01 — CQRS and event sourcing, 2026-07-01 — Durable execution engines (Temporal, Restate, DBOS), 2026-07-01 — Evaluating agents and models rigorously (baselines, significance, honest reporting), 2026-07-01 — Graceful degradation: ranked fallback chains, 2026-07-01 — Idempotency keys and exactly-once-effect APIs, 2026-07-01 — LLM inference optimization: continuous batching, paged KV-cache, speculative decoding (+22 more)
+Cohesion: 0.06
+Nodes (32): 2026-07-01 — Attention and the Transformer architecture, internals, 2026-07-01 — Backpropagation and automatic differentiation, 2026-07-01 — CQRS and event sourcing, 2026-07-01 — Durable execution engines (Temporal, Restate, DBOS), 2026-07-01 — Evaluating agents and models rigorously (baselines, significance, honest reporting), 2026-07-01 — Graceful degradation: ranked fallback chains, 2026-07-01 — Idempotency keys and exactly-once-effect APIs, 2026-07-01 — LLM inference optimization: continuous batching, paged KV-cache, speculative decoding (+24 more)
 
 ### Community 15 - "Tasks: Corpus Population Research Loop"
 Cohesion: 0.11
@@ -208,6 +213,10 @@ Nodes (7): For AI Generation, Outline, Pre-Execution Checks, Quick Guidelines, S
 Cohesion: 0.25
 Nodes (7): Checklist Format (REQUIRED), Outline, Phase Structure, Pre-Execution Checks, Task Generation Rules, Task Organization, User Input
 
+### Community 31 - "graceful-degradation.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+
 ### Community 32 - "Knowledge Corpus — Project Context"
 Cohesion: 0.29
 Nodes (6): Git and verification discipline, Knowledge Corpus — Project Context, Purpose and authority, Research integrity gates, Spec Kit contract, Vault, privacy, and provenance boundaries
@@ -216,7 +225,7 @@ Nodes (6): Git and verification discipline, Knowledge Corpus — Project Context
 Cohesion: 0.29
 Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
-### Community 34 - "system-design-fundamentals.md"
+### Community 34 - "durable-execution-engines.md"
 Cohesion: 0.29
 Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
@@ -247,10 +256,6 @@ Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, W
 ### Community 43 - "Preference Optimization: RLHF vs DPO vs GRPO — Mechanism, Trade-offs, and Failure Modes"
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Preference Optimization: RLHF vs DPO vs GRPO — Mechanism, Trade-offs, and Failure Modes, Trade-offs, What it is, When to reach for it
-
-### Community 44 - "rag-retrieval-architectures.md"
-Cohesion: 0.29
-Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
 ### Community 45 - "Reasoning / Test-Time-Compute Models: Mechanism, Trade-offs, and Failure Modes"
 Cohesion: 0.29
@@ -321,18 +326,18 @@ Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Structured outputs and constrained decoding: syntax guarantees, semantic limits, Trade-offs, What it is, When to reach for it
 
 ## Knowledge Gaps
-- **417 isolated node(s):** `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state`, `Step 2 — Select the topic`, `Step 3 — Decide the research harness` (+412 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 435 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **430 isolated node(s):** `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state`, `Step 2 — Select the topic`, `Step 3 — Decide the research harness` (+425 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 448 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Corpus Research Ledger` connect `Entries` to `README.md`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
+  _High betweenness centrality (0.050) - this node is a cross-community bridge._
 - **Why does `Feature Specification: Corpus Population Research Loop` connect `User Scenarios & Testing *(mandatory)*` to `README.md`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state` to the rest of the system?**
-  _417 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _430 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `common.sh` be split into smaller, more focused modules?**
   _Cohesion score 0.14393939393939395 - nodes in this community are weakly interconnected._
 - **Should `Tasks: [FEATURE NAME]` be split into smaller, more focused modules?**

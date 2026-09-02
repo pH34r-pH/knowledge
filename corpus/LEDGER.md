@@ -26,6 +26,17 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 -->
 
+### 2026-09-02 — Representation–architecture co-design for language models
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research + storm
+- **Sources:** 8 · **Confidence:** medium
+- **File:** [corpus/ml-techniques/representation-architecture-co-design-language-models.md](ml-techniques/representation-architecture-co-design-language-models.md)
+- **Citation audit:** 8/8 resolved · 8/8 exact versioned URLs live · 19/19 citation-bearing claim groups independently entailed; 0 unrelated, contradictory, or residual-overstatement findings after six verifier-required corrections ([audit](CITATION-AUDIT-2026-09-02-representation-architecture.md))
+- **Vault cross-links:** none (vault paths unavailable on this host; public literature synthesis only)
+- **Builds on / supersedes:** extends [attention-transformers](ml-techniques/attention-transformers.md) with representation/operator interaction and causal-control design
+- **Open question:** no cited study runs one shared, budget-matched representation × operator factorial across tokenization, geometric state constraints, and algebra-aware operators; the proposed crossed protocol remains a synthesis to be tested.
+
 ### 2026-09-02 — Logarithmic and closed numerical representations for neural arithmetic
 - **Status:** current
 - **Pillar:** ml-techniques

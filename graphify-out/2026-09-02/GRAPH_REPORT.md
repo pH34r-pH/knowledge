@@ -1,26 +1,29 @@
 # Graph Report - knowledge  (2026-09-02)
 
 ## Corpus Check
-- 154 files · ~135,455 words
+- 154 files · ~138,501 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 593 nodes · 669 edges · 58 communities
+- 604 nodes · 680 edges · 58 communities
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a513aca8`
+- Built from commit: `c3bf130b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - common.sh
+- logarithmic-closed-numerical-representations.md
 - create-new-feature.ps1
 - common.ps1
 - Tasks: [FEATURE NAME]
 - analyze.md
 - Blue Swallow Society Constitution
+- prompt-injection-lethal-trifecta.md
+- idempotency-keys.md
 - Blue Swallow Society Constitution
 - Entries
 - Tasks: Corpus Population Research Loop
@@ -39,14 +42,11 @@
 - commands/plan.md
 - specify.md
 - commands/tasks.md
-- graceful-degradation.md
 - Knowledge Corpus — Project Context
 - model-context-protocol.md
 - system-design-fundamentals.md
 - OpenTelemetry: telemetry interoperability, not an observability backend
-- durable-execution-engines.md
 - Software supply-chain security: inventory, provenance, and policy
-- resilience-patterns.md
 - Actor model versus CSP channels: ownership and coordination
 - saga-pattern.md
 - Structured concurrency: lifetime-bounded task trees
@@ -104,6 +104,10 @@
 Cohesion: 0.14
 Nodes (27): check-prerequisites.sh script, check_dir(), check_feature_branch(), check_file(), feature_json_matches_feature_dir(), find_feature_dir_by_prefix(), find_specify_root(), get_current_branch() (+19 more)
 
+### Community 1 - "logarithmic-closed-numerical-representations.md"
+Cohesion: 0.18
+Nodes (10): A practical evaluation protocol, Arbitrary and mixed bases, Closed products with an explicit phase law, Further reading, How the design space evolved, Power-of-two logarithmic quantization, Trade-offs and failure modes, What it is (+2 more)
+
 ### Community 2 - "create-new-feature.ps1"
 Cohesion: 0.46
 Nodes (7): ConvertTo-CleanBranchName(), Get-BranchName(), Get-HighestNumberFromBranches(), Get-HighestNumberFromNames(), Get-HighestNumberFromRemoteRefs(), Get-HighestNumberFromSpecs(), Get-NextBranchNumber()
@@ -124,6 +128,14 @@ Nodes (25): 1. Initialize Analysis Context, 2. Load Artifacts (Progressive Discl
 Cohesion: 0.10
 Nodes (20): Additional Security Requirements, API Security, Authentication and Authorization, Blue Swallow Society Constitution, Code Review Security Focus, Core Principles, Data Protection, Dependency Management (+12 more)
 
+### Community 7 - "prompt-injection-lethal-trifecta.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+
+### Community 8 - "idempotency-keys.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+
 ### Community 13 - "Blue Swallow Society Constitution"
 Cohesion: 0.10
 Nodes (20): Additional Security Requirements, API Security, Authentication and Authorization, Blue Swallow Society Constitution, Code Review Security Focus, Core Principles, Data Protection, Dependency Management (+12 more)
@@ -137,8 +149,8 @@ Cohesion: 0.11
 Nodes (17): Dependencies & Execution Order, Format: `[ID] [P?] [Story] Description`, Implementation for User Story 1, Implementation for User Story 2, Implementation for User Story 3 (recurring — not a one-time checklist), Implementation for User Story 4, Notes, Phase 1: Setup (Shared Infrastructure) (+9 more)
 
 ### Community 16 - "README.md"
-Cohesion: 0.06
-Nodes (26): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it, Further reading, How it works (+18 more)
+Cohesion: 0.05
+Nodes (32): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it, Further reading, How it works (+24 more)
 
 ### Community 17 - "Feature Specification: [FEATURE NAME]"
 Cohesion: 0.15
@@ -196,10 +208,6 @@ Nodes (7): For AI Generation, Outline, Pre-Execution Checks, Quick Guidelines, S
 Cohesion: 0.25
 Nodes (7): Checklist Format (REQUIRED), Outline, Phase Structure, Pre-Execution Checks, Task Generation Rules, Task Organization, User Input
 
-### Community 31 - "graceful-degradation.md"
-Cohesion: 0.29
-Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
-
 ### Community 32 - "Knowledge Corpus — Project Context"
 Cohesion: 0.29
 Nodes (6): Git and verification discipline, Knowledge Corpus — Project Context, Purpose and authority, Research integrity gates, Spec Kit contract, Vault, privacy, and provenance boundaries
@@ -216,17 +224,9 @@ Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, W
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, OpenTelemetry: telemetry interoperability, not an observability backend, Trade-offs, What it is, When to reach for it
 
-### Community 36 - "durable-execution-engines.md"
-Cohesion: 0.29
-Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
-
 ### Community 37 - "Software supply-chain security: inventory, provenance, and policy"
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Software supply-chain security: inventory, provenance, and policy, Trade-offs, What it is, When to reach for it
-
-### Community 38 - "resilience-patterns.md"
-Cohesion: 0.29
-Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
 ### Community 39 - "Actor model versus CSP channels: ownership and coordination"
 Cohesion: 0.29
@@ -321,8 +321,8 @@ Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Structured outputs and constrained decoding: syntax guarantees, semantic limits, Trade-offs, What it is, When to reach for it
 
 ## Knowledge Gaps
-- **408 isolated node(s):** `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state`, `Step 2 — Select the topic`, `Step 3 — Decide the research harness` (+403 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 426 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **417 isolated node(s):** `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state`, `Step 2 — Select the topic`, `Step 3 — Decide the research harness` (+412 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 435 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -332,7 +332,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Feature Specification: Corpus Population Research Loop` connect `User Scenarios & Testing *(mandatory)*` to `README.md`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state` to the rest of the system?**
-  _408 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _417 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `common.sh` be split into smaller, more focused modules?**
   _Cohesion score 0.14393939393939395 - nodes in this community are weakly interconnected._
 - **Should `Tasks: [FEATURE NAME]` be split into smaller, more focused modules?**

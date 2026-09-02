@@ -49,7 +49,7 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Agent memory architectures — grounded in MemEvolve and GenericAgent already sitting in `arxiv/` (harness: vault-adapt + deep-research)
 - [ ] Bias-variance tradeoff and the double-descent wrinkle — the classical framing plus the part modern deep learning complicates (harness: deep-research)
 - [x] Self-evolving agent systems: harness-layer vs. text-mutable-layer adaptation — this repo's own seed paper (MOSS) makes the core argument; write it up properly (harness: vault-adapt)
-- [ ] Representation–architecture co-design for language models — tokenization, geometry, algebra, and compute allocation must be evaluated as crossed representation × operator choices rather than isolated swaps (harness: deep-research + storm)
+- [x] Representation–architecture co-design for language models — tokenization, geometry, algebra, and compute allocation must be evaluated as crossed representation × operator choices rather than isolated swaps (harness: deep-research + storm)
 - [ ] Complex/phase-aware and hyperspherical Transformer computation — separate useful phase algebra, unit-sphere normalization, recurrent depth, and retained-radius claims with matched controls (harness: deep-research + storm)
 - [ ] Vector-symbolic representations and algebra-aware neural processing — HRR/FHRR binding, superposition, cleanup, and when Hrrformer-style operators add more than generic attention (harness: deep-research)
 - [ ] Spectral graph methods as representation/operator co-design — Laplacian-induced bases, spectral attention, gauge ambiguity, and oversmoothing/oversquashing diagnostics (harness: deep-research + storm)
