@@ -336,15 +336,15 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1788327273.1736434,
-    "seen": 1788327286.9051135,
-    "ast_hash": "cdee72e2a730fa365de0558df267104c",
+    "mtime": 1788328620.9318972,
+    "seen": 1788328679.6506333,
+    "ast_hash": "26d58ef9e81697294044376a9f0ddec4",
     "semantic_hash": ""
   },
   "TOPICS.md": {
-    "mtime": 1788327273.741656,
-    "seen": 1788327286.905115,
-    "ast_hash": "349a76eb7579b3b867e6d85f554a5d99",
+    "mtime": 1788328621.2119036,
+    "seen": 1788328679.6506343,
+    "ast_hash": "1d977abac378f1feae557def65ef0cbd",
     "semantic_hash": ""
   },
   "corpus/CITATION-AUDIT-2026-07-01.md": {
@@ -360,9 +360,9 @@
     "semantic_hash": ""
   },
   "corpus/LEDGER.md": {
-    "mtime": 1788327273.4656498,
-    "seen": 1788327286.9051173,
-    "ast_hash": "615938e7b407bedb0a15f9ceb94569ac",
+    "mtime": 1788328621.5399108,
+    "seen": 1788328679.6507542,
+    "ast_hash": "48243c1c19f44f949059671700a6c6a2",
     "semantic_hash": ""
   },
   "corpus/adjacent-knowledge/graceful-degradation.md": {
@@ -1080,9 +1080,9 @@
     "semantic_hash": ""
   },
   "reports/domain-scaling-lab-literature-audit-2026-09-01.json": {
-    "mtime": 1788316503.8993254,
-    "seen": 1788326304.7321436,
-    "ast_hash": "77ef8fcc7b76723aec029863ab3968eb",
+    "mtime": 1788328578.5509467,
+    "seen": 1788328679.6506097,
+    "ast_hash": "ff3d6b4716f5a05b6c58b26ecd44d37e",
     "semantic_hash": ""
   },
   "arxiv/1312.6203.pdf": {
@@ -1458,9 +1458,9 @@
     "semantic_hash": ""
   },
   "reports/domain-scaling-lab-literature-audit-2026-09-01.md": {
-    "mtime": 1788316503.8993254,
-    "seen": 1788326304.7322817,
-    "ast_hash": "b38c6f6d26c1dcfec9f198a00b948785",
+    "mtime": 1788328733.614424,
+    "seen": 1788328776.5485888,
+    "ast_hash": "b9e884caa9fe58c842a2785cb67b53da",
     "semantic_hash": ""
   },
   "corpus/ml-techniques/logarithmic-closed-numerical-representations.md": {
@@ -1497,6 +1497,18 @@
     "mtime": 1788327254.3092213,
     "seen": 1788327286.9052255,
     "ast_hash": "4adb02dd02c6c5f7b0781038cef01adb",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md": {
+    "mtime": 1788328306.1008418,
+    "seen": 1788328679.6506672,
+    "ast_hash": "d805c06c62524f5206ec114776e32041",
+    "semantic_hash": ""
+  },
+  "corpus/CITATION-AUDIT-2026-09-02-vector-symbolic.md": {
+    "mtime": 1788328394.3628166,
+    "seen": 1788328679.650752,
+    "ast_hash": "959ebfd9cbe9d20ce06bc5a50f9b4028",
     "semantic_hash": ""
   }
 }

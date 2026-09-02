@@ -1576,26 +1576,6 @@
       "source_location": "L1"
     },
     {
-      "id": "corpus_adjacent_knowledge_model_context_protocol",
-      "label": "model-context-protocol.md",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "title": "Model Context Protocol (MCP): the agent\u2013tool integration standard",
-        "pillar": "adjacent-knowledge",
-        "method": "deep-research",
-        "date": "2026-07-01",
-        "sources": "9",
-        "confidence": "high"
-      },
-      "node_kind": "page",
-      "norm_label": "model-context-protocol.md",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L1"
-    },
-    {
       "id": "corpus_design_patterns_resilience_patterns",
       "label": "resilience-patterns.md",
       "_origin": "ast",
@@ -1636,23 +1616,23 @@
       "source_location": "L1"
     },
     {
-      "id": "corpus_ml_techniques_backpropagation_autodiff",
-      "label": "backpropagation-autodiff.md",
+      "id": "corpus_ml_techniques_attention_transformers",
+      "label": "attention-transformers.md",
       "_origin": "ast",
       "community": 16,
       "community_name": "README.md",
       "file_type": "document",
       "frontmatter": {
-        "title": "Backpropagation and automatic differentiation",
+        "title": "Attention and the Transformer architecture, internals",
         "pillar": "ml-techniques",
         "method": "deep-research",
         "date": "2026-07-01",
-        "sources": "8",
+        "sources": "12",
         "confidence": "high"
       },
       "node_kind": "page",
-      "norm_label": "backpropagation-autodiff.md",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "norm_label": "attention-transformers.md",
+      "source_file": "corpus/ml-techniques/attention-transformers.md",
       "source_location": "L1"
     },
     {
@@ -1817,6 +1797,26 @@
       "source_location": "L1"
     },
     {
+      "id": "corpus_ml_techniques_rag_retrieval_architectures",
+      "label": "rag-retrieval-architectures.md",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "RAG retrieval architectures \u2014 vector, graph, and hybrid, and when each stops working",
+        "pillar": "ml-techniques",
+        "method": "storm",
+        "date": "2026-07-01",
+        "sources": "20",
+        "confidence": "medium"
+      },
+      "node_kind": "page",
+      "norm_label": "rag-retrieval-architectures.md",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_location": "L1"
+    },
+    {
       "id": "corpus_ml_techniques_agent_memory_architectures",
       "label": "agent-memory-architectures.md",
       "_origin": "ast",
@@ -1923,78 +1923,6 @@
       "norm_label": "building.md",
       "source_file": "BUILDING.md",
       "source_location": "L1"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_further_reading",
-      "label": "Further reading",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "further reading",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L63"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_how_it_works",
-      "label": "How it works",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how it works",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L24"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_in_practice",
-      "label": "In practice",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "in practice",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L52"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_trade_offs",
-      "label": "Trade-offs",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "trade-offs",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L38"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_what_it_is",
-      "label": "What it is",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what it is",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L10"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_model_context_protocol_when_to_reach_for_it",
-      "label": "When to reach for it",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "when to reach for it",
-      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
-      "source_location": "L16"
     },
     {
       "id": "corpus_citation_audit_2026_07_01",
@@ -2249,7 +2177,7 @@
       "source_location": "L23"
     },
     {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_further_reading",
+      "id": "corpus_ml_techniques_attention_transformers_further_reading",
       "label": "Further reading",
       "_origin": "ast",
       "community": 16,
@@ -2257,11 +2185,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "further reading",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L60"
+      "source_file": "corpus/ml-techniques/attention-transformers.md",
+      "source_location": "L65"
     },
     {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_how_it_works",
+      "id": "corpus_ml_techniques_attention_transformers_how_it_works",
       "label": "How it works",
       "_origin": "ast",
       "community": 16,
@@ -2269,11 +2197,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "how it works",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L26"
+      "source_file": "corpus/ml-techniques/attention-transformers.md",
+      "source_location": "L30"
     },
     {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_in_practice",
+      "id": "corpus_ml_techniques_attention_transformers_in_practice",
       "label": "In practice",
       "_origin": "ast",
       "community": 16,
@@ -2281,11 +2209,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "in practice",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L52"
+      "source_file": "corpus/ml-techniques/attention-transformers.md",
+      "source_location": "L59"
     },
     {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_trade_offs",
+      "id": "corpus_ml_techniques_attention_transformers_trade_offs",
       "label": "Trade-offs",
       "_origin": "ast",
       "community": 16,
@@ -2293,11 +2221,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "trade-offs",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
-      "source_location": "L40"
+      "source_file": "corpus/ml-techniques/attention-transformers.md",
+      "source_location": "L47"
     },
     {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_what_it_is",
+      "id": "corpus_ml_techniques_attention_transformers_what_it_is",
       "label": "What it is",
       "_origin": "ast",
       "community": 16,
@@ -2305,11 +2233,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "what it is",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_file": "corpus/ml-techniques/attention-transformers.md",
       "source_location": "L10"
     },
     {
-      "id": "corpus_ml_techniques_backpropagation_autodiff_when_to_reach_for_it",
+      "id": "corpus_ml_techniques_attention_transformers_when_to_reach_for_it",
       "label": "When to reach for it",
       "_origin": "ast",
       "community": 16,
@@ -2317,7 +2245,79 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "when to reach for it",
-      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_file": "corpus/ml-techniques/attention-transformers.md",
+      "source_location": "L22"
+    },
+    {
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_location": "L74"
+    },
+    {
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_how_it_works",
+      "label": "How it works",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how it works",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_in_practice",
+      "label": "In practice",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_location": "L62"
+    },
+    {
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_trade_offs",
+      "label": "Trade-offs",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_ml_techniques_rag_retrieval_architectures_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
       "source_location": "L18"
     },
     {
@@ -5541,96 +5541,216 @@
       "source_location": "L180"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures",
-      "label": "rag-retrieval-architectures.md",
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "label": "vector-symbolic-algebra-aware-neural-processing.md",
       "_origin": "ast",
       "community": 40,
-      "community_name": "rag-retrieval-architectures.md",
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
       "file_type": "document",
       "frontmatter": {
-        "title": "RAG retrieval architectures \u2014 vector, graph, and hybrid, and when each stops working",
+        "title": "Vector-symbolic representations and algebra-aware neural processing",
         "pillar": "ml-techniques",
-        "method": "storm",
-        "date": "2026-07-01",
-        "sources": "20",
+        "method": "deep-research",
+        "date": "2026-09-02",
+        "sources": "5",
         "confidence": "medium"
       },
       "node_kind": "page",
-      "norm_label": "rag-retrieval-architectures.md",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "norm_label": "vector-symbolic-algebra-aware-neural-processing.md",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
       "source_location": "L1"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_further_reading",
-      "label": "Further reading",
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_a_matched_control_protocol",
+      "label": "A matched-control protocol",
       "_origin": "ast",
       "community": 40,
-      "community_name": "rag-retrieval-architectures.md",
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "further reading",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
-      "source_location": "L74"
+      "norm_label": "a matched-control protocol",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L136"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_how_it_works",
-      "label": "How it works",
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_algebra_first",
+      "label": "Algebra-first",
       "_origin": "ast",
       "community": 40,
-      "community_name": "rag-retrieval-architectures.md",
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "how it works",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
-      "source_location": "L26"
+      "norm_label": "algebra-first",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L120"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_in_practice",
-      "label": "In practice",
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_atomic_vectors_and_similarity",
+      "label": "Atomic vectors and similarity",
       "_origin": "ast",
       "community": 40,
-      "community_name": "rag-retrieval-architectures.md",
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "in practice",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
-      "source_location": "L62"
+      "norm_label": "atomic vectors and similarity",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L42"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_trade_offs",
-      "label": "Trade-offs",
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_binding_bundling_and_order",
+      "label": "Binding, bundling, and order",
       "_origin": "ast",
       "community": 40,
-      "community_name": "rag-retrieval-architectures.md",
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "trade-offs",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "norm_label": "binding, bundling, and order",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
       "source_location": "L48"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_what_it_is",
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_cleanup_is_part_of_the_computation",
+      "label": "Cleanup is part of the computation",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "cleanup is part of the computation",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L62"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_common_failure_modes",
+      "label": "Common failure modes",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "common failure modes",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L170"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_control_first",
+      "label": "Control-first",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "control-first",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L132"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L200"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_hrr_and_fhrr_are_related_not_interchangeable",
+      "label": "HRR and FHRR are related, not interchangeable",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "hrr and fhrr are related, not interchangeable",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L80"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_hrrformer_changing_the_operator_to_match_the_algebra",
+      "label": "Hrrformer: changing the operator to match the algebra",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "hrrformer: changing the operator to match the algebra",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L98"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_in_practice_a_decision_sequence",
+      "label": "In practice: a decision sequence",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice: a decision sequence",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L188"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_neural_first",
+      "label": "Neural-first",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "neural-first",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L126"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_the_algebraic_contract",
+      "label": "The algebraic contract",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "the algebraic contract",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L40"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_trade_offs_three_defensible_perspectives",
+      "label": "Trade-offs: three defensible perspectives",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs: three defensible perspectives",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L118"
+    },
+    {
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_what_it_is",
       "label": "What it is",
       "_origin": "ast",
       "community": 40,
-      "community_name": "rag-retrieval-architectures.md",
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "what it is",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
       "source_location": "L10"
     },
     {
-      "id": "corpus_ml_techniques_rag_retrieval_architectures_when_to_reach_for_it",
+      "id": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_when_to_reach_for_it",
       "label": "When to reach for it",
       "_origin": "ast",
       "community": 40,
-      "community_name": "rag-retrieval-architectures.md",
+      "community_name": "vector-symbolic-algebra-aware-neural-processing.md",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "when to reach for it",
-      "source_file": "corpus/ml-techniques/rag-retrieval-architectures.md",
-      "source_location": "L18"
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L30"
     },
     {
       "id": "corpus_design_patterns_structured_concurrency_further_reading",
@@ -5717,6 +5837,98 @@
       "source_location": "L18"
     },
     {
+      "id": "corpus_adjacent_knowledge_model_context_protocol",
+      "label": "model-context-protocol.md",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "model-context-protocol.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "Model Context Protocol (MCP): the agent\u2013tool integration standard",
+        "pillar": "adjacent-knowledge",
+        "method": "deep-research",
+        "date": "2026-07-01",
+        "sources": "9",
+        "confidence": "high"
+      },
+      "node_kind": "page",
+      "norm_label": "model-context-protocol.md",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_model_context_protocol_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "model-context-protocol.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L63"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_model_context_protocol_how_it_works",
+      "label": "How it works",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "model-context-protocol.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how it works",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L24"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_model_context_protocol_in_practice",
+      "label": "In practice",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "model-context-protocol.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L52"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_model_context_protocol_trade_offs",
+      "label": "Trade-offs",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "model-context-protocol.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L38"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_model_context_protocol_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "model-context-protocol.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_model_context_protocol_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "model-context-protocol.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/adjacent-knowledge/model-context-protocol.md",
+      "source_location": "L16"
+    },
+    {
       "id": "corpus_ml_techniques_preference_optimization_further_reading",
       "label": "Further reading",
       "_origin": "ast",
@@ -5799,6 +6011,98 @@
       "norm_label": "when to reach for it",
       "source_file": "corpus/ml-techniques/preference-optimization.md",
       "source_location": "L22"
+    },
+    {
+      "id": "corpus_ml_techniques_backpropagation_autodiff",
+      "label": "backpropagation-autodiff.md",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "backpropagation-autodiff.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "Backpropagation and automatic differentiation",
+        "pillar": "ml-techniques",
+        "method": "deep-research",
+        "date": "2026-07-01",
+        "sources": "8",
+        "confidence": "high"
+      },
+      "node_kind": "page",
+      "norm_label": "backpropagation-autodiff.md",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_ml_techniques_backpropagation_autodiff_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "backpropagation-autodiff.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "corpus_ml_techniques_backpropagation_autodiff_how_it_works",
+      "label": "How it works",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "backpropagation-autodiff.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how it works",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "corpus_ml_techniques_backpropagation_autodiff_in_practice",
+      "label": "In practice",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "backpropagation-autodiff.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L52"
+    },
+    {
+      "id": "corpus_ml_techniques_backpropagation_autodiff_trade_offs",
+      "label": "Trade-offs",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "backpropagation-autodiff.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L40"
+    },
+    {
+      "id": "corpus_ml_techniques_backpropagation_autodiff_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "backpropagation-autodiff.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_ml_techniques_backpropagation_autodiff_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "backpropagation-autodiff.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/ml-techniques/backpropagation-autodiff.md",
+      "source_location": "L18"
     },
     {
       "id": "corpus_ml_techniques_reasoning_models_further_reading",
@@ -6876,98 +7180,6 @@
       "norm_label": "when to reach for it",
       "source_file": "corpus/ml-techniques/agent-memory-architectures.md",
       "source_location": "L18"
-    },
-    {
-      "id": "corpus_ml_techniques_attention_transformers",
-      "label": "attention-transformers.md",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "attention-transformers.md",
-      "file_type": "document",
-      "frontmatter": {
-        "title": "Attention and the Transformer architecture, internals",
-        "pillar": "ml-techniques",
-        "method": "deep-research",
-        "date": "2026-07-01",
-        "sources": "12",
-        "confidence": "high"
-      },
-      "node_kind": "page",
-      "norm_label": "attention-transformers.md",
-      "source_file": "corpus/ml-techniques/attention-transformers.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "corpus_ml_techniques_attention_transformers_further_reading",
-      "label": "Further reading",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "attention-transformers.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "further reading",
-      "source_file": "corpus/ml-techniques/attention-transformers.md",
-      "source_location": "L65"
-    },
-    {
-      "id": "corpus_ml_techniques_attention_transformers_how_it_works",
-      "label": "How it works",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "attention-transformers.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how it works",
-      "source_file": "corpus/ml-techniques/attention-transformers.md",
-      "source_location": "L30"
-    },
-    {
-      "id": "corpus_ml_techniques_attention_transformers_in_practice",
-      "label": "In practice",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "attention-transformers.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "in practice",
-      "source_file": "corpus/ml-techniques/attention-transformers.md",
-      "source_location": "L59"
-    },
-    {
-      "id": "corpus_ml_techniques_attention_transformers_trade_offs",
-      "label": "Trade-offs",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "attention-transformers.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "trade-offs",
-      "source_file": "corpus/ml-techniques/attention-transformers.md",
-      "source_location": "L47"
-    },
-    {
-      "id": "corpus_ml_techniques_attention_transformers_what_it_is",
-      "label": "What it is",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "attention-transformers.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what it is",
-      "source_file": "corpus/ml-techniques/attention-transformers.md",
-      "source_location": "L10"
-    },
-    {
-      "id": "corpus_ml_techniques_attention_transformers_when_to_reach_for_it",
-      "label": "When to reach for it",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "attention-transformers.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "when to reach for it",
-      "source_file": "corpus/ml-techniques/attention-transformers.md",
-      "source_location": "L22"
     },
     {
       "id": "corpus_ml_techniques_fine_tuning_strategies_fine_tuning_strategies_full_updates_adapters_low_rank_deltas_and_preference_objectives",
@@ -11975,6 +12187,182 @@
       "weight": 1.0
     },
     {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_what_it_is",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_trade_offs_three_defensible_perspectives",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_a_matched_control_protocol",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L136",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_common_failure_modes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_in_practice_a_decision_sequence",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_further_reading",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L200",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_when_to_reach_for_it",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_the_algebraic_contract",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_hrr_and_fhrr_are_related_not_interchangeable",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L80",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_hrrformer_changing_the_operator_to_match_the_algebra",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_the_algebraic_contract",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_atomic_vectors_and_similarity",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_the_algebraic_contract",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_binding_bundling_and_order",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_the_algebraic_contract",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_cleanup_is_part_of_the_computation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_trade_offs_three_defensible_perspectives",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_algebra_first",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L120",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_trade_offs_three_defensible_perspectives",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_neural_first",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_trade_offs_three_defensible_perspectives",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing_control_first",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
       "source": "readme",
       "target": "readme_corpus",
       "relation": "contains",
@@ -15617,7 +16005,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_llm_inference_optimization",
+      "target": "corpus_ml_techniques_vector_symbolic_algebra_aware_neural_processing",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15628,7 +16016,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_backpropagation_autodiff",
+      "target": "corpus_ml_techniques_llm_inference_optimization",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15639,7 +16027,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_rag_retrieval_architectures",
+      "target": "corpus_ml_techniques_backpropagation_autodiff",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15650,7 +16038,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_preference_optimization",
+      "target": "corpus_ml_techniques_rag_retrieval_architectures",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15661,7 +16049,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_reasoning_models",
+      "target": "corpus_ml_techniques_preference_optimization",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15672,7 +16060,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_agent_evaluation_methodology",
+      "target": "corpus_ml_techniques_reasoning_models",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15683,7 +16071,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_structured_outputs_constrained_decoding",
+      "target": "corpus_ml_techniques_agent_evaluation_methodology",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15694,7 +16082,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_mixture_of_experts_routing",
+      "target": "corpus_ml_techniques_structured_outputs_constrained_decoding",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15705,7 +16093,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_state_space_models_linear_attention",
+      "target": "corpus_ml_techniques_mixture_of_experts_routing",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15716,7 +16104,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_agent_memory_architectures",
+      "target": "corpus_ml_techniques_state_space_models_linear_attention",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15727,7 +16115,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_self_evolving_agent_systems",
+      "target": "corpus_ml_techniques_agent_memory_architectures",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15738,7 +16126,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_fine_tuning_strategies",
+      "target": "corpus_ml_techniques_self_evolving_agent_systems",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15749,7 +16137,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_fine_tuning_strategies",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15760,18 +16148,18 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_graceful_degradation",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L51",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_model_context_protocol",
+      "target": "corpus_adjacent_knowledge_graceful_degradation",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15782,7 +16170,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta",
+      "target": "corpus_adjacent_knowledge_model_context_protocol",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15793,7 +16181,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_system_design_fundamentals",
+      "target": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15804,7 +16192,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_software_supply_chain_security",
+      "target": "corpus_adjacent_knowledge_system_design_fundamentals",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15815,13 +16203,24 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_opentelemetry_interoperability",
+      "target": "corpus_adjacent_knowledge_software_supply_chain_security",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
       "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "corpus_adjacent_knowledge_opentelemetry_interoperability",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -15929,5 +16328,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1f630cee1d8bb8177ce0858b38c8aeee85bf4615"
+  "built_at_commit": "2b9228779acdc3153f2f4f7fcab7f78734a24141"
 }

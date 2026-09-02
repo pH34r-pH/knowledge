@@ -336,15 +336,15 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1788326268.470997,
-    "seen": 1788326304.732167,
-    "ast_hash": "2f373c3c325da04200bc8f7a46f3ea78",
+    "mtime": 1788327273.1736434,
+    "seen": 1788327286.9051135,
+    "ast_hash": "cdee72e2a730fa365de0558df267104c",
     "semantic_hash": ""
   },
   "TOPICS.md": {
-    "mtime": 1788326268.7550035,
-    "seen": 1788326304.732168,
-    "ast_hash": "f2ceb55bffe971e92ba452cbad8fe717",
+    "mtime": 1788327273.741656,
+    "seen": 1788327286.905115,
+    "ast_hash": "349a76eb7579b3b867e6d85f554a5d99",
     "semantic_hash": ""
   },
   "corpus/CITATION-AUDIT-2026-07-01.md": {
@@ -360,9 +360,9 @@
     "semantic_hash": ""
   },
   "corpus/LEDGER.md": {
-    "mtime": 1788326269.0590103,
-    "seen": 1788326304.7321706,
-    "ast_hash": "8edfeb2bf30290b01080f829d4753e83",
+    "mtime": 1788327273.4656498,
+    "seen": 1788327286.9051173,
+    "ast_hash": "615938e7b407bedb0a15f9ceb94569ac",
     "semantic_hash": ""
   },
   "corpus/adjacent-knowledge/graceful-degradation.md": {
@@ -1485,6 +1485,18 @@
     "mtime": 1788326252.2106316,
     "seen": 1788326304.7322783,
     "ast_hash": "9d67ee6b90a0d1cc28159c378763c98c",
+    "semantic_hash": ""
+  },
+  "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md": {
+    "mtime": 1788327161.24714,
+    "seen": 1788327286.905136,
+    "ast_hash": "53191ce23cd55caebdc00ccde23f9cbe",
+    "semantic_hash": ""
+  },
+  "corpus/CITATION-AUDIT-2026-09-02-complex-phase-hyperspherical.md": {
+    "mtime": 1788327254.3092213,
+    "seen": 1788327286.9052255,
+    "ast_hash": "4adb02dd02c6c5f7b0781038cef01adb",
     "semantic_hash": ""
   }
 }

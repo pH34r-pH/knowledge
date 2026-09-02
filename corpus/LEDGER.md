@@ -26,6 +26,17 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 -->
 
+### 2026-09-02 — Vector-symbolic representations and algebra-aware neural processing
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research
+- **Sources:** 5 · **Confidence:** medium
+- **File:** [corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md](ml-techniques/vector-symbolic-algebra-aware-neural-processing.md)
+- **Citation audit:** 5/5 resolved · 5/5 liveness checks passed (one live IEEE bot interstitial independently resolved by DOI/indexed abstract) · 39/39 citation-bearing claim groups independently entailed across 48 citation tokens; 0 unrelated, contradictory, or residual-overstatement findings after one verifier-required citation split ([audit](CITATION-AUDIT-2026-09-02-vector-symbolic.md))
+- **Vault cross-links:** none (vault paths unavailable on this host; public literature synthesis only)
+- **Builds on / supersedes:** extends [representation–architecture co-design](ml-techniques/representation-architecture-co-design-language-models.md) and [attention internals](ml-techniques/attention-transformers.md) with explicit binding, superposition, order, cleanup, and retrieval-capacity controls
+- **Open question:** no provenance-backed source runs the full learned-dense versus HRR/FHRR state × generic versus algebra-aware operator factorial on one matched workload; Hrrformer's evidence remains long-sequence classification rather than autoregressive language modeling.
+
 ### 2026-09-02 — Complex, phase-aware, and hyperspherical Transformer computation
 - **Status:** current
 - **Pillar:** ml-techniques

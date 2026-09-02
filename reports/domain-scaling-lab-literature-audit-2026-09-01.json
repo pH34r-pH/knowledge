@@ -1070,16 +1070,22 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_arxiv_metadata_title_author_match",
         "source_repository_provenance": "pass",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_corpus_article_2026-09-02",
+        "independent_entailment": "pass_corpus_article_2026-09-02",
+        "contradiction_check": "pass_corpus_article_2026-09-02"
       },
       "knowledge_status": {
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
-        "corpus_source_lists": [],
+        "corpus_source_lists": [
+          "corpus/ml-techniques/representation-architecture-co-design-language-models.md",
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "corpus_source_lists_before_ingest": [],
-        "corpus_synthesis_coverage": [],
+        "corpus_synthesis_coverage": [
+          "corpus/ml-techniques/representation-architecture-co-design-language-models.md",
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "ledger_mentions_source": false
       }
     },
@@ -1134,16 +1140,20 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_arxiv_metadata_title_author_match",
         "source_repository_provenance": "pass_with_inference_labeled",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_corpus_article_2026-09-02",
+        "independent_entailment": "pass_corpus_article_2026-09-02",
+        "contradiction_check": "pass_corpus_article_2026-09-02"
       },
       "knowledge_status": {
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
-        "corpus_source_lists": [],
+        "corpus_source_lists": [
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "corpus_source_lists_before_ingest": [],
-        "corpus_synthesis_coverage": [],
+        "corpus_synthesis_coverage": [
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "ledger_mentions_source": false
       }
     },
@@ -3780,16 +3790,20 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_primary_publisher_or_repository_metadata",
         "source_repository_provenance": "pass_with_inference_labeled",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_corpus_article_2026-09-02",
+        "independent_entailment": "pass_corpus_article_2026-09-02",
+        "contradiction_check": "pass_corpus_article_2026-09-02"
       },
       "knowledge_status": {
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
-        "corpus_source_lists": [],
+        "corpus_source_lists": [
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "corpus_source_lists_before_ingest": [],
-        "corpus_synthesis_coverage": [],
+        "corpus_synthesis_coverage": [
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "ledger_mentions_source": false
       }
     },
@@ -3803,7 +3817,7 @@
       "year": 2003,
       "doi": null,
       "arxiv_id": null,
-      "canonical_public_url": "https://web.stanford.edu/group/cslipublications/cslipublications/site/1575863742.shtml",
+      "canonical_public_url": "https://web.stanford.edu/group/cslipublications/cslipublications/site/1575864304.shtml",
       "source_type": "book",
       "domain_scaling_lab_evidence": [
         "domain-scaling-lab#129",
@@ -3826,16 +3840,20 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_primary_publisher_or_repository_metadata",
         "source_repository_provenance": "pass_with_inference_labeled",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_corpus_article_2026-09-02",
+        "independent_entailment": "pass_corpus_article_2026-09-02",
+        "contradiction_check": "pass_corpus_article_2026-09-02"
       },
       "knowledge_status": {
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
-        "corpus_source_lists": [],
+        "corpus_source_lists": [
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "corpus_source_lists_before_ingest": [],
-        "corpus_synthesis_coverage": [],
+        "corpus_synthesis_coverage": [
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "ledger_mentions_source": false
       }
     },
@@ -3872,16 +3890,20 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_primary_publisher_or_repository_metadata",
         "source_repository_provenance": "pass_with_inference_labeled",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_corpus_article_2026-09-02",
+        "independent_entailment": "pass_corpus_article_2026-09-02",
+        "contradiction_check": "pass_corpus_article_2026-09-02"
       },
       "knowledge_status": {
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
-        "corpus_source_lists": [],
+        "corpus_source_lists": [
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "corpus_source_lists_before_ingest": [],
-        "corpus_synthesis_coverage": [],
+        "corpus_synthesis_coverage": [
+          "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+        ],
         "ledger_mentions_source": false
       }
     },
@@ -4787,6 +4809,12 @@
       "resolved_to": "CurveFP: Co-Designing Numerical Representation and Product Arithmetic for Language Models",
       "arxiv_id": "2608.10010v2",
       "status": "version_pinned_to_source_memo"
+    },
+    {
+      "mention": "Plate 2003 HRR book publisher URL",
+      "resolved_to": "Holographic Reduced Representation: Distributed Representation for Cognitive Structures",
+      "canonical_public_url": "https://web.stanford.edu/group/cslipublications/cslipublications/site/1575864304.shtml",
+      "status": "corrected_mismatched_isbn_suffix_1575863742_to_1575864304"
     }
   ],
   "negative_boundary_or_prior_art_only": [

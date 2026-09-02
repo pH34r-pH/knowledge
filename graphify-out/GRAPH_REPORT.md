@@ -1,16 +1,16 @@
 # Graph Report - knowledge  (2026-09-02)
 
 ## Corpus Check
-- 157 files · ~146,575 words
+- 157 files · ~150,890 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 637 nodes · 716 edges · 60 communities
+- 654 nodes · 733 edges · 61 communities
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1f630cee`
+- Built from commit: `2b922877`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -52,9 +52,11 @@
 - Software supply-chain security: inventory, provenance, and policy
 - cqrs-event-sourcing.md
 - Actor model versus CSP channels: ownership and coordination
-- rag-retrieval-architectures.md
+- vector-symbolic-algebra-aware-neural-processing.md
 - Structured concurrency: lifetime-bounded task trees
+- model-context-protocol.md
 - Preference Optimization: RLHF vs DPO vs GRPO — Mechanism, Trade-offs, and Failure Modes
+- backpropagation-autodiff.md
 - Reasoning / Test-Time-Compute Models: Mechanism, Trade-offs, and Failure Modes
 - Harness & skill options
 - Citation audit — 2026-07-01
@@ -66,7 +68,6 @@
 - taskstoissues.md
 - implement.md
 - Agent memory architectures: retrieval, distillation, and bounded context
-- attention-transformers.md
 - Fine-tuning strategies: full updates, adapters, low-rank deltas, and preference objectives
 - Mixture-of-Experts routing: sparse capacity and distributed costs
 - Self-evolving agent systems: guarded outer loops over agent artifacts
@@ -100,7 +101,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (60 total, 0 thin omitted)
+## Communities (61 total, 0 thin omitted)
 
 ### Community 0 - "common.sh"
 Cohesion: 0.14
@@ -250,17 +251,25 @@ Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, W
 Cohesion: 0.29
 Nodes (7): Actor model versus CSP channels: ownership and coordination, Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
-### Community 40 - "rag-retrieval-architectures.md"
-Cohesion: 0.29
-Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+### Community 40 - "vector-symbolic-algebra-aware-neural-processing.md"
+Cohesion: 0.12
+Nodes (16): A matched-control protocol, Algebra-first, Atomic vectors and similarity, Binding, bundling, and order, Cleanup is part of the computation, Common failure modes, Control-first, Further reading (+8 more)
 
 ### Community 41 - "Structured concurrency: lifetime-bounded task trees"
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Structured concurrency: lifetime-bounded task trees, Trade-offs, What it is, When to reach for it
 
+### Community 42 - "model-context-protocol.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
+
 ### Community 43 - "Preference Optimization: RLHF vs DPO vs GRPO — Mechanism, Trade-offs, and Failure Modes"
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Preference Optimization: RLHF vs DPO vs GRPO — Mechanism, Trade-offs, and Failure Modes, Trade-offs, What it is, When to reach for it
+
+### Community 44 - "backpropagation-autodiff.md"
+Cohesion: 0.29
+Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
 ### Community 45 - "Reasoning / Test-Time-Compute Models: Mechanism, Trade-offs, and Failure Modes"
 Cohesion: 0.29
@@ -306,10 +315,6 @@ Nodes (3): Outline, Pre-Execution Checks, User Input
 Cohesion: 0.29
 Nodes (7): Agent memory architectures: retrieval, distillation, and bounded context, Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
-### Community 56 - "attention-transformers.md"
-Cohesion: 0.29
-Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
-
 ### Community 57 - "Fine-tuning strategies: full updates, adapters, low-rank deltas, and preference objectives"
 Cohesion: 0.29
 Nodes (7): Fine-tuning strategies: full updates, adapters, low-rank deltas, and preference objectives, Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
@@ -331,8 +336,8 @@ Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Structured outputs and constrained decoding: syntax guarantees, semantic limits, Trade-offs, What it is, When to reach for it
 
 ## Knowledge Gaps
-- **444 isolated node(s):** `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state`, `Step 2 — Select the topic`, `Step 3 — Decide the research harness` (+439 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 462 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **458 isolated node(s):** `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state`, `Step 2 — Select the topic`, `Step 3 — Decide the research harness` (+453 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 476 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -342,7 +347,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Feature Specification: Corpus Population Research Loop` connect `User Scenarios & Testing *(mandatory)*` to `README.md`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state` to the rest of the system?**
-  _444 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _458 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `common.sh` be split into smaller, more focused modules?**
   _Cohesion score 0.14393939393939395 - nodes in this community are weakly interconnected._
 - **Should `Tasks: [FEATURE NAME]` be split into smaller, more focused modules?**
