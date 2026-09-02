@@ -26,6 +26,17 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 -->
 
+### 2026-09-02 — Logarithmic and closed numerical representations for neural arithmetic
+- **Status:** current
+- **Pillar:** ml-techniques
+- **Method:** deep-research
+- **Sources:** 4 · **Confidence:** medium
+- **File:** [corpus/ml-techniques/logarithmic-closed-numerical-representations.md](ml-techniques/logarithmic-closed-numerical-representations.md)
+- **Citation audit:** 4/4 resolved · 4/4 URLs live or canonically resolved · full-text/primary-abstract claim spans independently re-checked; one CurveFP v2 internal percentage inconsistency bounded to its raw table values ([audit](CITATION-AUDIT-2026-09-02.md))
+- **Vault cross-links:** none (public literature synthesis only)
+- **Builds on / supersedes:** —
+- **Open question:** whether closed-product savings survive memory, interconnect, scale transport, conversion, and realistic utilization in an independently reproduced accelerator.
+
 ### 2026-08-07 — Actor model versus CSP channels
 - **Status:** current
 - **Pillar:** design-patterns

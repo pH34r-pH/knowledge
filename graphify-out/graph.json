@@ -499,6 +499,146 @@
       "source_location": "L1"
     },
     {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "label": "logarithmic-closed-numerical-representations.md",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "Logarithmic and closed numerical representations for neural arithmetic",
+        "pillar": "ml-techniques",
+        "method": "deep-research",
+        "date": "2026-09-02",
+        "sources": "4",
+        "confidence": "medium"
+      },
+      "node_kind": "page",
+      "norm_label": "logarithmic-closed-numerical-representations.md",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_a_practical_evaluation_protocol",
+      "label": "A practical evaluation protocol",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "a practical evaluation protocol",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L103"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_arbitrary_and_mixed_bases",
+      "label": "Arbitrary and mixed bases",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "arbitrary and mixed bases",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L49"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_closed_products_with_an_explicit_phase_law",
+      "label": "Closed products with an explicit phase law",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "closed products with an explicit phase law",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L61"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L113"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_how_the_design_space_evolved",
+      "label": "How the design space evolved",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how the design space evolved",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L41"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_power_of_two_logarithmic_quantization",
+      "label": "Power-of-two logarithmic quantization",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "power-of-two logarithmic quantization",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L43"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_trade_offs_and_failure_modes",
+      "label": "Trade-offs and failure modes",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs and failure modes",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L89"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_what_the_evidence_supports",
+      "label": "What the evidence supports",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what the evidence supports",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L79"
+    },
+    {
+      "id": "corpus_ml_techniques_logarithmic_closed_numerical_representations_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "logarithmic-closed-numerical-representations.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L30"
+    },
+    {
       "id": "specify_scripts_powershell_check_prerequisites",
       "label": "check-prerequisites.ps1",
       "_origin": "ast",
@@ -1400,43 +1540,43 @@
       "source_location": "L1"
     },
     {
-      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta",
-      "label": "prompt-injection-lethal-trifecta.md",
+      "id": "corpus_design_patterns_resilience_patterns",
+      "label": "resilience-patterns.md",
       "_origin": "ast",
       "community": 16,
       "community_name": "README.md",
       "file_type": "document",
       "frontmatter": {
-        "title": "Prompt injection and the lethal trifecta",
-        "pillar": "adjacent-knowledge",
-        "method": "deep-research",
-        "date": "2026-07-01",
-        "sources": "7",
-        "confidence": "high"
-      },
-      "node_kind": "page",
-      "norm_label": "prompt-injection-lethal-trifecta.md",
-      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "corpus_design_patterns_idempotency_keys",
-      "label": "idempotency-keys.md",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "README.md",
-      "file_type": "document",
-      "frontmatter": {
-        "title": "Idempotency keys and exactly-once-effect APIs",
+        "title": "Resilience patterns: circuit breaker, retry with jitter, timeout budgets",
         "pillar": "design-patterns",
         "method": "deep-research",
         "date": "2026-07-01",
-        "sources": "9",
+        "sources": "12",
         "confidence": "high"
       },
       "node_kind": "page",
-      "norm_label": "idempotency-keys.md",
-      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "norm_label": "resilience-patterns.md",
+      "source_file": "corpus/design-patterns/resilience-patterns.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_design_patterns_durable_execution_engines",
+      "label": "durable-execution-engines.md",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "Durable execution engines (Temporal, Restate, DBOS)",
+        "pillar": "design-patterns",
+        "method": "deep-research",
+        "date": "2026-07-01",
+        "sources": "13",
+        "confidence": "high"
+      },
+      "node_kind": "page",
+      "norm_label": "durable-execution-engines.md",
+      "source_file": "corpus/design-patterns/durable-execution-engines.md",
       "source_location": "L1"
     },
     {
@@ -1477,6 +1617,27 @@
       "node_kind": "page",
       "norm_label": "reasoning-models.md",
       "source_file": "corpus/ml-techniques/reasoning-models.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_graceful_degradation",
+      "label": "graceful-degradation.md",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "Graceful degradation: ranked fallback chains",
+        "pillar": "adjacent-knowledge",
+        "method": "vault-adapt",
+        "date": "2026-07-01",
+        "sources": "6",
+        "confidence": "high",
+        "vault-links": "[wiki/concepts/graceful-degradation.md]"
+      },
+      "node_kind": "page",
+      "norm_label": "graceful-degradation.md",
+      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
       "source_location": "L1"
     },
     {
@@ -1729,7 +1890,7 @@
       "source_location": "L1"
     },
     {
-      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_further_reading",
+      "id": "corpus_adjacent_knowledge_graceful_degradation_further_reading",
       "label": "Further reading",
       "_origin": "ast",
       "community": 16,
@@ -1737,11 +1898,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "further reading",
-      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
-      "source_location": "L65"
+      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
+      "source_location": "L53"
     },
     {
-      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_how_it_works",
+      "id": "corpus_adjacent_knowledge_graceful_degradation_how_it_works",
       "label": "How it works",
       "_origin": "ast",
       "community": 16,
@@ -1749,11 +1910,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "how it works",
-      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
-      "source_location": "L24"
+      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
+      "source_location": "L23"
     },
     {
-      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_in_practice",
+      "id": "corpus_adjacent_knowledge_graceful_degradation_in_practice",
       "label": "In practice",
       "_origin": "ast",
       "community": 16,
@@ -1761,11 +1922,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "in practice",
-      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
-      "source_location": "L51"
+      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
+      "source_location": "L47"
     },
     {
-      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_trade_offs",
+      "id": "corpus_adjacent_knowledge_graceful_degradation_trade_offs",
       "label": "Trade-offs",
       "_origin": "ast",
       "community": 16,
@@ -1773,11 +1934,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "trade-offs",
-      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
-      "source_location": "L43"
+      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
+      "source_location": "L37"
     },
     {
-      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_what_it_is",
+      "id": "corpus_adjacent_knowledge_graceful_degradation_what_it_is",
       "label": "What it is",
       "_origin": "ast",
       "community": 16,
@@ -1785,11 +1946,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "what it is",
-      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
-      "source_location": "L10"
+      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
+      "source_location": "L11"
     },
     {
-      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_when_to_reach_for_it",
+      "id": "corpus_adjacent_knowledge_graceful_degradation_when_to_reach_for_it",
       "label": "When to reach for it",
       "_origin": "ast",
       "community": 16,
@@ -1797,8 +1958,8 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "when to reach for it",
-      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
-      "source_location": "L18"
+      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
+      "source_location": "L17"
     },
     {
       "id": "corpus_citation_audit_2026_07_01",
@@ -1885,7 +2046,7 @@
       "source_location": "L20"
     },
     {
-      "id": "corpus_design_patterns_idempotency_keys_further_reading",
+      "id": "corpus_design_patterns_durable_execution_engines_further_reading",
       "label": "Further reading",
       "_origin": "ast",
       "community": 16,
@@ -1893,11 +2054,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "further reading",
-      "source_file": "corpus/design-patterns/idempotency-keys.md",
-      "source_location": "L58"
+      "source_file": "corpus/design-patterns/durable-execution-engines.md",
+      "source_location": "L52"
     },
     {
-      "id": "corpus_design_patterns_idempotency_keys_how_it_works",
+      "id": "corpus_design_patterns_durable_execution_engines_how_it_works",
       "label": "How it works",
       "_origin": "ast",
       "community": 16,
@@ -1905,11 +2066,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "how it works",
-      "source_file": "corpus/design-patterns/idempotency-keys.md",
-      "source_location": "L28"
+      "source_file": "corpus/design-patterns/durable-execution-engines.md",
+      "source_location": "L24"
     },
     {
-      "id": "corpus_design_patterns_idempotency_keys_in_practice",
+      "id": "corpus_design_patterns_durable_execution_engines_in_practice",
       "label": "In practice",
       "_origin": "ast",
       "community": 16,
@@ -1917,11 +2078,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "in practice",
-      "source_file": "corpus/design-patterns/idempotency-keys.md",
-      "source_location": "L48"
+      "source_file": "corpus/design-patterns/durable-execution-engines.md",
+      "source_location": "L46"
     },
     {
-      "id": "corpus_design_patterns_idempotency_keys_trade_offs",
+      "id": "corpus_design_patterns_durable_execution_engines_trade_offs",
       "label": "Trade-offs",
       "_origin": "ast",
       "community": 16,
@@ -1929,11 +2090,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "trade-offs",
-      "source_file": "corpus/design-patterns/idempotency-keys.md",
-      "source_location": "L40"
+      "source_file": "corpus/design-patterns/durable-execution-engines.md",
+      "source_location": "L36"
     },
     {
-      "id": "corpus_design_patterns_idempotency_keys_what_it_is",
+      "id": "corpus_design_patterns_durable_execution_engines_what_it_is",
       "label": "What it is",
       "_origin": "ast",
       "community": 16,
@@ -1941,11 +2102,11 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "what it is",
-      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "source_file": "corpus/design-patterns/durable-execution-engines.md",
       "source_location": "L10"
     },
     {
-      "id": "corpus_design_patterns_idempotency_keys_when_to_reach_for_it",
+      "id": "corpus_design_patterns_durable_execution_engines_when_to_reach_for_it",
       "label": "When to reach for it",
       "_origin": "ast",
       "community": 16,
@@ -1953,7 +2114,79 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "when to reach for it",
-      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "source_file": "corpus/design-patterns/durable-execution-engines.md",
+      "source_location": "L16"
+    },
+    {
+      "id": "corpus_design_patterns_resilience_patterns_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/design-patterns/resilience-patterns.md",
+      "source_location": "L58"
+    },
+    {
+      "id": "corpus_design_patterns_resilience_patterns_how_it_works",
+      "label": "How it works",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how it works",
+      "source_file": "corpus/design-patterns/resilience-patterns.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "corpus_design_patterns_resilience_patterns_in_practice",
+      "label": "In practice",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice",
+      "source_file": "corpus/design-patterns/resilience-patterns.md",
+      "source_location": "L52"
+    },
+    {
+      "id": "corpus_design_patterns_resilience_patterns_trade_offs",
+      "label": "Trade-offs",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs",
+      "source_file": "corpus/design-patterns/resilience-patterns.md",
+      "source_location": "L44"
+    },
+    {
+      "id": "corpus_design_patterns_resilience_patterns_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/design-patterns/resilience-patterns.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_design_patterns_resilience_patterns_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "README.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/design-patterns/resilience-patterns.md",
       "source_location": "L16"
     },
     {
@@ -4041,99 +4274,6 @@
       "source_location": "L17"
     },
     {
-      "id": "corpus_adjacent_knowledge_graceful_degradation",
-      "label": "graceful-degradation.md",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "graceful-degradation.md",
-      "file_type": "document",
-      "frontmatter": {
-        "title": "Graceful degradation: ranked fallback chains",
-        "pillar": "adjacent-knowledge",
-        "method": "vault-adapt",
-        "date": "2026-07-01",
-        "sources": "6",
-        "confidence": "high",
-        "vault-links": "[wiki/concepts/graceful-degradation.md]"
-      },
-      "node_kind": "page",
-      "norm_label": "graceful-degradation.md",
-      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_graceful_degradation_further_reading",
-      "label": "Further reading",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "graceful-degradation.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "further reading",
-      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
-      "source_location": "L53"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_graceful_degradation_how_it_works",
-      "label": "How it works",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "graceful-degradation.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how it works",
-      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
-      "source_location": "L23"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_graceful_degradation_in_practice",
-      "label": "In practice",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "graceful-degradation.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "in practice",
-      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
-      "source_location": "L47"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_graceful_degradation_trade_offs",
-      "label": "Trade-offs",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "graceful-degradation.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "trade-offs",
-      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
-      "source_location": "L37"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_graceful_degradation_what_it_is",
-      "label": "What it is",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "graceful-degradation.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what it is",
-      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
-      "source_location": "L11"
-    },
-    {
-      "id": "corpus_adjacent_knowledge_graceful_degradation_when_to_reach_for_it",
-      "label": "When to reach for it",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "graceful-degradation.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "when to reach for it",
-      "source_file": "corpus/adjacent-knowledge/graceful-degradation.md",
-      "source_location": "L17"
-    },
-    {
       "id": "agents",
       "label": "AGENTS.md",
       "_origin": "ast",
@@ -4486,98 +4626,6 @@
       "source_location": "L18"
     },
     {
-      "id": "corpus_design_patterns_durable_execution_engines",
-      "label": "durable-execution-engines.md",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "durable-execution-engines.md",
-      "file_type": "document",
-      "frontmatter": {
-        "title": "Durable execution engines (Temporal, Restate, DBOS)",
-        "pillar": "design-patterns",
-        "method": "deep-research",
-        "date": "2026-07-01",
-        "sources": "13",
-        "confidence": "high"
-      },
-      "node_kind": "page",
-      "norm_label": "durable-execution-engines.md",
-      "source_file": "corpus/design-patterns/durable-execution-engines.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "corpus_design_patterns_durable_execution_engines_further_reading",
-      "label": "Further reading",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "durable-execution-engines.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "further reading",
-      "source_file": "corpus/design-patterns/durable-execution-engines.md",
-      "source_location": "L52"
-    },
-    {
-      "id": "corpus_design_patterns_durable_execution_engines_how_it_works",
-      "label": "How it works",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "durable-execution-engines.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how it works",
-      "source_file": "corpus/design-patterns/durable-execution-engines.md",
-      "source_location": "L24"
-    },
-    {
-      "id": "corpus_design_patterns_durable_execution_engines_in_practice",
-      "label": "In practice",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "durable-execution-engines.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "in practice",
-      "source_file": "corpus/design-patterns/durable-execution-engines.md",
-      "source_location": "L46"
-    },
-    {
-      "id": "corpus_design_patterns_durable_execution_engines_trade_offs",
-      "label": "Trade-offs",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "durable-execution-engines.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "trade-offs",
-      "source_file": "corpus/design-patterns/durable-execution-engines.md",
-      "source_location": "L36"
-    },
-    {
-      "id": "corpus_design_patterns_durable_execution_engines_what_it_is",
-      "label": "What it is",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "durable-execution-engines.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what it is",
-      "source_file": "corpus/design-patterns/durable-execution-engines.md",
-      "source_location": "L10"
-    },
-    {
-      "id": "corpus_design_patterns_durable_execution_engines_when_to_reach_for_it",
-      "label": "When to reach for it",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "durable-execution-engines.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "when to reach for it",
-      "source_file": "corpus/design-patterns/durable-execution-engines.md",
-      "source_location": "L16"
-    },
-    {
       "id": "corpus_adjacent_knowledge_software_supply_chain_security_further_reading",
       "label": "Further reading",
       "_origin": "ast",
@@ -4660,98 +4708,6 @@
       "norm_label": "when to reach for it",
       "source_file": "corpus/adjacent-knowledge/software-supply-chain-security.md",
       "source_location": "L18"
-    },
-    {
-      "id": "corpus_design_patterns_resilience_patterns",
-      "label": "resilience-patterns.md",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "resilience-patterns.md",
-      "file_type": "document",
-      "frontmatter": {
-        "title": "Resilience patterns: circuit breaker, retry with jitter, timeout budgets",
-        "pillar": "design-patterns",
-        "method": "deep-research",
-        "date": "2026-07-01",
-        "sources": "12",
-        "confidence": "high"
-      },
-      "node_kind": "page",
-      "norm_label": "resilience-patterns.md",
-      "source_file": "corpus/design-patterns/resilience-patterns.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "corpus_design_patterns_resilience_patterns_further_reading",
-      "label": "Further reading",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "resilience-patterns.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "further reading",
-      "source_file": "corpus/design-patterns/resilience-patterns.md",
-      "source_location": "L58"
-    },
-    {
-      "id": "corpus_design_patterns_resilience_patterns_how_it_works",
-      "label": "How it works",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "resilience-patterns.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how it works",
-      "source_file": "corpus/design-patterns/resilience-patterns.md",
-      "source_location": "L26"
-    },
-    {
-      "id": "corpus_design_patterns_resilience_patterns_in_practice",
-      "label": "In practice",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "resilience-patterns.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "in practice",
-      "source_file": "corpus/design-patterns/resilience-patterns.md",
-      "source_location": "L52"
-    },
-    {
-      "id": "corpus_design_patterns_resilience_patterns_trade_offs",
-      "label": "Trade-offs",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "resilience-patterns.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "trade-offs",
-      "source_file": "corpus/design-patterns/resilience-patterns.md",
-      "source_location": "L44"
-    },
-    {
-      "id": "corpus_design_patterns_resilience_patterns_what_it_is",
-      "label": "What it is",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "resilience-patterns.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what it is",
-      "source_file": "corpus/design-patterns/resilience-patterns.md",
-      "source_location": "L10"
-    },
-    {
-      "id": "corpus_design_patterns_resilience_patterns_when_to_reach_for_it",
-      "label": "When to reach for it",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "resilience-patterns.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "when to reach for it",
-      "source_file": "corpus/design-patterns/resilience-patterns.md",
-      "source_location": "L16"
     },
     {
       "id": "corpus_design_patterns_actor_model_vs_csp_actor_model_versus_csp_channels_ownership_and_coordination",
@@ -7448,6 +7404,190 @@
       "norm_label": "when to reach for it",
       "source_file": "corpus/ml-techniques/structured-outputs-constrained-decoding.md",
       "source_location": "L18"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta",
+      "label": "prompt-injection-lethal-trifecta.md",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "prompt-injection-lethal-trifecta.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "Prompt injection and the lethal trifecta",
+        "pillar": "adjacent-knowledge",
+        "method": "deep-research",
+        "date": "2026-07-01",
+        "sources": "7",
+        "confidence": "high"
+      },
+      "node_kind": "page",
+      "norm_label": "prompt-injection-lethal-trifecta.md",
+      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "prompt-injection-lethal-trifecta.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
+      "source_location": "L65"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_how_it_works",
+      "label": "How it works",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "prompt-injection-lethal-trifecta.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how it works",
+      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
+      "source_location": "L24"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_in_practice",
+      "label": "In practice",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "prompt-injection-lethal-trifecta.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice",
+      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
+      "source_location": "L51"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_trade_offs",
+      "label": "Trade-offs",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "prompt-injection-lethal-trifecta.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs",
+      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
+      "source_location": "L43"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "prompt-injection-lethal-trifecta.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "prompt-injection-lethal-trifecta.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "corpus_design_patterns_idempotency_keys",
+      "label": "idempotency-keys.md",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "idempotency-keys.md",
+      "file_type": "document",
+      "frontmatter": {
+        "title": "Idempotency keys and exactly-once-effect APIs",
+        "pillar": "design-patterns",
+        "method": "deep-research",
+        "date": "2026-07-01",
+        "sources": "9",
+        "confidence": "high"
+      },
+      "node_kind": "page",
+      "norm_label": "idempotency-keys.md",
+      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "corpus_design_patterns_idempotency_keys_further_reading",
+      "label": "Further reading",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "idempotency-keys.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "further reading",
+      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "source_location": "L58"
+    },
+    {
+      "id": "corpus_design_patterns_idempotency_keys_how_it_works",
+      "label": "How it works",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "idempotency-keys.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how it works",
+      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "source_location": "L28"
+    },
+    {
+      "id": "corpus_design_patterns_idempotency_keys_in_practice",
+      "label": "In practice",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "idempotency-keys.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "in practice",
+      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "corpus_design_patterns_idempotency_keys_trade_offs",
+      "label": "Trade-offs",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "idempotency-keys.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "trade-offs",
+      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "source_location": "L40"
+    },
+    {
+      "id": "corpus_design_patterns_idempotency_keys_what_it_is",
+      "label": "What it is",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "idempotency-keys.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what it is",
+      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "corpus_design_patterns_idempotency_keys_when_to_reach_for_it",
+      "label": "When to reach for it",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "idempotency-keys.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "when to reach for it",
+      "source_file": "corpus/design-patterns/idempotency-keys.md",
+      "source_location": "L16"
     }
   ],
   "links": [
@@ -10441,6 +10581,116 @@
       "confidence_score": 1.0,
       "source_file": "corpus/ml-techniques/llm-inference-optimization.md",
       "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_what_it_is",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_a_practical_evaluation_protocol",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_further_reading",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_when_to_reach_for_it",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_how_the_design_space_evolved",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_what_the_evidence_supports",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_trade_offs_and_failure_modes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations_how_the_design_space_evolved",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_power_of_two_logarithmic_quantization",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations_how_the_design_space_evolved",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_arbitrary_and_mixed_bases",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "corpus_ml_techniques_logarithmic_closed_numerical_representations_how_the_design_space_evolved",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations_closed_products_with_an_explicit_phase_law",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "corpus/ml-techniques/logarithmic-closed-numerical-representations.md",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -14691,18 +14941,18 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_graceful_degradation",
+      "target": "corpus_ml_techniques_logarithmic_closed_numerical_representations",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L48",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_model_context_protocol",
+      "target": "corpus_adjacent_knowledge_graceful_degradation",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14713,7 +14963,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta",
+      "target": "corpus_adjacent_knowledge_model_context_protocol",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14724,7 +14974,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_system_design_fundamentals",
+      "target": "corpus_adjacent_knowledge_prompt_injection_lethal_trifecta",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14735,7 +14985,7 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_software_supply_chain_security",
+      "target": "corpus_adjacent_knowledge_system_design_fundamentals",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14746,13 +14996,24 @@
     },
     {
       "source": "readme",
-      "target": "corpus_adjacent_knowledge_opentelemetry_interoperability",
+      "target": "corpus_adjacent_knowledge_software_supply_chain_security",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
       "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "corpus_adjacent_knowledge_opentelemetry_interoperability",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -14860,5 +15121,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a513aca8641847bbb1ce3f073374fcc1103a7abc"
+  "built_at_commit": "c3bf130b6dcfba20cab582bab9e0257b09e73200"
 }

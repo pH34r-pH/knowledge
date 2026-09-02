@@ -27,7 +27,8 @@
     "already_archived_as_complete_arxiv_pairs_before_ingest": 0,
     "newly_archived_complete_arxiv_pairs": 62,
     "complete_arxiv_pairs_after_ingest": 62,
-    "already_in_corpus_source_lists_or_syntheses": 4,
+    "already_in_corpus_source_lists_or_syntheses_before_ingest": 4,
+    "current_in_corpus_source_lists_or_syntheses": 8,
     "research_branches": 18
   },
   "resolved_publications": [
@@ -81,6 +82,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -138,6 +140,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -199,6 +202,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -254,6 +258,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -317,6 +322,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -376,6 +382,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -434,6 +441,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -489,6 +497,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -541,6 +550,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -593,14 +603,20 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_arxiv_metadata_title_author_match",
         "source_repository_provenance": "pass",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_per_corpus_ledger",
+        "independent_entailment": "pass_per_corpus_ledger",
+        "contradiction_check": "pass_or_bounded_per_corpus_ledger",
+        "corpus_audit_artifacts": [
+          "corpus/LEDGER.md"
+        ]
       },
       "knowledge_status": {
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [
+          "corpus/ml-techniques/attention-transformers.md"
+        ],
+        "corpus_source_lists_before_ingest": [
           "corpus/ml-techniques/attention-transformers.md"
         ],
         "corpus_synthesis_coverage": [
@@ -661,6 +677,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -713,6 +730,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -771,6 +789,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -827,6 +846,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -885,6 +905,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -941,6 +962,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -995,6 +1017,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1055,6 +1078,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1118,6 +1142,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1174,6 +1199,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1232,6 +1258,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1289,6 +1316,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1350,6 +1378,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1419,6 +1448,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1488,6 +1518,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1543,6 +1574,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1597,6 +1629,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1653,6 +1686,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1708,6 +1742,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1763,6 +1798,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1814,6 +1850,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1872,6 +1909,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1924,6 +1962,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -1975,6 +2014,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2029,6 +2069,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2083,6 +2124,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2141,6 +2183,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2196,6 +2239,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2251,6 +2295,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2308,6 +2353,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2361,6 +2407,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2411,14 +2458,20 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_arxiv_metadata_title_author_match",
         "source_repository_provenance": "pass_with_inference_labeled",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_per_corpus_ledger",
+        "independent_entailment": "pass_per_corpus_ledger",
+        "contradiction_check": "pass_or_bounded_per_corpus_ledger",
+        "corpus_audit_artifacts": [
+          "corpus/LEDGER.md"
+        ]
       },
       "knowledge_status": {
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [
+          "corpus/ml-techniques/mixture-of-experts-routing.md"
+        ],
+        "corpus_source_lists_before_ingest": [
           "corpus/ml-techniques/mixture-of-experts-routing.md"
         ],
         "corpus_synthesis_coverage": [
@@ -2468,15 +2521,23 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_arxiv_metadata_title_author_match",
         "source_repository_provenance": "pass",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_full_text_or_primary_abstract",
+        "independent_entailment": "pass_claim_by_claim_recheck",
+        "contradiction_check": "pass_with_curvefp_v2_internal_percentage_inconsistency_bounded_to_raw_table",
+        "corpus_audit_artifacts": [
+          "corpus/CITATION-AUDIT-2026-09-02.md"
+        ]
       },
       "knowledge_status": {
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
-        "corpus_source_lists": [],
-        "corpus_synthesis_coverage": [],
+        "corpus_source_lists": [
+          "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+        ],
+        "corpus_source_lists_before_ingest": [],
+        "corpus_synthesis_coverage": [
+          "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+        ],
         "ledger_mentions_source": false
       }
     },
@@ -2521,15 +2582,23 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_arxiv_metadata_title_author_match",
         "source_repository_provenance": "pass",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_full_text_or_primary_abstract",
+        "independent_entailment": "pass_claim_by_claim_recheck",
+        "contradiction_check": "pass_with_curvefp_v2_internal_percentage_inconsistency_bounded_to_raw_table",
+        "corpus_audit_artifacts": [
+          "corpus/CITATION-AUDIT-2026-09-02.md"
+        ]
       },
       "knowledge_status": {
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
-        "corpus_source_lists": [],
-        "corpus_synthesis_coverage": [],
+        "corpus_source_lists": [
+          "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+        ],
+        "corpus_source_lists_before_ingest": [],
+        "corpus_synthesis_coverage": [
+          "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+        ],
         "ledger_mentions_source": false
       }
     },
@@ -2578,14 +2647,20 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_arxiv_metadata_title_author_match",
         "source_repository_provenance": "pass",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_per_corpus_ledger",
+        "independent_entailment": "pass_per_corpus_ledger",
+        "contradiction_check": "pass_or_bounded_per_corpus_ledger",
+        "corpus_audit_artifacts": [
+          "corpus/LEDGER.md"
+        ]
       },
       "knowledge_status": {
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [
+          "corpus/ml-techniques/attention-transformers.md"
+        ],
+        "corpus_source_lists_before_ingest": [
           "corpus/ml-techniques/attention-transformers.md"
         ],
         "corpus_synthesis_coverage": [
@@ -2642,6 +2717,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2693,6 +2769,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2740,14 +2817,20 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_arxiv_metadata_title_author_match",
         "source_repository_provenance": "pass",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_per_corpus_ledger",
+        "independent_entailment": "pass_per_corpus_ledger",
+        "contradiction_check": "pass_or_bounded_per_corpus_ledger",
+        "corpus_audit_artifacts": [
+          "corpus/LEDGER.md"
+        ]
       },
       "knowledge_status": {
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [
+          "corpus/ml-techniques/attention-transformers.md"
+        ],
+        "corpus_source_lists_before_ingest": [
           "corpus/ml-techniques/attention-transformers.md"
         ],
         "corpus_synthesis_coverage": [
@@ -2803,6 +2886,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2853,6 +2937,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2905,6 +2990,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -2964,6 +3050,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3093,6 +3180,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3164,6 +3252,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3219,6 +3308,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3274,6 +3364,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3325,6 +3416,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3381,6 +3473,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3433,6 +3526,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3491,6 +3585,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3542,6 +3637,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3595,6 +3691,7 @@
         "arxiv_archive_pair": true,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3643,6 +3740,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3690,6 +3788,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3735,6 +3834,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3780,6 +3880,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3819,15 +3920,23 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_primary_publisher_or_repository_metadata",
         "source_repository_provenance": "pass",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_full_text_or_primary_abstract",
+        "independent_entailment": "pass_claim_by_claim_recheck",
+        "contradiction_check": "pass_with_curvefp_v2_internal_percentage_inconsistency_bounded_to_raw_table",
+        "corpus_audit_artifacts": [
+          "corpus/CITATION-AUDIT-2026-09-02.md"
+        ]
       },
       "knowledge_status": {
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
-        "corpus_source_lists": [],
-        "corpus_synthesis_coverage": [],
+        "corpus_source_lists": [
+          "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+        ],
+        "corpus_source_lists_before_ingest": [],
+        "corpus_synthesis_coverage": [
+          "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+        ],
         "ledger_mentions_source": false
       }
     },
@@ -3867,15 +3976,23 @@
       "citation_audit_status": {
         "canonical_resolution": "pass_primary_publisher_or_repository_metadata",
         "source_repository_provenance": "pass",
-        "quote_span_or_paraphrase_support": "not_applicable_until_corpus_claim",
-        "independent_entailment": "not_applicable_until_corpus_claim",
-        "contradiction_check": "not_applicable_until_corpus_claim"
+        "quote_span_or_paraphrase_support": "pass_full_text_or_primary_abstract",
+        "independent_entailment": "pass_claim_by_claim_recheck",
+        "contradiction_check": "pass_with_curvefp_v2_internal_percentage_inconsistency_bounded_to_raw_table",
+        "corpus_audit_artifacts": [
+          "corpus/CITATION-AUDIT-2026-09-02.md"
+        ]
       },
       "knowledge_status": {
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
-        "corpus_source_lists": [],
-        "corpus_synthesis_coverage": [],
+        "corpus_source_lists": [
+          "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+        ],
+        "corpus_source_lists_before_ingest": [],
+        "corpus_synthesis_coverage": [
+          "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+        ],
         "ledger_mentions_source": false
       }
     },
@@ -3921,6 +4038,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -3968,6 +4086,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -4012,6 +4131,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -4055,6 +4175,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -4098,6 +4219,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -4142,6 +4264,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }
@@ -4186,6 +4309,7 @@
         "arxiv_archive_pair": false,
         "arxiv_archive_pair_before_ingest": false,
         "corpus_source_lists": [],
+        "corpus_source_lists_before_ingest": [],
         "corpus_synthesis_coverage": [],
         "ledger_mentions_source": false
       }

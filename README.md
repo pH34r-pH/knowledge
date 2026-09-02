@@ -43,6 +43,7 @@ General-knowledge articles on software engineering design patterns, ML technique
 - [Agent memory architectures](corpus/ml-techniques/agent-memory-architectures.md) — memory is a bounded retrieval-and-distillation system around fixed weights, not one undifferentiated store.
 - [Self-evolving agent systems](corpus/ml-techniques/self-evolving-agent-systems.md) — useful adaptation is a guarded outer loop over versioned artifacts, with replay, promotion gates, and rollback.
 - [Fine-tuning strategies](corpus/ml-techniques/fine-tuning-strategies.md) — choose the mutable parameter surface and learning signal separately: full updates, PEFT, and preference optimization solve different problems.
+- [Logarithmic and closed numerical representations for neural arithmetic](corpus/ml-techniques/logarithmic-closed-numerical-representations.md) — logarithmic grids simplify product formation, but accumulation phases, finite-width closure, conversion, and system integration remain on the bill.
 
 **Adjacent knowledge**
 - [Graceful degradation: ranked fallback chains](corpus/adjacent-knowledge/graceful-degradation.md) — order methods best-to-worst, return on first success, own the last rung locally, never hard-fail.

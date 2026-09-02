@@ -56,7 +56,7 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [ ] Cellular sheaves and heterogeneous local representation spaces — sheaf Laplacians, restriction maps, neural sheaf diffusion, and interoperability without flattening every state into one geometry (harness: deep-research)
 - [ ] Dynamic modular computation: MoE to module routing to problem-specific execution graphs — distinguish selecting one expert from assembling a typed one-pass computation DAG, including planner cost (harness: storm)
 - [ ] Delayed generalization, grokking, and training-trajectory forecasting — distinguish descriptive curve fitting, mechanistic precursors, change points, and preregistered late-horizon forecasts (harness: deep-research + storm)
-- [ ] Logarithmic and closed numerical representations for neural arithmetic — LNS quantization, CurveFP product closure, accumulation semantics, and which apparent hardware gains survive charged controls (harness: deep-research)
+- [x] Logarithmic and closed numerical representations for neural arithmetic — LNS quantization, CurveFP product closure, accumulation semantics, and which apparent hardware gains survive charged controls (harness: deep-research)
 - [ ] Signal-processing views of learned representations and receiver-side decoding — matched analysis, despreading, equalization, source separation, synchronization, and the transmitter-versus-receiver diagnosis boundary (harness: storm)
 
 ## Adjacent High-Value Knowledge
