@@ -1,0 +1,29 @@
+{
+  "id": "2106.05268v2",
+  "title": "Vector Symbolic Architectures as a Computing Framework for Emerging Hardware",
+  "authors": [
+    "Denis Kleyko",
+    "Mike Davies",
+    "E. Paxon Frady",
+    "Pentti Kanerva",
+    "Spencer J. Kent",
+    "Bruno A. Olshausen",
+    "Evgeny Osipov",
+    "Jan M. Rabaey",
+    "Dmitri A. Rachkovskij",
+    "Abbas Rahimi",
+    "Friedrich T. Sommer"
+  ],
+  "published": "2021-06-09",
+  "updated": "2023-07-20T16:47:20Z",
+  "categories": [
+    "cs.AR",
+    "cs.AI"
+  ],
+  "primary_category": "cs.AR",
+  "abstract": "This article reviews recent progress in the development of the computing framework vector symbolic architectures (VSA) (also known as hyperdimensional computing). This framework is well suited for implementation in stochastic, emerging hardware, and it naturally expresses the types of cognitive operations required for artificial intelligence (AI). We demonstrate in this article that the field-like algebraic structure of VSA offers simple but powerful operations on high-dimensional vectors that can support all data structures and manipulations relevant to modern computing. In addition, we illustrate the distinguishing feature of VSA, \"computing in superposition,\" which sets it apart from conventional computing. It also opens the door to efficient solutions to the difficult combinatorial search problems inherent in AI applications. We sketch ways of demonstrating that VSA are computationally universal. We see them acting as a framework for computing with distributed representations that can play a role of an abstraction layer for emerging computing hardware. This article serves as a reference for computer architects by illustrating the philosophy behind VSA, techniques of distributed computing with them, and their relevance to emerging computing hardware, such as neuromorphic computing.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2106.05268v2",
+    "pdf": "https://arxiv.org/pdf/2106.05268v2"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "1808.01513v2",
+  "title": "Toward a Spectral Theory of Cellular Sheaves",
+  "authors": [
+    "Jakob Hansen",
+    "Robert Ghrist"
+  ],
+  "published": "2018-08-04",
+  "updated": "2019-08-16T19:25:30Z",
+  "categories": [
+    "math.AT",
+    "math.CO"
+  ],
+  "primary_category": "math.AT",
+  "abstract": "This paper outlines a program in what one might call spectral sheaf theory --- an extension of spectral graph theory to cellular sheaves. By lifting the combinatorial graph Laplacian to the Hodge Laplacian on a cellular sheaf of vector spaces over a regular cell complex, one can relate spectral data to the sheaf cohomology and cell structure in a manner reminiscent of spectral graph theory. This work gives an exploratory introduction, and includes results on eigenvalue interlacing, sparsification, effective resistance, and sheaf approximation. These results and subsequent applications are prefaced by an introduction to cellular sheaves and Laplacians.",
+  "links": {
+    "abs": "https://arxiv.org/abs/1808.01513v2",
+    "pdf": "https://arxiv.org/pdf/1808.01513v2"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "2502.11646v3",
+  "title": "Hyper-SET: Designing Transformers via Hyperspherical Energy Minimization",
+  "authors": [
+    "Yunzhe Hu",
+    "Difan Zou",
+    "Dong Xu"
+  ],
+  "published": "2025-02-17",
+  "updated": "2025-05-30T09:02:07Z",
+  "categories": [
+    "cs.LG"
+  ],
+  "primary_category": "cs.LG",
+  "abstract": "Transformer-based models have achieved remarkable success, but their core components, Transformer layers, are largely heuristics-driven and engineered from the bottom up, calling for a prototypical model with high interpretability and practical competence. To this end, we conceptualize a principled, top-down approach grounded in energy-based interpretation. Specifically, we formalize token dynamics as a joint maximum likelihood estimation on the hypersphere, featuring two properties: semantic alignment in the high-dimensional space and distributional uniformity in the low-dimensional space. By quantifying them with extended Hopfield energy functions, we instantiate this idea as a constrained energy minimization problem, which enables designs of symmetric attention and feedforward modules with RMS normalization. We further present \\textit{Hyper-Spherical Energy Transformer} (Hyper-SET), a recurrent-depth alternative to vanilla Transformers naturally emerging from iterative energy optimization on the hypersphere. With shared parameters across layers, Hyper-SET can scale to arbitrary depth with fewer parameters. Theoretically grounded and compact, it achieves competitive or superior performance across diverse tasks, including Sudoku solving, image classification, and masked image modeling. We also design novel variations under the proposed general principle, such as linear attention and gated feedforward layer. Moreover, we showcase its scalability with depth-wise LoRA. Our results highlight Hyper-SET as a step toward interpretable and principled Transformer design.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2502.11646v3",
+    "pdf": "https://arxiv.org/pdf/2502.11646v3"
+  }
+}

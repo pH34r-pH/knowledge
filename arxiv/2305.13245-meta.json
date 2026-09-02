@@ -1,0 +1,24 @@
+{
+  "id": "2305.13245v3",
+  "title": "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints",
+  "authors": [
+    "Joshua Ainslie",
+    "James Lee-Thorp",
+    "Michiel de Jong",
+    "Yury Zemlyanskiy",
+    "Federico Lebrón",
+    "Sumit Sanghai"
+  ],
+  "published": "2023-05-22",
+  "updated": "2023-12-23T17:55:11Z",
+  "categories": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "primary_category": "cs.CL",
+  "abstract": "Multi-query attention (MQA), which only uses a single key-value head, drastically speeds up decoder inference. However, MQA can lead to quality degradation, and moreover it may not be desirable to train a separate model just for faster inference. We (1) propose a recipe for uptraining existing multi-head language model checkpoints into models with MQA using 5% of original pre-training compute, and (2) introduce grouped-query attention (GQA), a generalization of multi-query attention which uses an intermediate (more than one, less than number of query heads) number of key-value heads. We show that uptrained GQA achieves quality close to multi-head attention with comparable speed to MQA.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2305.13245v3",
+    "pdf": "https://arxiv.org/pdf/2305.13245v3"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "2511.17388v3",
+  "title": "Selective Rotary Position Embedding",
+  "authors": [
+    "Sajad Movahedi",
+    "Timur Carstensen",
+    "Arshia Afzal",
+    "Frank Hutter",
+    "Antonio Orvieto",
+    "Volkan Cevher"
+  ],
+  "published": "2025-11-21",
+  "updated": "2026-06-23T17:12:17Z",
+  "categories": [
+    "cs.CL",
+    "cs.LG"
+  ],
+  "primary_category": "cs.CL",
+  "abstract": "Position information is essential for language modeling. In softmax transformers, Rotary Position Embeddings (\\textit{RoPE}) encode positions through \\textit{fixed-angle} rotations, while in linear transformers, order is handled via input-dependent (selective) gating that decays past key-value associations. Selectivity has generally been shown to improve language-related tasks. Inspired by this, we introduce \\textit{Selective RoPE}, an \\textit{input-dependent} rotary embedding mechanism, that generalizes \\textit{RoPE}, and enables rotation in \\textit{arbitrary angles} for both linear and softmax transformers. We show that softmax attention already performs a hidden form of these rotations on query-key pairs, uncovering an implicit positional structure. We further show that in state-space models and gated linear transformers, the real part manages forgetting while the imaginary part encodes positions through rotations. We validate our method by equipping gated transformers with \\textit{Selective RoPE}, demonstrating that its input-dependent rotations improve performance in language modeling and on difficult sequence tasks like copying, state tracking, and retrieval.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2511.17388v3",
+    "pdf": "https://arxiv.org/pdf/2511.17388v3"
+  }
+}

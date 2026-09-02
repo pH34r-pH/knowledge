@@ -49,6 +49,15 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Agent memory architectures — grounded in MemEvolve and GenericAgent already sitting in `arxiv/` (harness: vault-adapt + deep-research)
 - [ ] Bias-variance tradeoff and the double-descent wrinkle — the classical framing plus the part modern deep learning complicates (harness: deep-research)
 - [x] Self-evolving agent systems: harness-layer vs. text-mutable-layer adaptation — this repo's own seed paper (MOSS) makes the core argument; write it up properly (harness: vault-adapt)
+- [ ] Representation–architecture co-design for language models — tokenization, geometry, algebra, and compute allocation must be evaluated as crossed representation × operator choices rather than isolated swaps (harness: deep-research + storm)
+- [ ] Complex/phase-aware and hyperspherical Transformer computation — separate useful phase algebra, unit-sphere normalization, recurrent depth, and retained-radius claims with matched controls (harness: deep-research + storm)
+- [ ] Vector-symbolic representations and algebra-aware neural processing — HRR/FHRR binding, superposition, cleanup, and when Hrrformer-style operators add more than generic attention (harness: deep-research)
+- [ ] Spectral graph methods as representation/operator co-design — Laplacian-induced bases, spectral attention, gauge ambiguity, and oversmoothing/oversquashing diagnostics (harness: deep-research + storm)
+- [ ] Cellular sheaves and heterogeneous local representation spaces — sheaf Laplacians, restriction maps, neural sheaf diffusion, and interoperability without flattening every state into one geometry (harness: deep-research)
+- [ ] Dynamic modular computation: MoE to module routing to problem-specific execution graphs — distinguish selecting one expert from assembling a typed one-pass computation DAG, including planner cost (harness: storm)
+- [ ] Delayed generalization, grokking, and training-trajectory forecasting — distinguish descriptive curve fitting, mechanistic precursors, change points, and preregistered late-horizon forecasts (harness: deep-research + storm)
+- [ ] Logarithmic and closed numerical representations for neural arithmetic — LNS quantization, CurveFP product closure, accumulation semantics, and which apparent hardware gains survive charged controls (harness: deep-research)
+- [ ] Signal-processing views of learned representations and receiver-side decoding — matched analysis, despreading, equalization, source separation, synchronization, and the transmitter-versus-receiver diagnosis boundary (harness: storm)
 
 ## Adjacent High-Value Knowledge
 

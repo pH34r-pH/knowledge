@@ -1,0 +1,36 @@
+{
+  "id": "2202.07765v2",
+  "title": "General-purpose, long-context autoregressive modeling with Perceiver AR",
+  "authors": [
+    "Curtis Hawthorne",
+    "Andrew Jaegle",
+    "Cătălina Cangea",
+    "Sebastian Borgeaud",
+    "Charlie Nash",
+    "Mateusz Malinowski",
+    "Sander Dieleman",
+    "Oriol Vinyals",
+    "Matthew Botvinick",
+    "Ian Simon",
+    "Hannah Sheahan",
+    "Neil Zeghidour",
+    "Jean-Baptiste Alayrac",
+    "João Carreira",
+    "Jesse Engel"
+  ],
+  "published": "2022-02-15",
+  "updated": "2022-06-14T16:55:16Z",
+  "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CV",
+    "cs.SD",
+    "eess.AS"
+  ],
+  "primary_category": "cs.LG",
+  "abstract": "Real-world data is high-dimensional: a book, image, or musical performance can easily contain hundreds of thousands of elements even after compression. However, the most commonly used autoregressive models, Transformers, are prohibitively expensive to scale to the number of inputs and layers needed to capture this long-range structure. We develop Perceiver AR, an autoregressive, modality-agnostic architecture which uses cross-attention to map long-range inputs to a small number of latents while also maintaining end-to-end causal masking. Perceiver AR can directly attend to over a hundred thousand tokens, enabling practical long-context density estimation without the need for hand-crafted sparsity patterns or memory mechanisms. When trained on images or music, Perceiver AR generates outputs with clear long-term coherence and structure. Our architecture also obtains state-of-the-art likelihood on long-sequence benchmarks, including 64 x 64 ImageNet images and PG-19 books.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2202.07765v2",
+    "pdf": "https://arxiv.org/pdf/2202.07765v2"
+  }
+}

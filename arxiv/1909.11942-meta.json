@@ -1,0 +1,24 @@
+{
+  "id": "1909.11942v6",
+  "title": "ALBERT: A Lite BERT for Self-supervised Learning of Language Representations",
+  "authors": [
+    "Zhenzhong Lan",
+    "Mingda Chen",
+    "Sebastian Goodman",
+    "Kevin Gimpel",
+    "Piyush Sharma",
+    "Radu Soricut"
+  ],
+  "published": "2019-09-26",
+  "updated": "2020-02-09T03:00:18Z",
+  "categories": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "primary_category": "cs.CL",
+  "abstract": "Increasing model size when pretraining natural language representations often results in improved performance on downstream tasks. However, at some point further model increases become harder due to GPU/TPU memory limitations and longer training times. To address these problems, we present two parameter-reduction techniques to lower memory consumption and increase the training speed of BERT. Comprehensive empirical evidence shows that our proposed methods lead to models that scale much better compared to the original BERT. We also use a self-supervised loss that focuses on modeling inter-sentence coherence, and show it consistently helps downstream tasks with multi-sentence inputs. As a result, our best model establishes new state-of-the-art results on the GLUE, RACE, and \\squad benchmarks while having fewer parameters compared to BERT-large. The code and the pretrained models are available at https://github.com/google-research/ALBERT.",
+  "links": {
+    "abs": "https://arxiv.org/abs/1909.11942v6",
+    "pdf": "https://arxiv.org/pdf/1909.11942v6"
+  }
+}

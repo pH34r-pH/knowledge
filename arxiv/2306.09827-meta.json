@@ -1,0 +1,21 @@
+{
+  "id": "2306.09827v1",
+  "title": "Building Blocks for a Complex-Valued Transformer Architecture",
+  "authors": [
+    "Florian Eilers",
+    "Xiaoyi Jiang"
+  ],
+  "published": "2023-06-16",
+  "updated": "2023-06-16T13:11:15Z",
+  "categories": [
+    "cs.LG",
+    "cs.CV",
+    "cs.NE"
+  ],
+  "primary_category": "cs.LG",
+  "abstract": "Most deep learning pipelines are built on real-valued operations to deal with real-valued inputs such as images, speech or music signals. However, a lot of applications naturally make use of complex-valued signals or images, such as MRI or remote sensing. Additionally the Fourier transform of signals is complex-valued and has numerous applications. We aim to make deep learning directly applicable to these complex-valued signals without using projections into $\\mathbb{R}^2$. Thus we add to the recent developments of complex-valued neural networks by presenting building blocks to transfer the transformer architecture to the complex domain. We present multiple versions of a complex-valued Scaled Dot-Product Attention mechanism as well as a complex-valued layer normalization. We test on a classification and a sequence generation task on the MusicNet dataset and show improved robustness to overfitting while maintaining on-par performance when compared to the real-valued transformer architecture.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2306.09827v1",
+    "pdf": "https://arxiv.org/pdf/2306.09827v1"
+  }
+}

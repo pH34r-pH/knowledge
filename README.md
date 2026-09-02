@@ -2,6 +2,8 @@ Structured research corpus for experiments with graph-based lookup and retrieval
 
 **Continue building:** [BUILDING.md](BUILDING.md) — how to run the loop, the four research harnesses, and where all state lives.
 
+**Research provenance:** [domain-scaling-lab literature audit (2026-09-01)](reports/domain-scaling-lab-literature-audit-2026-09-01.md) — the deduplicated, source-resolved bibliography behind the representation, receiver, geometry, modularity, training-dynamics, and numerical-representation research branches; [machine-readable JSON](reports/domain-scaling-lab-literature-audit-2026-09-01.json).
+
 ## Citation integrity: how the corpus avoids hallucinated references
 
 Every citation in this corpus passes a gate before it is committed, because a fabricated or misgrounded reference is worse than no article. Deterministic, un-gameable checks run first; model-based checks catch the rest. Full evidence base and guard list: [citation-integrity.md](.claude/skills/populate-corpus/references/citation-integrity.md).
@@ -51,4 +53,3 @@ General-knowledge articles on software engineering design patterns, ML technique
 - [OpenTelemetry](corpus/adjacent-knowledge/opentelemetry-interoperability.md) — a portable telemetry contract and pipeline, not a storage, query, alerting, or SLO backend.
 
 <!-- one line per article, added by populate-corpus as the corpus grows -->
-

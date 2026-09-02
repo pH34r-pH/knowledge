@@ -1,30 +1,26 @@
-# Graph Report - knowledge  (2026-08-08)
+# Graph Report - knowledge  (2026-09-02)
 
 ## Corpus Check
-- 91 files · ~97,513 words
+- 154 files · ~135,455 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 593 nodes · 624 edges · 62 communities (59 shown, 3 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
+- 593 nodes · 669 edges · 58 communities
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d112465b`
+- Built from commit: `a513aca8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - common.sh
-- create-new-feature.sh
 - create-new-feature.ps1
 - common.ps1
 - Tasks: [FEATURE NAME]
 - analyze.md
 - Blue Swallow Society Constitution
-- check-prerequisites.sh
-- setup-plan.sh
-- setup-tasks.sh
 - Blue Swallow Society Constitution
 - Entries
 - Tasks: Corpus Population Research Loop
@@ -40,16 +36,16 @@
 - Implementation Plan: [FEATURE]
 - Implementation Plan: Raw Research Material Ingestion
 - checklist.md
-- plan.md
+- commands/plan.md
 - specify.md
-- tasks.md
+- commands/tasks.md
 - graceful-degradation.md
-- model-context-protocol.md
+- Knowledge Corpus — Project Context
 - model-context-protocol.md
 - system-design-fundamentals.md
-- cqrs-event-sourcing.md
+- OpenTelemetry: telemetry interoperability, not an observability backend
 - durable-execution-engines.md
-- idempotency-keys.md
+- Software supply-chain security: inventory, provenance, and policy
 - resilience-patterns.md
 - Actor model versus CSP channels: ownership and coordination
 - saga-pattern.md
@@ -64,7 +60,7 @@
 - Corpus Topic Backlog
 - [CHECKLIST TYPE] Checklist: [FEATURE NAME]
 - clarify.md
-- constitution.md
+- commands/constitution.md
 - taskstoissues.md
 - implement.md
 - Agent memory architectures: retrieval, distillation, and bounded context
@@ -81,27 +77,32 @@
 3. `Tasks: Corpus Population Research Loop` - 11 edges
 4. `Populate Corpus — the researcher loop` - 10 edges
 5. `Building the corpus` - 10 edges
-6. `Execution Steps` - 7 edges
-7. `4. Detection Passes (Token-Efficient Analysis)` - 7 edges
-8. `OpenTelemetry: telemetry interoperability, not an observability backend` - 7 edges
-9. `Software supply-chain security: inventory, provenance, and policy` - 7 edges
-10. `Actor model versus CSP channels: ownership and coordination` - 7 edges
+6. `get_feature_paths()` - 9 edges
+7. `setup-tasks.sh script` - 9 edges
+8. `create-new-feature.sh script` - 8 edges
+9. `check-prerequisites.sh script` - 7 edges
+10. `Execution Steps` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- None detected - all connections are within the same source files.
+- `check-prerequisites.sh script` --calls--> `check_dir()`  [EXTRACTED]
+  .specify/scripts/bash/check-prerequisites.sh → .specify/scripts/bash/common.sh
+- `check-prerequisites.sh script` --calls--> `check_feature_branch()`  [EXTRACTED]
+  .specify/scripts/bash/check-prerequisites.sh → .specify/scripts/bash/common.sh
+- `check-prerequisites.sh script` --calls--> `check_file()`  [EXTRACTED]
+  .specify/scripts/bash/check-prerequisites.sh → .specify/scripts/bash/common.sh
+- `check-prerequisites.sh script` --calls--> `get_feature_paths()`  [EXTRACTED]
+  .specify/scripts/bash/check-prerequisites.sh → .specify/scripts/bash/common.sh
+- `check-prerequisites.sh script` --calls--> `has_jq()`  [EXTRACTED]
+  .specify/scripts/bash/check-prerequisites.sh → .specify/scripts/bash/common.sh
 
 ## Import Cycles
 - None detected.
 
-## Communities (62 total, 3 thin omitted)
+## Communities (58 total, 0 thin omitted)
 
 ### Community 0 - "common.sh"
-Cohesion: 0.12
-Nodes (4): get_current_branch(), get_feature_paths(), has_git(), common.sh script
-
-### Community 1 - "create-new-feature.sh"
-Cohesion: 0.25
-Nodes (3): _extract_highest_number(), get_highest_from_branches(), create-new-feature.sh script
+Cohesion: 0.14
+Nodes (27): check-prerequisites.sh script, check_dir(), check_feature_branch(), check_file(), feature_json_matches_feature_dir(), find_feature_dir_by_prefix(), find_specify_root(), get_current_branch() (+19 more)
 
 ### Community 2 - "create-new-feature.ps1"
 Cohesion: 0.46
@@ -183,7 +184,7 @@ Nodes (8): Complexity Tracking, Constitution Check, Documentation (this feature)
 Cohesion: 0.25
 Nodes (7): Anti-Examples: What NOT To Do, Checklist Purpose: "Unit Tests for English", Example Checklist Types & Sample Items, Execution Steps, Post-Execution Checks, Pre-Execution Checks, User Input
 
-### Community 28 - "plan.md"
+### Community 28 - "commands/plan.md"
 Cohesion: 0.25
 Nodes (7): Key rules, Outline, Phase 0: Outline & Research, Phase 1: Design & Contracts, Phases, Pre-Execution Checks, User Input
 
@@ -191,7 +192,7 @@ Nodes (7): Key rules, Outline, Phase 0: Outline & Research, Phase 1: Design & Co
 Cohesion: 0.25
 Nodes (7): For AI Generation, Outline, Pre-Execution Checks, Quick Guidelines, Section Requirements, Success Criteria Guidelines, User Input
 
-### Community 30 - "tasks.md"
+### Community 30 - "commands/tasks.md"
 Cohesion: 0.25
 Nodes (7): Checklist Format (REQUIRED), Outline, Phase Structure, Pre-Execution Checks, Task Generation Rules, Task Organization, User Input
 
@@ -199,7 +200,7 @@ Nodes (7): Checklist Format (REQUIRED), Outline, Phase Structure, Pre-Execution 
 Cohesion: 0.29
 Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
-### Community 32 - "model-context-protocol.md"
+### Community 32 - "Knowledge Corpus — Project Context"
 Cohesion: 0.29
 Nodes (6): Git and verification discipline, Knowledge Corpus — Project Context, Purpose and authority, Research integrity gates, Spec Kit contract, Vault, privacy, and provenance boundaries
 
@@ -211,7 +212,7 @@ Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, W
 Cohesion: 0.29
 Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
-### Community 35 - "cqrs-event-sourcing.md"
+### Community 35 - "OpenTelemetry: telemetry interoperability, not an observability backend"
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, OpenTelemetry: telemetry interoperability, not an observability backend, Trade-offs, What it is, When to reach for it
 
@@ -219,7 +220,7 @@ Nodes (7): Further reading, How it works, In practice, OpenTelemetry: telemetry 
 Cohesion: 0.29
 Nodes (6): Further reading, How it works, In practice, Trade-offs, What it is, When to reach for it
 
-### Community 37 - "idempotency-keys.md"
+### Community 37 - "Software supply-chain security: inventory, provenance, and policy"
 Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Software supply-chain security: inventory, provenance, and policy, Trade-offs, What it is, When to reach for it
 
@@ -279,7 +280,7 @@ Nodes (4): [Category 1], [Category 2], [CHECKLIST TYPE] Checklist: [FEATURE NAME
 Cohesion: 0.40
 Nodes (4): Outline, Post-Execution Checks, Pre-Execution Checks, User Input
 
-### Community 52 - "constitution.md"
+### Community 52 - "commands/constitution.md"
 Cohesion: 0.40
 Nodes (4): Outline, Post-Execution Checks, Pre-Execution Checks, User Input
 
@@ -320,9 +321,8 @@ Cohesion: 0.29
 Nodes (7): Further reading, How it works, In practice, Structured outputs and constrained decoding: syntax guarantees, semantic limits, Trade-offs, What it is, When to reach for it
 
 ## Knowledge Gaps
-- **412 isolated node(s):** `check-prerequisites.sh script`, `common.sh script`, `create-new-feature.sh script`, `setup-plan.sh script`, `setup-tasks.sh script` (+407 more)
-  These have ≤1 connection - possible missing edges or undocumented components.
-- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **408 isolated node(s):** `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state`, `Step 2 — Select the topic`, `Step 3 — Decide the research harness` (+403 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 426 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -331,10 +331,10 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.047) - this node is a cross-community bridge._
 - **Why does `Feature Specification: Corpus Population Research Loop` connect `User Scenarios & Testing *(mandatory)*` to `README.md`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **What connects `check-prerequisites.sh script`, `common.sh script`, `create-new-feature.sh script` to the rest of the system?**
-  _412 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `common.sh script`, `Boundaries (read first)`, `Step 1 — Load state` to the rest of the system?**
+  _408 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `common.sh` be split into smaller, more focused modules?**
-  _Cohesion score 0.12418300653594772 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14393939393939395 - nodes in this community are weakly interconnected._
 - **Should `Tasks: [FEATURE NAME]` be split into smaller, more focused modules?**
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
 - **Should `analyze.md` be split into smaller, more focused modules?**

@@ -1,0 +1,19 @@
+{
+  "id": "2401.17791v3",
+  "title": "Graph Transformers without Positional Encodings",
+  "authors": [
+    "Ayush Garg"
+  ],
+  "published": "2024-01-31",
+  "updated": "2024-05-06T13:12:05Z",
+  "categories": [
+    "cs.LG",
+    "cs.AI"
+  ],
+  "primary_category": "cs.LG",
+  "abstract": "Recently, Transformers for graph representation learning have become increasingly popular, achieving state-of-the-art performance on a wide-variety of graph datasets, either alone or in combination with message-passing graph neural networks (MP-GNNs). Infusing graph inductive-biases in the innately structure-agnostic transformer architecture in the form of structural or positional encodings (PEs) is key to achieving these impressive results. However, designing such encodings is tricky and disparate attempts have been made to engineer such encodings including Laplacian eigenvectors, relative random-walk probabilities (RRWP), spatial encodings, centrality encodings, edge encodings etc. In this work, we argue that such encodings may not be required at all, provided the attention mechanism itself incorporates information about the graph structure. We introduce Eigenformer, a Graph Transformer employing a novel spectrum-aware attention mechanism cognizant of the Laplacian spectrum of the graph, and empirically show that it achieves performance competetive with SOTA Graph Transformers on a number of standard GNN benchmarks. Additionally, we theoretically prove that Eigenformer can express various graph structural connectivity matrices, which is particularly essential when learning over smaller graphs.",
+  "links": {
+    "abs": "https://arxiv.org/abs/2401.17791v3",
+    "pdf": "https://arxiv.org/pdf/2401.17791v3"
+  }
+}

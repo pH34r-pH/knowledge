@@ -1,0 +1,24 @@
+{
+  "id": "1511.02799v4",
+  "title": "Neural Module Networks",
+  "authors": [
+    "Jacob Andreas",
+    "Marcus Rohrbach",
+    "Trevor Darrell",
+    "Dan Klein"
+  ],
+  "published": "2015-11-09",
+  "updated": "2017-07-24T17:15:06Z",
+  "categories": [
+    "cs.CV",
+    "cs.CL",
+    "cs.LG",
+    "cs.NE"
+  ],
+  "primary_category": "cs.CV",
+  "abstract": "Visual question answering is fundamentally compositional in nature---a question like \"where is the dog?\" shares substructure with questions like \"what color is the dog?\" and \"where is the cat?\" This paper seeks to simultaneously exploit the representational capacity of deep networks and the compositional linguistic structure of questions. We describe a procedure for constructing and learning *neural module networks*, which compose collections of jointly-trained neural \"modules\" into deep networks for question answering. Our approach decomposes questions into their linguistic substructures, and uses these structures to dynamically instantiate modular networks (with reusable components for recognizing dogs, classifying colors, etc.). The resulting compound networks are jointly trained. We evaluate our approach on two challenging datasets for visual question answering, achieving state-of-the-art results on both the VQA natural image dataset and a new dataset of complex questions about abstract shapes.",
+  "links": {
+    "abs": "https://arxiv.org/abs/1511.02799v4",
+    "pdf": "https://arxiv.org/pdf/1511.02799v4"
+  }
+}

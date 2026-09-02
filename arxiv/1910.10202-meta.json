@@ -1,0 +1,25 @@
+{
+  "id": "1910.10202v2",
+  "title": "Complex Transformer: A Framework for Modeling Complex-Valued Sequence",
+  "authors": [
+    "Muqiao Yang",
+    "Martin Q. Ma",
+    "Dongyu Li",
+    "Yao-Hung Hubert Tsai",
+    "Ruslan Salakhutdinov"
+  ],
+  "published": "2019-10-22",
+  "updated": "2021-08-06T18:21:22Z",
+  "categories": [
+    "cs.LG",
+    "cs.SD",
+    "eess.AS",
+    "stat.ML"
+  ],
+  "primary_category": "cs.LG",
+  "abstract": "While deep learning has received a surge of interest in a variety of fields in recent years, major deep learning models barely use complex numbers. However, speech, signal and audio data are naturally complex-valued after Fourier Transform, and studies have shown a potentially richer representation of complex nets. In this paper, we propose a Complex Transformer, which incorporates the transformer model as a backbone for sequence modeling; we also develop attention and encoder-decoder network operating for complex input. The model achieves state-of-the-art performance on the MusicNet dataset and an In-phase Quadrature (IQ) signal dataset.",
+  "links": {
+    "abs": "https://arxiv.org/abs/1910.10202v2",
+    "pdf": "https://arxiv.org/pdf/1910.10202v2"
+  }
+}
