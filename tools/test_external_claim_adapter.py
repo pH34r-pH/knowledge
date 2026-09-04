@@ -79,6 +79,7 @@ class ExternalClaimAdapterTests(unittest.TestCase):
             "claim_id": "KCLM-000001",
             "support_type": "PARAPHRASE",
             "support_location": "synthetic fixture",
+            "support_text": support,
             "support_text_sha256": support_hash,
             "offline_validation": "OFFLINE_CLAIM_EVIDENCE",
             "audit": {
@@ -92,9 +93,36 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         _write_jsonl(root / "references/external/evidence.jsonl", [evidence])
         self.assertEqual(validate_adapter(root), [])
 
+    def test_support_hash_mismatch_fails(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        _write_jsonl(root / "references/external/works.jsonl", [_base_work()])
+        _write_jsonl(root / "references/external/claims.jsonl", [_base_claim("PENDING")])
+        evidence = {
+            "schema_version": "0.1.0",
+            "id": "KEVD-000001",
+            "type": "KnowledgeEvidence",
+            "claim_id": "KCLM-000001",
+            "support_type": "PARAPHRASE",
+            "support_location": "synthetic fixture",
+            "support_text": "changed",
+            "support_text_sha256": "0" * 64,
+            "offline_validation": "OFFLINE_CLAIM_EVIDENCE",
+            "audit": {
+                "resolution": "PASSED",
+                "support_span": "PASSED",
+                "liveness": "PASSED",
+                "entailment": "PASSED",
+            },
+            "status": "PENDING",
+        }
+        _write_jsonl(root / "references/external/evidence.jsonl", [evidence])
+        self.assertIn("KEVD-000001: support_text_sha256 mismatch", validate_adapter(root))
+
     def test_real_work_identity_does_not_rescue_failed_entailment(self) -> None:
         temp, root = self._root()
         self.addCleanup(temp.cleanup)
+        support = "The evidence exists, but it does not entail the attributed proposition."
         _write_jsonl(root / "references/external/works.jsonl", [_base_work()])
         _write_jsonl(root / "references/external/claims.jsonl", [_base_claim()])
         evidence = {
@@ -104,7 +132,8 @@ class ExternalClaimAdapterTests(unittest.TestCase):
             "claim_id": "KCLM-000001",
             "support_type": "PARAPHRASE",
             "support_location": "synthetic fixture",
-            "support_text_sha256": "0" * 64,
+            "support_text": support,
+            "support_text_sha256": hashlib.sha256(support.encode()).hexdigest(),
             "offline_validation": "OFFLINE_CLAIM_EVIDENCE",
             "audit": {
                 "resolution": "PASSED",
