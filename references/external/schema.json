@@ -61,6 +61,7 @@
         "claim_id": {"$ref": "#/$defs/claimId"},
         "support_type": {"enum": ["DIRECT_QUOTE", "PARAPHRASE", "FORMAL_STATEMENT", "METADATA"]},
         "support_location": {"type": "string", "minLength": 1},
+        "support_text": {"type": "string"},
         "support_text_sha256": {"$ref": "#/$defs/sha256"},
         "local_path": {"type": "string"},
         "local_content_sha256": {"$ref": "#/$defs/sha256"},
