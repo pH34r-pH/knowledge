@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pH34r-pH/knowledge/references/external/schema.json",
+  "title": "Knowledge External Claim Adapter",
+  "description": "Machine-readable contract for ExternalWork, ExternalClaim, and KnowledgeEvidence records. Deterministic validation is implemented separately and is authoritative for cross-record integrity.",
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "workId": {"type": "string", "pattern": "^KWRK-[0-9]{6}$"},
+    "claimId": {"type": "string", "pattern": "^KCLM-[0-9]{6}$"},
+    "evidenceId": {"type": "string", "pattern": "^KEVD-[0-9]{6}$"},
+    "offlineLevel": {"enum": ["OFFLINE_FULL", "OFFLINE_CLAIM_EVIDENCE", "METADATA_ONLY", "ONLINE_REVALIDATION_REQUIRED"]}
+  },
+  "oneOf": [
+    {
+      "title": "ExternalWork",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "id", "type", "title", "authors", "publication_date", "status"],
+      "properties": {
+        "schema_version": {"const": "0.1.0"},
+        "id": {"$ref": "#/$defs/workId"},
+        "type": {"const": "ExternalWork"},
+        "title": {"type": "string", "minLength": 1},
+        "authors": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "publication_date": {"type": "string"},
+        "venue": {"type": "string"},
+        "canonical_identifiers": {"type": "object", "additionalProperties": {"type": "string"}},
+        "source_url": {"type": "string"},
+        "status": {"enum": ["ACTIVE", "SUPERSEDED"]},
+        "supersedes": {"$ref": "#/$defs/workId"},
+        "ingested_at": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    },
+    {
+      "title": "ExternalClaim",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "id", "type", "work_id", "proposition", "status"],
+      "properties": {
+        "schema_version": {"const": "0.1.0"},
+        "id": {"$ref": "#/$defs/claimId"},
+        "type": {"const": "ExternalClaim"},
+        "work_id": {"$ref": "#/$defs/workId"},
+        "proposition": {"type": "string", "minLength": 1},
+        "status": {"enum": ["PENDING", "ACCEPTED", "REJECTED", "SUPERSEDED"]},
+        "supersedes": {"$ref": "#/$defs/claimId"},
+        "ingested_at": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    },
+    {
+      "title": "KnowledgeEvidence",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "id", "type", "claim_id", "support_type", "support_location", "offline_validation", "audit", "status"],
+      "properties": {
+        "schema_version": {"const": "0.1.0"},
+        "id": {"$ref": "#/$defs/evidenceId"},
+        "type": {"const": "KnowledgeEvidence"},
+        "claim_id": {"$ref": "#/$defs/claimId"},
+        "support_type": {"enum": ["DIRECT_QUOTE", "PARAPHRASE", "FORMAL_STATEMENT", "METADATA"]},
+        "support_location": {"type": "string", "minLength": 1},
+        "support_text_sha256": {"$ref": "#/$defs/sha256"},
+        "local_path": {"type": "string"},
+        "local_content_sha256": {"$ref": "#/$defs/sha256"},
+        "offline_validation": {"$ref": "#/$defs/offlineLevel"},
+        "audit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["resolution", "support_span", "liveness", "entailment"],
+          "properties": {
+            "resolution": {"enum": ["PASSED", "FAILED", "NOT_APPLICABLE"]},
+            "support_span": {"enum": ["PASSED", "FAILED", "NOT_APPLICABLE"]},
+            "liveness": {"enum": ["PASSED", "ARCHIVED", "FAILED", "NOT_APPLICABLE"]},
+            "entailment": {"enum": ["PASSED", "FAILED", "NOT_APPLICABLE"]},
+            "audit_date": {"type": "string"},
+            "method": {"type": "string"}
+          }
+        },
+        "status": {"enum": ["PENDING", "ACCEPTED", "REJECTED", "SUPERSEDED"]},
+        "supersedes": {"$ref": "#/$defs/evidenceId"},
+        "notes": {"type": "string"}
+      }
+    }
+  ]
+}
