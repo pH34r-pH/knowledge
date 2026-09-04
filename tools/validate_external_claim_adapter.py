@@ -45,6 +45,10 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
 def _accepted_evidence(evidence: dict[str, Any]) -> bool:
     if evidence.get("status") != "ACCEPTED":
         return False
@@ -122,9 +126,14 @@ def validate_adapter(root: Path) -> list[str]:
         if level == "OFFLINE_FULL" and not isinstance(local_path, str):
             errors.append(f"{rid}: OFFLINE_FULL requires local_path")
         if level in {"OFFLINE_FULL", "OFFLINE_CLAIM_EVIDENCE"}:
+            support_text = row.get("support_text")
             support_hash = row.get("support_text_sha256")
+            if not isinstance(support_text, str) or not support_text.strip():
+                errors.append(f"{rid}: {level} requires support_text")
             if not isinstance(support_hash, str) or not SHA256_RE.fullmatch(support_hash):
                 errors.append(f"{rid}: {level} requires support_text_sha256")
+            elif isinstance(support_text, str) and sha256_text(support_text) != support_hash:
+                errors.append(f"{rid}: support_text_sha256 mismatch")
         if local_path is not None:
             if not isinstance(local_path, str) or not local_path.strip():
                 errors.append(f"{rid}: local_path must be a non-empty string")
