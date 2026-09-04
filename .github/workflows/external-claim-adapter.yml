@@ -1,0 +1,30 @@
+name: external-claim-adapter
+
+on:
+  push:
+    paths:
+      - "references/external/**"
+      - "tools/validate_external_claim_adapter.py"
+      - "tools/test_external_claim_adapter.py"
+      - "specs/002-external-claim-adapter/**"
+      - ".github/workflows/external-claim-adapter.yml"
+  pull_request:
+    paths:
+      - "references/external/**"
+      - "tools/validate_external_claim_adapter.py"
+      - "tools/test_external_claim_adapter.py"
+      - "specs/002-external-claim-adapter/**"
+      - ".github/workflows/external-claim-adapter.yml"
+
+jobs:
+  offline-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run adapter regression tests
+        run: python tools/test_external_claim_adapter.py
+      - name: Validate canonical registries offline
+        run: python tools/validate_external_claim_adapter.py --root .
