@@ -73,3 +73,5 @@ The [principal-angle audit](references/external/principal-angle-audit-2026-09-07
 The [hyperbolic radial-volume audit](references/external/hyperbolic-volume-audit-2026-09-07.json) pins the geodesic polar formula, scalar/sectional curvature distinction and dimension-one boundary.
 
 The [invariance-of-domain audit](references/external/invariance-domain-audit-2026-09-07.json) pins the exact continuous open-domain theorem and distinguishes the project dimension adapter.
+
+The [Gaussian channel-capacity audit](references/external/awgn-capacity-audit-2026-09-07.json) pins the real per-use Shannon formula with explicit power/noise and operational boundaries.

@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-07",
+  "accepted": 1,
+  "rejected": 0,
+  "unresolved": 0,
+  "claim": "KCLM-000020",
+  "source_url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/24fb44b6a101e847c32ffe38bbeeea6e_MIT6_441S16_chapter_17.pdf",
+  "author_page": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/pages/lecture-notes/",
+  "source_sha256": "2843e4f51cc94a4b2ee61161caf0594a186009f55633d849a4362a3a022203f9",
+  "source_bytes": 971719,
+  "source_pages": 12,
+  "scope": "For a stationary memoryless real additive Gaussian channel Y=X+Z with noise independent of input, variance sigma^2>0, and finite nonnegative per-codeword average squared-input constraint P, asymptotic Shannon capacity is C(P)=C_i(P)=(1/2) log2(1+P/sigma^2) bits per real channel use.",
+  "boundary": "Definitions17.1-17.3, printed pp.174-175, and Definition17.5/Theorem17.5, p.178. Every codeword obeys its average squared-input constraint; the information-capacity optimization separately uses expected cost. Shannon capacity means vanishing error and unbounded block length, not a fixed-epsilon strong converse or one-shot reliable bits. Complex channels have a different prefactor; bits/second needs a use rate; peak-amplitude constraints are separate. No power bound gives infinite capacity. P=0 permits only the zero codeword. The block-noise sentence on p.178 omits sigma^2 in N(0,I_n), inconsistent with the scalar definition/theorem: import the scalar variance-qualified statement, not that sentence. No claim about arbitrary numerical carriers or non-Gaussian noise.",
+  "independent_verdict": "REFINED_THEN_ACCEPTED",
+  "limitations": [
+    "Same-family independent verification.",
+    "Per-codeword power and expected information-capacity constraint must be distinguished.",
+    "No fixed-error/strong-converse extension.",
+    "Source block-noise variance normalization inconsistency explicitly retained.",
+    "graphify update . unavailable on this desktop; deterministic adapter integrity and all five tests passed."
+  ]
+}

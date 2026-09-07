@@ -12,6 +12,16 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Scalar Gaussian capacity boundary
+- **Status:** current scoped external evidence
+- **Method:** primary author notes, rendered theorem and independent entailment verification
+- **Sources:** 1 · **Confidence:** high within the explicit real stationary memoryless channel model
+- **File:** [audit](../references/external/awgn-capacity-audit-2026-09-07.json), KWRK-000019 / KCLM-000020 / KEVD-000020
+- **Citation audit:** MIT author/course identity resolved; two independent downloads, same 971719-byte SHA256; Definitions17.1-17.3 and Theorem17.5 visually inspected. Seven-word locating excerpt. Independent verifier refined the operational power constraint before acceptance.
+- **Residual limits:** no fixed-error strong converse, expected-across-message operational claim, peak-amplitude substitution or bits/second conversion. Source block-noise sentence omits variance scale; scalar theorem retained. Same-family verification; graphify update . unavailable; deterministic adapter and five tests passed.
+- **Vault cross-links:** none
+
+
 ### 2026-09-07 — Invariance of domain and continuous encoding
 - **Status:** current scoped external evidence; semantic graph refresh unavailable
 - **Method:** author-resolved source, rendered theorem inspection and independent entailment verification
