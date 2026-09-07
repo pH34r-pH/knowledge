@@ -97,3 +97,5 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Audit discrete self-information — countable point support, infinite-entropy and domination scope.
 
 - [x] Audit the finite pairwise nonlinear CCA citation — exact Gaussian, spectral, population, coordinate and residual-noise boundaries.
+
+- [x] Resolve the final minimality-background citation boundary — exact Hankel realization and countable positive statistical criterion.

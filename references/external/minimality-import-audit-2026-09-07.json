@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-07",
+  "accepted": 2,
+  "rejected": 0,
+  "unresolved": 0,
+  "sources": [
+    {
+      "wid": "KWRK-000024",
+      "cid": "KCLM-000025",
+      "eid": "KEVD-000025",
+      "name": "lics2015",
+      "title": "A Canonical Form for Weighted Automata and Applications to Approximate Minimization",
+      "authors": [
+        "Borja Balle",
+        "Prakash Panangaden",
+        "Doina Precup"
+      ],
+      "identifiers": {
+        "doi": "10.1109/LICS.2015.70"
+      },
+      "url": "https://www.cs.mcgill.ca/~prakash/Pubs/lics2015.pdf",
+      "sha": "3cc745280586741e259df8c9558873367015a8c81c61919f02244eb1a9efc73f",
+      "pages": 12,
+      "size": 371728,
+      "proposition": "For a finite alphabet and nonzero real-valued function on all finite strings, its Hankel matrix H(p,s)=f(ps) has finite algebraic rank n iff f has an exact real weighted finite-automaton realization with minimum state dimension n.",
+      "boundary": "Ordinary real addition/multiplication and equality on every string. No summability assumption for this algebraic theorem; later SVD/operator results impose extra assumptions. No minimum among nonnegative/stochastic or nonlinear realizations, no finite-sample learning or approximate-rank bound. The zero function requires a zero-state convention and is excluded from this import.",
+      "quote": "rank(f) = rank(Hf)",
+      "location": "Section II.B, PDF pp3-4, Theorem2; p3 defines rank(f) as minimum WFA dimension.",
+      "identity": "LICS2015 pp701-712, identity independently verified via Crossref and author bibliography. Classical result restated and attributed to Berstel-Reutenauer2011 [27], not an original theorem claim by these authors."
+    },
+    {
+      "wid": "KWRK-000025",
+      "cid": "KCLM-000026",
+      "eid": "KEVD-000026",
+      "name": "fithian-sufficiency",
+      "title": "Sufficiency \u2014 legacy Statistics 210A lecture04 handout",
+      "authors": [
+        "Will Fithian"
+      ],
+      "identifiers": {
+        "author_resource": "stat210a/lectures/lecture04.pdf"
+      },
+      "url": "https://www.stat.berkeley.edu/~wfithian/courses/stat210a/lectures/lecture04.pdf",
+      "sha": "140a1181796c22b7ad7386a686f691a1aa13896d58ae7d2c585633438ce7210a",
+      "pages": 11,
+      "size": 7045818,
+      "proposition": "For a nonempty countable discrete sample space and nonempty family of everywhere-positive probability masses, a sufficient discrete statistic T is minimal sufficient if proportional likelihood functions imply equal T values.",
+      "boundary": "This is the countable positive-support specialization of the displayed sufficient-statistic criterion, with minimality among discrete statistics. Likelihood proportionality uses one positive constant independent of the parameter. The corresponding likelihood-class partition follows by factorization, not a separate displayed theorem. General dominated models require almost-everywhere and measurable-version qualifications; no pointwise continuous-model partition or identification with an arbitrary deterministic task quotient is inferred.",
+      "quote": "T determines the likelihood shape",
+      "location": "PDF p7 minimal-sufficiency definition; p8 displayed Thm3.11, proof and locating quote; p4 dominated factorization.",
+      "identity": "Author-hosted legacy handout, exact publication date unverified. PDF metadata has a 2020 date; do not assign the separate Fall2023 version. Companion author page sufficiency.html is dated2023-08-29 and independently states the a.e. factorization qualification. Classical course restatement, not the original historical proof."
+    }
+  ],
+  "independent_verdict": "ACCEPT_EXACT_WFA_AND_COUNTABLE_POSITIVE_STATISTICAL_SPECIALIZATION",
+  "excluded_source": {
+    "url": "https://dspace.mit.edu/bitstream/handle/1721.1/103814/18-466-spring-2003/contents/lecture-notes/c2s3.pdf",
+    "reason": "HTTP429; broader Dudley dominated-model primary binary unverified, not admitted or used."
+  },
+  "limitations": [
+    "Same-family independent source entailment; no claim of kernel verification of these external theorems.",
+    "Private vault unavailable and unused.",
+    "Graphify unavailable; deterministic external-adapter checks run."
+  ]
+}

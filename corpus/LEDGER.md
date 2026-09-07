@@ -12,6 +12,15 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Minimality background interfaces
+- **Status:** current scoped external attribution
+- **Method:** pre-resolved author sources; independent entailment and visual checks
+- **Sources:** 2 accepted · **Confidence:** high within explicit scopes
+- **File:** [audit](../references/external/minimality-import-audit-2026-09-07.json), KWRK-000024/25, KCLM-000025/26, KEVD-000025/26
+- **Citation audit:** independent matching PDF hashes; finite real exact WFA scope and zero-function boundary; countable positive-support statistical specialization, with a.e. general-model caveat. Legacy lecture date remains unverified; no false Fall2023 assignment.
+- **Excluded:** inaccessible MIT Dudley binary (HTTP429), broader claim not used. Same-family verifier, graphify unavailable, no private vault or full copyrighted PDF redistribution.
+
+
 ### 2026-09-07 — Conditional nonlinear CCA citation boundary
 - **Status:** current scoped external attribution
 - **Method:** pre-resolved primary proceedings, independent entailment and visual scope checks
