@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-07",
+  "method": "Primary resolution, short excerpt verification and independent scoped entailment",
+  "accepted": 4,
+  "rejected": 0,
+  "unresolved": 0,
+  "records": [
+    {
+      "claim_id": "KCLM-000008",
+      "source_pdf_sha256": "30ab25a8f90f30b48c6e107c6b8460282c1db198ee527e18a44a2424cc18bb7b",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "Section 8, theorem 1, printed p. 654."
+    },
+    {
+      "claim_id": "KCLM-000009",
+      "source_pdf_sha256": "160810c5c27e70d51de1b933a65910a652b070ebdbddd615df838381a4569746",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "Theorem 5, printed p. 236; proof p. 237; smoothness terminology p. 221."
+    },
+    {
+      "claim_id": "KCLM-000010",
+      "source_pdf_sha256": "20603bb2151fb5db8a4cc5cee032482a095754e60d6d9712e0f00540740170af",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "Section 2, theorem 1, printed p. 369; open-dense proof p. 371."
+    },
+    {
+      "claim_id": "KCLM-000011",
+      "source_pdf_sha256": "500ee7eb53cfe202b2b9d7bccd2c0bbba7e65a007e1dd640ce31a63e34f847bf",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "Lemma 1, printed pp. 190\u2013191, proof p. 193; not the separate Lipschitz extension theorem 1."
+    }
+  ],
+  "limitations": [
+    "Same-family independent verifier.",
+    "Full theorem rereading requires primary sources; committed excerpts/hashes support integrity only.",
+    "Local graphify executable unavailable; no cloud extraction substituted."
+  ]
+}

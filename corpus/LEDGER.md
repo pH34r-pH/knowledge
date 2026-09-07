@@ -12,6 +12,16 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Scoped embedding, delay and finite projection evidence
+- **Status:** current source evidence; local semantic graph refresh unavailable
+- **Method:** primary retrieval, deterministic DOI/title/span/liveness verification and separate entailment review; external-claim adapter extension, not a new survey article
+- **Sources:** 4 · **Confidence:** high for the recorded narrow statements
+- **File:** [audit](../references/external/embedding-import-audit-2026-09-07.json), KWRK/KCLM/KEVD-000008 through 000011
+- **Citation audit:** 4/4 resolved, live and independently supported. Whitney scan excerpts visually verified; Takens/JL excerpts matched normalized PDF extraction. Distinguish Whitney 1936 weak versus 1944 strong bounds, the positive-dimensional restriction and historical smoothness convention, Takens generic pairs, and finite Euclidean JL distortion.
+- **Residual limits:** same-family independent verifier. No full PDFs committed. `graphify update .` is unavailable on this desktop; adapter/schema validation remains independent. No cloud extraction substituted.
+- **Vault cross-links:** none; no personal vault accessed
+
+
 ### 2026-09-07 — Scoped formal-theory external adapter evidence
 - **Status:** current source evidence; local semantic graph refresh unavailable
 - **Method:** primary retrieval → deterministic resolution/span/liveness → independent entailment; bounded extension of the external-claim adapter, not a new survey article

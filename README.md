@@ -61,3 +61,5 @@ General-knowledge articles on software engineering design patterns, ML technique
 ## Scoped formal-theory source records
 
 The [2026-09-07 adapter audit](references/external/formal-import-audit-2026-09-07.json) pins six narrowly scoped sources for bisimulation, Myhill–Nerode, Blackwell comparison, spectral product growth, restricted lower-spectral algorithms, and bipartite operator Schmidt rank. These are attribution records, not new proofs or unrestricted imports.
+
+The [embedding-source audit](references/external/embedding-import-audit-2026-09-07.json) adds four scoped records for the weak and strong Whitney bounds, Takens generic-pair delay embedding, and finite-set Johnson–Lindenstrauss distortion. Positive dimension, genericity and finite-domain limits remain explicit.

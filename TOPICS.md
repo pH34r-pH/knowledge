@@ -75,3 +75,5 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 ## External evidence maintenance
 
 - [x] Pin scoped formal-campaign prior art — six claim/evidence triples audited on 2026-09-07; preserve hypothesis and version boundaries rather than treating paper identity as theorem support.
+
+- [x] Pin classical embedding/delay/projection imports — four scoped claim/evidence triples; distinguish zero-dimensional Whitney exceptions, generic-pair delay reconstruction and finite Euclidean approximate distances.
