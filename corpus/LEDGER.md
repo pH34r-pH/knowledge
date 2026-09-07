@@ -12,6 +12,16 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Hyperbolic polar volume and dimensional growth boundary
+- **Status:** current scoped external evidence; semantic graph refresh unavailable
+- **Method:** resolved primary source, rendered formula inspection and independent entailment verification
+- **Sources:** 1 · **Confidence:** high within the exact hyperbolic model
+- **File:** [audit](../references/external/hyperbolic-volume-audit-2026-09-07.json), KWRK-000017 / KCLM-000018 / KEVD-000018
+- **Citation audit:** live author-hosted publication and Crossref metadata; both readers independently obtained the same PDF hash. Printed p.644 gives geodesic polar metric/density. The p.638 curvature convention is scalar curvature. Publication April 1991, not the August 1990 received date.
+- **Residual limits:** n>=2 is required for positive exponential growth; n=1 is linear. No variable-curvature comparison, packing/embedding existence or learning advantage. Same-family verifier; `graphify update .` unavailable, deterministic adapter checks remain independent.
+- **Vault cross-links:** none
+
+
 ### 2026-09-07 — Principal angles and orthogonal-complement bookkeeping
 - **Status:** current scoped external evidence; semantic graph refresh unavailable
 - **Method:** primary resolved-source pool, rendered theorem inspection and independent entailment verification

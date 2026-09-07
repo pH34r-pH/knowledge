@@ -1,0 +1,696 @@
+{
+  "date": "2026-09-07",
+  "accepted": 1,
+  "rejected": 0,
+  "unresolved": 0,
+  "claim": "KCLM-000018",
+  "source_sha256": "59b2230ea334e0d4a83e3d80a824810eb842136424dcb7cd4cf3b68f4d0966c7",
+  "scope": "In the positive-sheet n-dimensional real hyperbolic-space model of curvature scale a>0, geodesic polar radius r gives metric dr²+(sinh(a r)/a)² dΩ² and angularly integrated radial volume element Vol(S^(n−1)) (sinh(a r)/a)^(n−1) dr.",
+  "boundary": "Equations (6.2)–(6.3) and the following paragraph on printed p.644 supply the geodesic coordinate, metric and density. R=-n(n−1)a² is scalar curvature, as defined on p.638; sectional curvature is -a². The positive origin x0=1/a in the positive-sheet model supplies a>0. Positive exponential growth requires n>=2; that dimension qualification is a consequence of the formula, not an extra quoted assertion. For n=1 the density is constant and ball volume is linear. No general variable-negative-curvature comparison, packing existence, tree embedding or architectural/generalization claim is imported.",
+  "identity": {
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          8,
+          28
+        ]
+      ],
+      "date-time": "2026-08-28T15:39:57Z",
+      "timestamp": 1787931597629,
+      "version": "build-2784847793"
+    },
+    "reference-count": 49,
+    "publisher": "Elsevier BV",
+    "issue": "3",
+    "license": [
+      {
+        "start": {
+          "date-parts": [
+            [
+              1991,
+              4,
+              1
+            ]
+          ],
+          "date-time": "1991-04-01T00:00:00Z",
+          "timestamp": 670464000000
+        },
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+      },
+      {
+        "start": {
+          "date-parts": [
+            [
+              1991,
+              4,
+              1
+            ]
+          ],
+          "date-time": "1991-04-01T00:00:00Z",
+          "timestamp": 670464000000
+        },
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "URL": "https://www.elsevier.com/legal/tdmrep-license"
+      }
+    ],
+    "content-domain": {
+      "domain": [
+        "elsevier.com",
+        "sciencedirect.com"
+      ],
+      "crossmark-restriction": true
+    },
+    "short-container-title": [
+      "Nuclear Physics B"
+    ],
+    "published-print": {
+      "date-parts": [
+        [
+          1991,
+          4
+        ]
+      ]
+    },
+    "DOI": "10.1016/0550-3213(91)90102-4",
+    "type": "journal-article",
+    "created": {
+      "date-parts": [
+        [
+          2002,
+          11,
+          12
+        ]
+      ],
+      "date-time": "2002-11-12T03:10:06Z",
+      "timestamp": 1037070606000
+    },
+    "page": "616-670",
+    "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+    "source": "Crossref",
+    "is-referenced-by-count": 186,
+    "title": [
+      "c-theorem and spectral representation"
+    ],
+    "prefix": "10.1016",
+    "volume": "352",
+    "author": [
+      {
+        "given": "Andrea",
+        "family": "Cappelli",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Daniel",
+        "family": "Friedan",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "JoséI.",
+        "family": "Latorre",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "member": "78",
+    "reference": [
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib1",
+        "doi-asserted-by": "crossref",
+        "first-page": "75",
+        "DOI": "10.1016/0370-1573(74)90023-4",
+        "volume": "12C",
+        "author": "Wilson",
+        "year": "1974",
+        "journal-title": "Phys. Rep."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib2",
+        "doi-asserted-by": "crossref",
+        "first-page": "142",
+        "DOI": "10.1016/0003-4916(75)90267-5",
+        "volume": "92",
+        "author": "Wallace",
+        "year": "1975",
+        "journal-title": "Ann. Phys. (NY)"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0015",
+        "doi-asserted-by": "crossref",
+        "first-page": "1057",
+        "DOI": "10.1103/PhysRevLett.45.1057",
+        "volume": "45",
+        "author": "Friedan",
+        "year": "1980",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0020",
+        "doi-asserted-by": "crossref",
+        "first-page": "318",
+        "DOI": "10.1016/0003-4916(85)90384-7",
+        "volume": "163",
+        "author": "Friedan",
+        "year": "1985",
+        "journal-title": "Ann. Phys. (NY)"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0025",
+        "doi-asserted-by": "crossref",
+        "first-page": "1257",
+        "DOI": "10.1142/S0217751X8900056X",
+        "volume": "A4",
+        "author": "Tseytlin",
+        "year": "1989",
+        "journal-title": "Int. J. Mod. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0030",
+        "doi-asserted-by": "crossref",
+        "first-page": "593",
+        "DOI": "10.1016/0550-3213(85)90506-1",
+        "volume": "B262",
+        "author": "Callan",
+        "year": "1985",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0035",
+        "doi-asserted-by": "crossref",
+        "first-page": "78",
+        "DOI": "10.1016/0550-3213(86)90107-0",
+        "volume": "B278",
+        "author": "Callan",
+        "year": "1986",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib5",
+        "series-title": "Gauge fields and strings",
+        "author": "Polyakov",
+        "year": "1987"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0045",
+        "first-page": "730",
+        "volume": "43",
+        "author": "Zamolodchikov",
+        "year": "1986",
+        "journal-title": "JETP Lett."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0050",
+        "first-page": "1090",
+        "volume": "46",
+        "author": "Zamolodchikov",
+        "year": "1987",
+        "journal-title": "Sov. J. Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib7",
+        "series-title": "Les Houches summer school",
+        "article-title": "Fields, strings and critical phenomena",
+        "author": "Affleck",
+        "year": "1990"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0060",
+        "series-title": "Proc. of the 1989 Spring School on Superstrings",
+        "author": "Gepner",
+        "year": "1990"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0065",
+        "doi-asserted-by": "crossref",
+        "first-page": "28",
+        "DOI": "10.1016/0370-2693(88)91230-0",
+        "volume": "B212",
+        "author": "Vafa",
+        "year": "1988",
+        "journal-title": "Phys. Lett."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib9",
+        "doi-asserted-by": "crossref",
+        "first-page": "749",
+        "DOI": "10.1016/0370-2693(88)90054-8",
+        "volume": "B215",
+        "author": "Cardy",
+        "year": "1988",
+        "journal-title": "Phys. Lett."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib10",
+        "doi-asserted-by": "crossref",
+        "first-page": "97",
+        "DOI": "10.1016/0370-2693(89)90729-6",
+        "volume": "B222",
+        "author": "Osborn",
+        "year": "1989",
+        "journal-title": "Phys. Lett."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib11",
+        "doi-asserted-by": "crossref",
+        "first-page": "647",
+        "DOI": "10.1016/0550-3213(90)90584-Z",
+        "volume": "B343",
+        "author": "Jack",
+        "year": "1990",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib12",
+        "series-title": "lecture at the Nordisk Forskarkurs, Recent developments in quantum field theory",
+        "author": "Friedan",
+        "year": "1990"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib13",
+        "series-title": "Quantum fields in curved space",
+        "author": "Birrel",
+        "year": "1982"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib14",
+        "first-page": "389",
+        "volume": "D33",
+        "author": "Düsedau",
+        "year": "1986",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib15",
+        "doi-asserted-by": "crossref",
+        "first-page": "366",
+        "DOI": "10.1016/0550-3213(90)90451-I",
+        "volume": "B340",
+        "author": "Callan",
+        "year": "1990",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib16",
+        "series-title": "Quantum field theory",
+        "author": "Itzykson",
+        "year": "1980"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0110",
+        "doi-asserted-by": "crossref",
+        "first-page": "83",
+        "DOI": "10.1007/BF01645738",
+        "volume": "31",
+        "author": "Osterwalder",
+        "year": "1973",
+        "journal-title": "Commun. Math. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0115",
+        "doi-asserted-by": "crossref",
+        "first-page": "281",
+        "DOI": "10.1007/BF01608978",
+        "volume": "42",
+        "author": "Osterwalder",
+        "year": "1976",
+        "journal-title": "Commun. Math. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib18",
+        "doi-asserted-by": "crossref",
+        "first-page": "333",
+        "DOI": "10.1016/0550-3213(84)90052-X",
+        "volume": "B241",
+        "author": "Belavin",
+        "year": "1984",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib19",
+        "doi-asserted-by": "crossref",
+        "first-page": "2709",
+        "DOI": "10.1103/PhysRevLett.60.2709",
+        "volume": "60",
+        "author": "Cardy",
+        "year": "1988",
+        "journal-title": "Phys. Rev. Lett."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib20",
+        "doi-asserted-by": "crossref",
+        "first-page": "659",
+        "DOI": "10.1016/0550-3213(90)90463-N",
+        "volume": "B340",
+        "author": "Cappelli",
+        "year": "1990",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0135",
+        "first-page": "38",
+        "volume": "B37",
+        "author": "Migdal",
+        "year": "1971",
+        "journal-title": "Phys. Lett."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0140",
+        "doi-asserted-by": "crossref",
+        "first-page": "98",
+        "DOI": "10.1016/0370-2693(71)90583-1",
+        "volume": "B37",
+        "author": "Migdal",
+        "year": "1971",
+        "journal-title": "Phys. Lett."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib22",
+        "doi-asserted-by": "crossref",
+        "first-page": "355",
+        "DOI": "10.1016/0550-3213(87)90192-1",
+        "volume": "B290",
+        "author": "Cardy",
+        "year": "1987",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib23",
+        "doi-asserted-by": "crossref",
+        "first-page": "269",
+        "DOI": "10.1016/0550-3213(84)90287-6",
+        "volume": "B231",
+        "author": "Polchinski",
+        "year": "1984",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib24",
+        "doi-asserted-by": "crossref",
+        "first-page": "707",
+        "DOI": "10.1016/0550-3213(89)90414-8",
+        "volume": "B314",
+        "author": "Cappelli",
+        "year": "1989",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0160",
+        "doi-asserted-by": "crossref",
+        "first-page": "136",
+        "DOI": "10.1016/0003-4916(82)90008-2",
+        "volume": "139",
+        "author": "Hathrell",
+        "year": "1982",
+        "journal-title": "Ann. Phys. (NY)"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0165",
+        "doi-asserted-by": "crossref",
+        "first-page": "34",
+        "DOI": "10.1016/0003-4916(82)90227-5",
+        "volume": "142",
+        "author": "Hathrell",
+        "year": "1982",
+        "journal-title": "Ann. Phys. (NY)"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib26",
+        "doi-asserted-by": "crossref",
+        "first-page": "339",
+        "DOI": "10.1016/0003-4916(84)90022-8",
+        "volume": "153",
+        "author": "Freeman",
+        "year": "1984",
+        "journal-title": "Ann. Phys. (NY)"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib27",
+        "series-title": "Proc. Les Houches",
+        "article-title": "Recent advances in field theory and statistical mechanics",
+        "author": "Friedan",
+        "year": "1984"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0180",
+        "first-page": "434",
+        "volume": "D8",
+        "author": "Brezin",
+        "year": "1973",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0185",
+        "volume": "vol. 6",
+        "author": "Brezin",
+        "year": "1976"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib29",
+        "series-title": "Quantum field theory and critical phenomena",
+        "author": "Zinn-Justin",
+        "year": "1989"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib30",
+        "doi-asserted-by": "crossref",
+        "first-page": "345",
+        "DOI": "10.1016/0550-3213(80)90289-8",
+        "volume": "B174",
+        "author": "Chetyrkin",
+        "year": "1980",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib31",
+        "doi-asserted-by": "crossref",
+        "first-page": "159",
+        "DOI": "10.1016/0550-3213(81)90199-1",
+        "volume": "B192",
+        "author": "Chetyrkin",
+        "year": "1981",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib32",
+        "doi-asserted-by": "crossref",
+        "first-page": "359",
+        "DOI": "10.1016/0003-4916(82)90076-8",
+        "volume": "142",
+        "author": "Lüsher",
+        "year": "1982",
+        "journal-title": "Ann. Phys. (NY)"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib33",
+        "series-title": "Special functions and the theory of group representations",
+        "author": "Vilenkin",
+        "year": "1968"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0215",
+        "first-page": "3565",
+        "volume": "D18",
+        "author": "Avis",
+        "year": "1978",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_SB0220",
+        "doi-asserted-by": "crossref",
+        "first-page": "285",
+        "DOI": "10.1016/0003-4916(86)90203-4",
+        "volume": "167",
+        "author": "Burges",
+        "year": "1986",
+        "journal-title": "Ann. Phys. (NY)"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib35",
+        "series-title": "Tables of integrals, series and products",
+        "author": "Gradshteyn",
+        "year": "1965"
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib36",
+        "doi-asserted-by": "crossref",
+        "first-page": "435",
+        "DOI": "10.1016/0550-3213(90)90436-H",
+        "volume": "B336",
+        "author": "Rosenstein",
+        "year": "1990",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib37",
+        "first-page": "395",
+        "volume": "D33",
+        "author": "Düsedau",
+        "year": "1986",
+        "journal-title": "Phys. Rev."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib38",
+        "doi-asserted-by": "crossref",
+        "first-page": "334",
+        "DOI": "10.1016/0550-3213(77)90410-2",
+        "volume": "B125",
+        "author": "Duff",
+        "year": "1977",
+        "journal-title": "Nucl. Phys."
+      },
+      {
+        "key": "10.1016/0550-3213(91)90102-4_bib39",
+        "doi-asserted-by": "crossref",
+        "first-page": "147",
+        "DOI": "10.1016/0550-3213(74)90582-3",
+        "volume": "B82",
+        "author": "Capper",
+        "year": "1974",
+        "journal-title": "Nucl. Phys."
+      }
+    ],
+    "container-title": [
+      "Nuclear Physics B"
+    ],
+    "original-title": [],
+    "language": "en",
+    "link": [
+      {
+        "URL": "https://api.elsevier.com/content/article/PII:0550321391901024?httpAccept=text/xml",
+        "content-type": "text/xml",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://api.elsevier.com/content/article/PII:0550321391901024?httpAccept=text/plain",
+        "content-type": "text/plain",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      }
+    ],
+    "deposited": {
+      "date-parts": [
+        [
+          2025,
+          9,
+          10
+        ]
+      ],
+      "date-time": "2025-09-10T13:50:16Z",
+      "timestamp": 1757512216000
+    },
+    "score": 1,
+    "resource": {
+      "primary": {
+        "URL": "https://linkinghub.elsevier.com/retrieve/pii/0550321391901024"
+      }
+    },
+    "subtitle": [],
+    "short-title": [],
+    "issued": {
+      "date-parts": [
+        [
+          1991,
+          4
+        ]
+      ]
+    },
+    "references-count": 49,
+    "journal-issue": {
+      "issue": "3",
+      "published-print": {
+        "date-parts": [
+          [
+            1991,
+            4
+          ]
+        ]
+      }
+    },
+    "alternative-id": [
+      "0550321391901024"
+    ],
+    "URL": "https://doi.org/10.1016/0550-3213(91)90102-4",
+    "relation": {},
+    "ISSN": [
+      "0550-3213"
+    ],
+    "issn-type": [
+      {
+        "value": "0550-3213",
+        "type": "print"
+      }
+    ],
+    "subject": [],
+    "published": {
+      "date-parts": [
+        [
+          1991,
+          4
+        ]
+      ]
+    },
+    "assertion": [
+      {
+        "value": "Elsevier",
+        "name": "publisher",
+        "label": "This article is maintained by"
+      },
+      {
+        "value": "c-theorem and spectral representation",
+        "name": "articletitle",
+        "label": "Article Title"
+      },
+      {
+        "value": "Nuclear Physics B",
+        "name": "journaltitle",
+        "label": "Journal Title"
+      },
+      {
+        "value": "https://doi.org/10.1016/0550-3213(91)90102-4",
+        "name": "articlelink",
+        "label": "CrossRef DOI link to publisher maintained version"
+      },
+      {
+        "value": "article",
+        "name": "content_type",
+        "label": "Content Type"
+      },
+      {
+        "value": "Copyright © 1991 Published by Elsevier B.V.",
+        "name": "copyright",
+        "label": "Copyright"
+      }
+    ]
+  },
+  "independent_verdict": "ACCEPTED_WITH_RECORDED_BOUNDARIES",
+  "limitations": [
+    "Same-family independent verification.",
+    "Geometric polar volume formula is imported; project analysis of its growth is separate.",
+    "No packing or embedding existence follows solely from density growth.",
+    "Graphify unavailable; deterministic adapter validation is independent."
+  ]
+}

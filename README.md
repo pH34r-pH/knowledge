@@ -69,3 +69,5 @@ The [regularity audit](references/external/regularity-import-audit-2026-09-07.js
 The [Grassmann audit](references/external/grassmann-source-audit-2026-09-07.json) reuses the Lee manuscript for real smooth graph charts and adds the corrected KMS author copy for orthogonal-complement diffeomorphism.
 
 The [principal-angle audit](references/external/principal-angle-audit-2026-09-07.json) pins the exact complement and projector-spectrum identities, including unequal-rank and zero-padding bookkeeping.
+
+The [hyperbolic radial-volume audit](references/external/hyperbolic-volume-audit-2026-09-07.json) pins the geodesic polar formula, scalar/sectional curvature distinction and dimension-one boundary.

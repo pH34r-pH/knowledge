@@ -83,3 +83,5 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Audit real Grassmann graph charts and orthogonal complement — exact open-overlap/regularity and positive-definite real scope, two accepted claims.
 
 - [x] Audit Grassmann principal-angle/projector-spectrum conversion — exact finite-dimensional orthogonal scope and zero/one multiplicity boundary.
+
+- [x] Audit the hyperbolic radial-volume import — exact constant-curvature polar formula; no packing/embedding existence inferred from growth.
