@@ -75,3 +75,5 @@ The [hyperbolic radial-volume audit](references/external/hyperbolic-volume-audit
 The [invariance-of-domain audit](references/external/invariance-domain-audit-2026-09-07.json) pins the exact continuous open-domain theorem and distinguishes the project dimension adapter.
 
 The [Gaussian channel-capacity audit](references/external/awgn-capacity-audit-2026-09-07.json) pins the real per-use Shannon formula with explicit power/noise and operational boundaries.
+
+The [set-cover complexity audit](references/external/set-cover-audit-2026-09-07.json) pins the finite decision theorem and its exact encoding/selection boundaries.

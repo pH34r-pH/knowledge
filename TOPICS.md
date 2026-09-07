@@ -89,3 +89,5 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Audit the invariance-of-domain import — open Euclidean domain, continuous injection, explicit nonempty-source condition for lower-dimension obstruction.
 
 - [x] Audit scalar Gaussian channel capacity — per-codeword power, positive noise variance, asymptotic rate and real/complex distinction.
+
+- [x] Audit finite set-cover complexity — precise decision/encoding scope for constrained observation selection.

@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-07",
+  "accepted": 1,
+  "rejected": 0,
+  "unresolved": 0,
+  "claim": "KCLM-000021",
+  "source_url": "https://www2.seas.gwu.edu/~simhaweb/champalg/tsp/papers/KarpOriginal.pdf",
+  "publisher_url": "https://link.springer.com/chapter/10.1007/978-1-4684-2001-2_9",
+  "source_sha256": "778c8b3507620a68154bc74b29810e0de6d2c4dd7ee5d24b84c7e7ba61404b81",
+  "source_bytes": 10879201,
+  "source_pages": 19,
+  "ocr_sha256": "4a11a2a2eef13a8e74f710f51df5c3ebcd3a24197580c3aedf87fc235dec04e8",
+  "scope": "The SET COVERING decision problem is NP-complete: given a finite family of finite sets and a positive integer k, decide whether at most k members cover the union of the entire family, with standard explicit finite encodings and binary integer parameters.",
+  "boundary": "Main Theorem and problem6, printed p.94; completeness/reduction definitions pp.88,93, encoding discussion p.89, NP membership p.97, NODE COVER reduction p.98. An explicit-universe formulation is an adaptation: require every member to be a subset of the universe; uncovered universe elements are immediate negative cases. k=0 is a trivial additional case. No approximability result, proof that P differs from NP, or universal sensor-selection hardness follows. A project sensor encoding must exhibit its own polynomial reduction; unrestricted scalar basis selection is a different problem.",
+  "independent_verdict": "ACCEPT_WITH_SCOPE",
+  "limitations": [
+    "Same-family independent verification.",
+    "Explicit-universe and zero-budget cases are adaptations.",
+    "No universal perspective-selection hardness claim.",
+    "No private vault used; knowledge adapter extension, not unrelated corpus expansion.",
+    "graphify update . unavailable on this desktop; deterministic adapter validation and all five tests passed."
+  ]
+}

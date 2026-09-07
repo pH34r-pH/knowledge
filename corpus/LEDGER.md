@@ -12,6 +12,15 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Finite set-cover decision boundary
+- **Status:** current scoped external evidence
+- **Method:** primary original scan, deterministic OCR, visual and independent entailment checks
+- **Sources:** 1 · **Confidence:** high within explicit finite decision encodings
+- **File:** [audit](../references/external/set-cover-audit-2026-09-07.json), KWRK-000020 / KCLM-000021 / KEVD-000021
+- **Citation audit:** Crossref/publisher DOI metadata resolved; two downloads match the 10879201-byte hash; p.94 theorem/problem visually checked; nine-word quote matched by local OCR after whitespace normalization. Independent verifier accepted with explicit-universe and positive-k distinctions.
+- **Residual limits:** no P!=NP proof, approximation hardness or universal sensor-selection claim; same-family verification; graphify update . unavailable; deterministic adapter and all five tests passed. No private vault consulted.
+
+
 ### 2026-09-07 — Scalar Gaussian capacity boundary
 - **Status:** current scoped external evidence
 - **Method:** primary author notes, rendered theorem and independent entailment verification
