@@ -71,3 +71,5 @@ The [Grassmann audit](references/external/grassmann-source-audit-2026-09-07.json
 The [principal-angle audit](references/external/principal-angle-audit-2026-09-07.json) pins the exact complement and projector-spectrum identities, including unequal-rank and zero-padding bookkeeping.
 
 The [hyperbolic radial-volume audit](references/external/hyperbolic-volume-audit-2026-09-07.json) pins the geodesic polar formula, scalar/sectional curvature distinction and dimension-one boundary.
+
+The [invariance-of-domain audit](references/external/invariance-domain-audit-2026-09-07.json) pins the exact continuous open-domain theorem and distinguishes the project dimension adapter.

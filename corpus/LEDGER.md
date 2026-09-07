@@ -12,6 +12,16 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Invariance of domain and continuous encoding
+- **Status:** current scoped external evidence; semantic graph refresh unavailable
+- **Method:** author-resolved source, rendered theorem inspection and independent entailment verification
+- **Sources:** 1 · **Confidence:** high within the stated Euclidean open-domain scope
+- **File:** [audit](../references/external/invariance-domain-audit-2026-09-07.json), KWRK-000018 / KCLM-000019 / KEVD-000019
+- **Citation audit:** Theorem2B.3 printed p.172; two independent downloads/renderings, same SHA256. Author page confirms Cambridge 2002 publication and maintained electronic version. Copyright2001 and PDF metadata2022 are not edition dates.
+- **Residual limits:** lower-dimension consequence needs nonempty source; no arbitrary subset or boundary-half-chart substitution. Cor2B4 is not imported and its omitted nonempty-source premise is recorded. Same-family verifier; `graphify update .` unavailable; deterministic adapter checks remain independent.
+- **Vault cross-links:** none
+
+
 ### 2026-09-07 — Hyperbolic polar volume and dimensional growth boundary
 - **Status:** current scoped external evidence; semantic graph refresh unavailable
 - **Method:** resolved primary source, rendered formula inspection and independent entailment verification

@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-07",
+  "accepted": 1,
+  "rejected": 0,
+  "unresolved": 0,
+  "claim": "KCLM-000019",
+  "source_sha256": "bebb3032bf9021b956da3bd070eb6c67dc662cf849be9cdf6679f677560e5618",
+  "scope": "For an open subset U of finite-dimensional Euclidean space R^n, every continuous injection U -> R^n has open image (invariance of domain).",
+  "boundary": "Theorem 2B.3, printed p.172. No connectedness, compactness, differentiability or nonemptiness is needed for the theorem itself; n=0 is trivially valid. The lower-target-dimension consequence requires a nonempty source and is a separate project adapter using inclusion into a proper linear subspace. The domain is open in Euclidean space; boundary half-charts and arbitrary subsets do not satisfy this hypothesis. Corollary 2B.4 is not separately imported: its compact-source/connected-target surjectivity claim requires nonempty source, omitted in the displayed statement.",
+  "identity": {
+    "title": "Algebraic Topology",
+    "author": "Allen Hatcher",
+    "publisher": "Cambridge University Press",
+    "publication_year": 2002,
+    "isbn": "0-521-79540-0",
+    "book_page": "https://pi.math.cornell.edu/~hatcher/AT/ATpage.html"
+  },
+  "independent_verdict": "ACCEPTED_WITH_RECORDED_BOUNDARIES",
+  "limitations": [
+    "Same-family independent verification.",
+    "Nonempty open-domain lower-dimension adapter is separate from the imported theorem.",
+    "Do not transfer the theorem to boundary half-charts without further argument.",
+    "Graphify unavailable; deterministic adapter validation is independent."
+  ]
+}

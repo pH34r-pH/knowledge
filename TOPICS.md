@@ -85,3 +85,5 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Audit Grassmann principal-angle/projector-spectrum conversion — exact finite-dimensional orthogonal scope and zero/one multiplicity boundary.
 
 - [x] Audit the hyperbolic radial-volume import — exact constant-curvature polar formula; no packing/embedding existence inferred from growth.
+
+- [x] Audit the invariance-of-domain import — open Euclidean domain, continuous injection, explicit nonempty-source condition for lower-dimension obstruction.
