@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-07",
+  "accepted": 1,
+  "rejected": 0,
+  "unresolved": 0,
+  "claim": "KCLM-000023",
+  "source_url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/184197ca5d5418da2415d37e929860b9_MIT6_441S16_chapter_2.pdf",
+  "author_url": "https://ocw.mit.edu/courses/6-441-information-theory-spring-2016/pages/lecture-notes/",
+  "source_sha256": "97c6fcae4dd8f6a0dd87f26a570a71fb8c5c9b0361e24d774617e4079fc84a91",
+  "source_bytes": 622913,
+  "source_pages": 12,
+  "scope": "For a probability law supported on countably many measurable points with masses p_s, the self-information I(S;S), defined as KL divergence of the diagonal joint law from the product of its marginals, equals Shannon entropy sum_{p_s>0} p_s log(1/p_s), with nonnegative extended values allowing positive infinity.",
+  "boundary": "Theorem2.4(1), printed p.24 (PDF index4), and the first two lines of Proof1. A support restriction uses a measurable countable full-mass set whose inherited sigma-algebra contains every singleton; standard-Borel ambient spaces suffice. Counting measure on the support and its square gives sigma-finite domination. Abstract non-point atoms are outside this import. No differential-entropy identity or infinity-minus-infinity algebra is imported. The source chapter technical agreements require domination for its broader kernels; those unrestricted claims are not imported here.",
+  "independent_verdict": "ACCEPT_INCLUDING_INFINITE_ENTROPY",
+  "limitations": [
+    "Same-family independent verification.",
+    "Only countably point-supported self-information imported.",
+    "Broader chapter domination assumptions explicitly not discarded.",
+    "Unavailable private vault not consulted; narrow external adapter only.",
+    "Graphify availability checked separately."
+  ]
+}

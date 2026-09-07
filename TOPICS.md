@@ -93,3 +93,5 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Audit finite set-cover complexity — precise decision/encoding scope for constrained observation selection.
 
 - [x] Audit de Rham product canonicity — exact classical hypotheses, Euclidean exception and non-converse boundary.
+
+- [x] Audit discrete self-information — countable point support, infinite-entropy and domination scope.

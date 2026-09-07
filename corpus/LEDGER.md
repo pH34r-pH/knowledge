@@ -12,6 +12,15 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Discrete self-information and Shannon entropy
+- **Status:** current scoped external evidence
+- **Method:** primary author course notes, visual proof and independent narrowed entailment checks
+- **Sources:** 1 · **Confidence:** high for the countably point-supported identity
+- **File:** [audit](../references/external/discrete-self-information-audit-2026-09-07.json), KWRK-000022 / KCLM-000023 / KEVD-000023
+- **Citation audit:** live MIT author/version resolution, equal independent download hashes, printed p.24 direct nonnegative-term calculation, exact three-word quote. Independent verifier explicitly accepted infinite entropy without subtraction and the countable measurable support restriction.
+- **Residual limits:** abstract non-point atoms, differential entropy and unrestricted chapter kernel assumptions are excluded. Same-family verification; graphify update . unavailable. The deterministic adapter and all five tests passed. No private vault consulted.
+
+
 ### 2026-09-07 — Conditional geometric product canonicity
 - **Status:** current scoped external evidence
 - **Method:** pre-resolved primary research, visual and independent entailment checks

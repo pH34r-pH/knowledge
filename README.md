@@ -79,3 +79,5 @@ The [Gaussian channel-capacity audit](references/external/awgn-capacity-audit-20
 The [set-cover complexity audit](references/external/set-cover-audit-2026-09-07.json) pins the finite decision theorem and its exact encoding/selection boundaries.
 
 The [de Rham scope audit](references/external/derham-audit-2026-09-07.json) distinguishes conditional geometric canonicity from semantic identifiability.
+
+The [discrete self-information audit](references/external/discrete-self-information-audit-2026-09-07.json) pins the KL/Shannon identification, including infinite entropy without subtraction.
