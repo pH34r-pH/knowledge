@@ -12,6 +12,16 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Regularity and globality of imported geometry
+- **Status:** current scoped source evidence; local semantic graph refresh unavailable
+- **Method:** source/version resolution, live primary rendering and separate entailment review; bounded external adapter extension
+- **Sources:** 3 · **Confidence:** high within recorded hypotheses
+- **File:** [audit](../references/external/regularity-import-audit-2026-09-07.json), KWRK/KCLM/KEVD-000012 through 000014
+- **Citation audit:** 3/3 resolved, live, excerpt-checked and independently supported. A Lee draft is identified by its own version/date, without a published DOI. Nash 1956 supports C∞ induced Riemannian metrics. Lebl's author text gives the C1 star-shaped converse and exact closed-path global criterion.
+- **Residual limits:** same-family verifier; Lee theorem is stated with attribution rather than reproved. The zero-dimensional qualification is retained despite its omission in the displayed draft theorem. No full copyrighted PDFs committed. `graphify update .` is unavailable; adapter validation remains independent.
+- **Vault cross-links:** none
+
+
 ### 2026-09-07 — Scoped embedding, delay and finite projection evidence
 - **Status:** current source evidence; local semantic graph refresh unavailable
 - **Method:** primary retrieval, deterministic DOI/title/span/liveness verification and separate entailment review; external-claim adapter extension, not a new survey article

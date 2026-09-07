@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-07",
+  "method": "Primary/version identification, short excerpt check and independent hypothesis audit",
+  "accepted": 3,
+  "rejected": 0,
+  "unresolved": 0,
+  "records": [
+    {
+      "claim_id": "KCLM-000012",
+      "source_pdf_sha256": "d92e9c16d2f2b732b3eaff0eb285625550c48ffc1b0391a2f6071d16c6599df1",
+      "checked_location": "Theorem 6.14 p.137; smoothness p.7, manifold p.3, embedding p.94, boundary distinction pp.19\u201320.",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES"
+    },
+    {
+      "claim_id": "KCLM-000013",
+      "source_pdf_sha256": "1cd36149cfa1a9fe81ee98850635f22d4027bef33b0689413e8fdff7011183b6",
+      "checked_location": "Theorem 2 p.59 (compact), theorem 3 p.63 (general); metric equation C2 p.54; regularity discussion p.21.",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES"
+    },
+    {
+      "claim_id": "KCLM-000014",
+      "source_pdf_sha256": "a89e544f4010781f16ad39721eb916ecf3d51d9e9d3b91793a66df09b1809da3",
+      "checked_location": "Theorem 9.3.6 p.87; proposition 9.3.4 p.85; punctured-plane example 9.3.7 p.88.",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES"
+    }
+  ],
+  "limitations": [
+    "Same-family independent verifier.",
+    "Lee is an institutional mirror of a versioned author manuscript, not the published DOI edition.",
+    "Full source rereading requires the primary work.",
+    "Local graphify executable remains unavailable; no cloud route substituted."
+  ]
+}
