@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-07",
+  "accepted": 2,
+  "rejected": 0,
+  "unresolved": 0,
+  "records": [
+    {
+      "claim_id": "KCLM-000015",
+      "source_pdf_sha256": "d92e9c16d2f2b732b3eaff0eb285625550c48ffc1b0391a2f6071d16c6599df1",
+      "checked_location": "Version 3.0 manuscript, example 1.15 pp.15\u201317, equation 1.2 p.16, construction lemma 1.14 pp.14\u201315.",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES"
+    },
+    {
+      "claim_id": "KCLM-000016",
+      "source_pdf_sha256": "0ca36a4a106a6f8998134aebf5fac8c3c2be9c671f0ebfdb99efc86723da0511",
+      "checked_location": "Section 10.16 p.97; Grassmann/orthogonal presentation section 10.5 pp.88\u201389; smoothness convention section 1.1 pp.4\u20135.",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES"
+    }
+  ],
+  "method": "Independent graph-atlas/complement hypothesis audit with primary source identification",
+  "limitations": [
+    "Same-family independent verifier.",
+    "The KMS complement map is an explicit textbook assertion in its bundle construction.",
+    "Graphify executable unavailable; no cloud extraction substituted."
+  ]
+}

@@ -65,3 +65,5 @@ The [2026-09-07 adapter audit](references/external/formal-import-audit-2026-09-0
 The [embedding-source audit](references/external/embedding-import-audit-2026-09-07.json) adds four scoped records for the weak and strong Whitney bounds, Takens generic-pair delay embedding, and finite-set Johnson–Lindenstrauss distortion. Positive dimension, genericity and finite-domain limits remain explicit.
 
 The [regularity audit](references/external/regularity-import-audit-2026-09-07.json) adds a correctly versioned smooth Whitney companion, intrinsic Nash isometry and C1 star-shaped Poincaré potential records.
+
+The [Grassmann audit](references/external/grassmann-source-audit-2026-09-07.json) reuses the Lee manuscript for real smooth graph charts and adds the corrected KMS author copy for orthogonal-complement diffeomorphism.

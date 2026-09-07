@@ -12,6 +12,16 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Real Grassmann graph atlas and complement
+- **Status:** current scoped source evidence; local semantic graph refresh unavailable
+- **Method:** resolved source/version pool, primary-page inspection and independent entailment review
+- **Sources:** 2 · **Confidence:** high within the exact real finite-dimensional scope
+- **File:** [audit](../references/external/grassmann-source-audit-2026-09-07.json), KCLM/KEVD-000015..16; existing Lee work reused and KWRK-000015 added
+- **Citation audit:** both live and independently supported; exact short excerpts visually checked. Lee proves chart overlaps, smoothness, finite coverage and separation; KMS explicitly states the positive-definite real complement diffeomorphism. The block coordinate expression is marked as notation translation.
+- **Residual limits:** same-family verifier; no complex-holomorphic complement claim or full source redistribution. `graphify update .` remains unavailable, with adapter/schema tests independent.
+- **Vault cross-links:** none
+
+
 ### 2026-09-07 — Regularity and globality of imported geometry
 - **Status:** current scoped source evidence; local semantic graph refresh unavailable
 - **Method:** source/version resolution, live primary rendering and separate entailment review; bounded external adapter extension

@@ -79,3 +79,5 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Pin classical embedding/delay/projection imports — four scoped claim/evidence triples; distinguish zero-dimensional Whitney exceptions, generic-pair delay reconstruction and finite Euclidean approximate distances.
 
 - [x] Resolve regularity and globality of formal imports — versioned C-infinity Whitney companion, intrinsic Nash isometry, and exact C1 Poincaré hypotheses.
+
+- [x] Audit real Grassmann graph charts and orthogonal complement — exact open-overlap/regularity and positive-definite real scope, two accepted claims.
