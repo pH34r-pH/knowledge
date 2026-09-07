@@ -12,6 +12,15 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Conditional nonlinear CCA citation boundary
+- **Status:** current scoped external attribution
+- **Method:** pre-resolved primary proceedings, independent entailment and visual scope checks
+- **Sources:** 1 · **Confidence:** high for source attribution; published-proof completeness not certified
+- **File:** [audit](../references/external/multiview-cca-audit-2026-09-07.json), KWRK-000023 / KCLM-000024 / KEVD-000024
+- **Citation audit:** matching 36-page primary PDF downloads, exact ten-word quote, Gaussian and spectral assumptions, full function-class/population conditions, canonical alignment and residual-noise boundary. Independent audit found abbreviated independent-coordinate handling in AppendixF Step2; retained explicitly.
+- **Residual limits:** no noise-free semantic recovery, arbitrary-prior guarantee or trained-encoder result; same-family verification; graphify unavailable. No private vault or full copyrighted PDF redistributed.
+
+
 ### 2026-09-07 — Discrete self-information and Shannon entropy
 - **Status:** current scoped external evidence
 - **Method:** primary author course notes, visual proof and independent narrowed entailment checks

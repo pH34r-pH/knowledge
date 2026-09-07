@@ -81,3 +81,5 @@ The [set-cover complexity audit](references/external/set-cover-audit-2026-09-07.
 The [de Rham scope audit](references/external/derham-audit-2026-09-07.json) distinguishes conditional geometric canonicity from semantic identifiability.
 
 The [discrete self-information audit](references/external/discrete-self-information-audit-2026-09-07.json) pins the KL/Shannon identification, including infinite entropy without subtraction.
+
+The [nonlinear multi-view CCA scope audit](references/external/multiview-cca-audit-2026-09-07.json) separates a Gaussian/population/aligned-block result from arbitrary latent-factor identification.

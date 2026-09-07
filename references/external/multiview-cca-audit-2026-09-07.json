@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-07",
+  "accepted": 1,
+  "rejected": 0,
+  "unresolved": 0,
+  "claim": "KCLM-000024",
+  "source_url": "https://raw.githubusercontent.com/mlresearch/v337/main/assets/han26a/han26a.pdf",
+  "metadata_url": "https://proceedings.mlr.press/v337/han26a.html",
+  "source_sha256": "cd2e16594b835426ad0824a4c2553cef91d3cbe6d0e3e629ff37230aa2f092c3",
+  "source_bytes": 1514572,
+  "source_pages": 36,
+  "scope": "Han, Matthes and Shen Corollary1 reports that finite pairwise population nonlinear CCA recovers the correlated linear source block up to orthogonal alignment under the paper's independent standard-Gaussian additive latent model, smooth support-invertible generators, positive correlated rank r, feature dimension at least r, and first-order canonical dominance t_r > t_1 squared for r at least two. The optimizing centered/whitened square-integrable function class has the stated reparameterization richness and post-orthogonal closure.",
+  "boundary": "Source-entailment acceptance, not Lean verification or certification of every published proof step. Source dimensions at least two; rank-one dominance follows from 0<t_1<1. AppendixF Step5 rotates a population maximizer before its first-r selector; no fixed-coordinate identification of every unaligned maximizer. The identified block is O U_r^T W_i s_i with W_i=(A_i A_i^T+I)^(-1/2), so projected private noise remains. AppendixF Step2 abbreviates the handling of independent canonical coordinates at partial rank; a projection/zero-mode argument is needed for its arbitrary-feasible-map expansion. No finite-sample trained-encoder guarantee, exact shared c recovery, named semantic factors, or arbitrary priors/decoders. The infinite-feature multi-view theorem is outside this finite import.",
+  "independent_verdict": "ACCEPT_NARROW_FINITE_PAIR_ATTRIBUTION_WITH_PROOF_EXPOSITION_CAVEAT",
+  "limitations": [
+    "Same-family independent source entailment, not full proof certification.",
+    "No private vault used; unavailable Windows-path vault, narrow external adapter.",
+    "Graphify command unavailable on this desktop; deterministic external adapter validation used."
+  ]
+}
