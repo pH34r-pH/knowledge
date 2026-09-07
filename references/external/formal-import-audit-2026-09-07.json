@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-07",
+  "method": "Primary resolution, exact excerpt check, independent scoped entailment",
+  "accepted": 6,
+  "rejected": 0,
+  "unresolved": 0,
+  "records": [
+    {
+      "claim_id": "KCLM-000002",
+      "source_pdf_sha256": "03e18730ad320191b92b03a58bc241e7aed4845774dfbf0391783658ef08ac93",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "Abstract pp. 2035\u20132036; finite affine-predicate observations in section 4.1, p. 2038."
+    },
+    {
+      "claim_id": "KCLM-000003",
+      "source_pdf_sha256": "6d5f359eff84f8ac528933eecb46f6214f1bd880dbb3641a8f2ad44456644f23",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "Abstract and document section 4, theorem Myhill-Nerode, printed p. 27 (PDF page 28)."
+    },
+    {
+      "claim_id": "KCLM-000004",
+      "source_pdf_sha256": "f490b8395187edc34ab46a3d45455f1f59cbbc9632964c63218a2f4c8ba8cd1d",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "Primary scan pp. 265\u2013270: section 2 definitions; theorems 3, 5, 6; section 4 theorem 8 and imported theorem 2."
+    },
+    {
+      "claim_id": "KCLM-000005",
+      "source_pdf_sha256": "8929211ec7f0deb16b7e3798ad2794c38b6c71fc0f91426740aa943152f6148e",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "Author book, section 1.3, theorem 1.2 and corollary 1.1, printed p. 18 (PDF page 34)."
+    },
+    {
+      "claim_id": "KCLM-000006",
+      "source_pdf_sha256": "0eed34cf0e7ef9904997bfe19fc33ab1402bd700006ffd6e7b1147901c4afaf3",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "arXiv:2409.16822 section 3.1, theorem 6, printed p. 10; restriction discussion p. 8."
+    },
+    {
+      "claim_id": "KCLM-000007",
+      "source_pdf_sha256": "0991f803c1754a22fbbe85759bc8e90476f3ad915d7a3dff94cf861b596a17ae",
+      "verdict": "SUPPORTS_WITH_RECORDED_BOUNDARIES",
+      "checked_location": "Publisher remark 3.2; author preprint arXiv:1612.07616 remark 2.2."
+    }
+  ],
+  "limitations": [
+    "Same-family independent verifier; no second-family corroboration.",
+    "Offline excerpts and source hashes permit record integrity; full theorem re-reading needs the primary work.",
+    "graphify update . unavailable: graphify executable is not installed on this desktop. No cloud extraction attempted."
+  ]
+}

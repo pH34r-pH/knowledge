@@ -12,6 +12,16 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Scoped formal-theory external adapter evidence
+- **Status:** current source evidence; local semantic graph refresh unavailable
+- **Method:** primary retrieval → deterministic resolution/span/liveness → independent entailment; bounded extension of the external-claim adapter, not a new survey article
+- **Sources:** 6 · **Confidence:** high for stated narrow attribution
+- **File:** [audit](../references/external/formal-import-audit-2026-09-07.json), KWRK/KCLM/KEVD-000002 through 000007
+- **Citation audit:** 6/6 resolved; 6/6 primary sources live; 6/6 scoped propositions independently supported. DOI works passed Crossref HTTP 200/title matching. Short spans matched normalized PDF text, with Blackwell visually verified from its primary scan. Corrected provisional Pappas DOI; retained finite-alphabet, finite-parameter, bounded-family, restricted-cone and bipartite boundaries.
+- **Residual limits:** independent verifier used the same model family. Full source PDFs remain local scratch; only permitted short excerpts and source hashes are committed. `graphify update .` could not run because the CLI is absent; no cloud disclosure route was substituted. Source adapter validation is independent of that optional local semantic index.
+- **Vault cross-links:** none; no personal vault accessed
+
+
 <!-- newest first. Template per run:
 
 ### YYYY-MM-DD — <topic>

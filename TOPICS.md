@@ -71,3 +71,7 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Graceful degradation and fallback chains — the vault already has a tested take; generalize it (harness: vault-adapt)
 - [ ] Incremental, idempotent ingestion for polling sources you don't control — the vault already has a tested take; generalize it (harness: vault-adapt)
 - [ ] Cost-aware LLM system design: model routing, caching, fair-use caps — the vault has two tested product-specific takes; generalize past any one product (harness: vault-adapt + deep-research)
+
+## External evidence maintenance
+
+- [x] Pin scoped formal-campaign prior art — six claim/evidence triples audited on 2026-09-07; preserve hypothesis and version boundaries rather than treating paper identity as theorem support.
