@@ -12,6 +12,15 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Conditional geometric product canonicity
+- **Status:** current scoped external evidence
+- **Method:** pre-resolved primary research, visual and independent entailment checks
+- **Sources:** 1 · **Confidence:** high for the explicitly scoped classical restatement
+- **File:** [audit](../references/external/derham-audit-2026-09-07.json), KWRK-000021 / KCLM-000022 / KEVD-000022
+- **Citation audit:** live explicit arXiv version1, two matching downloads, pp.1-2 visually checked, fourteen-word exact normalized quote. Independent verifier accepted classical statement; rejected interpreting absence of its hypotheses as universal nonidentifiability.
+- **Residual limits:** original de Rham proof remains imported; no semantic names/statistical factors inferred; same-family verification; graphify update . unavailable. Deterministic adapter validation and all five tests passed. No private vault consulted.
+
+
 ### 2026-09-07 — Finite set-cover decision boundary
 - **Status:** current scoped external evidence
 - **Method:** primary original scan, deterministic OCR, visual and independent entailment checks

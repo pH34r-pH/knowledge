@@ -77,3 +77,5 @@ The [invariance-of-domain audit](references/external/invariance-domain-audit-202
 The [Gaussian channel-capacity audit](references/external/awgn-capacity-audit-2026-09-07.json) pins the real per-use Shannon formula with explicit power/noise and operational boundaries.
 
 The [set-cover complexity audit](references/external/set-cover-audit-2026-09-07.json) pins the finite decision theorem and its exact encoding/selection boundaries.
+
+The [de Rham scope audit](references/external/derham-audit-2026-09-07.json) distinguishes conditional geometric canonicity from semantic identifiability.

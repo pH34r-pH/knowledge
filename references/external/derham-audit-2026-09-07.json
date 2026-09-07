@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-07",
+  "accepted": 1,
+  "rejected": 0,
+  "unresolved": 0,
+  "claim": "KCLM-000022",
+  "source_url": "https://arxiv.org/pdf/math/0605419v1",
+  "metadata_url": "https://arxiv.org/abs/math/0605419v1",
+  "source_sha256": "403cd1b61ebfa8fa7a3464db26d5dc7f4509498af54e013cb4313f5821329933",
+  "source_bytes": 262710,
+  "source_pages": 23,
+  "scope": "In the standard connected, nonempty, finite-dimensional, boundaryless Riemannian setting, a simply connected complete manifold has a decomposition into one Euclidean factor and finitely many nontrivial irreducible non-line factors, unique up to isometry and permutation of the factor fibers.",
+  "boundary": "Introduction pp.1-2 restates classical de Rham (1952); original 1952 proof not independently audited. The Euclidean factor may be a point and its splitting into lines is not canonical. No preferred semantic names, latent coordinates or statistical independence follow. Failure of these classical hypotheses alone does not prove nonidentifiability: the paper itself gives a stronger theorem for geodesic metric spaces of finite affine rank. That stronger theorem is not separately imported here.",
+  "independent_verdict": "ACCEPT_CLASSICAL_REFINE_IDENTIFIABILITY",
+  "limitations": [
+    "Same-family independent verification.",
+    "Classical 1952 original proof remains imported; audited primary research restatement.",
+    "No private vault used; unavailable Windows-path vault, narrow external adapter.",
+    "Graphify availability checked separately."
+  ]
+}
