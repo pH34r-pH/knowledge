@@ -81,3 +81,5 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 - [x] Resolve regularity and globality of formal imports — versioned C-infinity Whitney companion, intrinsic Nash isometry, and exact C1 Poincaré hypotheses.
 
 - [x] Audit real Grassmann graph charts and orthogonal complement — exact open-overlap/regularity and positive-definite real scope, two accepted claims.
+
+- [x] Audit Grassmann principal-angle/projector-spectrum conversion — exact finite-dimensional orthogonal scope and zero/one multiplicity boundary.

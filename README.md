@@ -67,3 +67,5 @@ The [embedding-source audit](references/external/embedding-import-audit-2026-09-
 The [regularity audit](references/external/regularity-import-audit-2026-09-07.json) adds a correctly versioned smooth Whitney companion, intrinsic Nash isometry and C1 star-shaped Poincaré potential records.
 
 The [Grassmann audit](references/external/grassmann-source-audit-2026-09-07.json) reuses the Lee manuscript for real smooth graph charts and adds the corrected KMS author copy for orthogonal-complement diffeomorphism.
+
+The [principal-angle audit](references/external/principal-angle-audit-2026-09-07.json) pins the exact complement and projector-spectrum identities, including unequal-rank and zero-padding bookkeeping.

@@ -1,0 +1,47 @@
+{
+  "date": "2026-09-07",
+  "accepted": 1,
+  "rejected": 0,
+  "unresolved": 0,
+  "claim": "KCLM-000017",
+  "source_sha256": "629a9dd927096ef0ea1798af06b28969dada70af7b61b72b74ff652e61c00c49",
+  "scope": "For two subspaces of a finite-dimensional real or complex positive-definite inner-product space, simultaneous orthogonal complementation preserves the principal-angle lists after adding zero entries to match lengths. The singular values of the difference of their orthogonal projectors are the duplicated sines of those angles together with abs(dim X-dim Y) additional ones, with zero padding on either side as needed.",
+  "boundary": "Theorem 2.7 equation (2.3) and Theorem 2.9 do not assume equal subspace dimensions. Principal-angle lists have min(dim X,dim Y) entries; they need not retain length after complementation. Equal ranks remove the rank-difference extra ones, not the doubled ones from right angles. Empty-angle maximum needs a separate convention. No indefinite metric, oblique projector or unrestricted infinite-dimensional conclusion.",
+  "identity": {
+    "status": 200,
+    "doi": "10.1137/060649070",
+    "title": [
+      "Majorization for Changes in Angles Between Subspaces, Ritz Values, and Graph Laplacian Spectra"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2006,
+          12,
+          21
+        ]
+      ]
+    },
+    "issued": {
+      "date-parts": [
+        [
+          2006,
+          12,
+          21
+        ]
+      ]
+    },
+    "journal": [
+      "SIAM Journal on Matrix Analysis and Applications"
+    ],
+    "volume": "29",
+    "issue": "1",
+    "page": "15-32"
+  },
+  "independent_verdict": "ACCEPTED_WITH_RECORDED_BOUNDARIES",
+  "limitations": [
+    "Generated 2018 footer date origin unresolved; exact v3 identity and publisher/Crossref dates used.",
+    "Same-family independent verifier.",
+    "Graphify executable unavailable; no cloud extraction substituted."
+  ]
+}

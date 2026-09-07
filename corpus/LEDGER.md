@@ -12,6 +12,16 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-09-07 — Principal angles and orthogonal-complement bookkeeping
+- **Status:** current scoped external evidence; semantic graph refresh unavailable
+- **Method:** primary resolved-source pool, rendered theorem inspection and independent entailment verification
+- **Sources:** 1 · **Confidence:** high within finite-dimensional positive-definite scope
+- **File:** [audit](../references/external/principal-angle-audit-2026-09-07.json), KWRK-000016 / KCLM-000017 / KEVD-000017
+- **Citation audit:** DOI/title and explicit arXiv v3 verified; both readers independently obtained the same PDF hash. Theorems 2.7/2.9 support unequal dimensions, zero padding and rank-difference extra ones. Online/print metadata is kept distinct from an unresolved generated 2018 PDF footer.
+- **Residual limits:** no oblique/indefinite/infinite-dimensional extension; empty-angle maximum needs convention. Same-family verifier. `graphify update .` unavailable; deterministic adapter/schema validation remains independent.
+- **Vault cross-links:** none
+
+
 ### 2026-09-07 — Real Grassmann graph atlas and complement
 - **Status:** current scoped source evidence; local semantic graph refresh unavailable
 - **Method:** resolved source/version pool, primary-page inspection and independent entailment review
