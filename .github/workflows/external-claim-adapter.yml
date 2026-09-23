@@ -2,12 +2,7 @@ name: external-claim-adapter
 
 on:
   push:
-    paths:
-      - "references/external/**"
-      - "tools/validate_external_claim_adapter.py"
-      - "tools/test_external_claim_adapter.py"
-      - "specs/002-external-claim-adapter/**"
-      - ".github/workflows/external-claim-adapter.yml"
+    branches: [main]
   pull_request:
     paths:
       - "references/external/**"
@@ -15,6 +10,9 @@ on:
       - "tools/test_external_claim_adapter.py"
       - "specs/002-external-claim-adapter/**"
       - ".github/workflows/external-claim-adapter.yml"
+
+permissions:
+  contents: read
 
 jobs:
   offline-integrity:
