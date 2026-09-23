@@ -1,5 +1,7 @@
 Structured research corpus for experiments with graph-based lookup and retrieval, automated research, and RAG pipelines
 
+[Fleet source qualification](docs/fleet-source-contract.md) records the exact-SHA offline adapter gate and its limited coverage.
+
 **Continue building:** [BUILDING.md](BUILDING.md) — how to run the loop, the four research harnesses, and where all state lives.
 
 **Research provenance:** [domain-scaling-lab literature audit (2026-09-01)](reports/domain-scaling-lab-literature-audit-2026-09-01.md) — the deduplicated, source-resolved bibliography behind the representation, receiver, geometry, modularity, training-dynamics, and numerical-representation research branches; [machine-readable JSON](reports/domain-scaling-lab-literature-audit-2026-09-01.json).
