@@ -1,0 +1,14 @@
+{
+  "schemaVersion":1,
+  "repository":"pH34r-pH/knowledge",
+  "manifests":[{"path":".github/workflows/external-claim-adapter.yml","kind":"workflow"}],
+  "profiles":{
+    "offline-integrity":{
+      "phases":["test"],
+      "platforms":[{"os":"linux","arch":"amd64","abi":"glibc"}],
+      "tools":{"python":{"sources":[".github/workflows/external-claim-adapter.yml"]}},
+      "entrypoints":["python tools/test_external_claim_adapter.py","python tools/validate_external_claim_adapter.py --root ."],
+      "notes":"The current offline CI declares no third-party installation step. External research downloads are not prerequisites of this profile."
+    }
+  }
+}
