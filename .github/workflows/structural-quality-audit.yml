@@ -1,0 +1,94 @@
+name: Structural quality audit
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Python + shell structural quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install audit tools
+        run: python -m pip install --disable-pip-version-check "ruff==0.16.9" "lizard==1.24.0"
+
+      - name: Audit current executable code
+        shell: bash
+        run: |
+          set +e
+          mkdir -p quality-audit
+          ruff check tools             --select C901,PLR0912,PLR0913,PLR0915             --config "lint.mccabe.max-complexity=15"             --config "lint.pylint.max-args=7"             --output-format concise > quality-audit/ruff.txt 2>&1
+          lizard tools -C 15 -L 75 -a 7 -w > quality-audit/lizard.txt 2>&1
+          npx --yes jscpd@5.0.12 tools             --min-lines 8 --min-tokens 60 --format python             --reporters console,json --output quality-audit/jscpd             > quality-audit/jscpd-console.txt 2>&1
+          find .specify/scripts/bash -type f -name '*.sh' -print0             | xargs -0 -r shellcheck -f gcc > quality-audit/shellcheck.txt 2>&1
+          cat quality-audit/ruff.txt
+          cat quality-audit/lizard.txt
+          cat quality-audit/jscpd-console.txt
+          cat quality-audit/shellcheck.txt
+          exit 0
+
+      - name: Enforce no executable-code regression
+        if: github.event_name == 'pull_request'
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          base_dir="$RUNNER_TEMP/quality-base-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git worktree add --detach "$base_dir" "$BASE_SHA"
+          mkdir -p quality-audit/base
+          (
+            cd "$base_dir"
+            set +e
+            ruff check tools               --select C901,PLR0912,PLR0913,PLR0915               --config "lint.mccabe.max-complexity=15"               --config "lint.pylint.max-args=7"               --output-format concise > "$GITHUB_WORKSPACE/quality-audit/base/ruff.txt" 2>&1
+            lizard tools -C 15 -L 75 -a 7 -w > "$GITHUB_WORKSPACE/quality-audit/base/lizard.txt" 2>&1
+            npx --yes jscpd@5.0.12 tools               --min-lines 8 --min-tokens 60 --format python --reporters console               > "$GITHUB_WORKSPACE/quality-audit/base/jscpd.txt" 2>&1
+            find .specify/scripts/bash -type f -name '*.sh' -print0               | xargs -0 -r shellcheck -f gcc > "$GITHUB_WORKSPACE/quality-audit/base/shellcheck.txt" 2>&1
+            true
+          )
+          count_ruff() { grep -Eo 'Found [0-9]+ errors?\.' "$1" | tail -1 | grep -Eo '[0-9]+' || echo 0; }
+          count_lizard() { grep -c 'warning: .* NLOC,' "$1" || true; }
+          count_clones() { grep -Eo 'Found [0-9]+ clones?\.' "$1" | tail -1 | grep -Eo '[0-9]+' || echo 0; }
+          count_shell() { grep -Ec '\[SC[0-9]+\]$' "$1" || true; }
+          head_ruff="$(count_ruff quality-audit/ruff.txt)"; base_ruff="$(count_ruff quality-audit/base/ruff.txt)"
+          head_lizard="$(count_lizard quality-audit/lizard.txt)"; base_lizard="$(count_lizard quality-audit/base/lizard.txt)"
+          head_clones="$(count_clones quality-audit/jscpd-console.txt)"; base_clones="$(count_clones quality-audit/base/jscpd.txt)"
+          head_shell="$(count_shell quality-audit/shellcheck.txt)"; base_shell="$(count_shell quality-audit/base/shellcheck.txt)"
+          {
+            echo "### Knowledge executable-code ratchet"
+            echo "| Signal | Base | Head |"
+            echo "| --- | ---: | ---: |"
+            echo "| Ruff structural findings | $base_ruff | $head_ruff |"
+            echo "| Lizard structural findings | $base_lizard | $head_lizard |"
+            echo "| jscpd clone blocks | $base_clones | $head_clones |"
+            echo "| ShellCheck findings | $base_shell | $head_shell |"
+          } >> "$GITHUB_STEP_SUMMARY"
+          git worktree remove --force "$base_dir"
+          test "$head_ruff" -le "$base_ruff" || { echo "::error::Ruff structural findings increased"; exit 1; }
+          test "$head_lizard" -le "$base_lizard" || { echo "::error::Lizard structural findings increased"; exit 1; }
+          test "$head_clones" -le "$base_clones" || { echo "::error::Clone blocks increased"; exit 1; }
+          test "$head_shell" -le "$base_shell" || { echo "::error::ShellCheck findings increased"; exit 1; }
+
+      - name: Upload audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: structural-quality-audit-${{ github.sha }}
+          path: quality-audit/
+          if-no-files-found: warn
+          retention-days: 14
