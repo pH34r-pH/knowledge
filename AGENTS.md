@@ -8,6 +8,33 @@ This repository is a structured, evidence-gated engineering and ML knowledge cor
 - Before fresh research, read `TOPICS.md`, `corpus/LEDGER.md`, and the relevant existing corpus material.
 - The detailed corpus procedure is `.claude/skills/populate-corpus/SKILL.md`. Read it before corpus mutation; do not assume its Claude slash command is automatically available in another agent runtime.
 
+## Repository map
+
+This repository is a research corpus and evidence store, not an application runtime.
+The primary downward flow is:
+
+```text
+TOPICS.md / existing corpus
+        -> source-resolution and audit records
+        -> corpus/<pillar>/*.md
+        -> README.md index and corpus/LEDGER.md
+        -> graphify-out/ derived navigation products
+```
+
+| Boundary | Change here | Ownership and invariants |
+| --- | --- | --- |
+| `corpus/` | Sourced, mechanism-first articles, audit records, and the append-only ledger; see [`corpus/AGENTS.md`](corpus/AGENTS.md). | Article claims stay within their resolved evidence; history is retained and dated. |
+| `arxiv/` | Downloaded paper PDFs and matching metadata; see [`arxiv/AGENTS.md`](arxiv/AGENTS.md). | The metadata/PDF pair is a retained source identity; do not rewrite a historical source to make a current claim fit. |
+| `references/external/` | Machine-readable claims, works, evidence, schemas, and scoped import audits; see [`references/AGENTS.md`](references/AGENTS.md). | Registry records are provenance, not prose; preserve exact IDs, URLs, digests, and audit scope. |
+| `specs/` | Spec Kit plans and acceptance records for corpus procedures. | Preserve the `spec.md → plan.md → tests.md → tasks.md` authority chain and historical evidence. |
+| `graphify-out/` | Intentional derived graph reports, manifests, and visual products; see [`graphify-out/AGENTS.md`](graphify-out/AGENTS.md). | These products are not trash. They are rebuildable derived output, may be stale, and must not be treated as source authority. |
+| `.claude/skills/` | The executable research procedure and its references. | Update the procedure only when the operating loop changes; do not use it as a substitute for source evidence. |
+
+`README.md`, `BUILDING.md`, `TOPICS.md`, and `corpus/LEDGER.md` are living navigation and
+operating records. Dated citation audits, reports, spec plans, arXiv inputs, and graph
+snapshots are retained history/evidence; a newer document supersedes one only when it
+states the scope and provides evidence for that change.
+
 ## Research integrity gates
 
 - Select one uncovered, high-value topic per iteration. Do not duplicate current ledger-covered work.
@@ -42,3 +69,33 @@ spec.md → plan.md → tests.md → tasks.md
 - Before push, run `git pull --rebase --autostash origin main`; report a rejected push or merge conflict plainly rather than masking it.
 - A corpus iteration is not complete until its approved changed paths are committed and pushed, unless external authorization or connectivity blocks that final step.
 - After source or procedure changes, run `graphify update .`. Keep semantic corpus extraction local unless the operator explicitly approves a cloud disclosure route.
+
+## Documentation changes and validation
+
+- Put corpus content in `corpus/<pillar>/`, source evidence in `arxiv/` or
+  `references/external/`, and procedural explanations in `BUILDING.md` or the
+  relevant spec. Do not create a second inventory just for a map.
+- Use descriptive names. Single-word names such as `README.md`, `AGENTS.md`, and
+  `STYLE.md` are valid; new numeric-only or issue-number-only names such as `123.md`
+  and `issue-123.md` are not.
+- Keep Markdown links relative when they point into this repository so the link
+  checker exercises the map references.
+- Do not classify `graphify-out/` as disposable merely because it is generated. Its
+  cache/temp/build subdirectories are excluded from documentation scans explicitly;
+  the retained reports and manifests remain visible and classified.
+
+Exact local checks for a documentation-only change are:
+
+```bash
+git diff --check
+git fetch origin main
+python tools/check_documentation_hygiene.py --base origin/main --head HEAD --self-test
+python tools/test_external_claim_adapter.py
+python tools/validate_external_claim_adapter.py --root .
+DOCS_FILE="$(mktemp)"
+python tools/check_documentation_hygiene.py --base origin/main --head HEAD --print-docs > "$DOCS_FILE"
+if test -s "$DOCS_FILE"; then mapfile -t DOCS < "$DOCS_FILE"; npx --yes markdownlint-cli2@0.18.1 --config .markdownlint-cli2.mjs "${DOCS[@]}"; lychee --verbose --no-progress "${DOCS[@]}"; fi
+```
+
+Run `graphify update .` only when source or procedure changes require a refreshed
+derived graph; a documentation map alone does not justify regenerating all products.
