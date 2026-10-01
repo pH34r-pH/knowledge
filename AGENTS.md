@@ -30,10 +30,12 @@ TOPICS.md / existing corpus
 | `graphify-out/` | Intentional derived graph reports, manifests, and visual products; see [`graphify-out/AGENTS.md`](graphify-out/AGENTS.md). | These products are not trash. They are rebuildable derived output, may be stale, and must not be treated as source authority. |
 | `.claude/skills/` | The executable research procedure and its references. | Update the procedure only when the operating loop changes; do not use it as a substitute for source evidence. |
 
-`README.md`, `BUILDING.md`, `TOPICS.md`, and `corpus/LEDGER.md` are living navigation and
-operating records. Dated citation audits, reports, spec plans, arXiv inputs, and graph
+The living Markdown surface is the root guides, scoped `AGENTS.md` maps, `corpus/LEDGER.md`,
+and current articles under `corpus/{design-patterns,ml-techniques,adjacent-knowledge}/`.
+Dated citation audits, reports, spec plans, arXiv inputs, registry records, and graph
 snapshots are retained history/evidence; a newer document supersedes one only when it
-states the scope and provides evidence for that change.
+states the scope and provides evidence for that change. Documentation CI selects only
+that living surface; it does not treat every retained artifact as current prose.
 
 ## Research integrity gates
 
@@ -75,9 +77,10 @@ spec.md → plan.md → tests.md → tasks.md
 - Put corpus content in `corpus/<pillar>/`, source evidence in `arxiv/` or
   `references/external/`, and procedural explanations in `BUILDING.md` or the
   relevant spec. Do not create a second inventory just for a map.
-- Use descriptive names. Single-word names such as `README.md`, `AGENTS.md`, and
-  `STYLE.md` are valid; new numeric-only or issue-number-only names such as `123.md`
-  and `issue-123.md` are not.
+- Use descriptive names for new living Markdown. Single-word names such as `README.md`,
+  `AGENTS.md`, and `STYLE.md` are valid; new numeric-only or issue-number-only
+  living docs such as `123.md` and `issue-123.md` are not. Meaningful numbered
+  article/evidence IDs remain valid in their historical or machine-readable locations.
 - Keep Markdown links relative when they point into this repository so the link
   checker exercises the map references.
 - Do not classify `graphify-out/` as disposable merely because it is generated. Its
@@ -94,7 +97,7 @@ python tools/test_external_claim_adapter.py
 python tools/validate_external_claim_adapter.py --root .
 DOCS_FILE="$(mktemp)"
 python tools/check_documentation_hygiene.py --base origin/main --head HEAD --print-docs > "$DOCS_FILE"
-if test -s "$DOCS_FILE"; then mapfile -t DOCS < "$DOCS_FILE"; npx --yes markdownlint-cli2@0.18.1 --config .markdownlint-cli2.mjs "${DOCS[@]}"; lychee --verbose --no-progress "${DOCS[@]}"; fi
+if test -s "$DOCS_FILE"; then mapfile -t DOCS < "$DOCS_FILE"; npx --yes markdownlint-cli2@0.18.1 --config .markdownlint-cli2.mjs "${DOCS[@]}"; lychee --offline --verbose --no-progress "${DOCS[@]}"; fi
 ```
 
 Run `graphify update .` only when source or procedure changes require a refreshed
