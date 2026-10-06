@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-06",
+  "scope": "Public source intake for multi-agent decision protocols, speculative decoding, model-to-model communication, looped models, Kolibri, and WebNN/WebGPU.",
+  "method": "Resolved bibliographic identities against publisher or primary project/specification pages; arXiv metadata was read from the arXiv API and each used version is pinned in the ExternalWork source_url. This is a bounded source pass, not an exhaustive literature review.",
+  "counts": {
+    "external_works_before": 25,
+    "external_works_added": 37,
+    "external_works_after": 62,
+    "added_research_papers": 34,
+    "added_vendor_reports": 1,
+    "added_standards": 2,
+    "external_claims_before": 26,
+    "external_claims_added": 0,
+    "external_claims_after": 26,
+    "knowledge_evidence_before": 26,
+    "knowledge_evidence_added": 0,
+    "knowledge_evidence_after": 26,
+    "new_claims_accepted": 0,
+    "context_only_public_issue_threads": 4,
+    "unpromoted_or_unresolved_source_leads": 16,
+    "inferred_crosswalks": 1
+  },
+  "work_id_range": [
+    "KWRK-000026",
+    "KWRK-000062"
+  ],
+  "reported_findings_boundary": "Numbers and outcomes in Work notes are attributed to the cited authors or vendor and scoped to their stated evaluations. They are not accepted ExternalClaims, independent replications, deployment forecasts, or findings about untested consumer applications.",
+  "validation": {
+    "passed": [
+      "python tools/test_external_claim_adapter.py",
+      "python tools/validate_external_claim_adapter.py --root .",
+      "python -m json.tool references/external/research-intake-audit-2026-10-06.json",
+      "markdownlint-cli2 0.18.1 on the intake Markdown",
+      "git diff --check and intake structure/count/privacy checks"
+    ],
+    "not_available_in_environment": [
+      "lychee --offline --verbose --no-progress: lychee executable is not installed; the local relative Markdown links were checked directly.",
+      "graphify update .: graphify executable is not installed; no derived graph refresh was produced."
+    ]
+  },
+  "context_only_sources": [
+    {
+      "source": "C2C author-repository issue #23",
+      "url": "https://github.com/thu-nics/C2C/issues/23",
+      "disposition": "A public issue author reports that a Qwen3-1.7B receiver with a Qwen3-8B sharer underperformed the receiver on four listed benchmarks after following the paper's OpenHermes-500k configuration as closely as possible. The issue says the paper does not report that exact pair and the reporter may have missed a setting. This is a user report, not an independent replication or a result in the paper; it is retained only as a generalization question."
+    },
+    {
+      "source": "WebNN issue #941",
+      "url": "https://github.com/webmachinelearning/webnn/issues/941",
+      "disposition": "Discussion identifies that zero-copy interoperability depends on compatible device selection; the issue does not establish a general zero-copy guarantee."
+    },
+    {
+      "source": "WebNN issue #815",
+      "url": "https://github.com/webmachinelearning/webnn/issues/815",
+      "disposition": "Discussion requests querying supported devices before graph compilation; it is not evidence of physical-VRAM telemetry in the specification or deployed browsers."
+    },
+    {
+      "source": "WebGPU issue #2500",
+      "url": "https://github.com/gpuweb/gpuweb/issues/2500",
+      "disposition": "Working-group discussion covers WebNN/WebGPU resource interoperation. It does not by itself guarantee deployed-browser behavior or universal zero-copy execution."
+    }
+  ],
+  "crosswalks": [
+    {
+      "work_id": "KWRK-000048",
+      "candidate_target": "An unlinked Long-Haul citation described as a 2026 MLSys paper on speculative decoding",
+      "status": "INFERRED_NOT_VERIFIED",
+      "rationale": "The resolved title and subject are a plausible match to that description, but no bibliographic identifier was available on the cited project surface. The source record is not merged with or presented as a definite crosswalk."
+    }
+  ],
+  "unpromoted_or_unresolved_leads": [
+    {
+      "count": 1,
+      "lead": "zChunk",
+      "gap": "A project README was located, but no verified paper identifier was supplied. Mutable repository statements, including token-scoring descriptions, remain project claims."
+    },
+    {
+      "count": 1,
+      "lead": "DSpark",
+      "gap": "No source identity was resolved. It is not conflated with DFlash (KWRK-000044)."
+    },
+    {
+      "count": 1,
+      "lead": "DeepGEMM",
+      "gap": "A code repository and author list were located, but no paper identifier was verified; no suitability claim for older GPUs is made."
+    },
+    {
+      "count": 1,
+      "lead": "Project MoMoE",
+      "gap": "The project reference could not be matched to a stable primary source. It remains distinct from Tilde's Memory-optimized Mixture of Experts software."
+    },
+    {
+      "count": 2,
+      "lead": "Kolibri model-card references Merlin-Arthur (arXiv:2512.11614) and MergeMix (arXiv:2601.17858)",
+      "gap": "These citations were present on vendor model cards but were not independently resolved in this intake."
+    },
+    {
+      "count": 1,
+      "lead": "Kardashev 0.7",
+      "gap": "No verified model card or paper was found. The official page and founder social post report different model counts; the post was inaccessible and independent evidence is absent. This remains vendor/self-report only."
+    },
+    {
+      "count": 7,
+      "lead": "MoE references surfaced in the public bibliography: Shazeer sparse MoE; Clark active-compute/capacity scaling; DeepSeekMoE; Ludziejewski expert granularity; Abnar optimal sparsity; Tian activation-ratio/granularity; and Kolibri EQB/LEI routing",
+      "gap": "Exact primary source identities and bibliographic crosswalks were not all resolved. The Kolibri report itself is recorded separately as KWRK-000060; no routing result is accepted from these unverified leads."
+    },
+    {
+      "count": 2,
+      "lead": "Spiking and PIXAR mentions",
+      "gap": "The mentions lacked enough primary-source metadata to resolve the intended works."
+    }
+  ],
+  "existing_coverage": [
+    {
+      "source": "Pain Axis (arXiv:2609.16247)",
+      "location": "references/external/pain-axis-2609.16247.md",
+      "disposition": "Existing Knowledge reference retained; no duplicate Work row added."
+    },
+    {
+      "source": "Reflexion (arXiv:2303.11366)",
+      "location": "corpus/ml-techniques/agent-memory-architectures.md",
+      "disposition": "Existing prose citation retained; one machine-readable ExternalWork row added as requested."
+    }
+  ],
+  "privacy_and_integrity": [
+    "Only public sources are represented in this audit; no private-project links, issue identifiers, or results are included.",
+    "No ExternalClaim or KnowledgeEvidence rows were added because this pass did not complete the repository's independent entailment gate for claim acceptance.",
+    "The source set is bounded to the supplied leads and adjacent public references; counts do not imply exhaustiveness."
+  ]
+}
