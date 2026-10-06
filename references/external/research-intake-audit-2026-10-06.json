@@ -1,0 +1,257 @@
+{
+  "date": "2026-10-06",
+  "scope": "Bounded public source intake and follow-up identity review for multi-agent decision protocols, speculative decoding, model-to-model communication, looped models, mixture-of-experts sources and the Kolibri report, Kardashev vendor research page, and WebNN/WebGPU.",
+  "method": "Resolved bibliographic identities against publisher or primary project/specification pages; arXiv metadata was read from the arXiv API and each used version is pinned in the ExternalWork source_url. This is a bounded source pass, not an exhaustive literature review. A follow-up review resolved primary paper, pinned software-repository, and vendor-page identities where public source metadata was sufficient; unmatched leads and uncertain crosswalks are listed individually.",
+  "counts": {
+    "external_works_before": 25,
+    "external_works_added": 52,
+    "external_works_after": 77,
+    "added_research_papers": 44,
+    "added_vendor_reports": 2,
+    "added_standards": 2,
+    "external_claims_before": 26,
+    "external_claims_added": 0,
+    "external_claims_after": 26,
+    "knowledge_evidence_before": 26,
+    "knowledge_evidence_added": 0,
+    "knowledge_evidence_after": 26,
+    "new_claims_accepted": 0,
+    "context_only_public_issue_threads": 4,
+    "unpromoted_or_unresolved_source_leads": 2,
+    "inferred_crosswalks": 1,
+    "added_software_repository_snapshots": 4,
+    "original_source_leads_reviewed": 16,
+    "lead_identities_resolved_to_primary_or_pinned_public_sources": 13
+  },
+  "work_id_range": [
+    "KWRK-000026",
+    "KWRK-000077"
+  ],
+  "reported_findings_boundary": "Numbers and outcomes in Work notes are attributed to the cited authors or vendor and scoped to their stated evaluations. They are not accepted ExternalClaims, independent replications, deployment forecasts, or findings about untested consumer applications.",
+  "validation": {
+    "passed": [
+      "python tools/test_external_claim_adapter.py",
+      "python tools/validate_external_claim_adapter.py --root .",
+      "python -m json.tool references/external/research-intake-audit-2026-10-06.json",
+      "markdownlint-cli2 0.18.1 on the intake Markdown",
+      "git diff --check and intake structure/count/privacy checks"
+    ],
+    "not_available_in_environment": [
+      "lychee --offline --verbose --no-progress: lychee executable is not installed; the local relative Markdown links were checked directly.",
+      "graphify update .: graphify executable is not installed; no derived graph refresh was produced."
+    ]
+  },
+  "context_only_sources": [
+    {
+      "source": "C2C author-repository issue #23",
+      "url": "https://github.com/thu-nics/C2C/issues/23",
+      "disposition": "A public issue author reports that a Qwen3-1.7B receiver with a Qwen3-8B sharer underperformed the receiver on four listed benchmarks after following the paper's OpenHermes-500k configuration as closely as possible. The issue says the paper does not report that exact pair and the reporter may have missed a setting. This is a user report, not an independent replication or a result in the paper; it is retained only as a generalization question."
+    },
+    {
+      "source": "WebNN issue #941",
+      "url": "https://github.com/webmachinelearning/webnn/issues/941",
+      "disposition": "Discussion identifies that zero-copy interoperability depends on compatible device selection; the issue does not establish a general zero-copy guarantee."
+    },
+    {
+      "source": "WebNN issue #815",
+      "url": "https://github.com/webmachinelearning/webnn/issues/815",
+      "disposition": "Discussion requests querying supported devices before graph compilation; it is not evidence of physical-VRAM telemetry in the specification or deployed browsers."
+    },
+    {
+      "source": "WebGPU issue #2500",
+      "url": "https://github.com/gpuweb/gpuweb/issues/2500",
+      "disposition": "Working-group discussion covers WebNN/WebGPU resource interoperation. It does not by itself guarantee deployed-browser behavior or universal zero-copy execution."
+    }
+  ],
+  "crosswalks": [
+    {
+      "work_id": "KWRK-000048",
+      "candidate_target": "An unlinked Long-Haul citation described as a 2026 MLSys paper on speculative decoding",
+      "status": "INFERRED_NOT_VERIFIED",
+      "rationale": "The resolved title and subject are a plausible match to that description, but no bibliographic identifier was available on the cited project surface. The source record is not merged with or presented as a definite crosswalk."
+    }
+  ],
+  "unpromoted_or_unresolved_leads": [
+    {
+      "count": 1,
+      "lead": "Spiking citation",
+      "gap": "The earlier public research reference mentions “spiking” but does not identify an exact paper, author, DOI, or primary URL. The intended citation still needs to be traced from that issue context."
+    },
+    {
+      "count": 1,
+      "lead": "PIXAR citation",
+      "gap": "The earlier public research reference mentions “PIXAR” without an exact title, authors, DOI, or primary URL. The intended citation still needs to be traced from that issue context; no similar-name source is substituted."
+    }
+  ],
+  "existing_coverage": [
+    {
+      "source": "Pain Axis (arXiv:2609.16247)",
+      "location": "references/external/pain-axis-2609.16247.md",
+      "disposition": "Existing Knowledge reference retained; no duplicate Work row added."
+    },
+    {
+      "source": "Reflexion (arXiv:2303.11366)",
+      "location": "corpus/ml-techniques/agent-memory-architectures.md",
+      "disposition": "Existing prose citation retained; one machine-readable ExternalWork row added as requested."
+    }
+  ],
+  "privacy_and_integrity": [
+    "No private-project links, private issue identifiers, or private results are included. The four listed public issue threads are limited to context and are not accepted evidence.",
+    "No ExternalClaim or KnowledgeEvidence rows were added because this pass did not complete the repository independent entailment gate for claim acceptance.",
+    "Paper notes, software snapshots, and vendor-page summaries are bounded to each cited source; they are not accepted claims, independent replications, deployment forecasts, or findings about untested consumer applications.",
+    "The source set is bounded to the supplied leads and adjacent public references; counts do not imply exhaustiveness."
+  ],
+  "follow_up_work_id_range": [
+    "KWRK-000063",
+    "KWRK-000077"
+  ],
+  "lead_dispositions": [
+    {
+      "lead": "zChunk",
+      "status": "SOURCE_IDENTITY_RECORDED_PROJECT_APPLICATION_PROPOSED",
+      "work_ids": [
+        "KWRK-000073"
+      ],
+      "note": "Pinned software snapshot recorded; its proposed use in the speculative-decoding workstream is a project application, not a source identity gap or an evaluated relation."
+    },
+    {
+      "lead": "DSpark",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000063"
+      ],
+      "note": "Exact paper metadata resolved; kept distinct from DFlash (KWRK-000044)."
+    },
+    {
+      "lead": "DeepGEMM",
+      "status": "SOURCE_IDENTITY_RECORDED",
+      "work_ids": [
+        "KWRK-000074"
+      ],
+      "note": "Pinned software snapshot recorded; no paper identity or older-GPU suitability claim."
+    },
+    {
+      "lead": "Project MoMoE",
+      "status": "PROJECT_LOCAL_CONCEPT_RESOLVED_NO_EXTERNAL_WORK",
+      "work_ids": [],
+      "note": "Public Long-Haul issue #48 uses MoMoE for the project-local mixture-of-mixtures-of-experts concept: hierarchical outer model routing over inner MoEs. This is not an external-paper citation and needs no ExternalWork row. Tilde’s MoMoE code (KWRK-000076) is a distinct software source."
+    },
+    {
+      "lead": "Kolibri model-card citation: Merlin-Arthur",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000064"
+      ],
+      "note": "Exact paper identity independently resolved."
+    },
+    {
+      "lead": "Kolibri model-card citation: MergeMix",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000065"
+      ],
+      "note": "Exact paper identity independently resolved."
+    },
+    {
+      "lead": "Kardashev 0.7",
+      "status": "SOURCE_IDENTITY_RECORDED",
+      "work_ids": [
+        "KWRK-000077"
+      ],
+      "note": "Official vendor research page recorded; no independent evaluation. The separate founder X post claiming a different population size was inaccessible and remains unverified."
+    },
+    {
+      "lead": "MoE reference: Shazeer sparse MoE",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000066"
+      ],
+      "note": "Primary paper identity resolved."
+    },
+    {
+      "lead": "MoE reference: Clark routed scaling",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000067"
+      ],
+      "note": "Primary paper identity resolved; Google DeepMind repository confirms ICML 2022."
+    },
+    {
+      "lead": "MoE reference: DeepSeekMoE",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000068"
+      ],
+      "note": "Primary paper identity resolved."
+    },
+    {
+      "lead": "MoE reference: Ludziejewski fine-grained MoE",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000069"
+      ],
+      "note": "Primary paper identity resolved using the full arXiv author list."
+    },
+    {
+      "lead": "MoE reference: Abnar optimal sparsity",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000070"
+      ],
+      "note": "Primary paper identity resolved."
+    },
+    {
+      "lead": "MoE reference: Tian efficient MoE scaling",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000071"
+      ],
+      "note": "Primary paper identity resolved."
+    },
+    {
+      "lead": "MoE reference: Kolibri EQB/LEI routing",
+      "status": "RESOLVED",
+      "work_ids": [
+        "KWRK-000060",
+        "KWRK-000072"
+      ],
+      "note": "Vendor report source and its cited EQB/LEI method paper are both recorded; no independent reproduction is implied."
+    },
+    {
+      "lead": "Spiking mention",
+      "status": "UNRESOLVED",
+      "work_ids": [],
+      "note": "No primary scholarly identifier was present in the available public reference."
+    },
+    {
+      "lead": "PIXAR mention",
+      "status": "UNRESOLVED",
+      "work_ids": [],
+      "note": "No exact primary citation was identified; no similar-name source was substituted."
+    }
+  ],
+  "coverage_summary": {
+    "total_lead_dispositions": 16,
+    "source_identity_leads_resolved": 13,
+    "source_identity_leads_unresolved": 2,
+    "project_local_concepts_resolved_without_external_work": 1,
+    "scope": "The 16 dispositions include 13 resolved external source identities, two unresolved external citations (spiking and PIXAR), and one resolved project-local concept that does not require an ExternalWork. The proposed zchunk application is not an evaluated scientific relation."
+  },
+  "proposed_project_applications": [
+    {
+      "work_id": "KWRK-000073",
+      "application": "zchunk in the speculative-decoding workstream",
+      "status": "PROPOSED_NOT_EVALUATED",
+      "disposition": "This is a proposed project application, not a bibliographic crosswalk, established technical relationship, or reported result."
+    }
+  ],
+  "project_local_concepts": [
+    {
+      "term": "Project MoMoE",
+      "status": "RESOLVED_PROJECT_LOCAL_CONCEPT_NO_EXTERNAL_WORK",
+      "source_url": "https://github.com/pH34r-pH/long-haul/issues/48",
+      "description": "The public project issue uses “mixture of mixtures of experts” for hierarchical outer model routing over inner MoE models.",
+      "disposition": "This is a project-local architecture term, not an external paper identity or citation; no ExternalWork row is required. Tilde’s MoMoE software is separately recorded as KWRK-000076."
+    }
+  ]
+}
