@@ -17,7 +17,7 @@
     "knowledge_evidence_after": 26,
     "new_claims_accepted": 0,
     "context_only_public_issue_threads": 4,
-    "unpromoted_or_unresolved_source_leads": 3,
+    "unpromoted_or_unresolved_source_leads": 2,
     "inferred_crosswalks": 1,
     "added_software_repository_snapshots": 4,
     "original_source_leads_reviewed": 16,
@@ -69,29 +69,18 @@
       "candidate_target": "An unlinked Long-Haul citation described as a 2026 MLSys paper on speculative decoding",
       "status": "INFERRED_NOT_VERIFIED",
       "rationale": "The resolved title and subject are a plausible match to that description, but no bibliographic identifier was available on the cited project surface. The source record is not merged with or presented as a definite crosswalk."
-    },
-    {
-      "work_id": "KWRK-000073",
-      "candidate_target": "A speculative-decoding relationship suggested by an earlier project lead",
-      "status": "UNVERIFIED_RELATIONSHIP",
-      "rationale": "The zchunk source identity is pinned, but its repository does not establish that it is a speculative-decoding method. The record remains software-source metadata only."
     }
   ],
   "unpromoted_or_unresolved_leads": [
     {
       "count": 1,
-      "lead": "Project MoMoE external reference",
-      "gap": "No stable primary source identity was identified for the separate “Project MoMoE” pointer. Tilde’s pinned MoMoE software source (KWRK-000076) is recorded separately and is not treated as a match."
+      "lead": "Spiking citation",
+      "gap": "The earlier public research reference mentions “spiking” but does not identify an exact paper, author, DOI, or primary URL. The intended citation still needs to be traced from that issue context."
     },
     {
       "count": 1,
-      "lead": "Spiking mention",
-      "gap": "The available public reference mentions “spiking” but provides no scholarly URL or primary identifier from which to resolve the intended work."
-    },
-    {
-      "count": 1,
-      "lead": "PIXAR mention",
-      "gap": "The available public bibliography search did not identify an exact PIXAR citation or primary source; no likely-name match is asserted."
+      "lead": "PIXAR citation",
+      "gap": "The earlier public research reference mentions “PIXAR” without an exact title, authors, DOI, or primary URL. The intended citation still needs to be traced from that issue context; no similar-name source is substituted."
     }
   ],
   "existing_coverage": [
@@ -119,11 +108,11 @@
   "lead_dispositions": [
     {
       "lead": "zChunk",
-      "status": "SOURCE_IDENTITY_RECORDED_RELATION_UNVERIFIED",
+      "status": "SOURCE_IDENTITY_RECORDED_PROJECT_APPLICATION_PROPOSED",
       "work_ids": [
         "KWRK-000073"
       ],
-      "note": "Pinned software snapshot recorded; relationship to speculative decoding remains unverified."
+      "note": "Pinned software snapshot recorded; its proposed use in the speculative-decoding workstream is a project application, not a source identity gap or an evaluated relation."
     },
     {
       "lead": "DSpark",
@@ -143,9 +132,9 @@
     },
     {
       "lead": "Project MoMoE",
-      "status": "UNRESOLVED",
+      "status": "PROJECT_LOCAL_CONCEPT_RESOLVED_NO_EXTERNAL_WORK",
       "work_ids": [],
-      "note": "Separate public pointer lacks a stable matching primary source; not mapped to Tilde MoMoE."
+      "note": "Public Long-Haul issue #48 uses MoMoE for the project-local mixture-of-mixtures-of-experts concept: hierarchical outer model routing over inner MoEs. This is not an external-paper citation and needs no ExternalWork row. Tilde’s MoMoE code (KWRK-000076) is a distinct software source."
     },
     {
       "lead": "Kolibri model-card citation: Merlin-Arthur",
@@ -242,8 +231,27 @@
     }
   ],
   "coverage_summary": {
+    "total_lead_dispositions": 16,
     "source_identity_leads_resolved": 13,
-    "source_identity_leads_unresolved": 3,
-    "scope": "The 16 dispositions preserve the original bounded lead set. A resolved software or vendor source identity does not validate every project assertion or establish an inferred topical crosswalk."
-  }
+    "source_identity_leads_unresolved": 2,
+    "project_local_concepts_resolved_without_external_work": 1,
+    "scope": "The 16 dispositions include 13 resolved external source identities, two unresolved external citations (spiking and PIXAR), and one resolved project-local concept that does not require an ExternalWork. The proposed zchunk application is not an evaluated scientific relation."
+  },
+  "proposed_project_applications": [
+    {
+      "work_id": "KWRK-000073",
+      "application": "zchunk in the speculative-decoding workstream",
+      "status": "PROPOSED_NOT_EVALUATED",
+      "disposition": "This is a proposed project application, not a bibliographic crosswalk, established technical relationship, or reported result."
+    }
+  ],
+  "project_local_concepts": [
+    {
+      "term": "Project MoMoE",
+      "status": "RESOLVED_PROJECT_LOCAL_CONCEPT_NO_EXTERNAL_WORK",
+      "source_url": "https://github.com/pH34r-pH/long-haul/issues/48",
+      "description": "The public project issue uses “mixture of mixtures of experts” for hierarchical outer model routing over inner MoE models.",
+      "disposition": "This is a project-local architecture term, not an external paper identity or citation; no ExternalWork row is required. Tilde’s MoMoE software is separately recorded as KWRK-000076."
+    }
+  ]
 }
