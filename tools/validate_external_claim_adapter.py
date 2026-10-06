@@ -63,6 +63,44 @@ def _accepted_evidence(evidence: dict[str, Any]) -> bool:
     )
 
 
+def _supersession_cycles(
+    rows: list[dict[str, Any]],
+    object_ids: set[str],
+    duplicate_ids: set[str],
+) -> list[tuple[str, ...]]:
+    """Return deterministic cycles in an unambiguous supersession graph."""
+    targets: dict[str, str] = {}
+    for row in rows:
+        rid = row.get("id")
+        target = row.get("supersedes")
+        if (
+            isinstance(rid, str)
+            and rid not in duplicate_ids
+            and rid in object_ids
+            and isinstance(target, str)
+            and target in object_ids
+            and target != rid
+        ):
+            targets[rid] = target
+
+    cycles: set[tuple[str, ...]] = set()
+    visited: set[str] = set()
+    for start in sorted(targets):
+        path: list[str] = []
+        positions: dict[str, int] = {}
+        current = start
+        while current in targets and current not in visited and current not in positions:
+            positions[current] = len(path)
+            path.append(current)
+            current = targets[current]
+        if current in positions:
+            cycle = path[positions[current] :]
+            first = min(range(len(cycle)), key=cycle.__getitem__)
+            cycles.add(tuple(cycle[first:] + cycle[:first]))
+        visited.update(path)
+    return sorted(cycles)
+
+
 def validate_adapter(root: Path) -> list[str]:
     errors: list[str] = []
     adapter = root / "references" / "external"
@@ -72,6 +110,7 @@ def validate_adapter(root: Path) -> list[str]:
 
     all_rows = works + claims + evidence
     seen: set[str] = set()
+    duplicate_ids: set[str] = set()
     for row in all_rows:
         rid = row.get("id")
         if not isinstance(rid, str):
@@ -79,6 +118,7 @@ def validate_adapter(root: Path) -> list[str]:
             continue
         if rid in seen:
             errors.append(f"duplicate adapter id: {rid}")
+            duplicate_ids.add(rid)
         seen.add(rid)
 
     work_ids = {row.get("id") for row in works if isinstance(row.get("id"), str)}
@@ -92,6 +132,8 @@ def validate_adapter(root: Path) -> list[str]:
         target = row.get("supersedes")
         if target is not None and (target not in work_ids or target == rid):
             errors.append(f"{rid}: invalid work supersedes target {target!r}")
+    for cycle in _supersession_cycles(works, work_ids, duplicate_ids):
+        errors.append(f"cyclic work supersession: {' -> '.join((*cycle, cycle[0]))}")
 
     for row in claims:
         rid = str(row.get("id", "<unknown>"))
@@ -103,6 +145,8 @@ def validate_adapter(root: Path) -> list[str]:
         target = row.get("supersedes")
         if target is not None and (target not in claim_ids or target == rid):
             errors.append(f"{rid}: invalid claim supersedes target {target!r}")
+    for cycle in _supersession_cycles(claims, claim_ids, duplicate_ids):
+        errors.append(f"cyclic claim supersession: {' -> '.join((*cycle, cycle[0]))}")
 
     evidence_by_claim: dict[str, list[dict[str, Any]]] = {}
     for row in evidence:
@@ -151,6 +195,9 @@ def validate_adapter(root: Path) -> list[str]:
                         errors.append(f"{rid}: local_path requires local_content_sha256")
                     elif sha256_file(path) != local_hash:
                         errors.append(f"{rid}: local evidence hash mismatch: {local_path}")
+
+    for cycle in _supersession_cycles(evidence, evidence_ids, duplicate_ids):
+        errors.append(f"cyclic evidence supersession: {' -> '.join((*cycle, cycle[0]))}")
 
     for row in claims:
         if row.get("status") != "ACCEPTED":
