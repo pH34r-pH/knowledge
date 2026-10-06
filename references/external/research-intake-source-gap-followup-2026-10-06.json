@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-06",
+  "scope": "Follow-up to research-intake-audit-2026-10-06.json: resolve the PIXAR and spiking paper identities, add a structured Work row for the Mamba paper already cited in the state-space article, and verify the MLSys metadata for existing Work KWRK-000048. No claim or evidence acceptance is performed.",
+  "method": "Checked pinned arXiv abstract/version pages, the official MLSys 2026 proceedings page, the existing article citation, and public Long-Haul issues #153 and #165. No private project source pointers or results are included.",
+  "counts": {
+    "external_works_before": 77,
+    "external_works_added": 3,
+    "external_works_after": 80,
+    "new_research_papers": 3,
+    "updated_existing_work_records": 2,
+    "original_source_identity_leads_reviewed": 16,
+    "original_external_source_identities_resolved_before": 13,
+    "additional_external_source_identities_resolved": 2,
+    "remaining_unresolved_external_source_identities": 0,
+    "project_local_concepts_requiring_external_work": 0,
+    "external_claims_before": 26,
+    "external_claims_added": 0,
+    "external_claims_after": 26,
+    "knowledge_evidence_before": 26,
+    "knowledge_evidence_added": 0,
+    "knowledge_evidence_after": 26,
+    "new_claims_accepted": 0,
+    "inferred_crosswalks": 1,
+    "project_local_concepts_resolved_without_external_work": 1
+  },
+  "work_id_range_added": [
+    "KWRK-000078",
+    "KWRK-000080"
+  ],
+  "updated_work_ids": [
+    "KWRK-000048",
+    "KWRK-000076"
+  ],
+  "resolved_source_leads": [
+    {
+      "lead": "PIXAR",
+      "work_id": "KWRK-000078",
+      "identity": "PIXAR: Auto-Regressive Language Modeling in Pixel Space",
+      "source_url": "https://arxiv.org/abs/2401.03321v2",
+      "disposition": "Exact title, authors, and version resolved. The paper is about autoregressive pixel-space text generation; it is not treated as a general page-vision source or evidence of a relationship with spiking systems.",
+      "official_code_repository": "https://github.com/april-tools/pixar"
+    },
+    {
+      "lead": "Spiking",
+      "work_id": "KWRK-000079",
+      "identity": "SpikingBrain2.0: Brain-Inspired Foundation Models for Efficient Long-Context and Cross-Platform Inference",
+      "source_url": "https://arxiv.org/abs/2604.22575v1",
+      "disposition": "Exact primary paper identity recorded. Public Long-Haul issue #153 mentions an SNN comparison but contains no direct bibliographic citation; correspondence between that project note and this paper is not asserted as a verified crosswalk.",
+      "context_url": "https://github.com/pH34r-pH/long-haul/issues/153",
+      "official_code_repository": "https://github.com/BICLab/SpikingBrain2.0"
+    }
+  ],
+  "registry_gap_filled": {
+    "work_id": "KWRK-000080",
+    "identity": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+    "source_url": "https://arxiv.org/abs/2312.00752v2",
+    "prior_location": "corpus/ml-techniques/state-space-models-linear-attention.md, source 6",
+    "disposition": "Existing prose citation was not yet represented in ExternalWork; this adds the source identity only."
+  },
+  "crosswalks": [
+    {
+      "work_id": "KWRK-000048",
+      "candidate_target": "The uncited recent-MLSys speculative-decoding sentence in public Long-Haul issue #165",
+      "status": "INFERRED_NOT_VERIFIED",
+      "rationale": "The official proceedings confirms that KWRK-000048 is the 2026 MLSys paper and its subject and production-grade vLLM evaluation match the issue sentence. Issue #165 does not name or link the paper, so the relationship remains inferred. The paper’s reported workloads are not Kestrel measurements.",
+      "source_url": "https://github.com/pH34r-pH/long-haul/issues/165"
+    }
+  ],
+  "project_boundary_updates": [
+    {
+      "term": "Project MoMoE",
+      "status": "PROJECT_LOCAL_CONCEPT_NO_EXTERNAL_WORK",
+      "disposition": "Public Long-Haul issue #48 uses the term for hierarchical outer model routing over inner MoEs. This is distinct from Tilde’s MoMoE software Work KWRK-000076.",
+      "source_url": "https://github.com/pH34r-pH/long-haul/issues/48"
+    },
+    {
+      "term": "zchunk in speculative decoding",
+      "status": "PROPOSED_APPLICATION_NOT_EVALUATED",
+      "disposition": "KWRK-000073 is the pinned software source; its proposed use is not a measured or established scientific relationship."
+    }
+  ],
+  "source_findings_boundary": "PIXAR and SpikingBrain2.0 notes summarize only their authors’ reported scopes. No result is transferred to Kestrel, browser inference, consumer applications, or a combined PIXAR/spiking design. No ExternalClaim or KnowledgeEvidence row is added.",
+  "remaining_unresolved_surfaces": [
+    {
+      "surface": "SpikingBrain2.0 relation to public Long-Haul issue #153",
+      "reason": "The issue mentions an SNN comparison but does not cite a paper; the relation to this exact source is not confirmed."
+    },
+    {
+      "surface": "KWRK-000048 relation to public Long-Haul issue #165",
+      "reason": "The issue has an uncited sentence and no direct source link; the match remains inferred."
+    }
+  ],
+  "privacy_and_integrity": [
+    "Only public arXiv, proceedings, official code repositories, corpus, and Long-Haul references are used; no private-project URLs, private issue IDs, or private results are included.",
+    "No ExternalClaim or KnowledgeEvidence rows were added; source identity does not constitute claim acceptance.",
+    "The follow-up is bounded to the identified paper leads and one existing prose-to-registry gap; it is not an exhaustive bibliography."
+  ]
+}
