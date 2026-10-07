@@ -32,6 +32,7 @@ REQUIRED_SOURCE_FIELDS = {
     "supplemental_statuses",
     "identity_status",
     "adoption_status",
+    "deduplication_aliases",
 }
 
 
@@ -165,6 +166,7 @@ def _new_group(row: dict[str, Any]) -> dict[str, Any]:
     return {
         "title": title,
         "title_aliases": [],
+        "metadata_variants": {},
         "authors": [],
         "publication_date": None,
         "venue": None,
@@ -213,7 +215,36 @@ def _append_unique(target: list[Any], values: list[Any]) -> None:
             target.append(value)
 
 
-def _merge_row(group: dict[str, Any], row: dict[str, Any], kind: str) -> None:
+def _metadata_source_ref(row: dict[str, Any], kind: str) -> dict[str, str]:
+    if kind == "work":
+        return {"type": "ExternalWork", "id": row["id"]}
+    if kind == "audit":
+        return {"type": "public_audit_record", "id": row["record_id"]}
+    key = row.get("canonical_key") or canonical_key(row)
+    return {"type": "reviewed_transfer_payload", "canonical_key": key}
+
+
+def _record_metadata_variants(group: dict[str, Any], row: dict[str, Any], kind: str) -> None:
+    date = row.get("publication_date") or row.get("arxiv_published") or (str(row["year"]) if row.get("year") else None)
+    variants = {
+        "title": row.get("title") or row.get("canonical_title"),
+        "authors": row.get("authors"),
+        "publication_date": date,
+        "venue": row.get("venue"),
+    }
+    source_ref = _metadata_source_ref(row, kind)
+    for field, value in variants.items():
+        if value is None or value == "" or value == []:
+            continue
+        field_rows = group["metadata_variants"].setdefault(field, [])
+        match = next((item for item in field_rows if item["value"] == value), None)
+        if match is None:
+            field_rows.append({"value": value, "sources": [source_ref]})
+        elif source_ref not in match["sources"]:
+            match["sources"].append(source_ref)
+
+
+def _merge_title_author_dates(group: dict[str, Any], row: dict[str, Any]) -> None:
     title = str(row.get("title") or row.get("canonical_title") or "")
     if title and title != group["title"]:
         _append_unique(group["title_aliases"], [title])
@@ -224,13 +255,29 @@ def _merge_row(group: dict[str, Any], row: dict[str, Any], kind: str) -> None:
         group["publication_date"] = row.get("publication_date") or row.get("arxiv_published") or (str(row["year"]) if row.get("year") else None)
     if not group["venue"]:
         group["venue"] = row.get("venue") or None
+
+
+def _merge_canonical_identifiers(group: dict[str, Any], row: dict[str, Any]) -> None:
     for name, value in source_identifiers(row).items():
         if name not in group["canonical_identifiers"]:
             group["canonical_identifiers"][name] = value
+
+
+def _merge_versions_and_urls(group: dict[str, Any], row: dict[str, Any]) -> None:
     versions = source_versions(row)
     _append_unique(group["arxiv_versions"], versions)
     source_url = row.get("source_url") or row.get("canonical_public_url")
     _append_unique(group["source_urls"], [source_url] if isinstance(source_url, str) else [])
+
+
+def _merge_publication_metadata(group: dict[str, Any], row: dict[str, Any], kind: str) -> None:
+    _record_metadata_variants(group, row, kind)
+    _merge_title_author_dates(group, row)
+    _merge_canonical_identifiers(group, row)
+    _merge_versions_and_urls(group, row)
+
+
+def _merge_catalog_context(group: dict[str, Any], row: dict[str, Any], kind: str) -> None:
     source_kind = row.get("source_kind") or row.get("source_type") or kind
     _append_unique(group["source_kinds"], [source_kind])
     catalog_status = row.get("catalog_status")
@@ -243,10 +290,19 @@ def _merge_row(group: dict[str, Any], row: dict[str, Any], kind: str) -> None:
         group["has_audit"] = True
         ref = {"id": row["record_id"], "status": row.get("resolution_status", "resolved")}
         _append_unique(group["public_audit_records"], [ref])
+
+
+def _merge_identity_aliases(group: dict[str, Any], row: dict[str, Any]) -> None:
     stable_aliases, title_alias = identity_aliases(row)
     group["aliases"].update(stable_aliases)
     if title_alias:
         group["title_author_aliases"].add(title_alias)
+
+
+def _merge_row(group: dict[str, Any], row: dict[str, Any], kind: str) -> None:
+    _merge_publication_metadata(group, row, kind)
+    _merge_catalog_context(group, row, kind)
+    _merge_identity_aliases(group, row)
 
 
 def _work_row(row: dict[str, Any]) -> dict[str, Any]:
@@ -283,7 +339,7 @@ def _source_row(group: dict[str, Any]) -> dict[str, Any]:
     status = "recorded_in_works_and_audit" if group["has_work"] and group["has_audit"] else (
         "recorded_in_works" if group["has_work"] else "recorded_in_public_audit" if group["has_audit"] else "supplemental_identity_only"
     )
-    return {
+    result = {
         "canonical_key": canonical_key(best),
         "title": group["title"],
         "title_aliases": sorted(group["title_aliases"]),
@@ -301,6 +357,18 @@ def _source_row(group: dict[str, Any]) -> dict[str, Any]:
         "adoption_status": "not_asserted",
         "deduplication_aliases": aliases,
     }
+    discrepancies = [
+        {
+            "field": field,
+            "variants": variants,
+            "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk.",
+        }
+        for field, variants in sorted(group["metadata_variants"].items())
+        if len(variants) > 1
+    ]
+    if discrepancies:
+        result["field_discrepancies"] = discrepancies
+    return result
 
 
 def _snapshot(path: Path, count: int) -> dict[str, Any]:
@@ -311,45 +379,60 @@ def _snapshot(path: Path, count: int) -> dict[str, Any]:
     }
 
 
-def build_crosswalk(root: Path = ROOT) -> dict[str, Any]:
-    works_path = root / WORKS_PATH.relative_to(ROOT)
-    audit_path = root / AUDIT_PATH.relative_to(ROOT)
-    input_path = root / INPUT_PATH.relative_to(ROOT)
-    output_path = root / OUTPUT_PATH.relative_to(ROOT)
-    works = read_jsonl(works_path)
-    audit = read_json(audit_path)
-    payload = read_json(input_path)
-    reported = payload["reported_counts"]
+def _add_source_record(
+    row: dict[str, Any],
+    kind: str,
+    groups: list[dict[str, Any]],
+    stable_alias_map: dict[str, int],
+    title_alias_map: dict[str, int],
+) -> None:
+    index = _find_group(row, groups, stable_alias_map, title_alias_map)
+    if index is None:
+        index = len(groups)
+        groups.append(_new_group(row))
+    _merge_row(groups[index], row, kind)
+    for alias in groups[index]["aliases"]:
+        prior = stable_alias_map.get(alias)
+        if prior is not None and prior != index:
+            raise ValueError(f"duplicate stable identity alias {alias}")
+        stable_alias_map[alias] = index
+    for alias in groups[index]["title_author_aliases"]:
+        title_alias_map.setdefault(alias, index)
+
+
+def _build_source_groups(
+    works: list[dict[str, Any]], audit_rows: list[dict[str, Any]], payload: dict[str, Any]
+) -> tuple[list[dict[str, Any]], int, int]:
     groups: list[dict[str, Any]] = []
     stable_alias_map: dict[str, int] = {}
     title_alias_map: dict[str, int] = {}
-
-    def add(row: dict[str, Any], kind: str) -> None:
-        index = _find_group(row, groups, stable_alias_map, title_alias_map)
-        if index is None:
-            index = len(groups)
-            groups.append(_new_group(row))
-        _merge_row(groups[index], row, kind)
-        for alias in groups[index]["aliases"]:
-            prior = stable_alias_map.get(alias)
-            if prior is not None and prior != index:
-                raise ValueError(f"duplicate stable identity alias {alias}")
-            stable_alias_map[alias] = index
-        for alias in groups[index]["title_author_aliases"]:
-            title_alias_map.setdefault(alias, index)
-
     for row in works:
-        add(_work_row(row), "work")
-    for row in audit.get("resolved_publications", []):
-        add(_audit_row(row), "audit")
+        _add_source_record(_work_row(row), "work", groups, stable_alias_map, title_alias_map)
+    for row in audit_rows:
+        _add_source_record(_audit_row(row), "audit", groups, stable_alias_map, title_alias_map)
     baseline_matches = sum(bool(group["work_records"] and group["public_audit_records"]) for group in groups)
-    current_work_audit_union_count = len(groups)
+    union_count = len(groups)
     for row in payload.get("identity_leads", []):
-        add(_supplemental_row(row, "identity_lead"), "identity_lead")
+        _add_source_record(_supplemental_row(row, "identity_lead"), "identity_lead", groups, stable_alias_map, title_alias_map)
     for row in payload.get("supplemental_bibliography_only_sources", []):
-        add(_supplemental_row(row, "bibliography_only"), "bibliography_only")
+        _add_source_record(_supplemental_row(row, "bibliography_only"), "bibliography_only", groups, stable_alias_map, title_alias_map)
+    return groups, baseline_matches, union_count
 
+
+def _assemble_source_summary(
+    works: list[dict[str, Any]],
+    audit_rows: list[dict[str, Any]],
+    payload: dict[str, Any],
+    snapshots: list[dict[str, Any]],
+) -> dict[str, Any]:
+    reported = payload["reported_counts"]
+    groups, baseline_matches, current_work_audit_union_count = _build_source_groups(works, audit_rows, payload)
     sources = sorted((_source_row(group) for group in groups), key=lambda item: item["canonical_key"])
+    field_discrepancies = [
+        {"canonical_key": row["canonical_key"], "fields": row.pop("field_discrepancies")}
+        for row in sources
+        if row.get("field_discrepancies")
+    ]
     supplemental = payload.get("supplemental_bibliography_only_sources", [])
     candidates = [
         {
@@ -366,7 +449,7 @@ def build_crosswalk(root: Path = ROOT) -> dict[str, Any]:
         "KWRK_records_before_reconciliation": reported["KWRK_records_before_reconciliation"],
         "KWRK_records_current": len(works),
         "KWRK_records_added_after_identity_checks": work_additions,
-        "DLS_audit_records": len(audit.get("resolved_publications", [])),
+        "DLS_audit_records": len(audit_rows),
         "matched_identity_count": baseline_matches,
         "baseline_union_rows": reported["baseline_union_rows"],
         "current_work_audit_union_rows_before_supplement": current_work_audit_union_count,
@@ -376,7 +459,18 @@ def build_crosswalk(root: Path = ROOT) -> dict[str, Any]:
         "nonpaper_source_pointers": len(payload.get("nonpaper_source_pointers", [])),
         "unresolved_names_only": len(payload.get("unresolved_names_only", [])),
         "provisional_influence_unverified_candidates": len(candidates),
+        "metadata_field_discrepancies": sum(len(item["fields"]) for item in field_discrepancies),
     }
+    return {
+        "coverage": coverage,
+        "field_discrepancies": field_discrepancies,
+        "sources": sources,
+        "candidates": candidates,
+        "input_snapshots": snapshots,
+    }
+
+
+def _crosswalk_document(payload: dict[str, Any], summary: dict[str, Any]) -> dict[str, Any]:
     return {
         "schema_version": "1.0.0",
         "title": "Public bibliography identity crosswalk",
@@ -388,7 +482,8 @@ def build_crosswalk(root: Path = ROOT) -> dict[str, Any]:
             "arxiv_versions_preserved": True,
             "stable_aliases_are_unique_across_source_rows": True,
         },
-        "coverage": coverage,
+        "coverage": summary["coverage"],
+        "field_discrepancies": summary["field_discrepancies"],
         "semantic_boundaries": {
             "findings_added": False,
             "articles_added": False,
@@ -401,32 +496,124 @@ def build_crosswalk(root: Path = ROOT) -> dict[str, Any]:
             "PR review threads and the inaccessible Notion corpus remain gaps; private provenance is not copied into this public artifact.",
             "This identity crosswalk does not recompute archive status, article citation coverage, research findings, or project adoption.",
         ],
-        "input_snapshots": [
-            _snapshot(works_path, len(works)),
-            _snapshot(audit_path, len(audit.get("resolved_publications", []))),
-            _snapshot(input_path, len(payload.get("identity_leads", [])) + len(supplemental)),
-        ],
-        "sources": sources,
+        "input_snapshots": summary["input_snapshots"],
+        "sources": summary["sources"],
         "nonpaper_source_pointers": payload.get("nonpaper_source_pointers", []),
         "unresolved_names_only": payload.get("unresolved_names_only", []),
-        "provisional_candidate_register": candidates,
+        "provisional_candidate_register": summary["candidates"],
     }
 
 
-def validate_crosswalk(document: dict[str, Any]) -> list[str]:
-    errors: list[str] = []
-    required = {"schema_version", "title", "generated_at", "coverage", "sources", "nonpaper_source_pointers", "unresolved_names_only", "provisional_candidate_register"}
-    missing = sorted(required - set(document))
+def build_crosswalk(root: Path = ROOT) -> dict[str, Any]:
+    works_path = root / WORKS_PATH.relative_to(ROOT)
+    audit_path = root / AUDIT_PATH.relative_to(ROOT)
+    input_path = root / INPUT_PATH.relative_to(ROOT)
+    works = read_jsonl(works_path)
+    audit_rows = read_json(audit_path).get("resolved_publications", [])
+    payload = read_json(input_path)
+    supplemental_count = len(payload.get("identity_leads", [])) + len(payload.get("supplemental_bibliography_only_sources", []))
+    snapshots = [
+        _snapshot(works_path, len(works)),
+        _snapshot(audit_path, len(audit_rows)),
+        _snapshot(input_path, supplemental_count),
+    ]
+    summary = _assemble_source_summary(works, audit_rows, payload, snapshots)
+    return _crosswalk_document(payload, summary)
+
+
+def _required_source_errors(index: int, row: dict[str, Any]) -> list[str]:
+    missing = sorted(REQUIRED_SOURCE_FIELDS - set(row))
     if missing:
-        errors.append(f"missing top-level schema fields: {', '.join(missing)}")
+        return [f"sources[{index}] missing schema fields: {', '.join(missing)}"]
+    return []
+
+
+def _source_identity_errors(index: int, row: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    key = row["canonical_key"]
+    if not isinstance(key, str) or not key:
+        errors.append(f"sources[{index}] canonical_key must be a non-empty string")
+    if not isinstance(row["canonical_identifiers"], dict):
+        errors.append(f"sources[{index}] canonical_identifiers must be an object")
+    else:
+        try:
+            if key != canonical_key(row):
+                errors.append(f"sources[{index}] canonical_key must follow DOI/arXiv/title-author priority")
+        except ValueError as exc:
+            errors.append(f"sources[{index}] has no valid canonical key: {exc}")
+
+    return errors
+
+
+def _source_metadata_errors(index: int, row: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    authors = row["authors"]
+    if not isinstance(authors, list) or not all(isinstance(author, str) for author in authors):
+        errors.append(f"sources[{index}] authors must be an array of strings")
+    versions = row["arxiv_versions"]
+    if not isinstance(versions, list) or not all(isinstance(value, str) and re.fullmatch(r"v[0-9]+", value) for value in versions):
+        errors.append(f"sources[{index}] arxiv_versions must contain explicit vN strings")
+    if row["adoption_status"] != "not_asserted":
+        errors.append(f"sources[{index}] must not assert adoption")
+    if not isinstance(row["work_records"], list) or not isinstance(row["public_audit_records"], list):
+        errors.append(f"sources[{index}] work_records and public_audit_records must be arrays")
+    if not isinstance(row["deduplication_aliases"], list):
+        errors.append(f"sources[{index}] deduplication_aliases must be an array")
+    return errors
+
+
+def _source_shape_errors(index: int, row: dict[str, Any]) -> list[str]:
+    errors = _required_source_errors(index, row)
+    if errors:
         return errors
-    if document.get("schema_version") != "1.0.0":
-        errors.append("unsupported crosswalk schema_version")
-    coverage = document.get("coverage", {})
-    sources = document.get("sources", [])
+    errors.extend(_source_identity_errors(index, row))
+    errors.extend(_source_metadata_errors(index, row))
+    return errors
+
+
+def _source_key_and_alias_errors(
+    index: int,
+    row: dict[str, Any],
+    keys: set[str],
+    stable_aliases: set[str],
+    title_aliases: dict[str, set[str]],
+) -> list[str]:
+    errors: list[str] = []
+    key = row["canonical_key"]
+    if isinstance(key, str) and key:
+        if key in keys:
+            errors.append(f"duplicate canonical_key: {key}")
+        keys.add(key)
+    for alias in row.get("deduplication_aliases", []):
+        if not isinstance(alias, str):
+            errors.append(f"sources[{index}] deduplication aliases must be strings")
+            continue
+        if alias.startswith(("doi:", "arxiv:")):
+            if alias in stable_aliases:
+                errors.append(f"duplicate stable alias across source rows: {alias}")
+            stable_aliases.add(alias)
+        elif alias.startswith("title-author:") and isinstance(key, str):
+            title_aliases.setdefault(alias, set()).add(key)
+    return errors
+
+
+def _work_reference_errors(index: int, row: dict[str, Any], work_ids: set[str]) -> list[str]:
+    errors: list[str] = []
+    for ref in row.get("work_records", []):
+        work_id = ref.get("id") if isinstance(ref, dict) else None
+        if not isinstance(work_id, str):
+            errors.append(f"sources[{index}] has invalid Work reference")
+            continue
+        if work_id in work_ids:
+            errors.append(f"Work ID appears on multiple source rows: {work_id}")
+        work_ids.add(work_id)
+    return errors
+
+
+def _source_rows_errors(sources: Any) -> list[str]:
+    errors: list[str] = []
     if not isinstance(sources, list):
-        errors.append("sources must be an array")
-        return errors
+        return ["sources must be an array"]
     keys: set[str] = set()
     stable_aliases: set[str] = set()
     work_ids: set[str] = set()
@@ -435,53 +622,21 @@ def validate_crosswalk(document: dict[str, Any]) -> list[str]:
         if not isinstance(row, dict):
             errors.append(f"sources[{index}] must be an object")
             continue
-        missing_fields = sorted(REQUIRED_SOURCE_FIELDS - set(row))
-        if missing_fields:
-            errors.append(f"sources[{index}] missing schema fields: {', '.join(missing_fields)}")
-            continue
-        key = row["canonical_key"]
-        if not isinstance(key, str) or not key:
-            errors.append(f"sources[{index}] canonical_key must be a non-empty string")
-        elif key in keys:
-            errors.append(f"duplicate canonical_key: {key}")
-        keys.add(key)
-        if not isinstance(row["authors"], list) or not all(isinstance(author, str) for author in row["authors"]):
-            errors.append(f"sources[{index}] authors must be an array of strings")
-        if not isinstance(row["canonical_identifiers"], dict):
-            errors.append(f"sources[{index}] canonical_identifiers must be an object")
-        else:
-            try:
-                expected_key = canonical_key(row)
-                if key != expected_key:
-                    errors.append(f"sources[{index}] canonical_key must follow DOI/arXiv/title-author priority")
-            except ValueError as exc:
-                errors.append(f"sources[{index}] has no valid canonical key: {exc}")
-        if not isinstance(row["arxiv_versions"], list) or not all(re.fullmatch(r"v[0-9]+", value) for value in row["arxiv_versions"]):
-            errors.append(f"sources[{index}] arxiv_versions must contain explicit vN strings")
-        if row["adoption_status"] != "not_asserted":
-            errors.append(f"sources[{index}] must not assert adoption")
-        if not isinstance(row["work_records"], list) or not isinstance(row["public_audit_records"], list):
-            errors.append(f"sources[{index}] work_records and public_audit_records must be arrays")
-        for ref in row.get("work_records", []):
-            work_id = ref.get("id") if isinstance(ref, dict) else None
-            if not isinstance(work_id, str):
-                errors.append(f"sources[{index}] has invalid Work reference")
-            elif work_id in work_ids:
-                errors.append(f"Work ID appears on multiple source rows: {work_id}")
-            work_ids.add(work_id)
-        for alias in row.get("deduplication_aliases", []):
-            if not isinstance(alias, str):
-                errors.append(f"sources[{index}] deduplication aliases must be strings")
-                continue
-            if alias.startswith(("doi:", "arxiv:")) and alias in stable_aliases:
-                errors.append(f"duplicate stable alias across source rows: {alias}")
-            if alias.startswith(("doi:", "arxiv:")):
-                stable_aliases.add(alias)
-            if alias.startswith("title-author:"):
-                title_aliases.setdefault(alias, set()).add(key)
+        errors.extend(_source_shape_errors(index, row))
+        if REQUIRED_SOURCE_FIELDS.issubset(row):
+            errors.extend(_source_key_and_alias_errors(index, row, keys, stable_aliases, title_aliases))
+            if isinstance(row["work_records"], list):
+                errors.extend(_work_reference_errors(index, row, work_ids))
     for alias, alias_keys in title_aliases.items():
         if len(alias_keys) > 1:
             errors.append(f"unreconciled title+first-author alias: {alias}")
+    return errors
+
+
+def _coverage_errors(document: dict[str, Any], coverage: Any, sources: Any) -> list[str]:
+    if not isinstance(coverage, dict) or not isinstance(sources, list):
+        return ["coverage and sources must be objects/arrays"]
+    errors: list[str] = []
     for field, expected in (
         ("unique_source_identities", len(sources)),
         ("nonpaper_source_pointers", len(document["nonpaper_source_pointers"])),
@@ -495,14 +650,84 @@ def validate_crosswalk(document: dict[str, Any]) -> list[str]:
         errors.append(f"reconciled identity count does not equal baseline + supplemental: {expected_total}")
     if coverage.get("baseline_union_rows") != coverage.get("KWRK_records_before_reconciliation", 0) + coverage.get("DLS_audit_records", 0) - coverage.get("matched_identity_count", 0):
         errors.append("baseline union count does not equal Works + audit - matched identities")
-    for index, candidate in enumerate(document["provisional_candidate_register"]):
+    discrepancy_fields = sum(len(item.get("fields", [])) for item in document.get("field_discrepancies", []) if isinstance(item, dict))
+    if coverage.get("metadata_field_discrepancies") != discrepancy_fields:
+        errors.append("coverage.metadata_field_discrepancies does not match retained metadata variants")
+    return errors
+
+
+def _candidate_errors(candidates: Any) -> list[str]:
+    if not isinstance(candidates, list):
+        return ["provisional_candidate_register must be an array"]
+    errors: list[str] = []
+    for index, candidate in enumerate(candidates):
+        if not isinstance(candidate, dict):
+            errors.append(f"provisional_candidate_register[{index}] must be an object")
+            continue
         if candidate.get("influence_status") != "unverified" or candidate.get("adoption_status") != "not_asserted" or candidate.get("claim_status") != "not_accepted":
             errors.append(f"provisional_candidate_register[{index}] status boundary changed")
         if candidate.get("work_records") != []:
             errors.append(f"provisional_candidate_register[{index}] must not map to a canonical Work")
-    semantics = document.get("semantic_boundaries", {})
+    return errors
+
+
+def _semantic_boundary_errors(semantics: Any) -> list[str]:
+    if not isinstance(semantics, dict):
+        return ["semantic_boundaries must be an object"]
     if semantics.get("findings_added") is not False or semantics.get("articles_added") is not False or semantics.get("accepted_claims_added") != 0 or semantics.get("adoption_relationships_asserted") is not False:
-        errors.append("semantic boundaries must keep findings, adoption, claims, and articles unchanged")
+        return ["semantic boundaries must keep findings, adoption, claims, and articles unchanged"]
+    return []
+
+
+def _field_discrepancy_errors(entries: Any, sources: Any) -> list[str]:
+    if not isinstance(entries, list) or not isinstance(sources, list):
+        return ["field_discrepancies and sources must be arrays"]
+    errors: list[str] = []
+    source_keys = {row["canonical_key"] for row in sources if isinstance(row, dict) and isinstance(row.get("canonical_key"), str)}
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            errors.append(f"field_discrepancies[{index}] must be an object")
+            continue
+        if entry.get("canonical_key") not in source_keys:
+            errors.append(f"field_discrepancies[{index}] references an unknown source")
+        fields = entry.get("fields")
+        if not isinstance(fields, list) or not fields:
+            errors.append(f"field_discrepancies[{index}].fields must be a non-empty array")
+            continue
+        for discrepancy in fields:
+            if not isinstance(discrepancy, dict) or not _field_discrepancy_is_valid(discrepancy):
+                errors.append(f"field_discrepancies[{index}] contains an invalid discrepancy")
+    return errors
+
+
+def _field_discrepancy_is_valid(discrepancy: dict[str, Any]) -> bool:
+    variants = discrepancy.get("variants")
+    if discrepancy.get("field") not in {"title", "authors", "publication_date", "venue"}:
+        return False
+    if not isinstance(variants, list) or len(variants) < 2 or not discrepancy.get("resolution"):
+        return False
+    values: set[str] = set()
+    for variant in variants:
+        if not isinstance(variant, dict) or not isinstance(variant.get("sources"), list) or not variant["sources"]:
+            return False
+        values.add(json.dumps(variant.get("value"), ensure_ascii=False, sort_keys=True))
+    return len(values) == len(variants)
+
+
+def validate_crosswalk(document: dict[str, Any]) -> list[str]:
+    required = {"schema_version", "title", "generated_at", "coverage", "sources", "field_discrepancies", "nonpaper_source_pointers", "unresolved_names_only", "provisional_candidate_register"}
+    missing = sorted(required - set(document))
+    if missing:
+        return [f"missing top-level schema fields: {', '.join(missing)}"]
+    errors = []
+    if document.get("schema_version") != "1.0.0":
+        errors.append("unsupported crosswalk schema_version")
+    sources = document["sources"]
+    errors.extend(_source_rows_errors(sources))
+    errors.extend(_coverage_errors(document, document["coverage"], sources))
+    errors.extend(_field_discrepancy_errors(document["field_discrepancies"], sources))
+    errors.extend(_candidate_errors(document["provisional_candidate_register"]))
+    errors.extend(_semantic_boundary_errors(document.get("semantic_boundaries")))
     return errors
 
 

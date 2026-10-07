@@ -32,6 +32,21 @@ class CrosswalkTests(unittest.TestCase):
         self.assertEqual(len(matches), 2)
         self.assertEqual({row["work_records"][0]["id"] for row in matches}, {"KWRK-000001", "KWRK-000066"})
 
+    def test_venue_metadata_difference_is_retained_with_public_sources(self) -> None:
+        self.assertEqual(self.document["coverage"]["metadata_field_discrepancies"], 1)
+        entry = self.document["field_discrepancies"][0]
+        self.assertEqual(entry["canonical_key"], "arxiv:2410.01131")
+        venue = entry["fields"][0]
+        self.assertEqual(venue["field"], "venue")
+        self.assertEqual({item["value"] for item in venue["variants"]}, {"ICLR 2025", "arXiv preprint (2024)"})
+        source_ids = {source["id"] for item in venue["variants"] for source in item["sources"] if "id" in source}
+        self.assertEqual(source_ids, {"KWRK-000001", "dsl-pub-013"})
+
+    def test_metadata_difference_requires_attributed_variants(self) -> None:
+        invalid = copy.deepcopy(self.document)
+        del invalid["field_discrepancies"][0]["fields"][0]["variants"][0]["sources"]
+        self.assertTrue(any("invalid discrepancy" in error for error in validate_crosswalk(invalid)))
+
     def test_verified_identity_additions_link_to_canonical_works(self) -> None:
         refs = {
             work["id"]: row["canonical_key"]

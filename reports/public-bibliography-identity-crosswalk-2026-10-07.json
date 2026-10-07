@@ -26,8 +26,40 @@
     "unique_source_identities": 186,
     "nonpaper_source_pointers": 14,
     "unresolved_names_only": 14,
-    "provisional_influence_unverified_candidates": 12
+    "provisional_influence_unverified_candidates": 12,
+    "metadata_field_discrepancies": 1
   },
+  "field_discrepancies": [
+    {
+      "canonical_key": "arxiv:2410.01131",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ICLR 2025",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000001"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint (2024)",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-013"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    }
+  ],
   "semantic_boundaries": {
     "findings_added": false,
     "articles_added": false,
