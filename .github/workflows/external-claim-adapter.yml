@@ -20,3 +20,7 @@ jobs:
         run: python tools/test_external_claim_adapter.py
       - name: Validate canonical registries offline
         run: python tools/validate_external_claim_adapter.py --root .
+      - name: Test public bibliography identity crosswalk
+        run: python tools/test_research_identity_crosswalk.py
+      - name: Validate generated public bibliography identity crosswalk
+        run: python tools/reconcile_public_bibliography.py --check

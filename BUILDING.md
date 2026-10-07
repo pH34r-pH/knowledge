@@ -48,6 +48,18 @@ The corpus is only as trustworthy as its citations; a fabricated or misgrounded 
 | [specs/001-corpus-population-loop/](specs/001-corpus-population-loop/) | spec / plan / tasks (spec-kit) for the loop |
 | `corpus/CITATION-AUDIT-*.md` | dated citation-audit reports |
 
+## Public research identity maintenance
+
+[`references/external/works.jsonl`](references/external/works.jsonl) remains the canonical Work registry. The dated literature audit keeps its historical rows and statuses; the generated [public bibliography identity crosswalk](reports/public-bibliography-identity-crosswalk-2026-10-07.json) maps public identities to those records without becoming another registry. Its companion [reviewed input](reports/research-identity-reconciliation-input-2026-10-07.json) retains unresolved identity leads, manuscript-bibliography-only sources, provisional candidates, nonpaper pointers, and names-only leads.
+
+The bounded reconciliation contains 186 unique identities: 153 in the baseline union of 80 prior Works and 75 audit rows (two matches), plus 31 identity leads and two manuscript-bibliography sources. Three Work rows were added only for identities marked verified. A Work identity does not assert a finding, article adoption, or accepted claim. The 12 provisional candidates remain influence-unverified. This is not complete world-literature coverage; PR review threads and inaccessible Notion material remain gaps.
+
+One metadata discrepancy is retained and tested: `KWRK-000001` lists the nGPT venue as ICLR 2025, while `dsl-pub-013` labels it an arXiv preprint (2024). The crosswalk records both values with their record IDs without adjudicating the difference.
+
+For incremental updates, record the public source revision and update time, complete pagination for each selected issue and comment collection, and retain stable comment IDs with SHA-256 hashes of their complete normalized content so edits are detected. Record page counts and the terminal cursor/page marker. Advance the last verified successful checkpoint only after all pagination completes, identity validation passes, and the commit identifies that validated snapshot; otherwise retain the prior checkpoint and retry from it. Pin arXiv versions while deduplicating by DOI, arXiv ID without version, then canonical title plus first author. Add Work IDs only when the existing schema and identity checks pass.
+
+Keep private provenance, private identifiers, and inferred private crosswalks in access-controlled maintainer notes; do not copy them into the public input or report. The 2026-10-07 transfer contained no issue-level comment manifest, so no comment IDs, hashes, or source cursors are fabricated here. Validate an update with `python tools/test_research_identity_crosswalk.py`, `python tools/reconcile_public_bibliography.py --check`, `python tools/test_external_claim_adapter.py`, and `python tools/validate_external_claim_adapter.py --root .`.
+
 ## Article shape
 
 Frontmatter: `title`, `pillar`, `method`, `date`, `sources` (count), `confidence` (high/medium/low), optional `vault-links`. Body sections: **What it is · When to reach for it · How it works · Trade-offs · In practice · Further reading** (numbered, every non-obvious claim traceable to one). Write mechanism-first, senior-engineer register, ~700–1500 words.
