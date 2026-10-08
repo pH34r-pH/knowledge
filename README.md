@@ -1,6 +1,6 @@
 Structured, evidence-gated engineering and ML knowledge with canonical Markdown articles and machine-readable source records.
 
-[Browse the knowledge wiki](docs/wiki/README.md) for a link-only guide to canonical corpus articles, planned topics, and research source records.
+[Browse the knowledge wiki](docs/wiki/Home.md) for navigation to corpus articles, planned topics, and research source records.
 
 [Repository map and validation](AGENTS.md) describes the source/evidence boundaries and exact local checks.
 

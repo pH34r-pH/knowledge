@@ -18,6 +18,8 @@ jobs:
           python-version: "3.12"
       - name: Run adapter regression tests
         run: python tools/test_external_claim_adapter.py
+      - name: Validate generated knowledge Wiki projection
+        run: python tools/test_wiki_navigation.py
       - name: Validate canonical registries offline
         run: python tools/validate_external_claim_adapter.py --root .
       - name: Test public bibliography identity crosswalk

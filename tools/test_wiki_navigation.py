@@ -1,159 +1,160 @@
-"""Validate link-only wiki navigation and representative canonical routes."""
+"""Check the Wiki projection, links, statuses, and canonical source routes."""
 
 from __future__ import annotations
 
 import json
 import re
 import sys
-from html import unescape
+import tempfile
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
+from render_wiki import (
+    MANIFEST_NAME,
+    REPOSITORY,
+    render_pages,
+    source_articles,
+    source_works,
+    validate_projection,
+    write_projection,
+)
+
 ROOT = Path(__file__).resolve().parents[1]
-WIKI_INDEX = ROOT / "docs/wiki/README.md"
-LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
-HEADING_PATTERN = re.compile(r"^#{1,6}\s+(.+?)\s*#*\s*$", re.MULTILINE)
 ARXIV_ID = "1701.06538"
-EXPECTED_PATHS = {
-    "README.md",
-    "TOPICS.md",
-    "BUILDING.md",
-    "corpus/LEDGER.md",
-    "corpus/design-patterns/saga-pattern.md",
-    "corpus/ml-techniques/mixture-of-experts-routing.md",
-    "corpus/ml-techniques/rag-retrieval-architectures.md",
-    "corpus/adjacent-knowledge/opentelemetry-interoperability.md",
-    "references/external/works.jsonl",
-    "reports/public-bibliography-identity-crosswalk-2026-10-07.json",
-    "reports/domain-scaling-lab-literature-audit-2026-09-01.md",
-}
 
 
-def markdown_slug(heading: str) -> str:
-    text = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", heading)
-    text = re.sub(r"[`*_~]", "", unescape(text)).strip().lower()
-    text = text.replace("&", "")
-    text = re.sub(r"[^\w\- ]", "", text, flags=re.UNICODE)
-    return re.sub(r"\s+", "-", text)
-
-
-def markdown_anchors(path: Path) -> set[str]:
-    counts: dict[str, int] = {}
-    anchors: set[str] = set()
-    for heading in HEADING_PATTERN.findall(path.read_text(encoding="utf-8")):
-        slug = markdown_slug(heading)
-        count = counts.get(slug, 0)
-        counts[slug] = count + 1
-        anchors.add(slug if count == 0 else f"{slug}-{count}")
-    return anchors
-
-
-def local_target(markdown: Path, target: str) -> tuple[Path | None, str | None]:
-    target = target.strip().split(maxsplit=1)[0].strip("<>")
-    parsed = urlsplit(target)
-    if parsed.scheme or parsed.netloc:
-        return None, None
-    path_text = unquote(parsed.path)
-    candidate = (markdown.parent / path_text).resolve() if path_text else markdown.resolve()
-    return candidate, unquote(parsed.fragment) or None
-
-
-def check_local_links(markdown: Path) -> tuple[list[str], set[str]]:
+def check_readme_links() -> list[str]:
     errors: list[str] = []
-    targets: set[str] = set()
-    text = markdown.read_text(encoding="utf-8")
-    for target in LINK_PATTERN.findall(text):
-        candidate, fragment = local_target(markdown, target)
-        if candidate is None:
+    text = (ROOT / "README.md").read_text(encoding="utf-8")
+    if "docs/wiki/Home.md" not in text:
+        errors.append("repository README must link to docs/wiki/Home.md")
+    for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
+        parsed = urlsplit(target.strip().split(maxsplit=1)[0].strip("<>"))
+        if parsed.scheme or parsed.netloc or not parsed.path:
             continue
-        try:
-            relative = candidate.relative_to(ROOT).as_posix()
-        except ValueError:
-            errors.append(f"link escapes repository: {target}")
-            continue
-        if not candidate.is_file():
-            errors.append(f"missing local link target: {target}")
-            continue
-        targets.add(relative)
-        if fragment and candidate.suffix.lower() in {".md", ".markdown", ".mdx"}:
-            if fragment not in markdown_anchors(candidate):
-                errors.append(f"missing Markdown heading #{fragment} in {relative}")
-    return errors, targets
+        path = (ROOT / unquote(parsed.path)).resolve()
+        if not path.exists():
+            errors.append(f"README.md links to a missing path: {target}")
+        if parsed.fragment == "corpus" and path.is_file() and "## Corpus" not in path.read_text(encoding="utf-8"):
+            errors.append(f"README.md links to a missing heading: {target}")
+    return errors
 
 
-def load_works() -> dict[str, dict[str, object]]:
-    registry = ROOT / "references/external/works.jsonl"
-    records: dict[str, dict[str, object]] = {}
-    for line_number, line in enumerate(registry.read_text(encoding="utf-8").splitlines(), start=1):
-        if not line.strip():
-            continue
-        record = json.loads(line)
-        identifier = record.get("id")
-        if not isinstance(identifier, str) or identifier in records:
-            raise ValueError(f"invalid or duplicate Work id on line {line_number}: {identifier!r}")
-        records[identifier] = record
-    return records
-
-
-def check_representative_routes(wiki_targets: set[str], homepage_targets: set[str]) -> list[str]:
+def check_source_route(pages: dict[str, str]) -> list[str]:
     errors: list[str] = []
-    missing = EXPECTED_PATHS - wiki_targets
-    if missing:
-        errors.append(f"wiki index must link representative canonical paths: {sorted(missing)}")
-    if "docs/wiki/README.md" not in homepage_targets:
-        errors.append("repository README must link to the wiki navigation entry point")
-
-    article_path = "corpus/ml-techniques/mixture-of-experts-routing.md"
-    article = (ROOT / article_path).read_text(encoding="utf-8")
-    if not re.search(rf"arxiv\.org/abs/{ARXIV_ID}(?:v\d+)?", article):
-        errors.append(f"representative article does not cite arXiv:{ARXIV_ID}")
+    article = next((row for row in source_articles(ROOT) if row["path"].endswith("mixture-of-experts-routing.md")), None)
+    if article is None:
+        return ["MoE article is missing from the canonical README index"]
+    article_page = pages[article["page"]]
+    if not re.search(rf"arxiv\.org/abs/{ARXIV_ID}(?:v\d+)?", article_page):
+        errors.append(f"generated MoE page does not preserve its arXiv:{ARXIV_ID} citation")
 
     crosswalk_path = ROOT / "reports/public-bibliography-identity-crosswalk-2026-10-07.json"
     crosswalk = json.loads(crosswalk_path.read_text(encoding="utf-8"))
     matches = [row for row in crosswalk["sources"] if row.get("canonical_key") == f"arxiv:{ARXIV_ID}"]
     if len(matches) != 1:
-        errors.append(f"crosswalk must have one canonical identity for arXiv:{ARXIV_ID}")
+        errors.append(f"crosswalk must contain one public identity for arXiv:{ARXIV_ID}")
         return errors
-
-    work_records = matches[0].get("work_records", [])
-    work_ids = [row.get("id") for row in work_records if isinstance(row, dict)]
+    work_ids = [row.get("id") for row in matches[0].get("work_records", []) if isinstance(row, dict)]
     if work_ids != ["KWRK-000066"]:
-        errors.append(f"crosswalk route for arXiv:{ARXIV_ID} changed unexpectedly: {work_ids!r}")
+        errors.append(f"arXiv:{ARXIV_ID} no longer maps to the expected Work ID: {work_ids!r}")
         return errors
 
-    works = load_works()
+    works = {record.get("id"): record for _, record in source_works(ROOT)}
     work = works.get("KWRK-000066")
     if not work or work.get("canonical_identifiers", {}).get("arxiv") != ARXIV_ID:
-        errors.append("KWRK-000066 does not resolve to the representative arXiv source in Works")
+        errors.append(f"KWRK-000066 does not resolve to arXiv:{ARXIV_ID} in Works")
+    if "KWRK-000066" not in pages["Works.md"]:
+        errors.append("generated Works page is missing the representative Work ID")
+    if "public-bibliography-identity-crosswalk" not in pages["Research-sources.md"]:
+        errors.append("generated Research-sources page is missing the identity crosswalk")
+    return errors
 
-    topics = (ROOT / "TOPICS.md").read_text(encoding="utf-8")
-    if not re.search(r"^- \[ \] Context engineering as a discipline\b", topics, re.MULTILINE):
-        errors.append("the planned-topic example must remain an unchecked TOPICS.md backlog item")
 
+def check_sync_preserves_unmanaged_pages(pages: dict[str, str]) -> list[str]:
+    errors: list[str] = []
+    with tempfile.TemporaryDirectory(prefix="knowledge-wiki-projection-") as temporary:
+        output = Path(temporary)
+        write_projection(ROOT, output, pages)
+        for page, contents in pages.items():
+            if (output / page).read_text(encoding="utf-8") != contents:
+                errors.append(f"renderer output differs for {page}")
+
+        owner_page = output / "Owner-notes.md"
+        owner_page.write_text("Owner-authored page\n", encoding="utf-8")
+        stale_page = output / "Old-generated-article.md"
+        stale_page.write_text("Old generated output\n", encoding="utf-8")
+        manifest_path = output / MANIFEST_NAME
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["pages"].append(stale_page.name)
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+        write_projection(ROOT, output, pages)
+        if not owner_page.is_file():
+            errors.append("Wiki sync deleted an unmanaged owner page")
+        if stale_page.exists():
+            errors.append("Wiki sync did not remove a stale page it had previously managed")
+
+    with tempfile.TemporaryDirectory(prefix="knowledge-wiki-conflict-") as temporary:
+        output = Path(temporary)
+        conflict = output / "Corpus.md"
+        conflict.write_text("Owner-authored Corpus page\n", encoding="utf-8")
+        try:
+            write_projection(ROOT, output, pages)
+        except ValueError as error:
+            if "unmanaged Wiki page" not in str(error):
+                errors.append(f"unexpected managed-page conflict: {error}")
+        else:
+            errors.append("Wiki sync overwrote an unmanaged page with a generated page name")
+        if conflict.read_text(encoding="utf-8") != "Owner-authored Corpus page\n":
+            errors.append("Wiki sync changed an unmanaged page before reporting its conflict")
+
+    with tempfile.TemporaryDirectory(prefix="knowledge-wiki-manifest-") as temporary:
+        temporary_path = Path(temporary)
+        output = temporary_path / "wiki"
+        output.mkdir()
+        target = temporary_path / "outside-manifest.json"
+        target.write_text('{"schema_version":"1","pages":[]}\n', encoding="utf-8")
+        (output / MANIFEST_NAME).symlink_to(target)
+        try:
+            write_projection(ROOT, output, pages)
+        except ValueError as error:
+            if "symlinked Wiki manifest" not in str(error):
+                errors.append(f"unexpected symlinked-manifest error: {error}")
+        else:
+            errors.append("Wiki sync accepted a symlinked generated-page manifest")
+        if target.read_text(encoding="utf-8") != '{"schema_version":"1","pages":[]}\n':
+            errors.append("Wiki sync changed a manifest target outside the Wiki checkout")
     return errors
 
 
 def main() -> int:
-    if not WIKI_INDEX.is_file():
-        print(f"missing wiki navigation entry point: {WIKI_INDEX.relative_to(ROOT)}", file=sys.stderr)
+    try:
+        pages = render_pages(ROOT)
+        errors = validate_projection(ROOT, pages)
+        errors.extend(check_readme_links())
+        errors.extend(check_source_route(pages))
+        errors.extend(check_sync_preserves_unmanaged_pages(pages))
+        if "Welcome to the knowledge wiki!" not in pages["Home.md"]:
+            errors.append("the Wiki Home page created by the owner was not preserved")
+        if "**Planned**" not in pages["Planned-topics.md"]:
+            errors.append("planned backlog entries are not visibly marked as planned")
+        if f"https://github.com/{REPOSITORY}/blob/main" not in pages["Works.md"]:
+            errors.append("Works entries must link back to the canonical registry")
+        if errors:
+            print("wiki navigation check failed:", file=sys.stderr)
+            for error in errors:
+                print(f"- {error}", file=sys.stderr)
+            return 1
+        print(
+            f"wiki navigation checks passed: {len(pages)} generated pages, "
+            f"{len(source_articles(ROOT))} articles, {len(source_works(ROOT))} Works records; "
+            "links and owner-page preservation verified"
+        )
+        return 0
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        print(f"wiki navigation check failed: {error}", file=sys.stderr)
         return 1
-    errors: list[str] = []
-    wiki_targets: set[str] = set()
-    markdown_files = sorted((ROOT / "docs/wiki").rglob("*.md"))
-    for markdown in markdown_files:
-        link_errors, link_targets = check_local_links(markdown)
-        errors.extend(f"{markdown.relative_to(ROOT)}: {error}" for error in link_errors)
-        wiki_targets.update(link_targets)
-    homepage_errors, homepage_targets = check_local_links(ROOT / "README.md")
-    errors.extend(f"README.md: {error}" for error in homepage_errors)
-    errors.extend(check_representative_routes(wiki_targets, homepage_targets))
-    if errors:
-        print("wiki navigation check failed:", file=sys.stderr)
-        for error in errors:
-            print(f"- {error}", file=sys.stderr)
-        return 1
-    print(f"wiki navigation checks passed: {len(wiki_targets)} wiki targets and representative article, backlog, crosswalk, and Works routes")
-    return 0
 
 
 if __name__ == "__main__":

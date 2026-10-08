@@ -47,13 +47,26 @@ The corpus is only as trustworthy as its citations; a fabricated or misgrounded 
 | `.claude/skills/populate-corpus/references/harness-options.md` | evaluation of external harnesses/skills (skillsmp.com) — what was adopted, deferred, or skipped and why |
 | [specs/001-corpus-population-loop/](specs/001-corpus-population-loop/) | spec / plan / tasks (spec-kit) for the loop |
 | `corpus/CITATION-AUDIT-*.md` | dated citation-audit reports |
-| [`docs/wiki/`](docs/wiki/README.md) | link-only browsing entry point into canonical articles, planned topics, and public source records |
+| [`docs/wiki/`](docs/wiki/Home.md) | source Home and sidebar for the browsable GitHub Wiki |
 
 ## Wiki-first browsing
 
-Start with the [knowledge wiki index](docs/wiki/README.md). It links to canonical repository files instead of copying article or source text. Completed topics resolve to their `corpus/` articles; planned topics stay in `TOPICS.md`; public work identities stay in `references/external/works.jsonl`, with audit and reconciliation reports retained separately.
+Start at [`docs/wiki/Home.md`](docs/wiki/Home.md) or the repository's Wiki Home. `tools/render_wiki.py` projects article pages from canonical `corpus/` Markdown, indexes from `README.md` and `TOPICS.md`, and the Works catalog from `references/external/works.jsonl`. The output is generated for the Wiki clone; repository sources remain authoritative, and no article text or Work metadata is edited twice. Planned entries remain marked as backlog items.
 
-The repository has no checked-in wiki publisher or sync workflow. The index is usable directly in the repository and on GitHub. Publishing it to GitHub Wiki would need a separately approved write path; do not add credentials or a new publishing service as part of corpus maintenance.
+Validate a projection with `python tools/test_wiki_navigation.py`. After canonical corpus, backlog, or Works changes, regenerate and sync only when ready to update the Wiki:
+
+```bash
+wiki_dir="/tmp/knowledge-wiki"
+git -c credential.helper='!gh auth git-credential' clone https://github.com/pH34r-pH/knowledge.wiki.git "$wiki_dir"
+python tools/render_wiki.py --output-dir "$wiki_dir"
+git -C "$wiki_dir" add -A
+if ! git -C "$wiki_dir" diff --cached --quiet; then
+  git -C "$wiki_dir" -c user.name="Tyler Harbin-Giuntoli" -c user.email="harbin.giuntoli@gmail.com" commit -m "docs: sync Knowledge Wiki"
+  git -C "$wiki_dir" -c credential.helper='!gh auth git-credential' push origin HEAD
+fi
+```
+
+This uses the existing `gh` login for one-shot Git transport and adds no stored credential or automated write permission. For a repository whose Wiki has not yet been initialized, create its first page in GitHub's Wiki UI before cloning. The `wiki-sync.yml` pattern in related repositories requires a persistent Actions `contents: write` permission, so this repository uses the manual, local render/commit/push path instead.
 
 ## Public research identity maintenance
 

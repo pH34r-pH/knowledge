@@ -27,7 +27,7 @@ TOPICS.md / existing corpus
 | `arxiv/` | Downloaded paper PDFs and matching metadata; see [`arxiv/AGENTS.md`](arxiv/AGENTS.md). | The metadata/PDF pair is a retained source identity; do not rewrite a historical source to make a current claim fit. |
 | `references/external/` | Machine-readable claims, works, evidence, schemas, and scoped import audits; see [`references/AGENTS.md`](references/AGENTS.md). | Registry records are provenance, not prose; preserve exact IDs, URLs, digests, and audit scope. |
 | `specs/` | Spec Kit plans and acceptance records for corpus procedures. | Preserve the `spec.md → plan.md → tests.md → tasks.md` authority chain and historical evidence. |
-| `docs/wiki/` | Link-only entry points into canonical guides, corpus articles, backlog, and source records. | Keep article and source content at its canonical path; wiki navigation must not create a parallel article or source registry. |
+| `docs/wiki/` | Wiki Home and sidebar sources; see [`docs/wiki/Home.md`](docs/wiki/Home.md). | Generate readable Wiki pages from canonical files with `tools/render_wiki.py`; keep the Wiki a deterministic view, not a second source registry. |
 | `.claude/skills/` | The executable research procedure and its references. | Update the procedure only when the operating loop changes; do not use it as a substitute for source evidence. |
 
 The living Markdown surface is the root guides, scoped `AGENTS.md` maps, `docs/wiki/`
@@ -84,9 +84,10 @@ spec.md → plan.md → tests.md → tasks.md
   article/evidence IDs remain valid in their historical or machine-readable locations.
 - Keep Markdown links relative when they point into this repository so the link
   checker exercises the map references.
-- Keep `docs/wiki/` pages as a navigation surface over canonical repository files.
-  Local links and representative corpus-to-source routes are checked by
-  `python tools/test_wiki_navigation.py`.
+- Generate Wiki article/index pages from canonical repository files with
+  `python tools/render_wiki.py --output-dir <knowledge-wiki-checkout>`; this writes
+  only to a separate Wiki clone and never publishes. Validate generated links and
+  representative corpus-to-source routes with `python tools/test_wiki_navigation.py`.
 
 Exact local checks for a documentation-only change are:
 
