@@ -16,10 +16,11 @@ class CrosswalkTests(unittest.TestCase):
     def test_reconciled_counts_match_the_reviewed_payload(self) -> None:
         coverage = self.document["coverage"]
         self.assertEqual(coverage["KWRK_records_before_reconciliation"], 80)
-        self.assertEqual(coverage["KWRK_records_current"], 83)
+        self.assertEqual(coverage["KWRK_records_current"], 130)
         self.assertEqual(coverage["DLS_audit_records"], 75)
         self.assertEqual(coverage["matched_identity_count"], 2)
         self.assertEqual(coverage["baseline_union_rows"], 153)
+        self.assertEqual(coverage["current_work_audit_union_rows_before_supplement"], 153)
         self.assertEqual(coverage["extra_identity_leads"], 31)
         self.assertEqual(coverage["supplemental_bibliography_only_sources"], 2)
         self.assertEqual(coverage["unique_source_identities"], 186)
@@ -56,6 +57,9 @@ class CrosswalkTests(unittest.TestCase):
         self.assertIn("KWRK-000081", refs)
         self.assertIn("KWRK-000082", refs)
         self.assertIn("KWRK-000083", refs)
+        self.assertIn("KWRK-000096", refs)
+        self.assertEqual(refs["KWRK-000096"], "arxiv:2410.03529")
+        self.assertNotIn("KWRK-000084", refs)
 
     def test_arxiv_versions_are_preserved_separately_from_identity_keys(self) -> None:
         by_key = {row["canonical_key"]: row for row in self.document["sources"]}

@@ -1,0 +1,407 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Bounded public research intake audit",
+  "generated_at": "2026-10-08",
+  "scope": "Public bibliographic identities and source-attributed technical scope for the supplied research batches only. No private issue provenance, private workspace identifiers, adoption claims, or accepted project claims.",
+  "canonical_registry": "works.jsonl",
+  "ingestion": {
+    "work_records_before": 83,
+    "work_records_added": 47,
+    "work_records_after": 130,
+    "arxiv_papers_added": 34,
+    "other_publications_added": 3,
+    "pinned_software_snapshots_added": 4,
+    "official_vendor_or_model_pages_added": 6,
+    "external_claim_rows_before": 26,
+    "external_claim_rows_after": 26,
+    "knowledge_evidence_rows_before": 26,
+    "knowledge_evidence_rows_after": 26,
+    "accepted_claims_added": 0
+  },
+  "records": [
+    {
+      "work_id": "KWRK-000084",
+      "identity_type": "arxiv",
+      "identity_value": "2504.15299",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000085",
+      "identity_type": "arxiv",
+      "identity_value": "2308.14352",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000086",
+      "identity_type": "arxiv",
+      "identity_value": "2412.00099",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000087",
+      "identity_type": "arxiv",
+      "identity_value": "2406.06282",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000088",
+      "identity_type": "arxiv",
+      "identity_value": "2606.21868",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000089",
+      "identity_type": "arxiv",
+      "identity_value": "2609.18110",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000090",
+      "identity_type": "arxiv",
+      "identity_value": "2512.03927",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000091",
+      "identity_type": "arxiv",
+      "identity_value": "2508.12851",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000092",
+      "identity_type": "arxiv",
+      "identity_value": "2502.05370",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000093",
+      "identity_type": "arxiv",
+      "identity_value": "2510.12357",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000094",
+      "identity_type": "arxiv",
+      "identity_value": "2604.02715",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000095",
+      "identity_type": "arxiv",
+      "identity_value": "2412.01868",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000096",
+      "identity_type": "arxiv",
+      "identity_value": "2410.03529",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000097",
+      "identity_type": "arxiv",
+      "identity_value": "2410.07490",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000098",
+      "identity_type": "arxiv",
+      "identity_value": "2410.05357",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000099",
+      "identity_type": "arxiv",
+      "identity_value": "2404.15153",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000100",
+      "identity_type": "arxiv",
+      "identity_value": "2507.07024",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000101",
+      "identity_type": "arxiv",
+      "identity_value": "2609.00891",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000102",
+      "identity_type": "arxiv",
+      "identity_value": "2608.03893",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000103",
+      "identity_type": "arxiv",
+      "identity_value": "2608.04893",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000104",
+      "identity_type": "arxiv",
+      "identity_value": "2606.16135",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000105",
+      "identity_type": "arxiv",
+      "identity_value": "2601.08584",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000106",
+      "identity_type": "arxiv",
+      "identity_value": "2606.21428",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000107",
+      "identity_type": "arxiv",
+      "identity_value": "2311.08692",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000108",
+      "identity_type": "arxiv",
+      "identity_value": "2406.09041",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000109",
+      "identity_type": "arxiv",
+      "identity_value": "2601.06123",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000110",
+      "identity_type": "arxiv",
+      "identity_value": "2511.20639",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000111",
+      "identity_type": "arxiv",
+      "identity_value": "2607.28979",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000112",
+      "identity_type": "arxiv",
+      "identity_value": "2505.05950",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000113",
+      "identity_type": "arxiv",
+      "identity_value": "2609.10266",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000114",
+      "identity_type": "arxiv",
+      "identity_value": "2608.30963",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000115",
+      "identity_type": "arxiv",
+      "identity_value": "2510.12872",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000116",
+      "identity_type": "arxiv",
+      "identity_value": "2410.00531",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000117",
+      "identity_type": "arxiv",
+      "identity_value": "2511.09149",
+      "source_group": "research publication",
+      "verification_level": "primary-metadata-abstract-and-html-scope-check"
+    },
+    {
+      "work_id": "KWRK-000118",
+      "identity_type": "anthology",
+      "identity_value": "2024.acl-long.363",
+      "source_group": "research publication",
+      "verification_level": "primary-anthology-metadata"
+    },
+    {
+      "work_id": "KWRK-000119",
+      "identity_type": "usenix",
+      "identity_value": "316100",
+      "source_group": "research publication",
+      "verification_level": "primary-proceedings-metadata"
+    },
+    {
+      "work_id": "KWRK-000120",
+      "identity_type": "github",
+      "identity_value": "Analytics-Everywhere-Lab/edge-moe@200040be8d54bd8ed5ad82bcd704348d4103fd34",
+      "source_group": "software snapshot",
+      "verification_level": "pinned-public-repository-snapshot"
+    },
+    {
+      "work_id": "KWRK-000121",
+      "identity_type": "github",
+      "identity_value": "andreidavid/llama2PS3.c@d0bcfb2461610165b68e428904673400430ef850",
+      "source_group": "software snapshot",
+      "verification_level": "pinned-public-repository-snapshot"
+    },
+    {
+      "work_id": "KWRK-000122",
+      "identity_type": "github",
+      "identity_value": "gianlucamazza/xllama@ebc6a6eb18269576a78d9e3c78d678c509673de0",
+      "source_group": "software snapshot",
+      "verification_level": "pinned-public-repository-snapshot"
+    },
+    {
+      "work_id": "KWRK-000123",
+      "identity_type": "pmlr",
+      "identity_value": "v306/yang26ds",
+      "source_group": "research publication",
+      "verification_level": "primary-proceedings-metadata-and-abstract"
+    },
+    {
+      "work_id": "KWRK-000124",
+      "identity_type": "github",
+      "identity_value": "npnothard/ZipMoE-ICML26@1d0a56af1bb08d4c26ff850f557e2db439ef93b5",
+      "source_group": "software snapshot",
+      "verification_level": "pinned-public-repository-snapshot"
+    },
+    {
+      "work_id": "KWRK-000125",
+      "identity_type": "website",
+      "identity_value": "https://mistral.ai/news/mistral-large-4/",
+      "source_group": "official product page",
+      "verification_level": "official-vendor-page"
+    },
+    {
+      "work_id": "KWRK-000126",
+      "identity_type": "model-docs",
+      "identity_value": "mistral-large-4",
+      "source_group": "official product documentation",
+      "verification_level": "official-model-documentation"
+    },
+    {
+      "work_id": "KWRK-000127",
+      "identity_type": "website",
+      "identity_value": "https://mistral.ai/news/mistral-small-4/",
+      "source_group": "official product page",
+      "verification_level": "official-vendor-page"
+    },
+    {
+      "work_id": "KWRK-000128",
+      "identity_type": "huggingface",
+      "identity_value": "mistralai/Mistral-Small-4-119B-2603-NVFP4@45331841b631f4e281df8e959ea3cc9beb84298a",
+      "source_group": "model-card snapshot",
+      "verification_level": "pinned-public-model-card"
+    },
+    {
+      "work_id": "KWRK-000129",
+      "identity_type": "website",
+      "identity_value": "https://mistral.ai/news/mistral-3/",
+      "source_group": "official product page",
+      "verification_level": "official-vendor-page"
+    },
+    {
+      "work_id": "KWRK-000130",
+      "identity_type": "huggingface",
+      "identity_value": "mistralai/Ministral-3-14B-Instruct-2512@29439f81c2be264d8d393273f99e7db9c0961120",
+      "source_group": "model-card snapshot",
+      "verification_level": "pinned-public-model-card"
+    }
+  ],
+  "existing_identity_links": [
+    {
+      "identity": "arxiv:2510.03215",
+      "work_id": "KWRK-000036",
+      "title_alias": "C2C"
+    },
+    {
+      "identity": "arxiv:2605.22863",
+      "work_id": "KWRK-000055",
+      "title_alias": "Latent Cache Flow"
+    },
+    {
+      "identity": "arxiv:2608.20617",
+      "work_id": "KWRK-000051",
+      "title_alias": "XKV"
+    },
+    {
+      "identity": "report:Aleph Alpha Kolibri technical report",
+      "work_id": "KWRK-000060"
+    },
+    {
+      "identity": "github:tilde-research/momoe-release@d6e2d683185bfe4030265c3ca062564356faa61e",
+      "work_id": "KWRK-000076"
+    },
+    {
+      "identity": "arxiv:2410.03529",
+      "work_id": "KWRK-000096",
+      "title_alias": "SMALLTALK LM / No Need to Talk",
+      "relation": "crosswalk identity lead linked to canonical Work"
+    },
+    {
+      "identity": "arxiv:2401.14361",
+      "work_id": null,
+      "title_alias": "MoE-Infinity",
+      "relation": "crosswalk-only identity lead; no duplicate Work asserted"
+    }
+  ],
+  "source_data_gaps": [
+    "SwapMoE ACL Anthology identity is resolved; the supplied Jetson Nano 4GB and routing-mask output-change details were not independently checked in a non-PDF primary text view and remain full-text verification items.",
+    "ZipMoE paper/repository identity and UMA scope are resolved; exact 32/64GB Jetson capacity and imposed 10/20GB budget matrix needs full-text confirmation before citation as a result.",
+    "FloE proceedings abstract confirms a single RTX 3090, 11GB deployment target, and 4.4–7.6% average performance degradation; the supplied 12GB cap detail remains full-text verification.",
+    "OD-MoE abstract confirms a ten-node testbed and less-than-1GB GPU per edge node; an aggregate system-wide memory total is not verified here.",
+    "Prism, FineMoE, and several other paper-specific hardware matrices were preserved as bounded lead notes, but not every full-text setup table was independently checked in this metadata/abstract pass.",
+    "TPI-LLM abstract and HTML confirm both emulated and physical testbeds. The physical four-laptop study is CPU-only and full precision; the exact supplied 8-node memory-cap emulation and 26-seconds-per-token 70B detail were not verified. Do not treat the 70B abstract claim as the result of the four-laptop case study.",
+    "No Notion corpus, inaccessible private records, or PR review threads were audited in this intake. The historical bibliography reconciliation also remains a partial transfer audit, not world-literature coverage."
+  ],
+  "coverage_statement": "Within the public source set reviewed in this bounded checkpoint, no single verified system combined independent full-model composition, cross-model state transfer, and genuinely low-memory mixed-device execution. This is a scoped search result, not a novelty claim or proof of nonexistence.",
+  "semantic_boundaries": {
+    "research_findings_added_to_articles": false,
+    "articles_added": false,
+    "external_claims_added": 0,
+    "knowledge_evidence_added": 0,
+    "accepted_claims_added": 0,
+    "adoption_relationships_asserted": false
+  }
+}

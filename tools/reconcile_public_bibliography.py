@@ -406,7 +406,19 @@ def _build_source_groups(
     groups: list[dict[str, Any]] = []
     stable_alias_map: dict[str, int] = {}
     title_alias_map: dict[str, int] = {}
+    baseline_work_count = payload["reported_counts"]["KWRK_records_before_reconciliation"]
+    baseline_works = []
+    later_works = []
     for row in works:
+        match = re.fullmatch(r"KWRK-(\d+)", row.get("id", ""))
+        if not match:
+            raise ValueError(f"invalid ExternalWork ID: {row.get('id')!r}")
+        (baseline_works if int(match.group(1)) <= baseline_work_count else later_works).append(row)
+    if len(baseline_works) != baseline_work_count:
+        raise ValueError(
+            f"expected {baseline_work_count} baseline Works, found {len(baseline_works)}"
+        )
+    for row in baseline_works:
         _add_source_record(_work_row(row), "work", groups, stable_alias_map, title_alias_map)
     for row in audit_rows:
         _add_source_record(_audit_row(row), "audit", groups, stable_alias_map, title_alias_map)
@@ -416,6 +428,14 @@ def _build_source_groups(
         _add_source_record(_supplemental_row(row, "identity_lead"), "identity_lead", groups, stable_alias_map, title_alias_map)
     for row in payload.get("supplemental_bibliography_only_sources", []):
         _add_source_record(_supplemental_row(row, "bibliography_only"), "bibliography_only", groups, stable_alias_map, title_alias_map)
+    # Keep the crosswalk scoped to its reviewed transfer payload. Later Works
+    # enrich an existing identity only when identifiers or title+first-author
+    # already match a row in that payload; unrelated registry additions remain
+    # solely in canonical Works.
+    for row in later_works:
+        work_row = _work_row(row)
+        if _find_group(work_row, groups, stable_alias_map, title_alias_map) is not None:
+            _add_source_record(work_row, "work", groups, stable_alias_map, title_alias_map)
     return groups, baseline_matches, union_count
 
 
