@@ -35,8 +35,23 @@ def blob_url(path: str, line: int | None = None) -> str:
     return f"{url}#{fragment}" if separator else url
 
 
-def source_articles(root: Path) -> list[dict[str, str]]:
-    readme = (root / "README.md").read_text(encoding="utf-8").splitlines()
+def parse_article_entry(root: Path, line: str, category: str | None) -> dict[str, str]:
+    match = ARTICLE_LINE.fullmatch(line)
+    if not match or category is None:
+        raise ValueError(f"unrecognized corpus-index entry: {line}")
+    path = match.group("path")
+    if not (root / path).is_file():
+        raise ValueError(f"README corpus entry points to a missing article: {path}")
+    return {
+        "title": match.group("title"),
+        "path": path,
+        "page": f"{Path(path).stem}.md",
+        "category": category,
+        "summary": match.group("summary") or "",
+    }
+
+
+def parse_corpus_index(root: Path, readme: list[str]) -> list[dict[str, str]]:
     try:
         start = readme.index("## Corpus") + 1
     except ValueError as error:
@@ -50,23 +65,12 @@ def source_articles(root: Path) -> list[dict[str, str]]:
         if line.startswith("**") and line.endswith("**"):
             category = line[2:-2]
             continue
-        if not line.startswith("- ["):
-            continue
-        match = ARTICLE_LINE.fullmatch(line)
-        if not match or category is None:
-            raise ValueError(f"unrecognized corpus-index entry: {line}")
-        path = match.group("path")
-        if not (root / path).is_file():
-            raise ValueError(f"README corpus entry points to a missing article: {path}")
-        articles.append(
-            {
-                "title": match.group("title"),
-                "path": path,
-                "page": f"{Path(path).stem}.md",
-                "category": category,
-                "summary": match.group("summary") or "",
-            }
-        )
+        if line.startswith("- ["):
+            articles.append(parse_article_entry(root, line, category))
+    return articles
+
+
+def validate_article_index(root: Path, articles: list[dict[str, str]]) -> None:
     if not articles:
         raise ValueError("README.md corpus index contains no articles")
     paths = [article["path"] for article in articles]
@@ -86,6 +90,12 @@ def source_articles(root: Path) -> list[dict[str, str]]:
     unindexed = actual_articles - set(paths)
     if unindexed:
         raise ValueError(f"corpus articles missing from canonical README index: {sorted(unindexed)}")
+
+
+def source_articles(root: Path) -> list[dict[str, str]]:
+    readme = (root / "README.md").read_text(encoding="utf-8").splitlines()
+    articles = parse_corpus_index(root, readme)
+    validate_article_index(root, articles)
     return articles
 
 
@@ -162,13 +172,7 @@ def rewrite_article_links(root: Path, article: dict[str, str], page_by_source: d
     return MARKDOWN_LINK.sub(rewrite, body)
 
 
-def render_pages(root: Path) -> dict[str, str]:
-    articles = source_articles(root)
-    page_by_source = {article["path"]: article["page"] for article in articles}
-    pages: dict[str, str] = {}
-    pages["Home.md"] = (root / "docs/wiki/Home.md").read_text(encoding="utf-8")
-    pages["_Sidebar.md"] = (root / "docs/wiki/_Sidebar.md").read_text(encoding="utf-8")
-
+def build_corpus_page(articles: list[dict[str, str]]) -> str:
     corpus_lines = [
         "# Completed corpus",
         "",
@@ -187,8 +191,10 @@ def render_pages(root: Path) -> dict[str, str]:
             f"[canonical source]({canonical})"
         )
     corpus_lines.append("")
-    pages["Corpus.md"] = "\n".join(corpus_lines)
+    return "\n".join(corpus_lines)
 
+
+def build_planned_topics_page(root: Path) -> str:
     topic_groups = planned_topics(root)
     topic_lines = [
         "# Planned topics",
@@ -202,8 +208,10 @@ def render_pages(root: Path) -> dict[str, str]:
         topic_lines.append("")
     if not topic_groups:
         topic_lines.extend(["No unchecked topics are currently listed in the canonical backlog.", ""])
-    pages["Planned-topics.md"] = "\n".join(topic_lines)
+    return "\n".join(topic_lines)
 
+
+def build_research_sources_page() -> str:
     crosswalk_path = "reports/public-bibliography-identity-crosswalk-2026-10-07.json"
     audit_path = "reports/domain-scaling-lab-literature-audit-2026-09-01.md"
     source_lines = [
@@ -218,8 +226,19 @@ def render_pages(root: Path) -> dict[str, str]:
         f"- [Source maintenance and validation](" + blob_url("BUILDING.md") + ")",
         "",
     ]
-    pages["Research-sources.md"] = "\n".join(source_lines)
+    return "\n".join(source_lines)
 
+
+def work_title_link(title: str, source: object) -> str:
+    if not isinstance(source, str) or not source:
+        return title
+    parsed_source = urlsplit(source)
+    if parsed_source.scheme.lower() not in {"http", "https"} or not parsed_source.netloc:
+        return title
+    return f"[{title}]({quote(source, safe=":/?#[]@!$&'*+,;=%")})"
+
+
+def build_works_page(root: Path) -> str:
     works = source_works(root)
     work_lines = [
         "# Works catalog",
@@ -232,19 +251,16 @@ def render_pages(root: Path) -> dict[str, str]:
         title = markdown_text(str(record["title"]))
         status = markdown_text(str(record.get("status", "unspecified")))
         canonical_record = blob_url("references/external/works.jsonl", line_number)
-        source = record.get("source_url")
-        if isinstance(source, str) and source:
-            parsed_source = urlsplit(source)
-            if parsed_source.scheme.lower() in {"http", "https"} and parsed_source.netloc:
-                title_link = f"[{title}]({quote(source, safe=":/?#[]@!$&'*+,;=%")})"
-            else:
-                title_link = title
-        else:
-            title_link = title
+        title_link = work_title_link(title, record.get("source_url"))
         work_lines.append(f"- [`{identifier}`]({canonical_record}) — {title_link} · {status}")
     work_lines.append("")
-    pages["Works.md"] = "\n".join(work_lines)
+    return "\n".join(work_lines)
 
+
+def build_article_pages(
+    root: Path, articles: list[dict[str, str]], page_by_source: dict[str, str]
+) -> dict[str, str]:
+    pages: dict[str, str] = {}
     for article in articles:
         canonical = blob_url(article["path"])
         body = strip_frontmatter((root / article["path"]).read_text(encoding="utf-8"), article["path"])
@@ -258,61 +274,145 @@ def render_pages(root: Path) -> dict[str, str]:
     return pages
 
 
+def render_pages(root: Path) -> dict[str, str]:
+    articles = source_articles(root)
+    pages = {
+        "Home.md": (root / "docs/wiki/Home.md").read_text(encoding="utf-8"),
+        "_Sidebar.md": (root / "docs/wiki/_Sidebar.md").read_text(encoding="utf-8"),
+        "Corpus.md": build_corpus_page(articles),
+        "Planned-topics.md": build_planned_topics_page(root),
+        "Research-sources.md": build_research_sources_page(),
+        "Works.md": build_works_page(root),
+    }
+    page_by_source = {article["path"]: article["page"] for article in articles}
+    pages.update(build_article_pages(root, articles, page_by_source))
+    return pages
+
+
+def validate_absolute_link(root: Path, page_name: str, target: str, pages: dict[str, str]) -> list[str]:
+    parsed = urlsplit(target)
+    if parsed.hostname != "github.com":
+        return []
+
+    errors: list[str] = []
+    wiki_prefix = f"/{REPOSITORY}/wiki/"
+    if parsed.path.rstrip("/") == f"/{REPOSITORY}/wiki":
+        wiki_page = "Home"
+    elif parsed.path.startswith(wiki_prefix):
+        wiki_page = unquote(parsed.path[len(wiki_prefix) :]).split("/", maxsplit=1)[0]
+    else:
+        wiki_page = ""
+    if wiki_page and f"{wiki_page}.md" not in pages:
+        errors.append(f"{page_name}: missing Wiki destination {wiki_page}")
+
+    canonical_prefix = f"/{REPOSITORY}/blob/main/"
+    if parsed.path.startswith(canonical_prefix):
+        path = unquote(parsed.path[len(canonical_prefix) :])
+        if not (root / path).is_file():
+            errors.append(f"{page_name}: missing canonical repository target {path}")
+    return errors
+
+
+def validate_link_target(root: Path, page_name: str, target: str, pages: dict[str, str]) -> list[str]:
+    target = target.strip().split(maxsplit=1)[0].strip("<>")
+    parsed = urlsplit(target)
+    if parsed.scheme or parsed.netloc:
+        return validate_absolute_link(root, page_name, target, pages)
+
+    target_path = unquote(parsed.path)
+    if target_path and target_path not in pages:
+        return [f"{page_name}: missing Wiki page target {target_path}"]
+    return []
+
+
+def validate_page_links(root: Path, pages: dict[str, str]) -> list[str]:
+    errors: list[str] = []
+    for page_name, text in pages.items():
+        for target in MARKDOWN_LINK.findall(text):
+            errors.extend(validate_link_target(root, page_name, target, pages))
+    return errors
+
+
+def validate_corpus_index(root: Path, pages: dict[str, str]) -> list[str]:
+    expected_articles = {article["page"] for article in source_articles(root)}
+    targets = MARKDOWN_LINK.findall(pages.get("Corpus.md", ""))
+    indexed_articles = {
+        unquote(urlsplit(target).path)
+        for target in targets
+        if not urlsplit(target).scheme and unquote(urlsplit(target).path) in expected_articles
+    }
+    if indexed_articles != expected_articles:
+        return ["Corpus.md does not link every canonical README article exactly by its Wiki page"]
+    return []
+
+
+def validate_topic_index(root: Path, pages: dict[str, str]) -> list[str]:
+    expected = sum(len(items) for _, items in planned_topics(root))
+    actual = len(re.findall(r"^- \*\*Planned\*\* — ", pages.get("Planned-topics.md", ""), re.MULTILINE))
+    if actual != expected:
+        return [f"Planned-topics.md contains {actual} entries; TOPICS.md has {expected}"]
+    return []
+
+
+def validate_works_index(root: Path, pages: dict[str, str]) -> list[str]:
+    expected = len(source_works(root))
+    actual = len(re.findall(r"^- \[`KWRK-[0-9]+`\]", pages.get("Works.md", ""), re.MULTILINE))
+    if actual != expected:
+        return [f"Works.md contains {actual} entries; works.jsonl has {expected}"]
+    return []
+
+
 def validate_projection(root: Path, pages: dict[str, str]) -> list[str]:
     errors: list[str] = []
     required = {"Home.md", "_Sidebar.md", "Corpus.md", "Planned-topics.md", "Research-sources.md", "Works.md"}
     missing = required - pages.keys()
     if missing:
         errors.append(f"projection is missing pages: {sorted(missing)}")
-
-    for page_name, text in pages.items():
-        for target in MARKDOWN_LINK.findall(text):
-            target = target.strip().split(maxsplit=1)[0].strip("<>")
-            parsed = urlsplit(target)
-            if parsed.scheme or parsed.netloc:
-                if parsed.hostname == "github.com":
-                    wiki_prefix = f"/{REPOSITORY}/wiki/"
-                    if parsed.path.rstrip("/") == f"/{REPOSITORY}/wiki":
-                        wiki_page = "Home"
-                    elif parsed.path.startswith(wiki_prefix):
-                        wiki_page = unquote(parsed.path[len(wiki_prefix) :]).split("/", maxsplit=1)[0]
-                    else:
-                        wiki_page = ""
-                    if wiki_page:
-                        if wiki_page and f"{wiki_page}.md" not in pages:
-                            errors.append(f"{page_name}: missing Wiki destination {wiki_page}")
-                    prefix = f"/{REPOSITORY}/blob/main/"
-                    if parsed.path.startswith(prefix):
-                        path = unquote(parsed.path[len(prefix) :])
-                        if not (root / path).is_file():
-                            errors.append(f"{page_name}: missing canonical repository target {path}")
-                continue
-            target_path = unquote(parsed.path)
-            if target_path and target_path not in pages:
-                errors.append(f"{page_name}: missing Wiki page target {target_path}")
-
-    corpus_index = pages.get("Corpus.md", "")
-    articles = source_articles(root)
-    expected_articles = {article["page"] for article in articles}
-    indexed_articles = {
-        unquote(urlsplit(target).path)
-        for target in MARKDOWN_LINK.findall(corpus_index)
-        if not urlsplit(target).scheme and unquote(urlsplit(target).path) in expected_articles
-    }
-    if indexed_articles != expected_articles:
-        errors.append("Corpus.md does not link every canonical README article exactly by its Wiki page")
-
-    topics = planned_topics(root)
-    expected_topics = sum(len(items) for _, items in topics)
-    planned_entries = len(re.findall(r"^- \*\*Planned\*\* — ", pages.get("Planned-topics.md", ""), re.MULTILINE))
-    if planned_entries != expected_topics:
-        errors.append(f"Planned-topics.md contains {planned_entries} entries; TOPICS.md has {expected_topics}")
-
-    works = source_works(root)
-    work_entries = len(re.findall(r"^- \[`KWRK-[0-9]+`\]", pages.get("Works.md", ""), re.MULTILINE))
-    if work_entries != len(works):
-        errors.append(f"Works.md contains {work_entries} entries; works.jsonl has {len(works)}")
+    errors.extend(validate_page_links(root, pages))
+    errors.extend(validate_corpus_index(root, pages))
+    errors.extend(validate_topic_index(root, pages))
+    errors.extend(validate_works_index(root, pages))
     return errors
+
+
+def load_manifest(manifest: Path) -> set[str]:
+    if manifest.is_symlink():
+        raise ValueError(f"refusing to read or overwrite a symlinked Wiki manifest: {manifest}")
+    if not manifest.exists():
+        return set()
+    data = json.loads(manifest.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or data.get("schema_version") != "1" or not isinstance(data.get("pages"), list):
+        raise ValueError(f"invalid generated-Wiki manifest: {manifest}")
+    previous: set[str] = set()
+    for value in data["pages"]:
+        if not isinstance(value, str) or Path(value).name != value or not value.endswith(".md"):
+            raise ValueError(f"unsafe generated page in manifest: {value!r}")
+        previous.add(value)
+    return previous
+
+
+def remove_stale_pages(destination: Path, previous: set[str], current: set[str]) -> None:
+    for stale in sorted(previous - current):
+        stale_path = destination / stale
+        if stale_path.is_file():
+            stale_path.unlink()
+
+
+def validate_page_ownership(destination: Path, pages: dict[str, str], previous: set[str]) -> None:
+    for page_name, content in pages.items():
+        page_path = destination / page_name
+        if page_path.is_symlink():
+            raise ValueError(f"refusing to overwrite a symlink in Wiki checkout: {page_name}")
+        if page_path.exists() and page_name not in previous:
+            existing = page_path.read_text(encoding="utf-8")
+            preserves_welcome = page_name == "Home.md" and content.startswith(existing)
+            if not preserves_welcome:
+                raise ValueError(f"refusing to overwrite an unmanaged Wiki page: {page_name}")
+
+
+def write_pages(destination: Path, pages: dict[str, str]) -> None:
+    for page_name, content in pages.items():
+        (destination / page_name).write_text(content, encoding="utf-8")
 
 
 def write_projection(root: Path, output_dir: Path, pages: dict[str, str]) -> None:
@@ -324,32 +424,11 @@ def write_projection(root: Path, output_dir: Path, pages: dict[str, str]) -> Non
         raise ValueError(f"Wiki output directory must already exist: {destination}")
 
     manifest = destination / MANIFEST_NAME
-    previous: set[str] = set()
-    if manifest.is_symlink():
-        raise ValueError(f"refusing to read or overwrite a symlinked Wiki manifest: {manifest}")
-    if manifest.exists():
-        data = json.loads(manifest.read_text(encoding="utf-8"))
-        if data.get("schema_version") != "1" or not isinstance(data.get("pages"), list):
-            raise ValueError(f"invalid generated-Wiki manifest: {manifest}")
-        for value in data["pages"]:
-            if not isinstance(value, str) or Path(value).name != value or not value.endswith(".md"):
-                raise ValueError(f"unsafe generated page in manifest: {value!r}")
-            previous.add(value)
-
+    previous = load_manifest(manifest)
     current = set(pages)
-    for stale in sorted(previous - current):
-        stale_path = destination / stale
-        if stale_path.is_file():
-            stale_path.unlink()
-    for page_name, content in pages.items():
-        page_path = destination / page_name
-        if page_path.is_symlink():
-            raise ValueError(f"refusing to overwrite a symlink in Wiki checkout: {page_name}")
-        if page_path.exists() and page_name not in previous:
-            existing = page_path.read_text(encoding="utf-8")
-            if page_name != "Home.md" or not content.startswith(existing):
-                raise ValueError(f"refusing to overwrite an unmanaged Wiki page: {page_name}")
-        page_path.write_text(content, encoding="utf-8")
+    remove_stale_pages(destination, previous, current)
+    validate_page_ownership(destination, pages, previous)
+    write_pages(destination, pages)
     manifest.write_text(
         json.dumps({"schema_version": "1", "pages": sorted(current)}, indent=2) + "\n",
         encoding="utf-8",

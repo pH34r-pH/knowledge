@@ -40,28 +40,32 @@ def check_readme_links() -> list[str]:
     return errors
 
 
-def check_source_route(pages: dict[str, str]) -> list[str]:
-    errors: list[str] = []
+def check_article_citation(pages: dict[str, str]) -> list[str]:
     article = next((row for row in source_articles(ROOT) if row["path"].endswith("mixture-of-experts-routing.md")), None)
     if article is None:
         return ["MoE article is missing from the canonical README index"]
     article_page = pages[article["page"]]
     if not re.search(rf"arxiv\.org/abs/{ARXIV_ID}(?:v\d+)?", article_page):
-        errors.append(f"generated MoE page does not preserve its arXiv:{ARXIV_ID} citation")
+        return [f"generated MoE page does not preserve its arXiv:{ARXIV_ID} citation"]
+    return []
 
+
+def check_crosswalk_mapping() -> list[str]:
     crosswalk_path = ROOT / "reports/public-bibliography-identity-crosswalk-2026-10-07.json"
     crosswalk = json.loads(crosswalk_path.read_text(encoding="utf-8"))
     matches = [row for row in crosswalk["sources"] if row.get("canonical_key") == f"arxiv:{ARXIV_ID}"]
     if len(matches) != 1:
-        errors.append(f"crosswalk must contain one public identity for arXiv:{ARXIV_ID}")
-        return errors
+        return [f"crosswalk must contain one public identity for arXiv:{ARXIV_ID}"]
     work_ids = [row.get("id") for row in matches[0].get("work_records", []) if isinstance(row, dict)]
     if work_ids != ["KWRK-000066"]:
-        errors.append(f"arXiv:{ARXIV_ID} no longer maps to the expected Work ID: {work_ids!r}")
-        return errors
+        return [f"arXiv:{ARXIV_ID} no longer maps to the expected Work ID: {work_ids!r}"]
+    return []
 
+
+def check_registry_route(pages: dict[str, str]) -> list[str]:
     works = {record.get("id"): record for _, record in source_works(ROOT)}
     work = works.get("KWRK-000066")
+    errors: list[str] = []
     if not work or work.get("canonical_identifiers", {}).get("arxiv") != ARXIV_ID:
         errors.append(f"KWRK-000066 does not resolve to arXiv:{ARXIV_ID} in Works")
     if "KWRK-000066" not in pages["Works.md"]:
@@ -69,6 +73,10 @@ def check_source_route(pages: dict[str, str]) -> list[str]:
     if "public-bibliography-identity-crosswalk" not in pages["Research-sources.md"]:
         errors.append("generated Research-sources page is missing the identity crosswalk")
     return errors
+
+
+def check_source_route(pages: dict[str, str]) -> list[str]:
+    return check_article_citation(pages) + check_crosswalk_mapping() + check_registry_route(pages)
 
 
 def check_sync_preserves_unmanaged_pages(pages: dict[str, str]) -> list[str]:
