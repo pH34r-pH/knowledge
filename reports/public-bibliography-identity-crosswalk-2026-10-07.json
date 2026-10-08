@@ -15,12 +15,12 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 83,
-    "KWRK_records_added_after_identity_checks": 3,
+    "KWRK_records_current": 130,
+    "KWRK_records_added_after_identity_checks": 50,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
-    "current_work_audit_union_rows_before_supplement": 156,
+    "current_work_audit_union_rows_before_supplement": 153,
     "extra_identity_leads": 31,
     "supplemental_bibliography_only_sources": 2,
     "unique_source_identities": 186,
@@ -75,8 +75,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "c85c15199106aaf75b9bed6845c60df29aa7c521f692716a49ce136709c134b1",
-      "record_count": 83
+      "sha256": "0e7573a36ec326c1a8c8297e51f4679e5a5a5b2c074b5e18d68f18c78d933fdb",
+      "record_count": 130
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
@@ -3074,8 +3074,13 @@
       "canonical_key": "arxiv:2410.03529",
       "title": "No Need to Talk: Asynchronous Mixture of Language Models",
       "title_aliases": [],
-      "authors": [],
-      "publication_date": null,
+      "authors": [
+        "Anastasiia Filippova",
+        "Angelos Katharopoulos",
+        "David Grangier",
+        "Ronan Collobert"
+      ],
+      "publication_date": "2024-10-04",
       "venue": null,
       "canonical_identifiers": {
         "arxiv": "2410.03529"
@@ -3086,18 +3091,25 @@
       "source_urls": [
         "https://arxiv.org/abs/2410.03529v2"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000096",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [],
       "supplemental_statuses": [
         "identity lead; reconcile registry before adding"
       ],
       "source_kinds": [
-        "identity_lead"
+        "identity_lead",
+        "work"
       ],
-      "identity_status": "supplemental_identity_only",
+      "identity_status": "recorded_in_works",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
-        "arxiv:2410.03529"
+        "arxiv:2410.03529",
+        "title-author:no need to talk asynchronous mixture of language models|anastasiia filippova"
       ]
     },
     {

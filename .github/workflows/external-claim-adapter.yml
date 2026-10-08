@@ -22,5 +22,7 @@ jobs:
         run: python tools/validate_external_claim_adapter.py --root .
       - name: Test public bibliography identity crosswalk
         run: python tools/test_research_identity_crosswalk.py
+      - name: Test dated public research intake
+        run: python tools/test_research_intake_2026_10_08.py
       - name: Validate generated public bibliography identity crosswalk
         run: python tools/reconcile_public_bibliography.py --check
