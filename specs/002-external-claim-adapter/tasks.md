@@ -8,5 +8,5 @@
 - [ ] **T6 — Update corpus documentation/ledger** to describe adapter ownership and the distinction among work identity, attributed claim, and evidence.
 - [ ] **T7 — Integrate ingestion workflow** so future verified source pools can emit/update adapter records without allowing write-time citations outside the resolved pool.
 - [ ] **T8 — Cross-repo acceptance**: have `domain-scaling-lab` pin the resulting knowledge commit and validate at least one external claim offline.
-- [ ] **T9 — Run repository verification** including citation integrity, adapter tests, index/ledger consistency, and `graphify update .` if required by local procedure.
+- [ ] **T9 — Run repository verification** including citation integrity, adapter tests, index/ledger consistency, and the deterministic documentation/wiki navigation checks when their source paths change.
 - [ ] **T10 — Commit/push pathspec-scoped changes** after `git pull --rebase --autostash origin main`; close issue #2 only after the cross-repo acceptance test passes.

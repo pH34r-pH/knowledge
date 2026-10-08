@@ -47,6 +47,13 @@ The corpus is only as trustworthy as its citations; a fabricated or misgrounded 
 | `.claude/skills/populate-corpus/references/harness-options.md` | evaluation of external harnesses/skills (skillsmp.com) — what was adopted, deferred, or skipped and why |
 | [specs/001-corpus-population-loop/](specs/001-corpus-population-loop/) | spec / plan / tasks (spec-kit) for the loop |
 | `corpus/CITATION-AUDIT-*.md` | dated citation-audit reports |
+| [`docs/wiki/`](docs/wiki/README.md) | link-only browsing entry point into canonical articles, planned topics, and public source records |
+
+## Wiki-first browsing
+
+Start with the [knowledge wiki index](docs/wiki/README.md). It links to canonical repository files instead of copying article or source text. Completed topics resolve to their `corpus/` articles; planned topics stay in `TOPICS.md`; public work identities stay in `references/external/works.jsonl`, with audit and reconciliation reports retained separately.
+
+The repository has no checked-in wiki publisher or sync workflow. The index is usable directly in the repository and on GitHub. Publishing it to GitHub Wiki would need a separately approved write path; do not add credentials or a new publishing service as part of corpus maintenance.
 
 ## Public research identity maintenance
 

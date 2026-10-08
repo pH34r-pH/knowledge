@@ -44,7 +44,6 @@ TEMP_SUFFIXES = {
     ".tmp",
 }
 TEMP_FILENAMES = {".DS_Store"}
-KNOWN_DERIVED_ROOTS = {"graphify-out"}
 LIVING_DOC_FILES = {
     "AGENTS.md",
     "README.md",
@@ -53,17 +52,17 @@ LIVING_DOC_FILES = {
     "corpus/LEDGER.md",
 }
 LIVING_DOC_PREFIXES = (
+    "docs/wiki/",
     "corpus/adjacent-knowledge/",
     "corpus/design-patterns/",
     "corpus/ml-techniques/",
 )
 TEST_LIVING_DIRECTORY = Path("corpus/design-patterns")
-HISTORY_OR_DERIVED_PREFIXES = (
+HISTORY_PREFIXES = (
     "arxiv/",
     "references/",
     "reports/",
     "specs/",
-    "graphify-out/",
     "corpus/audit/",
     "corpus/evaluation/",
 )
@@ -125,9 +124,7 @@ def is_living_doc(path: str) -> bool:
         return True
     if path in LIVING_DOC_FILES:
         return True
-    if any(under_prefix(path, prefix) for prefix in HISTORY_OR_DERIVED_PREFIXES):
-        return False
-    if any(under_prefix(path, root) for root in KNOWN_DERIVED_ROOTS):
+    if any(under_prefix(path, prefix) for prefix in HISTORY_PREFIXES):
         return False
     return any(under_prefix(path, prefix) for prefix in LIVING_DOC_PREFIXES)
 
@@ -225,20 +222,13 @@ def _assert_rename_and_numeric_evidence(repo: Path, first: str) -> None:
         raise AssertionError(f"numeric evidence regression: entries={entries!r}, errors={errors!r}")
 
 
-def _assert_derived_products(repo: Path, first: str) -> None:
-    (repo / "graphify-out").mkdir()
-    (repo / "graphify-out" / "GRAPH_REPORT.md").write_text("# Derived report\n", encoding="utf-8")
-    commit(repo, "derived report")
+def _assert_wiki_navigation(repo: Path, first: str) -> None:
+    (repo / "docs/wiki").mkdir(parents=True)
+    (repo / "docs/wiki" / "README.md").write_text("# Knowledge wiki\n", encoding="utf-8")
+    commit(repo, "wiki navigation")
     entries, errors = run_check(repo, first, "HEAD")
-    if errors or "graphify-out/GRAPH_REPORT.md" in selected_docs(entries):
-        raise AssertionError(f"derived report classification regression: entries={entries!r}, errors={errors!r}")
-
-    (repo / "graphify-out" / "cache").mkdir()
-    (repo / "graphify-out" / "cache" / "generated.md").write_text("# Cache\n", encoding="utf-8")
-    commit(repo, "derived cache")
-    _, errors = run_check(repo, first, "HEAD")
-    if not any("artifact" in error for error in errors):
-        raise AssertionError(f"derived cache was not rejected: {errors!r}")
+    if errors or "docs/wiki/README.md" not in selected_docs(entries):
+        raise AssertionError(f"wiki navigation classification regression: entries={entries!r}, errors={errors!r}")
 
 
 def _assert_rejections(repo: Path, first: str) -> None:
@@ -281,7 +271,7 @@ def self_test(root: Path) -> None:
         first = git(repo, "rev-parse", "HEAD").decode().strip()
         _assert_code_only(repo, first)
         _assert_rename_and_numeric_evidence(repo, first)
-        _assert_derived_products(repo, first)
+        _assert_wiki_navigation(repo, first)
         _assert_rejections(repo, first)
         _assert_control_path(repo, first)
 

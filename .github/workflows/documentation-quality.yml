@@ -41,6 +41,10 @@ jobs:
             echo "No changed Markdown; Markdown and link checks are skipped."
           fi
 
+      - name: Validate canonical wiki navigation
+        if: steps.changed-docs.outputs.has_docs == 'true'
+        run: python tools/test_wiki_navigation.py
+
       - name: Set up Node
         if: steps.changed-docs.outputs.has_docs == 'true'
         uses: actions/setup-node@v4
