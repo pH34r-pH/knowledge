@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Public paper identity intake audit",
+  "generated_at": "2026-10-08T00:00:00Z",
+  "scope": "Public bibliographic identities and source metadata only; no findings, private provenance, accepted claims, or adoption assertions.",
+  "canonical_registry": "references/external/works.jsonl",
+  "summary": {
+    "paper_leads_reviewed": 11,
+    "added_to_works": 11,
+    "already_present": 0,
+    "quarantined": 0
+  },
+  "records": [
+    {
+      "work_id": "KWRK-000131",
+      "canonical_key": "arxiv:2607.17154",
+      "identity_type": "arxiv",
+      "identity_value": "2607.17154",
+      "arxiv_version": "v2",
+      "source_url": "https://arxiv.org/abs/2607.17154v2",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000132",
+      "canonical_key": "arxiv:2608.00577",
+      "identity_type": "arxiv",
+      "identity_value": "2608.00577",
+      "arxiv_version": "v2",
+      "source_url": "https://arxiv.org/abs/2608.00577v2",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000133",
+      "canonical_key": "arxiv:2609.40093",
+      "identity_type": "arxiv",
+      "identity_value": "2609.40093",
+      "arxiv_version": "v1",
+      "source_url": "https://arxiv.org/abs/2609.40093v1",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000134",
+      "canonical_key": "arxiv:2512.19849",
+      "identity_type": "arxiv",
+      "identity_value": "2512.19849",
+      "arxiv_version": "v2",
+      "source_url": "https://arxiv.org/abs/2512.19849v2",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000135",
+      "canonical_key": "arxiv:2607.17880",
+      "identity_type": "arxiv",
+      "identity_value": "2607.17880",
+      "arxiv_version": "v1",
+      "source_url": "https://arxiv.org/abs/2607.17880v1",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000136",
+      "canonical_key": "doi:10.1145/3812836.3814785",
+      "identity_type": "arxiv",
+      "identity_value": "2604.26881",
+      "arxiv_version": "v1",
+      "source_url": "https://arxiv.org/abs/2604.26881v1",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000137",
+      "canonical_key": "arxiv:2507.14397",
+      "identity_type": "arxiv",
+      "identity_value": "2507.14397",
+      "arxiv_version": "v2",
+      "source_url": "https://arxiv.org/abs/2507.14397v2",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000138",
+      "canonical_key": "arxiv:2609.19499",
+      "identity_type": "arxiv",
+      "identity_value": "2609.19499",
+      "arxiv_version": "v2",
+      "source_url": "https://arxiv.org/abs/2609.19499v2",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000139",
+      "canonical_key": "arxiv:2609.25053",
+      "identity_type": "arxiv",
+      "identity_value": "2609.25053",
+      "arxiv_version": "v1",
+      "source_url": "https://arxiv.org/abs/2609.25053v1",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000140",
+      "canonical_key": "arxiv:2503.04398",
+      "identity_type": "arxiv",
+      "identity_value": "2503.04398",
+      "arxiv_version": "v5",
+      "source_url": "https://arxiv.org/abs/2503.04398v5",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    },
+    {
+      "work_id": "KWRK-000141",
+      "canonical_key": "arxiv:2505.11329",
+      "identity_type": "arxiv",
+      "identity_value": "2505.11329",
+      "arxiv_version": "v5",
+      "source_url": "https://arxiv.org/abs/2505.11329v5",
+      "verification_level": "PRIMARY_ARXIV_METADATA",
+      "disposition": "added"
+    }
+  ],
+  "other_source_input": {
+    "status": "awaiting_exact_public_urls",
+    "government_vendor_repository_pages": null,
+    "nsf_official_links": null,
+    "note": "The separately referenced non-paper URL list is not present in the reviewed transfer payload. No placeholders or guessed URLs are recorded; this paper-only count is not a total-source count."
+  },
+  "semantic_boundaries": {
+    "research_findings_added_to_articles": false,
+    "claims_added": 0,
+    "adoption_relationships_asserted": false
+  }
+}
