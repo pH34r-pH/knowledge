@@ -30,9 +30,21 @@ class CrosswalkTests(unittest.TestCase):
         self.assertEqual(coverage["provisional_influence_unverified_candidates"], 12)
 
     def test_only_two_historical_audit_rows_match_preexisting_works(self) -> None:
-        matches = [row for row in self.document["sources"] if row["public_audit_records"] and row["work_records"]]
+        # Later intake may resolve another audit identity without changing the
+        # two matches in the original 80-Work reconciliation baseline.
+        baseline_count = self.document["coverage"]["KWRK_records_before_reconciliation"]
+        baseline_ids = {f"KWRK-{number:06d}" for number in range(1, baseline_count + 1)}
+        matches = [
+            row for row in self.document["sources"]
+            if row["public_audit_records"]
+            and any(work["id"] in baseline_ids for work in row["work_records"])
+        ]
+        matched_ids = {
+            work["id"] for row in matches for work in row["work_records"]
+            if work["id"] in baseline_ids
+        }
         self.assertEqual(len(matches), 2)
-        self.assertEqual({row["work_records"][0]["id"] for row in matches}, {"KWRK-000001", "KWRK-000066"})
+        self.assertEqual(matched_ids, {"KWRK-000001", "KWRK-000066"})
 
     def test_venue_metadata_difference_is_retained_with_public_sources(self) -> None:
         self.assertEqual(self.document["coverage"]["metadata_field_discrepancies"], 1)
