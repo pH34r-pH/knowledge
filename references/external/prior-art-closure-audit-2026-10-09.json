@@ -3,13 +3,13 @@
   "date": "2026-10-09",
   "canonical_registry": "works.jsonl",
   "intake_input": "prior-art-closure-input-2026-10-09.json",
-  "reviewed_pool_size": 47,
+  "reviewed_pool_size": 50,
   "work_records_before": 200,
-  "work_records_added": 39,
+  "work_records_added": 42,
   "existing_records_reused": 8,
-  "work_records_after": 239,
+  "work_records_after": 242,
   "original_registry_prefix_sha256": "a11ea25960db5fb07b0a5b198b0758cfb48ece8d614b5acfd047a7850f7a0e70",
-  "updated_registry_sha256": "68a503b3aad247fd83dd50192bd3682acdce0e485bdb3703dd164aa5b1ef4ad8",
+  "updated_registry_sha256": "a513d3512e8367ac12de1b8643a23a9a9967e7fd76ad0e1049b260d6d19a1fae",
   "records": [
     {
       "review_id": "R01",
@@ -169,21 +169,21 @@
       "review_id": "R23",
       "work_id": "KWRK-000221",
       "disposition": "added",
-      "primary_url": "https://arxiv.org/abs/1603.08983",
+      "primary_url": "https://arxiv.org/abs/1603.08983v6",
       "review_depth": "Primary arXiv identity and abstract"
     },
     {
       "review_id": "R24",
       "work_id": "KWRK-000222",
       "disposition": "added",
-      "primary_url": "https://arxiv.org/abs/1807.03819",
+      "primary_url": "https://arxiv.org/abs/1807.03819v3",
       "review_depth": "Primary arXiv identity/abstract and author explanation"
     },
     {
       "review_id": "R25",
       "work_id": "KWRK-000223",
       "disposition": "added",
-      "primary_url": "https://arxiv.org/abs/2107.05407",
+      "primary_url": "https://arxiv.org/abs/2107.05407v2",
       "review_depth": "Primary arXiv identity and abstract"
     },
     {
@@ -339,6 +339,27 @@
       "disposition": "added",
       "primary_url": "https://arxiv.org/abs/2110.07238",
       "review_depth": "Primary NeurIPS/arXiv abstract and canonical metadata"
+    },
+    {
+      "review_id": "R48",
+      "work_id": "KWRK-000240",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2609.11365",
+      "review_depth": "Primary indexed arXiv abstract and author companion artifact README/protocol description; full manuscript not independently inspected"
+    },
+    {
+      "review_id": "R49",
+      "work_id": "KWRK-000241",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2608.20054",
+      "review_depth": "Primary indexed arXiv identity and author artifact README, including formal preregistered outcome; revised manuscript title/scope not independently verified"
+    },
+    {
+      "review_id": "R50",
+      "work_id": "KWRK-000242",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2609.17637",
+      "review_depth": "Primary indexed arXiv identity and abstract; full protocol/checkpoints not independently executed"
     }
   ],
   "unresolved_or_excluded": [
@@ -361,5 +382,46 @@
     "independent_entailment_audits_completed": 0,
     "complete_world_literature_coverage_claimed": false,
     "private_provenance_included": false
-  }
+  },
+  "supplement_input": "prior-art-closure-supplement-2026-10-09.json",
+  "metadata_corrections": [
+    {
+      "review_id": "R23",
+      "work_id": "KWRK-000221",
+      "primary_source": "https://arxiv.org/abs/1603.08983v6",
+      "reason": "Primary submission history says 29 March 2016, not 28 March. Pin the reviewed v6 separately from the original publication date.",
+      "replace": {
+        "publication_date": "2016-03-29",
+        "source_url": "https://arxiv.org/abs/1603.08983v6"
+      }
+    },
+    {
+      "review_id": "R24",
+      "work_id": "KWRK-000222",
+      "primary_source": "https://arxiv.org/abs/1807.03819v3",
+      "reason": "Pin the reviewed ICLR 2019 revision instead of a moving arXiv URL; original submission date remains unchanged.",
+      "replace": {
+        "source_url": "https://arxiv.org/abs/1807.03819v3"
+      }
+    },
+    {
+      "review_id": "R25",
+      "work_id": "KWRK-000223",
+      "primary_source": "https://arxiv.org/abs/2107.05407v2",
+      "reason": "Pin the reviewed v2; arXiv identifies the 8th ICML Workshop on Automated Machine Learning, not main-conference publication.",
+      "replace": {
+        "source_url": "https://arxiv.org/abs/2107.05407v2",
+        "venue": "8th ICML Workshop on Automated Machine Learning (2021); arXiv preprint v2"
+      }
+    },
+    {
+      "review_id": "R46",
+      "work_id": "KWRK-000238",
+      "primary_source": "https://proceedings.mlr.press/v228/versteeg24a.html",
+      "reason": "Correct the proceedings title to the exact PMLR workshop venue; do not confuse PMLR 228 with the Learning, Control and Dynamical Systems proceedings.",
+      "replace": {
+        "venue": "Proceedings of the 2nd NeurIPS Workshop on Symmetry and Geometry in Neural Representations, PMLR 228:255–278 (2024)"
+      }
+    }
+  ]
 }

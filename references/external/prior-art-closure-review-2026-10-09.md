@@ -2,7 +2,7 @@
 
 ## Scope and recorded outcome
 
-This review incorporates the previously uncommitted 36-source audit and an additional 11-source backward-reference, counterexample, and calibration pass. The complete selected pool contains **47 paper identities**: **39 new canonical Works (KWRK-000201–KWRK-000239)** and **eight existing Works reused**. The canonical registry increases from 200 to 239 records. Existing registry bytes were preserved as a prefix; the [intake audit](prior-art-closure-audit-2026-10-09.json) records their hash and every review-to-Work mapping.
+This review incorporates the previously uncommitted 36-source audit and an additional 14-source backward-reference, counterexample, and calibration pass. The complete selected pool contains **50 paper identities**: **42 new canonical Works (KWRK-000201–KWRK-000242)** and **eight existing Works reused**. The canonical registry increases from 200 to 242 records. Existing registry bytes were preserved as a prefix; the [intake audit](prior-art-closure-audit-2026-10-09.json) records their hash and every review-to-Work mapping.
 
 The [reviewed input](prior-art-closure-input-2026-10-09.json) preserves bibliographic metadata, source review depth, and source-attributed limits. It is a dated provenance input, not a second Work registry. [works.jsonl](works.jsonl) remains canonical. Earlier intakes remain historical records: [first dynamics intake](recurrent-dynamics-intake-2026-10-09.md) and [second pass](recurrent-dynamics-second-pass-2026-10-09.md).
 
@@ -80,6 +80,16 @@ The existing [When Does Latent Communication Pay?](https://arxiv.org/abs/2608.04
 Use sender-private random information generated after weights and mapper selection are frozen. Require the receiver to need it. Compare the correct message with deranged cross-example messages, irrelevant/zero/matched-random messages, receiver-only matched-capacity adapters, and charged text/native-refill controls. Nonsignificance is not equivalence without a predeclared margin and adequate precision.
 
 Only after content-dependent task utility qualifies should repeated-hop geometry or perturbation growth be interpreted. Shared-prompt cache enrichment, source-only continuation, and common latent coordinates are separate communication contracts. Practical fusion can be useful without proving identical internal algorithms.
+
+### Final reference-chain addition: portable semantics and private dialects
+
+The companion [Portable Semantics, Private Dialects](https://arxiv.org/abs/2609.11365), parent [What You Can't See Is What You Learn](https://arxiv.org/abs/2608.20054), and [sixty-society confirmation](https://arxiv.org/abs/2609.17637), **KWRK-000240–242**, supply particularly close interface-transfer controls. Primary indexed abstracts and the [author artifact](https://github.com/tokenosopher/populus-evidence-partitioning) were reviewed; models/checkpoints were not executed.
+
+The companion distinguishes useful within-checkpoint value codes from raw interoperability across independently trained interfaces. Its frozen alignment ladder and inherited-versus-fresh interface comparison motivate explicit negative-transfer controls. The result is bounded to a 17-state near-transfer setting and shared-backbone cells, not arbitrary independently pretrained full models.
+
+Preserve the parent release's formal preregistered floor failure. The later same-author confirmation reports a behavioral pass but unresolved usable-role attribution: marker availability does not demonstrate marker use. Success-conditioned finite packet interventions are not a complete causal mediation result. A later parent title variant, Slot-Selective Evidence Masking, remains a version-specific primary-source follow-up; the reviewed title and limitation are retained rather than asserting a latest-version full-text review.
+
+The [supplement input](prior-art-closure-supplement-2026-10-09.json) records this family and primary-source metadata corrections: ACT's original submission is 29 March 2016; the ODIN proceedings are the 2nd NeurIPS Workshop on Symmetry and Geometry in Neural Representations. Reviewed ACT, Universal Transformer and PonderNet versions are pinned separately from original dates.
 
 ## Pass F — spiking and chaotic reconstruction boundaries
 

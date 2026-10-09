@@ -4,63 +4,928 @@
   "date": "2026-10-09",
   "canonical_registry": "works.jsonl",
   "scope": "Public bibliographic identities and source-attributed method boundaries. This is a dated intake payload, not a second canonical registry. No private issue mapping, accepted scientific claims, or independent replication is included.",
-  "expected_registry_before": {"count": 200, "sha256": "a11ea25960db5fb07b0a5b198b0758cfb48ece8d614b5acfd047a7850f7a0e70"},
-  "reviewed_pool_size": 47,
-  "expected_new_works": 39,
+  "expected_registry_before": {
+    "count": 200,
+    "sha256": "a11ea25960db5fb07b0a5b198b0758cfb48ece8d614b5acfd047a7850f7a0e70"
+  },
+  "reviewed_pool_size": 50,
+  "expected_new_works": 42,
   "existing_records": [
-    {"review_id":"R01","work_id":"KWRK-000175","identifier":"arxiv:2610.12426"},
-    {"review_id":"R18","work_id":"KWRK-000103","identifier":"arxiv:2608.04893"},
-    {"review_id":"R31","work_id":"KWRK-000176","identifier":"doi:10.1103/physrevresearch.5.043044"},
-    {"review_id":"R32","work_id":"KWRK-000177","identifier":"doi:10.3389/fams.2022.818799"},
-    {"review_id":"R33","work_id":"KWRK-000182","identifier":"doi:10.1371/journal.pcbi.1008128"},
-    {"review_id":"R34","work_id":"KWRK-000198","identifier":"doi:10.1371/journal.pcbi.1007655"},
-    {"review_id":"R35","work_id":"KWRK-000179","identifier":"arxiv:2605.26733"},
-    {"review_id":"R36","work_id":"KWRK-000188","identifier":"arxiv:2609.36636"}
+    {
+      "review_id": "R01",
+      "work_id": "KWRK-000175",
+      "identifier": "arxiv:2610.12426"
+    },
+    {
+      "review_id": "R18",
+      "work_id": "KWRK-000103",
+      "identifier": "arxiv:2608.04893"
+    },
+    {
+      "review_id": "R31",
+      "work_id": "KWRK-000176",
+      "identifier": "doi:10.1103/physrevresearch.5.043044"
+    },
+    {
+      "review_id": "R32",
+      "work_id": "KWRK-000177",
+      "identifier": "doi:10.3389/fams.2022.818799"
+    },
+    {
+      "review_id": "R33",
+      "work_id": "KWRK-000182",
+      "identifier": "doi:10.1371/journal.pcbi.1008128"
+    },
+    {
+      "review_id": "R34",
+      "work_id": "KWRK-000198",
+      "identifier": "doi:10.1371/journal.pcbi.1007655"
+    },
+    {
+      "review_id": "R35",
+      "work_id": "KWRK-000179",
+      "identifier": "arxiv:2605.26733"
+    },
+    {
+      "review_id": "R36",
+      "work_id": "KWRK-000188",
+      "identifier": "arxiv:2609.36636"
+    }
   ],
   "candidates": [
-    {"review_id":"R02","review_depth":"Primary indexed manuscript excerpts; author release citation and selected implementation inspected; full manuscript access limited","work":{"title":"Computation-through-Dynamics Toolkit: Simulated datasets and quality metrics for dynamical models of neural activity","authors":["Christopher Versteeg","Jonathan D. McCart","Mitchell Ostrow","David M. Zoltowski","Clayton B. Washington","Laura Driscoll","Olivier Codol","Jonathan A. Michaels","Scott W. Linderman","David Sussillo","Chethan Pandarinath"],"publication_date":"2026-06-05","venue":"bioRxiv preprint, reviewed v3","canonical_identifiers":{"doi":"10.1101/2025.02.07.637062"},"source_url":"https://www.biorxiv.org/content/10.1101/2025.02.07.637062v3","notes":"Date identifies the reviewed v3, not the original manuscript. Synthetic neural dynamics, observation models, and evaluation methods; source code inspected but not executed. Software release v1.0.2 and archived software DOI 10.5281/zenodo.22238472 are separate from this paper identity. No independent replication or project adoption asserted."}},
-    {"review_id":"R03","review_depth":"Primary full HTML methods, perturbation results, and limitations inspected","work":{"title":"Aligned and oblique dynamics in recurrent neural networks","authors":["Friedrich Schuessler","Francesca Mastrogiuseppe","Srdjan Ostojic","Omri Barak"],"publication_date":"2023-07-14","venue":"arXiv preprint; reviewed v3","canonical_identifiers":{"arxiv":"2307.07654"},"source_url":"https://arxiv.org/abs/2307.07654v3","notes":"Reviewed v3 dated 2024-08-02. Separates output alignment with dominant activity from task information in low-variance directions and studies perturbation recovery. This is a controlled recurrent-network precedent, not a claim that arbitrary language-model compression is task sufficient."}},
-    {"review_id":"R04","review_depth":"Primary paper/method illustration and author repository inspected","work":{"title":"Beyond Geometry: Comparing the Temporal Structure of Computation in Neural Circuits with Dynamical Similarity Analysis","authors":["Mitchell Ostrow","Adam Eisen","Leo Kozachkov","Ila Fiete"],"publication_date":"2023-06-16","venue":"NeurIPS 2023","canonical_identifiers":{"arxiv":"2306.10168"},"source_url":"https://arxiv.org/abs/2306.10168v3","notes":"DSA compares fitted temporal operators. A finite-data empirical similarity score does not independently certify topological conjugacy or identical algorithms; see the separately recorded Beyond DSA critique. Adequate trajectories and system-identification assumptions are required."}},
-    {"review_id":"R05","review_depth":"Primary metadata/abstract and implementation description; full methods review incomplete","work":{"title":"InputDSA: Demixing then comparing recurrent and externally driven dynamics","authors":["Ann Huang","Mitchell Ostrow","Satpreet H. Singh","Leo Kozachkov","Ila Fiete","Kanaka Rajan"],"publication_date":"2025-10-29","venue":"arXiv preprint; reviewed v2","canonical_identifiers":{"arxiv":"2510.25943"},"source_url":"https://arxiv.org/abs/2510.25943v2","notes":"Separates intrinsic recurrence from external input drive in dynamical comparison. Full theorem/method package not independently audited. Short recurrent traces or absent input observations may not support the identification problem. No new accepted claim or general equivalence guarantee."}},
-    {"review_id":"R06","review_depth":"Primary indexed manuscript and PubMed metadata; author implementation description","work":{"title":"A metric for comparing complex systems by their dynamics","authors":["Mitchell Ostrow","Adam J. Eisen","Leo Kozachkov","William T. Redman","Ila Fiete"],"publication_date":"2026-08-17","venue":"bioRxiv preprint, reviewed v2","canonical_identifiers":{"doi":"10.64898/2026.07.16.738953"},"source_url":"https://www.biorxiv.org/content/10.64898/2026.07.16.738953v2","notes":"Date refers to the reviewed v2. Dynamical-system comparison method; primary source identity and selected scope resolved, not an independently checked equivalence theorem or a replicated result. PubMed identity 42539270 provides a corroborating publication pointer."}},
-    {"review_id":"R07","review_depth":"Primary metadata/abstract and implementation pointer","work":{"title":"Fast dynamical similarity analysis","authors":["Arman Behrad","Mitchell Ostrow","Mohammad Taha Fakharian","Ila Fiete","Christian Beste","Shervin Safavi"],"publication_date":"2025-11-28","venue":"arXiv preprint; reviewed v2","canonical_identifiers":{"arxiv":"2511.22828"},"source_url":"https://arxiv.org/abs/2511.22828v2","notes":"Reviewed revision dated 2026-04-01. Faster dynamical-comparison method; performance and validity remain tied to its identified operator/data assumptions. No execution or transfer to short-horizon language-model traces is claimed."}},
-    {"review_id":"R08","review_depth":"Primary metadata and abstract","work":{"title":"Comparing noisy neural population dynamics using optimal transport distances","authors":["Amin Nejatbakhsh","Victor Geadah","Alex H. Williams","David Lipshutz"],"publication_date":"2024-12-19","venue":"arXiv preprint; reviewed v1","canonical_identifiers":{"arxiv":"2412.14421"},"source_url":"https://arxiv.org/abs/2412.14421v1","notes":"Noise-aware temporal comparison using optimal transport; a comparator for observation/noise controls rather than evidence that geometrically similar trajectories implement the same computation. No independent reproduction performed."}},
-    {"review_id":"R09","review_depth":"Primary NeurIPS paper, methods, and figure inspected","work":{"title":"Path Independent Equilibrium Models Can Better Exploit Test-Time Computation","authors":["Cem Anil","Ashwini Pokle","Kaiqu Liang","Johannes Treutlein","Yuhuai Wu","Shaojie Bai","Zico Kolter","Roger Grosse"],"publication_date":"2022-11-18","venue":"NeurIPS 2022","canonical_identifiers":{"arxiv":"2211.09961"},"source_url":"https://arxiv.org/abs/2211.09961v1","notes":"Direct predecessor for initialization/path independence and useful test-time computation. Independence from initialization for a fixed input must not be confused with ignoring the input. Model-, task-, and intervention-specific results are not universal recurrent reasoning guarantees."}},
-    {"review_id":"R10","review_depth":"Primary PDF methods and evaluation figure inspected in preceding audit; metadata reconfirmed","work":{"title":"Adaptive Depth in Looped Transformers: Diagnosing Learned Halting Gates and Trajectory Readouts","authors":["Andrei Cristian Popescu","Haitz Sáez de Ocáriz Borde","Pietro Liò"],"publication_date":"2026-07-08","venue":"arXiv preprint v1","canonical_identifiers":{"arxiv":"2607.20519"},"source_url":"https://arxiv.org/abs/2607.20519v1","notes":"Separates training-time trajectory effects from inference-time halting/readout selection. Compare stopping policies on identical frozen trajectories; an improvement after retraining does not identify which component caused the gain. No independent experimental replication."}},
-    {"review_id":"R11","review_depth":"Primary full HTML, predictive comparisons and discussion; canonical metadata checked","work":{"title":"Prediction Dynamics in Depth-Recurrent Language Models","authors":["Xinyue Luo","Fei Yu"],"publication_date":"2026-09-18","venue":"arXiv preprint v1","canonical_identifiers":{"arxiv":"2609.21383"},"source_url":"https://arxiv.org/abs/2609.21383v1","notes":"Separates common score motion from answer-changing motion. Retrospective completed-trajectory opportunities and prefix-only prediction are different outcomes; the proposed geometric predictor must face mean-centered and richer trained comparators. Answer preservation is not correctness."}},
-    {"review_id":"R12","review_depth":"Primary full HTML including scheduling, replay/hardware setup and cache discussion","work":{"title":"Depth-adaptive Inference of Looped Language Models via Continuous Depth Batching","authors":["Kristian Schwethelm","Daniel Rueckert","Georgios Kaissis"],"publication_date":"2026-08-10","venue":"arXiv preprint; reviewed v2","canonical_identifiers":{"arxiv":"2608.09444"},"source_url":"https://arxiv.org/abs/2608.09444v2","notes":"Reviewed v2 dated 2026-09-25. Existing depth-aware batching, boundary-stage scheduling, and cache-policy baseline. H100/controlled-replay results do not certify small-device batch-one energy or latency; fewer loops need not yield proportional runtime savings."}},
-    {"review_id":"R13","review_depth":"Primary full HTML and selective-model limitations","work":{"title":"The Curious Case of In-Training Compression of State Space Models","authors":["Makram Chahine","Philipp Nazari","Daniela Rus","T. Konstantin Rusch"],"publication_date":"2025-10-03","venue":"arXiv preprint; reviewed v4","canonical_identifiers":{"arxiv":"2510.02823"},"source_url":"https://arxiv.org/abs/2510.02823v4","notes":"CompreSSM; reviewed revision 2026-02-24. Controllability/observability and Hankel-inspired state reduction during training. Linear-system guarantees do not automatically transfer to selective/nonlinear models. Projection diagnostics alone do not establish a smaller executable model."}},
-    {"review_id":"R14","review_depth":"Author technical report and reference implementation; canonical arXiv metadata checked","work":{"title":"Verbalizable Representations Form a Global Workspace in Language Models","authors":["Wes Gurnee","Nicholas Sofroniew","Adam Pearce","Mateusz Piotrowski","Isaac Kauvar","Runjin Chen","Anna Soligo","Paul Bogdan","Euan Ong","Rowan Wang","Ben Thompson","David Abrahams","Subhash Kantamneni","Emmanuel Ameisen","Joshua Batson","Jack Lindsey"],"publication_date":"2026-07-16","venue":"arXiv preprint v1 and author technical report","canonical_identifiers":{"arxiv":"2607.15495"},"source_url":"https://arxiv.org/abs/2607.15495v1","notes":"Jacobian lens; author report https://www.transformer-circuits.pub/2026/workspace/index.html. ArXiv date/authors recorded here; report release is a separate surface. Sparse local J-space construction is not one universal low-rank linear plane. Functional workspace observations do not establish subjective experience; code is unmaintained reference code."}},
-    {"review_id":"R15","review_depth":"Primary proceedings metadata and abstract","work":{"title":"Functional Alignment Can Mislead: Examining Model Stitching","authors":["Damian Smith","Harvey Mannering","Antonia Marcu"],"publication_date":"2025","venue":"ICML 2025, PMLR 267","canonical_identifiers":{"pmlr":"v267/smith25a"},"source_url":"https://proceedings.mlr.press/v267/smith25a.html","notes":"Adversarial comparator for claims from successful model stitching. A useful stitched predictor does not by itself prove native representational equivalence or identical algorithms. Keep task utility, adapter capacity, and mechanistic explanation separate."}},
-    {"review_id":"R16","review_depth":"Primary ICLR proceedings identity and abstract; author code pointer","work":{"title":"Is This the Subspace You Are Looking for? An Interpretability Illusion for Subspace Activation Patching","authors":["Aleksandar Makelov","Georg Lange","Atticus Geiger","Neel Nanda"],"publication_date":"2024","venue":"ICLR 2024","canonical_identifiers":{"openreview":"Ebt7JgMHv1","arxiv":"2311.17030"},"source_url":"https://proceedings.iclr.cc/paper_files/paper/2024/hash/70b8505ac79e3e131756f793cd80eb8d-Abstract-Conference.html","notes":"Metadata follows the four-author published proceedings; the earlier three-author arXiv record is a versioned variant, not a different paper. Behavior-changing interventions can exploit dormant pathways. Retain the methodological reply and success controls; not a claim that all activation patching is invalid."}},
-    {"review_id":"R17","review_depth":"Primary metadata and abstract","work":{"title":"A Reply to Makelov et al. (2023)'s \"Interpretability Illusion\" Arguments","authors":["Zhengxuan Wu","Atticus Geiger","Jing Huang","Aryaman Arora","Thomas Icard","Christopher Potts","Noah D. Goodman"],"publication_date":"2024-01-23","venue":"arXiv preprint v1","canonical_identifiers":{"arxiv":"2401.12631"},"source_url":"https://arxiv.org/abs/2401.12631v1","notes":"Methodological reply on subspace intervention interpretation. Keep both sides of the patching dispute and test control design rather than treating either position as a universal theorem. No independent replication or adjudication recorded."}},
-    {"review_id":"R19","review_depth":"Primary full HTML in preceding audit; indexed abstract identity checked","work":{"title":"Do Latent Channels Actually Communicate? A Causal Audit of Latent Multi-Agent LLM","authors":["Huixiang Zhang","Mahzabeen Emu"],"publication_date":"2026-07-29","venue":"arXiv preprint v1","canonical_identifiers":{"arxiv":"2607.26773"},"source_url":"https://arxiv.org/abs/2607.26773v1","notes":"Message-content and intervention controls challenge interpreting aggregate gains as communication. Receiver-solvability, sender-specific necessary information, shuffled/irrelevant messages and matched-capacity controls are distinct tests. No universal rejection of latent communication or equivalence from nonsignificance."}},
-    {"review_id":"R20","review_depth":"Primary full article","work":{"title":"Information Processing Capacity of Dynamical Systems","authors":["Joni Dambre","David Verstraeten","Benjamin Schrauwen","Serge Massar"],"publication_date":"2012","venue":"Scientific Reports 2, 514","canonical_identifiers":{"doi":"10.1038/srep00514"},"source_url":"https://www.nature.com/articles/srep00514","notes":"Input-history function reconstruction separates memory and nonlinear processing under explicit input/readout assumptions. Capacity is not subjective experience, nor does optimizing a Lyapunov exponent alone establish useful task computation."}},
-    {"review_id":"R21","review_depth":"Primary publisher/PMC abstract and metadata","work":{"title":"Cortical Areas Interact through a Communication Subspace","authors":["João D. Semedo","Amin Zandvakili","Christian K. Machens","Byron M. Yu","Adam Kohn"],"publication_date":"2019-02-12","venue":"Neuron 102(1), 249–259.e4","canonical_identifiers":{"doi":"10.1016/j.neuron.2019.01.026"},"source_url":"https://doi.org/10.1016/j.neuron.2019.01.026","notes":"Online publication date recorded; issue publication 2019-04-03. Biological cross-area predictive subspaces are a methodological analogy, not a learned translator between arbitrary language-model states or proof of causal semantic transfer."}},
-    {"review_id":"R22","review_depth":"Primary publisher/author abstract and metadata","work":{"title":"Cortical activity in the null space: permitting preparation without movement","authors":["Matthew T. Kaufman","Mark M. Churchland","Stephen I. Ryu","Krishna V. Shenoy"],"publication_date":"2014-02-02","venue":"Nature Neuroscience 17, 440–448","canonical_identifiers":{"doi":"10.1038/nn.3643"},"source_url":"https://www.nature.com/articles/nn.3643","notes":"Immediate output-null activity may remain relevant to later computation. Biological result supplies a horizon-relative measurement caution, not proof of a language-model mechanism."}},
-    {"review_id":"R23","review_depth":"Primary arXiv identity and abstract","work":{"title":"Adaptive Computation Time for Recurrent Neural Networks","authors":["Alex Graves"],"publication_date":"2016-03-28","venue":"arXiv preprint","canonical_identifiers":{"arxiv":"1603.08983"},"source_url":"https://arxiv.org/abs/1603.08983","notes":"Foundational learned adaptive-computation/halting precedent. Additional computation and its stopping rule are established research topics; the original method is not automatically a drop-in policy for a different recurrent model or runtime."}},
-    {"review_id":"R24","review_depth":"Primary arXiv identity/abstract and author explanation","work":{"title":"Universal Transformers","authors":["Mostafa Dehghani","Stephan Gouws","Oriol Vinyals","Jakob Uszkoreit","Łukasz Kaiser"],"publication_date":"2018-07-10","venue":"ICLR 2019","canonical_identifiers":{"arxiv":"1807.03819"},"source_url":"https://arxiv.org/abs/1807.03819","notes":"Shared recurrent depth and adaptive computation in Transformers. Recurrence alone is not a new architecture claim; comparisons must account for training, task, capacity, and executed compute."}},
-    {"review_id":"R25","review_depth":"Primary arXiv identity and abstract","work":{"title":"PonderNet: Learning to Ponder","authors":["Andrea Banino","Jan Balaguer","Charles Blundell"],"publication_date":"2021-07-12","venue":"arXiv preprint","canonical_identifiers":{"arxiv":"2107.05407"},"source_url":"https://arxiv.org/abs/2107.05407","notes":"Probabilistic learned halting baseline. Training the trajectory and choosing an inference readout are separate interventions. No general inference-cost or correctness guarantee is imported."}},
-    {"review_id":"R26","review_depth":"Primary canonical metadata and abstract","work":{"title":"Analyzing Populations of Neural Networks via Dynamical Model Embedding","authors":["Jordan Cotler","Kai Sheng Tai","Felipe Hernández","Blake Elias","David Sussillo"],"publication_date":"2023-02-27","venue":"arXiv preprint v1","canonical_identifiers":{"arxiv":"2302.14078"},"source_url":"https://arxiv.org/abs/2302.14078v1","notes":"DYNAMO learns representations of network populations from dynamics/outputs. It is a method comparator with its own fitting costs and assumptions, not proof that latent geometry identifies a unique algorithm."}},
-    {"review_id":"R27","review_depth":"Primary publisher abstract and method scope","work":{"title":"Dynamic Mode Decomposition with Control","authors":["Joshua L. Proctor","Steven L. Brunton","J. Nathan Kutz"],"publication_date":"2016","venue":"SIAM Journal on Applied Dynamical Systems 15(1), 142–161","canonical_identifiers":{"doi":"10.1137/15M1013857"},"source_url":"https://doi.org/10.1137/15M1013857","notes":"DMDc separates intrinsic dynamics and measured actuation/input in a fitted operator model. Input observability, sufficient excitation, data length, and approximation limits matter; do not identify a high-dimensional system from a handful of recurrent states by assumption."}},
-    {"review_id":"R28","review_depth":"Primary publisher/author abstract and metadata","work":{"title":"Characterizing Dynamics with Covariant Lyapunov Vectors","authors":["Francesco Ginelli","P. Poggi","A. Turchi","Hugues Chaté","Roberto Livi","Antonio Politi"],"publication_date":"2007","venue":"Physical Review Letters 99, 130601","canonical_identifiers":{"doi":"10.1103/PhysRevLett.99.130601","arxiv":"0706.0510"},"source_url":"https://doi.org/10.1103/PhysRevLett.99.130601","notes":"Covariant direction estimation is distinct from QR orthonormal frames and finite-horizon singular vectors. Identifying a functional role for a direction requires an additional task-sensitive test; no new algorithmic result is adopted."}},
-    {"review_id":"R29","review_depth":"Primary publisher/arXiv abstract","work":{"title":"Dynamical Entropy Production in Spiking Neuron Networks in the Balanced State","authors":["Michael Monteforte","Fred Wolf"],"publication_date":"2010-12-30","venue":"Physical Review Letters 105, 268104","canonical_identifiers":{"doi":"10.1103/PhysRevLett.105.268104","arxiv":"1003.4410"},"source_url":"https://doi.org/10.1103/PhysRevLett.105.268104","notes":"Existing full-spectrum calculation for a specific balanced spiking-network model. Event-driven dynamics, finite perturbations, and smooth surrogate training gradients must be distinguished; no controller efficiency or consciousness claim follows."}},
-    {"review_id":"R30","review_depth":"Primary publisher/arXiv abstract and metadata","work":{"title":"Saltation Matrices: The Essential Tool for Linearizing Hybrid Dynamical Systems","authors":["Nathan J. Kong","J. Joe Payne","James Zhu","Aaron M. Johnson"],"publication_date":"2024","venue":"Proceedings of the IEEE","canonical_identifiers":{"doi":"10.1109/JPROC.2024.3440211"},"source_url":"https://doi.org/10.1109/JPROC.2024.3440211","notes":"Reference for event-time and reset-map variational derivatives. Smooth autodiff or surrogate spike gradients do not automatically equal the actual hybrid trajectory derivative; grazing/simultaneous-event assumptions require attention."}},
-    {"review_id":"R37","review_depth":"Primary arXiv metadata and full HTML method/calibration discussion","work":{"title":"Confident Adaptive Language Modeling","authors":["Tal Schuster","Adam Fisch","Jai Gupta","Mostafa Dehghani","Dara Bahri","Vinh Q. Tran","Yi Tay","Donald Metzler"],"publication_date":"2022-07-14","venue":"NeurIPS 2022","canonical_identifiers":{"arxiv":"2207.07061"},"source_url":"https://arxiv.org/abs/2207.07061v2","notes":"CALM: local early-exit confidence with sequence-level calibration and missing-state handling. Its population/risk guarantee depends on the declared calibration assumptions and does not imply per-answer correctness or arbitrary distribution-shift robustness. Independent-layer exits are not automatically recurrent-loop implementations."}},
-    {"review_id":"R38","review_depth":"Primary ACL proceedings metadata, abstract and method scope","work":{"title":"FREE: Fast and Robust Early-Exiting Framework for Autoregressive Language Models with Synchronized Parallel Decoding","authors":["Sangmin Bae","Jongwoo Ko","Hwanjun Song","Se-Young Yun"],"publication_date":"2023-12","venue":"EMNLP 2023, pp. 5910–5924","canonical_identifiers":{"doi":"10.18653/v1/2023.emnlp-main.362","arxiv":"2310.05424"},"source_url":"https://aclanthology.org/2023.emnlp-main.362/","notes":"Existing synchronized-decoding and early-exit comparator. Fewer layers, hidden-state copying, and actual latency are different outcomes; copying hidden states versus projected KV caches changes semantics and must be tested."}},
-    {"review_id":"R39","review_depth":"Primary arXiv metadata and full HTML risk assumptions/methods","work":{"title":"Fast yet Safe: Early-Exiting with Risk Control","authors":["Metod Jazbec","Alexander Timans","Tin Hadži Veljković","Kaspar Sakmann","Dan Zhang","Christian A. Naesseth","Eric Nalisnick"],"publication_date":"2024-05-31","venue":"NeurIPS 2024","canonical_identifiers":{"arxiv":"2405.20915"},"source_url":"https://arxiv.org/abs/2405.20915v2","notes":"Risk-calibrated early exits; reviewed v2 dated 2024-11-04. IID calibration/test sampling and method-specific marginal-monotonicity assumptions must be checked. Learn-then-test and monotone-risk procedures differ. Average exits/FLOPs are not measured deployment energy, and relative agreement is not absolute correctness."}},
-    {"review_id":"R40","review_depth":"Primary NeurIPS proceedings abstract and bibliographic metadata","work":{"title":"Grounding Representation Similarity Through Statistical Testing","authors":["Frances Ding","Jean-Stanislas Denain","Jacob Steinhardt"],"publication_date":"2021","venue":"NeurIPS 2021","canonical_identifiers":{"arxiv":"2108.01661"},"source_url":"https://arxiv.org/abs/2108.01661","notes":"Published title uses Through; the arXiv title variant uses with. Same work, not duplicate identities. Evaluates whether representation metrics detect functional changes and tolerate irrelevant transformations; no descriptive metric by itself certifies causal task-state equivalence."}},
-    {"review_id":"R41","review_depth":"Primary indexed arXiv abstract and identity only; direct full-text retrieval unavailable","work":{"title":"Beyond DSA: Conjugacy-based Comparison of Dynamical Systems","authors":["Prakhar Godara","Pang Shiang Tay","Marcelo G. Mattar"],"publication_date":"2026-07-05","venue":"arXiv preprint","canonical_identifiers":{"arxiv":"2607.04493"},"source_url":"https://arxiv.org/abs/2607.04493","notes":"Authors' indexed abstract reports orthogonal Koopman alignment is neither necessary nor sufficient for topological conjugacy and proposes candidate-bijection alignment. Identity and abstract scope resolved; full proof and version-specific methods remain unreviewed. No theorem is imported as accepted evidence."}},
-    {"review_id":"R42","review_depth":"Primary indexed arXiv abstract and identity only; direct full-text retrieval unavailable","work":{"title":"Empirical Minimal-Realisation Compression of Deep Neural Networks via Controllability-Observability Tests","authors":["Anis Hamadouche","Amir Hussain"],"publication_date":"2026-07-05","venue":"arXiv preprint","canonical_identifiers":{"arxiv":"2607.05457"},"source_url":"https://arxiv.org/abs/2607.05457","notes":"Authors describe empirical reachability/observability reduction and actual reduced networks on MNIST/CIFAR-10. Primary abstract only; reported accuracy/compression/latency not independently verified. Distinguish an executable reduced network from projecting diagnostics while retaining the full model."}},
-    {"review_id":"R43","review_depth":"Primary indexed arXiv initial abstract; later revision metadata and full methods unresolved","work":{"title":"A Negative Result on Cross-Model Activation Transfer in a Pythia Multi-Hop Setting","authors":["Peiyan Zhang"],"publication_date":"2026-06-02","venue":"arXiv preprint; initial indexed record","canonical_identifiers":{"arxiv":"2606.03280"},"source_url":"https://arxiv.org/abs/2606.03280v1","notes":"Identity follows the initial primary indexed author/abstract record. A later two-author v2 lead was found but not independently resolved from a primary full page; no claim of current complete authorship. Source-reported failure of a post-hoc linear activation bridge does not reject all learned C2C communication."}},
-    {"review_id":"R44","review_depth":"Primary NeurIPS proceedings metadata/abstract; full PDF fetch exceeded size limit","work":{"title":"Partial observation can induce mechanistic mismatches in data-constrained models of neural dynamics","authors":["William Qian","Jacob A. Zavatone-Veth","Benjamin S. Ruben","Cengiz Pehlevan"],"publication_date":"2024","venue":"NeurIPS 2024","canonical_identifiers":{"doi":"10.52202/079017-2154"},"source_url":"https://papers.nips.cc/paper_files/paper/2024/hash/7caf9d251b546bc78078b35b4a6f3b7e-Abstract-Conference.html","notes":"Authors show partial observations can produce surrogate models with spurious attractor structure despite matching observed single-unit dynamics. Primary abstract reviewed; large full PDF was not read in this pass. Good activity fit does not establish a faithful latent mechanism."}},
-    {"review_id":"R45","review_depth":"Primary NeurIPS/arXiv metadata and abstract","work":{"title":"Characterizing control between interacting subsystems with deep Jacobian estimation","authors":["Adam J. Eisen","Mitchell Ostrow","Sarthak Chandra","Leo Kozachkov","Earl Miller","Ila Fiete"],"publication_date":"2025-07-02","venue":"NeurIPS 2025","canonical_identifiers":{"arxiv":"2507.01946","doi":"10.52202/085713-1711"},"source_url":"https://arxiv.org/abs/2507.01946","notes":"JacobianODE estimates nonlinear interactions/control between subsystems in its learned dynamical-model setting. When an exact frozen model is available, native autodiff/perturbation checks are preferable to an unnecessary surrogate. Not proof of arbitrary pretrained cross-model state translation."}},
-    {"review_id":"R46","review_depth":"Primary PMLR proceedings metadata and abstract; selected method context","work":{"title":"Expressive dynamics models with nonlinear injective readouts enable reliable recovery of latent features from neural activity","authors":["Christopher Versteeg","Andrew R. Sedler","Jonathan D. McCart","Chethan Pandarinath"],"publication_date":"2024","venue":"Proceedings on Learning, Control and Dynamical Systems, PMLR 228:255–278","canonical_identifiers":{"pmlr":"v228/versteeg24a","arxiv":"2309.06402"},"source_url":"https://proceedings.mlr.press/v228/versteeg24a.html","notes":"ODIN; proceedings published in 2024 for a December 2023 event. Nonlinear injective readout is a controlled latent-recovery comparator. Readout capacity, observation fit, and correct latent dynamics are separate quantities; no general identifiability theorem for language-model states is claimed."}},
-    {"review_id":"R47","review_depth":"Primary NeurIPS/arXiv abstract and canonical metadata","work":{"title":"On the difficulty of learning chaotic dynamics with RNNs","authors":["Jonas M. Mikhaeil","Zahra Monfared","Daniel Durstewitz"],"publication_date":"2021-10-14","venue":"NeurIPS 2022","canonical_identifiers":{"arxiv":"2110.07238"},"source_url":"https://arxiv.org/abs/2110.07238","notes":"Relates training-gradient behavior and Lyapunov dynamics when learning chaotic systems. Forcing stability can destroy desired chaotic target behavior. Reconstruction of chaotic data is not evidence that chaos improves language-model reasoning or that every gradient instability is a numerical bug."}}
+    {
+      "review_id": "R02",
+      "review_depth": "Primary indexed manuscript excerpts; author release citation and selected implementation inspected; full manuscript access limited",
+      "work": {
+        "title": "Computation-through-Dynamics Toolkit: Simulated datasets and quality metrics for dynamical models of neural activity",
+        "authors": [
+          "Christopher Versteeg",
+          "Jonathan D. McCart",
+          "Mitchell Ostrow",
+          "David M. Zoltowski",
+          "Clayton B. Washington",
+          "Laura Driscoll",
+          "Olivier Codol",
+          "Jonathan A. Michaels",
+          "Scott W. Linderman",
+          "David Sussillo",
+          "Chethan Pandarinath"
+        ],
+        "publication_date": "2026-06-05",
+        "venue": "bioRxiv preprint, reviewed v3",
+        "canonical_identifiers": {
+          "doi": "10.1101/2025.02.07.637062"
+        },
+        "source_url": "https://www.biorxiv.org/content/10.1101/2025.02.07.637062v3",
+        "notes": "Date identifies the reviewed v3, not the original manuscript. Synthetic neural dynamics, observation models, and evaluation methods; source code inspected but not executed. Software release v1.0.2 and archived software DOI 10.5281/zenodo.22238472 are separate from this paper identity. No independent replication or project adoption asserted."
+      }
+    },
+    {
+      "review_id": "R03",
+      "review_depth": "Primary full HTML methods, perturbation results, and limitations inspected",
+      "work": {
+        "title": "Aligned and oblique dynamics in recurrent neural networks",
+        "authors": [
+          "Friedrich Schuessler",
+          "Francesca Mastrogiuseppe",
+          "Srdjan Ostojic",
+          "Omri Barak"
+        ],
+        "publication_date": "2023-07-14",
+        "venue": "arXiv preprint; reviewed v3",
+        "canonical_identifiers": {
+          "arxiv": "2307.07654"
+        },
+        "source_url": "https://arxiv.org/abs/2307.07654v3",
+        "notes": "Reviewed v3 dated 2024-08-02. Separates output alignment with dominant activity from task information in low-variance directions and studies perturbation recovery. This is a controlled recurrent-network precedent, not a claim that arbitrary language-model compression is task sufficient."
+      }
+    },
+    {
+      "review_id": "R04",
+      "review_depth": "Primary paper/method illustration and author repository inspected",
+      "work": {
+        "title": "Beyond Geometry: Comparing the Temporal Structure of Computation in Neural Circuits with Dynamical Similarity Analysis",
+        "authors": [
+          "Mitchell Ostrow",
+          "Adam Eisen",
+          "Leo Kozachkov",
+          "Ila Fiete"
+        ],
+        "publication_date": "2023-06-16",
+        "venue": "NeurIPS 2023",
+        "canonical_identifiers": {
+          "arxiv": "2306.10168"
+        },
+        "source_url": "https://arxiv.org/abs/2306.10168v3",
+        "notes": "DSA compares fitted temporal operators. A finite-data empirical similarity score does not independently certify topological conjugacy or identical algorithms; see the separately recorded Beyond DSA critique. Adequate trajectories and system-identification assumptions are required."
+      }
+    },
+    {
+      "review_id": "R05",
+      "review_depth": "Primary metadata/abstract and implementation description; full methods review incomplete",
+      "work": {
+        "title": "InputDSA: Demixing then comparing recurrent and externally driven dynamics",
+        "authors": [
+          "Ann Huang",
+          "Mitchell Ostrow",
+          "Satpreet H. Singh",
+          "Leo Kozachkov",
+          "Ila Fiete",
+          "Kanaka Rajan"
+        ],
+        "publication_date": "2025-10-29",
+        "venue": "arXiv preprint; reviewed v2",
+        "canonical_identifiers": {
+          "arxiv": "2510.25943"
+        },
+        "source_url": "https://arxiv.org/abs/2510.25943v2",
+        "notes": "Separates intrinsic recurrence from external input drive in dynamical comparison. Full theorem/method package not independently audited. Short recurrent traces or absent input observations may not support the identification problem. No new accepted claim or general equivalence guarantee."
+      }
+    },
+    {
+      "review_id": "R06",
+      "review_depth": "Primary indexed manuscript and PubMed metadata; author implementation description",
+      "work": {
+        "title": "A metric for comparing complex systems by their dynamics",
+        "authors": [
+          "Mitchell Ostrow",
+          "Adam J. Eisen",
+          "Leo Kozachkov",
+          "William T. Redman",
+          "Ila Fiete"
+        ],
+        "publication_date": "2026-08-17",
+        "venue": "bioRxiv preprint, reviewed v2",
+        "canonical_identifiers": {
+          "doi": "10.64898/2026.07.16.738953"
+        },
+        "source_url": "https://www.biorxiv.org/content/10.64898/2026.07.16.738953v2",
+        "notes": "Date refers to the reviewed v2. Dynamical-system comparison method; primary source identity and selected scope resolved, not an independently checked equivalence theorem or a replicated result. PubMed identity 42539270 provides a corroborating publication pointer."
+      }
+    },
+    {
+      "review_id": "R07",
+      "review_depth": "Primary metadata/abstract and implementation pointer",
+      "work": {
+        "title": "Fast dynamical similarity analysis",
+        "authors": [
+          "Arman Behrad",
+          "Mitchell Ostrow",
+          "Mohammad Taha Fakharian",
+          "Ila Fiete",
+          "Christian Beste",
+          "Shervin Safavi"
+        ],
+        "publication_date": "2025-11-28",
+        "venue": "arXiv preprint; reviewed v2",
+        "canonical_identifiers": {
+          "arxiv": "2511.22828"
+        },
+        "source_url": "https://arxiv.org/abs/2511.22828v2",
+        "notes": "Reviewed revision dated 2026-04-01. Faster dynamical-comparison method; performance and validity remain tied to its identified operator/data assumptions. No execution or transfer to short-horizon language-model traces is claimed."
+      }
+    },
+    {
+      "review_id": "R08",
+      "review_depth": "Primary metadata and abstract",
+      "work": {
+        "title": "Comparing noisy neural population dynamics using optimal transport distances",
+        "authors": [
+          "Amin Nejatbakhsh",
+          "Victor Geadah",
+          "Alex H. Williams",
+          "David Lipshutz"
+        ],
+        "publication_date": "2024-12-19",
+        "venue": "arXiv preprint; reviewed v1",
+        "canonical_identifiers": {
+          "arxiv": "2412.14421"
+        },
+        "source_url": "https://arxiv.org/abs/2412.14421v1",
+        "notes": "Noise-aware temporal comparison using optimal transport; a comparator for observation/noise controls rather than evidence that geometrically similar trajectories implement the same computation. No independent reproduction performed."
+      }
+    },
+    {
+      "review_id": "R09",
+      "review_depth": "Primary NeurIPS paper, methods, and figure inspected",
+      "work": {
+        "title": "Path Independent Equilibrium Models Can Better Exploit Test-Time Computation",
+        "authors": [
+          "Cem Anil",
+          "Ashwini Pokle",
+          "Kaiqu Liang",
+          "Johannes Treutlein",
+          "Yuhuai Wu",
+          "Shaojie Bai",
+          "Zico Kolter",
+          "Roger Grosse"
+        ],
+        "publication_date": "2022-11-18",
+        "venue": "NeurIPS 2022",
+        "canonical_identifiers": {
+          "arxiv": "2211.09961"
+        },
+        "source_url": "https://arxiv.org/abs/2211.09961v1",
+        "notes": "Direct predecessor for initialization/path independence and useful test-time computation. Independence from initialization for a fixed input must not be confused with ignoring the input. Model-, task-, and intervention-specific results are not universal recurrent reasoning guarantees."
+      }
+    },
+    {
+      "review_id": "R10",
+      "review_depth": "Primary PDF methods and evaluation figure inspected in preceding audit; metadata reconfirmed",
+      "work": {
+        "title": "Adaptive Depth in Looped Transformers: Diagnosing Learned Halting Gates and Trajectory Readouts",
+        "authors": [
+          "Andrei Cristian Popescu",
+          "Haitz Sáez de Ocáriz Borde",
+          "Pietro Liò"
+        ],
+        "publication_date": "2026-07-08",
+        "venue": "arXiv preprint v1",
+        "canonical_identifiers": {
+          "arxiv": "2607.20519"
+        },
+        "source_url": "https://arxiv.org/abs/2607.20519v1",
+        "notes": "Separates training-time trajectory effects from inference-time halting/readout selection. Compare stopping policies on identical frozen trajectories; an improvement after retraining does not identify which component caused the gain. No independent experimental replication."
+      }
+    },
+    {
+      "review_id": "R11",
+      "review_depth": "Primary full HTML, predictive comparisons and discussion; canonical metadata checked",
+      "work": {
+        "title": "Prediction Dynamics in Depth-Recurrent Language Models",
+        "authors": [
+          "Xinyue Luo",
+          "Fei Yu"
+        ],
+        "publication_date": "2026-09-18",
+        "venue": "arXiv preprint v1",
+        "canonical_identifiers": {
+          "arxiv": "2609.21383"
+        },
+        "source_url": "https://arxiv.org/abs/2609.21383v1",
+        "notes": "Separates common score motion from answer-changing motion. Retrospective completed-trajectory opportunities and prefix-only prediction are different outcomes; the proposed geometric predictor must face mean-centered and richer trained comparators. Answer preservation is not correctness."
+      }
+    },
+    {
+      "review_id": "R12",
+      "review_depth": "Primary full HTML including scheduling, replay/hardware setup and cache discussion",
+      "work": {
+        "title": "Depth-adaptive Inference of Looped Language Models via Continuous Depth Batching",
+        "authors": [
+          "Kristian Schwethelm",
+          "Daniel Rueckert",
+          "Georgios Kaissis"
+        ],
+        "publication_date": "2026-08-10",
+        "venue": "arXiv preprint; reviewed v2",
+        "canonical_identifiers": {
+          "arxiv": "2608.09444"
+        },
+        "source_url": "https://arxiv.org/abs/2608.09444v2",
+        "notes": "Reviewed v2 dated 2026-09-25. Existing depth-aware batching, boundary-stage scheduling, and cache-policy baseline. H100/controlled-replay results do not certify small-device batch-one energy or latency; fewer loops need not yield proportional runtime savings."
+      }
+    },
+    {
+      "review_id": "R13",
+      "review_depth": "Primary full HTML and selective-model limitations",
+      "work": {
+        "title": "The Curious Case of In-Training Compression of State Space Models",
+        "authors": [
+          "Makram Chahine",
+          "Philipp Nazari",
+          "Daniela Rus",
+          "T. Konstantin Rusch"
+        ],
+        "publication_date": "2025-10-03",
+        "venue": "arXiv preprint; reviewed v4",
+        "canonical_identifiers": {
+          "arxiv": "2510.02823"
+        },
+        "source_url": "https://arxiv.org/abs/2510.02823v4",
+        "notes": "CompreSSM; reviewed revision 2026-02-24. Controllability/observability and Hankel-inspired state reduction during training. Linear-system guarantees do not automatically transfer to selective/nonlinear models. Projection diagnostics alone do not establish a smaller executable model."
+      }
+    },
+    {
+      "review_id": "R14",
+      "review_depth": "Author technical report and reference implementation; canonical arXiv metadata checked",
+      "work": {
+        "title": "Verbalizable Representations Form a Global Workspace in Language Models",
+        "authors": [
+          "Wes Gurnee",
+          "Nicholas Sofroniew",
+          "Adam Pearce",
+          "Mateusz Piotrowski",
+          "Isaac Kauvar",
+          "Runjin Chen",
+          "Anna Soligo",
+          "Paul Bogdan",
+          "Euan Ong",
+          "Rowan Wang",
+          "Ben Thompson",
+          "David Abrahams",
+          "Subhash Kantamneni",
+          "Emmanuel Ameisen",
+          "Joshua Batson",
+          "Jack Lindsey"
+        ],
+        "publication_date": "2026-07-16",
+        "venue": "arXiv preprint v1 and author technical report",
+        "canonical_identifiers": {
+          "arxiv": "2607.15495"
+        },
+        "source_url": "https://arxiv.org/abs/2607.15495v1",
+        "notes": "Jacobian lens; author report https://www.transformer-circuits.pub/2026/workspace/index.html. ArXiv date/authors recorded here; report release is a separate surface. Sparse local J-space construction is not one universal low-rank linear plane. Functional workspace observations do not establish subjective experience; code is unmaintained reference code."
+      }
+    },
+    {
+      "review_id": "R15",
+      "review_depth": "Primary proceedings metadata and abstract",
+      "work": {
+        "title": "Functional Alignment Can Mislead: Examining Model Stitching",
+        "authors": [
+          "Damian Smith",
+          "Harvey Mannering",
+          "Antonia Marcu"
+        ],
+        "publication_date": "2025",
+        "venue": "ICML 2025, PMLR 267",
+        "canonical_identifiers": {
+          "pmlr": "v267/smith25a"
+        },
+        "source_url": "https://proceedings.mlr.press/v267/smith25a.html",
+        "notes": "Adversarial comparator for claims from successful model stitching. A useful stitched predictor does not by itself prove native representational equivalence or identical algorithms. Keep task utility, adapter capacity, and mechanistic explanation separate."
+      }
+    },
+    {
+      "review_id": "R16",
+      "review_depth": "Primary ICLR proceedings identity and abstract; author code pointer",
+      "work": {
+        "title": "Is This the Subspace You Are Looking for? An Interpretability Illusion for Subspace Activation Patching",
+        "authors": [
+          "Aleksandar Makelov",
+          "Georg Lange",
+          "Atticus Geiger",
+          "Neel Nanda"
+        ],
+        "publication_date": "2024",
+        "venue": "ICLR 2024",
+        "canonical_identifiers": {
+          "openreview": "Ebt7JgMHv1",
+          "arxiv": "2311.17030"
+        },
+        "source_url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/70b8505ac79e3e131756f793cd80eb8d-Abstract-Conference.html",
+        "notes": "Metadata follows the four-author published proceedings; the earlier three-author arXiv record is a versioned variant, not a different paper. Behavior-changing interventions can exploit dormant pathways. Retain the methodological reply and success controls; not a claim that all activation patching is invalid."
+      }
+    },
+    {
+      "review_id": "R17",
+      "review_depth": "Primary metadata and abstract",
+      "work": {
+        "title": "A Reply to Makelov et al. (2023)'s \"Interpretability Illusion\" Arguments",
+        "authors": [
+          "Zhengxuan Wu",
+          "Atticus Geiger",
+          "Jing Huang",
+          "Aryaman Arora",
+          "Thomas Icard",
+          "Christopher Potts",
+          "Noah D. Goodman"
+        ],
+        "publication_date": "2024-01-23",
+        "venue": "arXiv preprint v1",
+        "canonical_identifiers": {
+          "arxiv": "2401.12631"
+        },
+        "source_url": "https://arxiv.org/abs/2401.12631v1",
+        "notes": "Methodological reply on subspace intervention interpretation. Keep both sides of the patching dispute and test control design rather than treating either position as a universal theorem. No independent replication or adjudication recorded."
+      }
+    },
+    {
+      "review_id": "R19",
+      "review_depth": "Primary full HTML in preceding audit; indexed abstract identity checked",
+      "work": {
+        "title": "Do Latent Channels Actually Communicate? A Causal Audit of Latent Multi-Agent LLM",
+        "authors": [
+          "Huixiang Zhang",
+          "Mahzabeen Emu"
+        ],
+        "publication_date": "2026-07-29",
+        "venue": "arXiv preprint v1",
+        "canonical_identifiers": {
+          "arxiv": "2607.26773"
+        },
+        "source_url": "https://arxiv.org/abs/2607.26773v1",
+        "notes": "Message-content and intervention controls challenge interpreting aggregate gains as communication. Receiver-solvability, sender-specific necessary information, shuffled/irrelevant messages and matched-capacity controls are distinct tests. No universal rejection of latent communication or equivalence from nonsignificance."
+      }
+    },
+    {
+      "review_id": "R20",
+      "review_depth": "Primary full article",
+      "work": {
+        "title": "Information Processing Capacity of Dynamical Systems",
+        "authors": [
+          "Joni Dambre",
+          "David Verstraeten",
+          "Benjamin Schrauwen",
+          "Serge Massar"
+        ],
+        "publication_date": "2012",
+        "venue": "Scientific Reports 2, 514",
+        "canonical_identifiers": {
+          "doi": "10.1038/srep00514"
+        },
+        "source_url": "https://www.nature.com/articles/srep00514",
+        "notes": "Input-history function reconstruction separates memory and nonlinear processing under explicit input/readout assumptions. Capacity is not subjective experience, nor does optimizing a Lyapunov exponent alone establish useful task computation."
+      }
+    },
+    {
+      "review_id": "R21",
+      "review_depth": "Primary publisher/PMC abstract and metadata",
+      "work": {
+        "title": "Cortical Areas Interact through a Communication Subspace",
+        "authors": [
+          "João D. Semedo",
+          "Amin Zandvakili",
+          "Christian K. Machens",
+          "Byron M. Yu",
+          "Adam Kohn"
+        ],
+        "publication_date": "2019-02-12",
+        "venue": "Neuron 102(1), 249–259.e4",
+        "canonical_identifiers": {
+          "doi": "10.1016/j.neuron.2019.01.026"
+        },
+        "source_url": "https://doi.org/10.1016/j.neuron.2019.01.026",
+        "notes": "Online publication date recorded; issue publication 2019-04-03. Biological cross-area predictive subspaces are a methodological analogy, not a learned translator between arbitrary language-model states or proof of causal semantic transfer."
+      }
+    },
+    {
+      "review_id": "R22",
+      "review_depth": "Primary publisher/author abstract and metadata",
+      "work": {
+        "title": "Cortical activity in the null space: permitting preparation without movement",
+        "authors": [
+          "Matthew T. Kaufman",
+          "Mark M. Churchland",
+          "Stephen I. Ryu",
+          "Krishna V. Shenoy"
+        ],
+        "publication_date": "2014-02-02",
+        "venue": "Nature Neuroscience 17, 440–448",
+        "canonical_identifiers": {
+          "doi": "10.1038/nn.3643"
+        },
+        "source_url": "https://www.nature.com/articles/nn.3643",
+        "notes": "Immediate output-null activity may remain relevant to later computation. Biological result supplies a horizon-relative measurement caution, not proof of a language-model mechanism."
+      }
+    },
+    {
+      "review_id": "R23",
+      "review_depth": "Primary arXiv identity and abstract",
+      "work": {
+        "title": "Adaptive Computation Time for Recurrent Neural Networks",
+        "authors": [
+          "Alex Graves"
+        ],
+        "publication_date": "2016-03-29",
+        "venue": "arXiv preprint",
+        "canonical_identifiers": {
+          "arxiv": "1603.08983"
+        },
+        "source_url": "https://arxiv.org/abs/1603.08983v6",
+        "notes": "Foundational learned adaptive-computation/halting precedent. Additional computation and its stopping rule are established research topics; the original method is not automatically a drop-in policy for a different recurrent model or runtime. Metadata check: Primary submission history says 29 March 2016, not 28 March. Pin the reviewed v6 separately from the original publication date."
+      }
+    },
+    {
+      "review_id": "R24",
+      "review_depth": "Primary arXiv identity/abstract and author explanation",
+      "work": {
+        "title": "Universal Transformers",
+        "authors": [
+          "Mostafa Dehghani",
+          "Stephan Gouws",
+          "Oriol Vinyals",
+          "Jakob Uszkoreit",
+          "Łukasz Kaiser"
+        ],
+        "publication_date": "2018-07-10",
+        "venue": "ICLR 2019",
+        "canonical_identifiers": {
+          "arxiv": "1807.03819"
+        },
+        "source_url": "https://arxiv.org/abs/1807.03819v3",
+        "notes": "Shared recurrent depth and adaptive computation in Transformers. Recurrence alone is not a new architecture claim; comparisons must account for training, task, capacity, and executed compute. Metadata check: Pin the reviewed ICLR 2019 revision instead of a moving arXiv URL; original submission date remains unchanged."
+      }
+    },
+    {
+      "review_id": "R25",
+      "review_depth": "Primary arXiv identity and abstract",
+      "work": {
+        "title": "PonderNet: Learning to Ponder",
+        "authors": [
+          "Andrea Banino",
+          "Jan Balaguer",
+          "Charles Blundell"
+        ],
+        "publication_date": "2021-07-12",
+        "venue": "8th ICML Workshop on Automated Machine Learning (2021); arXiv preprint v2",
+        "canonical_identifiers": {
+          "arxiv": "2107.05407"
+        },
+        "source_url": "https://arxiv.org/abs/2107.05407v2",
+        "notes": "Probabilistic learned halting baseline. Training the trajectory and choosing an inference readout are separate interventions. No general inference-cost or correctness guarantee is imported. Metadata check: Pin the reviewed v2; arXiv identifies the 8th ICML Workshop on Automated Machine Learning, not main-conference publication."
+      }
+    },
+    {
+      "review_id": "R26",
+      "review_depth": "Primary canonical metadata and abstract",
+      "work": {
+        "title": "Analyzing Populations of Neural Networks via Dynamical Model Embedding",
+        "authors": [
+          "Jordan Cotler",
+          "Kai Sheng Tai",
+          "Felipe Hernández",
+          "Blake Elias",
+          "David Sussillo"
+        ],
+        "publication_date": "2023-02-27",
+        "venue": "arXiv preprint v1",
+        "canonical_identifiers": {
+          "arxiv": "2302.14078"
+        },
+        "source_url": "https://arxiv.org/abs/2302.14078v1",
+        "notes": "DYNAMO learns representations of network populations from dynamics/outputs. It is a method comparator with its own fitting costs and assumptions, not proof that latent geometry identifies a unique algorithm."
+      }
+    },
+    {
+      "review_id": "R27",
+      "review_depth": "Primary publisher abstract and method scope",
+      "work": {
+        "title": "Dynamic Mode Decomposition with Control",
+        "authors": [
+          "Joshua L. Proctor",
+          "Steven L. Brunton",
+          "J. Nathan Kutz"
+        ],
+        "publication_date": "2016",
+        "venue": "SIAM Journal on Applied Dynamical Systems 15(1), 142–161",
+        "canonical_identifiers": {
+          "doi": "10.1137/15M1013857"
+        },
+        "source_url": "https://doi.org/10.1137/15M1013857",
+        "notes": "DMDc separates intrinsic dynamics and measured actuation/input in a fitted operator model. Input observability, sufficient excitation, data length, and approximation limits matter; do not identify a high-dimensional system from a handful of recurrent states by assumption."
+      }
+    },
+    {
+      "review_id": "R28",
+      "review_depth": "Primary publisher/author abstract and metadata",
+      "work": {
+        "title": "Characterizing Dynamics with Covariant Lyapunov Vectors",
+        "authors": [
+          "Francesco Ginelli",
+          "P. Poggi",
+          "A. Turchi",
+          "Hugues Chaté",
+          "Roberto Livi",
+          "Antonio Politi"
+        ],
+        "publication_date": "2007",
+        "venue": "Physical Review Letters 99, 130601",
+        "canonical_identifiers": {
+          "doi": "10.1103/PhysRevLett.99.130601",
+          "arxiv": "0706.0510"
+        },
+        "source_url": "https://doi.org/10.1103/PhysRevLett.99.130601",
+        "notes": "Covariant direction estimation is distinct from QR orthonormal frames and finite-horizon singular vectors. Identifying a functional role for a direction requires an additional task-sensitive test; no new algorithmic result is adopted."
+      }
+    },
+    {
+      "review_id": "R29",
+      "review_depth": "Primary publisher/arXiv abstract",
+      "work": {
+        "title": "Dynamical Entropy Production in Spiking Neuron Networks in the Balanced State",
+        "authors": [
+          "Michael Monteforte",
+          "Fred Wolf"
+        ],
+        "publication_date": "2010-12-30",
+        "venue": "Physical Review Letters 105, 268104",
+        "canonical_identifiers": {
+          "doi": "10.1103/PhysRevLett.105.268104",
+          "arxiv": "1003.4410"
+        },
+        "source_url": "https://doi.org/10.1103/PhysRevLett.105.268104",
+        "notes": "Existing full-spectrum calculation for a specific balanced spiking-network model. Event-driven dynamics, finite perturbations, and smooth surrogate training gradients must be distinguished; no controller efficiency or consciousness claim follows."
+      }
+    },
+    {
+      "review_id": "R30",
+      "review_depth": "Primary publisher/arXiv abstract and metadata",
+      "work": {
+        "title": "Saltation Matrices: The Essential Tool for Linearizing Hybrid Dynamical Systems",
+        "authors": [
+          "Nathan J. Kong",
+          "J. Joe Payne",
+          "James Zhu",
+          "Aaron M. Johnson"
+        ],
+        "publication_date": "2024",
+        "venue": "Proceedings of the IEEE",
+        "canonical_identifiers": {
+          "doi": "10.1109/JPROC.2024.3440211"
+        },
+        "source_url": "https://doi.org/10.1109/JPROC.2024.3440211",
+        "notes": "Reference for event-time and reset-map variational derivatives. Smooth autodiff or surrogate spike gradients do not automatically equal the actual hybrid trajectory derivative; grazing/simultaneous-event assumptions require attention."
+      }
+    },
+    {
+      "review_id": "R37",
+      "review_depth": "Primary arXiv metadata and full HTML method/calibration discussion",
+      "work": {
+        "title": "Confident Adaptive Language Modeling",
+        "authors": [
+          "Tal Schuster",
+          "Adam Fisch",
+          "Jai Gupta",
+          "Mostafa Dehghani",
+          "Dara Bahri",
+          "Vinh Q. Tran",
+          "Yi Tay",
+          "Donald Metzler"
+        ],
+        "publication_date": "2022-07-14",
+        "venue": "NeurIPS 2022",
+        "canonical_identifiers": {
+          "arxiv": "2207.07061"
+        },
+        "source_url": "https://arxiv.org/abs/2207.07061v2",
+        "notes": "CALM: local early-exit confidence with sequence-level calibration and missing-state handling. Its population/risk guarantee depends on the declared calibration assumptions and does not imply per-answer correctness or arbitrary distribution-shift robustness. Independent-layer exits are not automatically recurrent-loop implementations."
+      }
+    },
+    {
+      "review_id": "R38",
+      "review_depth": "Primary ACL proceedings metadata, abstract and method scope",
+      "work": {
+        "title": "FREE: Fast and Robust Early-Exiting Framework for Autoregressive Language Models with Synchronized Parallel Decoding",
+        "authors": [
+          "Sangmin Bae",
+          "Jongwoo Ko",
+          "Hwanjun Song",
+          "Se-Young Yun"
+        ],
+        "publication_date": "2023-12",
+        "venue": "EMNLP 2023, pp. 5910–5924",
+        "canonical_identifiers": {
+          "doi": "10.18653/v1/2023.emnlp-main.362",
+          "arxiv": "2310.05424"
+        },
+        "source_url": "https://aclanthology.org/2023.emnlp-main.362/",
+        "notes": "Existing synchronized-decoding and early-exit comparator. Fewer layers, hidden-state copying, and actual latency are different outcomes; copying hidden states versus projected KV caches changes semantics and must be tested."
+      }
+    },
+    {
+      "review_id": "R39",
+      "review_depth": "Primary arXiv metadata and full HTML risk assumptions/methods",
+      "work": {
+        "title": "Fast yet Safe: Early-Exiting with Risk Control",
+        "authors": [
+          "Metod Jazbec",
+          "Alexander Timans",
+          "Tin Hadži Veljković",
+          "Kaspar Sakmann",
+          "Dan Zhang",
+          "Christian A. Naesseth",
+          "Eric Nalisnick"
+        ],
+        "publication_date": "2024-05-31",
+        "venue": "NeurIPS 2024",
+        "canonical_identifiers": {
+          "arxiv": "2405.20915"
+        },
+        "source_url": "https://arxiv.org/abs/2405.20915v2",
+        "notes": "Risk-calibrated early exits; reviewed v2 dated 2024-11-04. IID calibration/test sampling and method-specific marginal-monotonicity assumptions must be checked. Learn-then-test and monotone-risk procedures differ. Average exits/FLOPs are not measured deployment energy, and relative agreement is not absolute correctness."
+      }
+    },
+    {
+      "review_id": "R40",
+      "review_depth": "Primary NeurIPS proceedings abstract and bibliographic metadata",
+      "work": {
+        "title": "Grounding Representation Similarity Through Statistical Testing",
+        "authors": [
+          "Frances Ding",
+          "Jean-Stanislas Denain",
+          "Jacob Steinhardt"
+        ],
+        "publication_date": "2021",
+        "venue": "NeurIPS 2021",
+        "canonical_identifiers": {
+          "arxiv": "2108.01661"
+        },
+        "source_url": "https://arxiv.org/abs/2108.01661",
+        "notes": "Published title uses Through; the arXiv title variant uses with. Same work, not duplicate identities. Evaluates whether representation metrics detect functional changes and tolerate irrelevant transformations; no descriptive metric by itself certifies causal task-state equivalence."
+      }
+    },
+    {
+      "review_id": "R41",
+      "review_depth": "Primary indexed arXiv abstract and identity only; direct full-text retrieval unavailable",
+      "work": {
+        "title": "Beyond DSA: Conjugacy-based Comparison of Dynamical Systems",
+        "authors": [
+          "Prakhar Godara",
+          "Pang Shiang Tay",
+          "Marcelo G. Mattar"
+        ],
+        "publication_date": "2026-07-05",
+        "venue": "arXiv preprint",
+        "canonical_identifiers": {
+          "arxiv": "2607.04493"
+        },
+        "source_url": "https://arxiv.org/abs/2607.04493",
+        "notes": "Authors' indexed abstract reports orthogonal Koopman alignment is neither necessary nor sufficient for topological conjugacy and proposes candidate-bijection alignment. Identity and abstract scope resolved; full proof and version-specific methods remain unreviewed. No theorem is imported as accepted evidence."
+      }
+    },
+    {
+      "review_id": "R42",
+      "review_depth": "Primary indexed arXiv abstract and identity only; direct full-text retrieval unavailable",
+      "work": {
+        "title": "Empirical Minimal-Realisation Compression of Deep Neural Networks via Controllability-Observability Tests",
+        "authors": [
+          "Anis Hamadouche",
+          "Amir Hussain"
+        ],
+        "publication_date": "2026-07-05",
+        "venue": "arXiv preprint",
+        "canonical_identifiers": {
+          "arxiv": "2607.05457"
+        },
+        "source_url": "https://arxiv.org/abs/2607.05457",
+        "notes": "Authors describe empirical reachability/observability reduction and actual reduced networks on MNIST/CIFAR-10. Primary abstract only; reported accuracy/compression/latency not independently verified. Distinguish an executable reduced network from projecting diagnostics while retaining the full model."
+      }
+    },
+    {
+      "review_id": "R43",
+      "review_depth": "Primary indexed arXiv initial abstract; later revision metadata and full methods unresolved",
+      "work": {
+        "title": "A Negative Result on Cross-Model Activation Transfer in a Pythia Multi-Hop Setting",
+        "authors": [
+          "Peiyan Zhang"
+        ],
+        "publication_date": "2026-06-02",
+        "venue": "arXiv preprint; initial indexed record",
+        "canonical_identifiers": {
+          "arxiv": "2606.03280"
+        },
+        "source_url": "https://arxiv.org/abs/2606.03280v1",
+        "notes": "Identity follows the initial primary indexed author/abstract record. A later two-author v2 lead was found but not independently resolved from a primary full page; no claim of current complete authorship. Source-reported failure of a post-hoc linear activation bridge does not reject all learned C2C communication."
+      }
+    },
+    {
+      "review_id": "R44",
+      "review_depth": "Primary NeurIPS proceedings metadata/abstract; full PDF fetch exceeded size limit",
+      "work": {
+        "title": "Partial observation can induce mechanistic mismatches in data-constrained models of neural dynamics",
+        "authors": [
+          "William Qian",
+          "Jacob A. Zavatone-Veth",
+          "Benjamin S. Ruben",
+          "Cengiz Pehlevan"
+        ],
+        "publication_date": "2024",
+        "venue": "NeurIPS 2024",
+        "canonical_identifiers": {
+          "doi": "10.52202/079017-2154"
+        },
+        "source_url": "https://papers.nips.cc/paper_files/paper/2024/hash/7caf9d251b546bc78078b35b4a6f3b7e-Abstract-Conference.html",
+        "notes": "Authors show partial observations can produce surrogate models with spurious attractor structure despite matching observed single-unit dynamics. Primary abstract reviewed; large full PDF was not read in this pass. Good activity fit does not establish a faithful latent mechanism."
+      }
+    },
+    {
+      "review_id": "R45",
+      "review_depth": "Primary NeurIPS/arXiv metadata and abstract",
+      "work": {
+        "title": "Characterizing control between interacting subsystems with deep Jacobian estimation",
+        "authors": [
+          "Adam J. Eisen",
+          "Mitchell Ostrow",
+          "Sarthak Chandra",
+          "Leo Kozachkov",
+          "Earl Miller",
+          "Ila Fiete"
+        ],
+        "publication_date": "2025-07-02",
+        "venue": "NeurIPS 2025",
+        "canonical_identifiers": {
+          "arxiv": "2507.01946",
+          "doi": "10.52202/085713-1711"
+        },
+        "source_url": "https://arxiv.org/abs/2507.01946",
+        "notes": "JacobianODE estimates nonlinear interactions/control between subsystems in its learned dynamical-model setting. When an exact frozen model is available, native autodiff/perturbation checks are preferable to an unnecessary surrogate. Not proof of arbitrary pretrained cross-model state translation."
+      }
+    },
+    {
+      "review_id": "R46",
+      "review_depth": "Primary PMLR proceedings metadata and abstract; selected method context",
+      "work": {
+        "title": "Expressive dynamics models with nonlinear injective readouts enable reliable recovery of latent features from neural activity",
+        "authors": [
+          "Christopher Versteeg",
+          "Andrew R. Sedler",
+          "Jonathan D. McCart",
+          "Chethan Pandarinath"
+        ],
+        "publication_date": "2024",
+        "venue": "Proceedings of the 2nd NeurIPS Workshop on Symmetry and Geometry in Neural Representations, PMLR 228:255–278 (2024)",
+        "canonical_identifiers": {
+          "pmlr": "v228/versteeg24a",
+          "arxiv": "2309.06402"
+        },
+        "source_url": "https://proceedings.mlr.press/v228/versteeg24a.html",
+        "notes": "ODIN; proceedings published in 2024 for a December 2023 event. Nonlinear injective readout is a controlled latent-recovery comparator. Readout capacity, observation fit, and correct latent dynamics are separate quantities; no general identifiability theorem for language-model states is claimed. Metadata check: Correct the proceedings title to the exact PMLR workshop venue; do not confuse PMLR 228 with the Learning, Control and Dynamical Systems proceedings."
+      }
+    },
+    {
+      "review_id": "R47",
+      "review_depth": "Primary NeurIPS/arXiv abstract and canonical metadata",
+      "work": {
+        "title": "On the difficulty of learning chaotic dynamics with RNNs",
+        "authors": [
+          "Jonas M. Mikhaeil",
+          "Zahra Monfared",
+          "Daniel Durstewitz"
+        ],
+        "publication_date": "2021-10-14",
+        "venue": "NeurIPS 2022",
+        "canonical_identifiers": {
+          "arxiv": "2110.07238"
+        },
+        "source_url": "https://arxiv.org/abs/2110.07238",
+        "notes": "Relates training-gradient behavior and Lyapunov dynamics when learning chaotic systems. Forcing stability can destroy desired chaotic target behavior. Reconstruction of chaotic data is not evidence that chaos improves language-model reasoning or that every gradient instability is a numerical bug."
+      }
+    },
+    {
+      "review_id": "R48",
+      "review_depth": "Primary indexed arXiv abstract and author companion artifact README/protocol description; full manuscript not independently inspected",
+      "work": {
+        "title": "Portable Semantics, Private Dialects: Reuse and Negative Transfer in Latent Communication Between Language-Model Cells",
+        "authors": [
+          "Narcis Marincat"
+        ],
+        "publication_date": "2026-09-10",
+        "venue": "arXiv preprint",
+        "canonical_identifiers": {
+          "arxiv": "2609.11365"
+        },
+        "source_url": "https://arxiv.org/abs/2609.11365",
+        "notes": "Companion audit of six learned interfaces and all 30 ordered transfer pairs under a frozen alignment ladder; authors report cross-initialization failures and interface-level negative transfer. Conclusions are limited to a 17-state near-transfer task and shared-backbone model cells, not arbitrary independently pretrained models. Author artifacts: https://github.com/tokenosopher/populus-evidence-partitioning. Same-author studies are not independent replications. No checkpoint execution or universal shared-language conclusion."
+      }
+    },
+    {
+      "review_id": "R49",
+      "review_depth": "Primary indexed arXiv identity and author artifact README, including formal preregistered outcome; revised manuscript title/scope not independently verified",
+      "work": {
+        "title": "What You Can't See Is What You Learn: Restricted Evidence Visibility Favors Compositional Generalization in Shared-Genome Language-Model Societies",
+        "authors": [
+          "Narcis Marincat"
+        ],
+        "publication_date": "2026",
+        "venue": "arXiv preprint; title variant reviewed from author artifact",
+        "canonical_identifiers": {
+          "arxiv": "2608.20054"
+        },
+        "source_url": "https://arxiv.org/abs/2608.20054",
+        "notes": "Title follows the reviewed primary indexed record and author README. A later Slot-Selective Evidence Masking title variant was found on secondary mirrors; latest version-specific primary verification remains pending. Four cells share a frozen Qwen2.5-0.5B-Instruct backbone and learned adapters/continuous packets. Author release records a formal preregistered floor failure despite large relative gains; do not promote it as a full preregistered pass. Evidence masks may change both visibility and usable role information. Author source: https://github.com/tokenosopher/populus-evidence-partitioning. No general causal-visibility claim or independent replication."
+      }
+    },
+    {
+      "review_id": "R50",
+      "review_depth": "Primary indexed arXiv identity and abstract; full protocol/checkpoints not independently executed",
+      "work": {
+        "title": "What You Can't See Is Still What You Learn: A Preregistered Sixty-Society Confirmation That Evidence Masking Drives Compositional Generalization",
+        "authors": [
+          "Narcis Marincat"
+        ],
+        "publication_date": "2026-09-15",
+        "venue": "arXiv preprint",
+        "canonical_identifiers": {
+          "arxiv": "2609.17637"
+        },
+        "source_url": "https://arxiv.org/abs/2609.17637",
+        "notes": "Same-author confirmation with sixty shared-backbone four-cell systems, varying masking, markers and filler. Authors report a preregistered behavioral pass, but usable-role attribution remains unresolved because globally visible systems failed the marker-following check. Finite success-conditioned packet interventions do not establish causal mediation. Narrow task-family confirmation, not independent replication or a guarantee for heterogeneous C2C."
+      }
+    }
   ],
   "unresolved_or_excluded": [
-    {"identifier":"arxiv:2608.22406","label":"Generated Gramian-balanced neural-SSM application label","status":"Excluded as a verified neural-compression finding","reason":"Secondary metadata instead points to A New Generalized Low-Rank Cholesky Factor ADI Algorithm for Large-Scale Stein Equations. Primary identity/method not independently resolved; do not attribute the generated application to the paper."},
-    {"identifier":"Lacuna Lyapunov-halting hypothesis page","status":"Excluded as empirical prior art","reason":"A generated hypothesis/application page is not a published experimental result."}
+    {
+      "identifier": "arxiv:2608.22406",
+      "label": "Generated Gramian-balanced neural-SSM application label",
+      "status": "Excluded as a verified neural-compression finding",
+      "reason": "Secondary metadata instead points to A New Generalized Low-Rank Cholesky Factor ADI Algorithm for Large-Scale Stein Equations. Primary identity/method not independently resolved; do not attribute the generated application to the paper."
+    },
+    {
+      "identifier": "Lacuna Lyapunov-halting hypothesis page",
+      "status": "Excluded as empirical prior art",
+      "reason": "A generated hypothesis/application page is not a published experimental result."
+    }
   ],
   "semantic_boundaries": {
     "accepted_claims_added": 0,
@@ -69,5 +934,46 @@
     "independent_entailment_audits_completed": 0,
     "complete_world_literature_coverage_claimed": false,
     "private_provenance_included": false
-  }
+  },
+  "supplement_input": "prior-art-closure-supplement-2026-10-09.json",
+  "metadata_corrections": [
+    {
+      "review_id": "R23",
+      "work_id": "KWRK-000221",
+      "primary_source": "https://arxiv.org/abs/1603.08983v6",
+      "reason": "Primary submission history says 29 March 2016, not 28 March. Pin the reviewed v6 separately from the original publication date.",
+      "replace": {
+        "publication_date": "2016-03-29",
+        "source_url": "https://arxiv.org/abs/1603.08983v6"
+      }
+    },
+    {
+      "review_id": "R24",
+      "work_id": "KWRK-000222",
+      "primary_source": "https://arxiv.org/abs/1807.03819v3",
+      "reason": "Pin the reviewed ICLR 2019 revision instead of a moving arXiv URL; original submission date remains unchanged.",
+      "replace": {
+        "source_url": "https://arxiv.org/abs/1807.03819v3"
+      }
+    },
+    {
+      "review_id": "R25",
+      "work_id": "KWRK-000223",
+      "primary_source": "https://arxiv.org/abs/2107.05407v2",
+      "reason": "Pin the reviewed v2; arXiv identifies the 8th ICML Workshop on Automated Machine Learning, not main-conference publication.",
+      "replace": {
+        "source_url": "https://arxiv.org/abs/2107.05407v2",
+        "venue": "8th ICML Workshop on Automated Machine Learning (2021); arXiv preprint v2"
+      }
+    },
+    {
+      "review_id": "R46",
+      "work_id": "KWRK-000238",
+      "primary_source": "https://proceedings.mlr.press/v228/versteeg24a.html",
+      "reason": "Correct the proceedings title to the exact PMLR workshop venue; do not confuse PMLR 228 with the Learning, Control and Dynamical Systems proceedings.",
+      "replace": {
+        "venue": "Proceedings of the 2nd NeurIPS Workshop on Symmetry and Geometry in Neural Representations, PMLR 228:255–278 (2024)"
+      }
+    }
+  ]
 }
