@@ -1,0 +1,167 @@
+name: Prepare scoped prior-art intake
+
+# One-shot authoring helper, restricted to this research branch.
+# It removes itself in the prepared commit. It never writes main.
+on:
+  push:
+    branches: [research/prior-art-closure-20261009]
+    paths:
+      - .github/workflows/prepare-prior-art-intake.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prepare-prior-art-intake-20261009
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: github.repository == 'pH34r-pH/knowledge' && github.ref == 'refs/heads/research/prior-art-closure-20261009'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Append reviewed identities, reconcile, validate, and commit scoped files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ github.sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import re
+          import subprocess
+          import sys
+          import unicodedata
+          import urllib.request
+          from pathlib import Path
+
+          root = Path('.')
+          branch = 'research/prior-art-closure-20261009'
+          input_path = root / 'references/external/prior-art-closure-input-2026-10-09.json'
+          works_path = root / 'references/external/works.jsonl'
+          crosswalk_path = root / 'reports/public-bibliography-identity-crosswalk-2026-10-07.json'
+          audit_path = root / 'references/external/prior-art-closure-audit-2026-10-09.json'
+          payload = json.loads(input_path.read_text(encoding='utf-8'))
+          before = works_path.read_bytes()
+          expected = payload['expected_registry_before']
+          if hashlib.sha256(before).hexdigest() != expected['sha256']:
+              raise SystemExit('Registry source changed; re-review instead of overwriting.')
+          works = [json.loads(line) for line in before.decode('utf-8').splitlines() if line.strip()]
+          if len(works) != expected['count'] or not before.endswith(b'\n'):
+              raise SystemExit('Unexpected source count or line boundary.')
+
+          def aliases(work):
+              ids = work.get('canonical_identifiers', {})
+              result = set()
+              for name in ('doi', 'arxiv', 'pmlr', 'openreview'):
+                  value = ids.get(name)
+                  if value:
+                      value = str(value).strip().lower()
+                      if name == 'arxiv':
+                          value = re.sub(r'v\d+$', '', value)
+                      result.add(name + ':' + value)
+              return result
+
+          def title_key(work):
+              text = work['title'] + '|' + work['authors'][0]
+              text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode()
+              return ' '.join(re.findall(r'[a-z0-9]+', text.lower()))
+
+          by_id = {row['id']: row for row in works}
+          alias_owner = {}
+          titles = set()
+          for work in works:
+              titles.add(title_key(work))
+              for alias in aliases(work):
+                  if alias in alias_owner and alias_owner[alias] != work['id']:
+                      raise SystemExit('Ambiguous existing identity: ' + alias)
+                  alias_owner[alias] = work['id']
+          audit_rows = []
+          for item in payload['existing_records']:
+              if item['identifier'] not in aliases(by_id[item['work_id']]):
+                  raise SystemExit('Existing identity mapping mismatch: ' + item['review_id'])
+              audit_rows.append({**item, 'disposition': 'reused', 'primary_url': by_id[item['work_id']]['source_url']})
+          additions = []
+          max_id = max(int(work['id'].split('-')[1]) for work in works)
+          for item in payload['candidates']:
+              candidate = item['work']
+              if any(alias in alias_owner for alias in aliases(candidate)) or title_key(candidate) in titles:
+                  raise SystemExit('Candidate already exists; reconcile explicitly: ' + candidate['title'])
+              work_id = f'KWRK-{max_id + len(additions) + 1:06d}'
+              work = {'schema_version': '0.1.0', 'id': work_id, 'type': 'ExternalWork', **candidate,
+                      'status': 'ACTIVE', 'ingested_at': payload['date']}
+              work['notes'] += ' Review depth: ' + item['review_depth'] + '.'
+              additions.append(work)
+              titles.add(title_key(work))
+              for alias in aliases(work):
+                  alias_owner[alias] = work_id
+              audit_rows.append({'review_id': item['review_id'], 'work_id': work_id, 'disposition': 'added',
+                                 'primary_url': work['source_url'], 'review_depth': item['review_depth']})
+          if len(additions) != payload['expected_new_works']:
+              raise SystemExit('Unexpected addition count.')
+          if len(audit_rows) != payload['reviewed_pool_size'] or len({r['review_id'] for r in audit_rows}) != len(audit_rows):
+              raise SystemExit('Review pool missing or duplicated.')
+          appended = ''.join(json.dumps(row, ensure_ascii=False, separators=(',', ':')) + '\n' for row in additions).encode('utf-8')
+          after = before + appended
+          works_path.write_bytes(after)
+          audit = {'schema_version': '1.0.0', 'date': payload['date'], 'canonical_registry': 'works.jsonl',
+                   'intake_input': input_path.name, 'reviewed_pool_size': len(audit_rows),
+                   'work_records_before': len(works), 'work_records_added': len(additions),
+                   'existing_records_reused': len(payload['existing_records']), 'work_records_after': len(works) + len(additions),
+                   'original_registry_prefix_sha256': hashlib.sha256(before).hexdigest(),
+                   'updated_registry_sha256': hashlib.sha256(after).hexdigest(),
+                   'records': sorted(audit_rows, key=lambda row: row['review_id']),
+                   'unresolved_or_excluded': payload['unresolved_or_excluded'],
+                   'semantic_boundaries': payload['semantic_boundaries']}
+          audit_path.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          subprocess.run([sys.executable, 'tools/reconcile_public_bibliography.py', '--write'], check=True)
+          subprocess.run([sys.executable, 'tools/test_external_claim_adapter.py'], check=True)
+          subprocess.run([sys.executable, 'tools/validate_external_claim_adapter.py', '--root', '.'], check=True)
+          subprocess.run([sys.executable, 'tools/reconcile_public_bibliography.py', '--check'], check=True)
+
+          navigation = '\n\n## Claim-level recurrent-dynamics prior-art audit\n\n'
+          navigation += 'The [2026-10-09 closure review](references/external/prior-art-closure-review-2026-10-09.md) connects the full 47-source review pool to its closest methodological predecessors and counterexamples. '
+          navigation += 'The [intake audit](references/external/prior-art-closure-audit-2026-10-09.json) maps 39 new identities and eight reused identities into the canonical Work registry, preserving all 200 prior records unchanged. '
+          navigation += 'Review depth and unresolved source limitations remain explicit; no independent replication, accepted scientific claim, or exhaustive-coverage assertion is made.\n'
+          for filename in ('README.md', 'BUILDING.md'):
+              path = root / filename
+              current = path.read_text(encoding='utf-8')
+              if '## Claim-level recurrent-dynamics prior-art audit' in current:
+                  raise SystemExit('Navigation already present; avoid duplicate write.')
+              path.write_text(current.rstrip() + navigation, encoding='utf-8')
+
+          token = os.environ['GH_TOKEN']
+          repo = os.environ['REPO']
+          source = os.environ['SOURCE_SHA']
+          def request(method, endpoint, data=None):
+              body = None if data is None else json.dumps(data).encode('utf-8')
+              req = urllib.request.Request('https://api.github.com/repos/' + repo + '/' + endpoint,
+                  data=body, method=method, headers={'Authorization': 'Bearer ' + token,
+                  'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28',
+                  'Content-Type': 'application/json'})
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  return json.load(response)
+          current = request('GET', 'git/ref/heads/' + branch)['object']['sha']
+          if current != source:
+              raise SystemExit('Branch advanced; refusing to overwrite newer work.')
+          parent = request('GET', 'git/commits/' + source)
+          allowed = [str(works_path), str(crosswalk_path), str(audit_path), 'README.md', 'BUILDING.md']
+          tree_entries = [{'path': path, 'mode': '100644', 'type': 'blob', 'content': Path(path).read_text(encoding='utf-8')} for path in allowed]
+          tree_entries.append({'path': '.github/workflows/prepare-prior-art-intake.yml', 'mode': '100644', 'type': 'blob', 'sha': None})
+          tree = request('POST', 'git/trees', {'base_tree': parent['tree']['sha'], 'tree': tree_entries})
+          commit = request('POST', 'git/commits', {'message': 'knowledge: ingest 39 verified prior-art identities and reconcile source coverage',
+                                                'tree': tree['sha'], 'parents': [source]})
+          if request('GET', 'git/ref/heads/' + branch)['object']['sha'] != source:
+              raise SystemExit('Branch advanced during preparation; prepared objects not published.')
+          request('PATCH', 'git/refs/heads/' + branch, {'sha': commit['sha'], 'force': False})
+          print(json.dumps({'prepared_commit': commit['sha'], 'new_works': len(additions), 'total_works': len(works) + len(additions),
+                            'pool_covered': len(audit_rows), 'original_prefix_preserved': after.startswith(before),
+                            'temporary_helper_removed': True}))
+          PY
