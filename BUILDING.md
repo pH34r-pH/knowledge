@@ -83,3 +83,7 @@ A pre-registered blind eval ([corpus/EVAL-corpus-leverage-2026-07-01.md](corpus/
 ## Current state (2026-08-07)
 
 26 articles are present (7 design-patterns, 13 ml-techniques, 6 adjacent-knowledge). The original 10-article corpus was retroactively audited (119 citations, zero fabricated; see `corpus/CITATION-AUDIT-2026-07-01.md`); later articles record their own source/audit status in `corpus/LEDGER.md`. The current expansion adds ten arXiv-grounded articles on constrained decoding, MoE routing, state-space/linear-attention alternatives, agent memory, self-evolving agents, fine-tuning strategy, supply-chain provenance, OpenTelemetry, structured concurrency, and actor/CSP coordination. Backlog in `TOPICS.md` now prioritizes context engineering and remaining foundational gaps such as outbox, PCA, regularization, testing strategy, observability practice, threat modeling, and vault-adapt generalizations.
+
+## Claim-level recurrent-dynamics prior-art audit
+
+The [2026-10-09 closure review](references/external/prior-art-closure-review-2026-10-09.md) connects the full 50-source review pool to its closest methodological predecessors and counterexamples. The [intake audit](references/external/prior-art-closure-audit-2026-10-09.json) maps 42 new identities and eight reused identities into the canonical Work registry, preserving all 200 prior records unchanged. Review depth and unresolved source limitations remain explicit; no independent replication, accepted scientific claim, or exhaustive-coverage assertion is made.

@@ -26,5 +26,7 @@ jobs:
         run: python tools/test_research_intake_2026_10_08.py
       - name: Test next-pass public paper intake
         run: python tools/test_research_intake_next_pass_2026_10_08.py
+      - name: Test claim-level prior-art intake coverage
+        run: python tools/test_prior_art_closure_2026_10_09.py
       - name: Validate generated public bibliography identity crosswalk
         run: python tools/reconcile_public_bibliography.py --check
