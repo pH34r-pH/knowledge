@@ -93,3 +93,7 @@ The [discrete self-information audit](references/external/discrete-self-informat
 The [nonlinear multi-view CCA scope audit](references/external/multiview-cca-audit-2026-09-07.json) separates a Gaussian/population/aligned-block result from arbitrary latent-factor identification.
 
 [Minimality import scope audit](references/external/minimality-import-audit-2026-09-07.json): exact linear automata and discrete statistical sufficiency are distinct contracts.
+
+## Claim-level recurrent-dynamics prior-art audit
+
+The [2026-10-09 closure review](references/external/prior-art-closure-review-2026-10-09.md) connects the full 47-source review pool to its closest methodological predecessors and counterexamples. The [intake audit](references/external/prior-art-closure-audit-2026-10-09.json) maps 39 new identities and eight reused identities into the canonical Work registry, preserving all 200 prior records unchanged. Review depth and unresolved source limitations remain explicit; no independent replication, accepted scientific claim, or exhaustive-coverage assertion is made.

@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-10-09",
+  "canonical_registry": "works.jsonl",
+  "intake_input": "prior-art-closure-input-2026-10-09.json",
+  "reviewed_pool_size": 47,
+  "work_records_before": 200,
+  "work_records_added": 39,
+  "existing_records_reused": 8,
+  "work_records_after": 239,
+  "original_registry_prefix_sha256": "a11ea25960db5fb07b0a5b198b0758cfb48ece8d614b5acfd047a7850f7a0e70",
+  "updated_registry_sha256": "68a503b3aad247fd83dd50192bd3682acdce0e485bdb3703dd164aa5b1ef4ad8",
+  "records": [
+    {
+      "review_id": "R01",
+      "work_id": "KWRK-000175",
+      "identifier": "arxiv:2610.12426",
+      "disposition": "reused",
+      "primary_url": "https://arxiv.org/abs/2610.12426v1"
+    },
+    {
+      "review_id": "R02",
+      "work_id": "KWRK-000201",
+      "disposition": "added",
+      "primary_url": "https://www.biorxiv.org/content/10.1101/2025.02.07.637062v3",
+      "review_depth": "Primary indexed manuscript excerpts; author release citation and selected implementation inspected; full manuscript access limited"
+    },
+    {
+      "review_id": "R03",
+      "work_id": "KWRK-000202",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2307.07654v3",
+      "review_depth": "Primary full HTML methods, perturbation results, and limitations inspected"
+    },
+    {
+      "review_id": "R04",
+      "work_id": "KWRK-000203",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2306.10168v3",
+      "review_depth": "Primary paper/method illustration and author repository inspected"
+    },
+    {
+      "review_id": "R05",
+      "work_id": "KWRK-000204",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2510.25943v2",
+      "review_depth": "Primary metadata/abstract and implementation description; full methods review incomplete"
+    },
+    {
+      "review_id": "R06",
+      "work_id": "KWRK-000205",
+      "disposition": "added",
+      "primary_url": "https://www.biorxiv.org/content/10.64898/2026.07.16.738953v2",
+      "review_depth": "Primary indexed manuscript and PubMed metadata; author implementation description"
+    },
+    {
+      "review_id": "R07",
+      "work_id": "KWRK-000206",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2511.22828v2",
+      "review_depth": "Primary metadata/abstract and implementation pointer"
+    },
+    {
+      "review_id": "R08",
+      "work_id": "KWRK-000207",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2412.14421v1",
+      "review_depth": "Primary metadata and abstract"
+    },
+    {
+      "review_id": "R09",
+      "work_id": "KWRK-000208",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2211.09961v1",
+      "review_depth": "Primary NeurIPS paper, methods, and figure inspected"
+    },
+    {
+      "review_id": "R10",
+      "work_id": "KWRK-000209",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2607.20519v1",
+      "review_depth": "Primary PDF methods and evaluation figure inspected in preceding audit; metadata reconfirmed"
+    },
+    {
+      "review_id": "R11",
+      "work_id": "KWRK-000210",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2609.21383v1",
+      "review_depth": "Primary full HTML, predictive comparisons and discussion; canonical metadata checked"
+    },
+    {
+      "review_id": "R12",
+      "work_id": "KWRK-000211",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2608.09444v2",
+      "review_depth": "Primary full HTML including scheduling, replay/hardware setup and cache discussion"
+    },
+    {
+      "review_id": "R13",
+      "work_id": "KWRK-000212",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2510.02823v4",
+      "review_depth": "Primary full HTML and selective-model limitations"
+    },
+    {
+      "review_id": "R14",
+      "work_id": "KWRK-000213",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2607.15495v1",
+      "review_depth": "Author technical report and reference implementation; canonical arXiv metadata checked"
+    },
+    {
+      "review_id": "R15",
+      "work_id": "KWRK-000214",
+      "disposition": "added",
+      "primary_url": "https://proceedings.mlr.press/v267/smith25a.html",
+      "review_depth": "Primary proceedings metadata and abstract"
+    },
+    {
+      "review_id": "R16",
+      "work_id": "KWRK-000215",
+      "disposition": "added",
+      "primary_url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/70b8505ac79e3e131756f793cd80eb8d-Abstract-Conference.html",
+      "review_depth": "Primary ICLR proceedings identity and abstract; author code pointer"
+    },
+    {
+      "review_id": "R17",
+      "work_id": "KWRK-000216",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2401.12631v1",
+      "review_depth": "Primary metadata and abstract"
+    },
+    {
+      "review_id": "R18",
+      "work_id": "KWRK-000103",
+      "identifier": "arxiv:2608.04893",
+      "disposition": "reused",
+      "primary_url": "https://arxiv.org/abs/2608.04893v2"
+    },
+    {
+      "review_id": "R19",
+      "work_id": "KWRK-000217",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2607.26773v1",
+      "review_depth": "Primary full HTML in preceding audit; indexed abstract identity checked"
+    },
+    {
+      "review_id": "R20",
+      "work_id": "KWRK-000218",
+      "disposition": "added",
+      "primary_url": "https://www.nature.com/articles/srep00514",
+      "review_depth": "Primary full article"
+    },
+    {
+      "review_id": "R21",
+      "work_id": "KWRK-000219",
+      "disposition": "added",
+      "primary_url": "https://doi.org/10.1016/j.neuron.2019.01.026",
+      "review_depth": "Primary publisher/PMC abstract and metadata"
+    },
+    {
+      "review_id": "R22",
+      "work_id": "KWRK-000220",
+      "disposition": "added",
+      "primary_url": "https://www.nature.com/articles/nn.3643",
+      "review_depth": "Primary publisher/author abstract and metadata"
+    },
+    {
+      "review_id": "R23",
+      "work_id": "KWRK-000221",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/1603.08983",
+      "review_depth": "Primary arXiv identity and abstract"
+    },
+    {
+      "review_id": "R24",
+      "work_id": "KWRK-000222",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/1807.03819",
+      "review_depth": "Primary arXiv identity/abstract and author explanation"
+    },
+    {
+      "review_id": "R25",
+      "work_id": "KWRK-000223",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2107.05407",
+      "review_depth": "Primary arXiv identity and abstract"
+    },
+    {
+      "review_id": "R26",
+      "work_id": "KWRK-000224",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2302.14078v1",
+      "review_depth": "Primary canonical metadata and abstract"
+    },
+    {
+      "review_id": "R27",
+      "work_id": "KWRK-000225",
+      "disposition": "added",
+      "primary_url": "https://doi.org/10.1137/15M1013857",
+      "review_depth": "Primary publisher abstract and method scope"
+    },
+    {
+      "review_id": "R28",
+      "work_id": "KWRK-000226",
+      "disposition": "added",
+      "primary_url": "https://doi.org/10.1103/PhysRevLett.99.130601",
+      "review_depth": "Primary publisher/author abstract and metadata"
+    },
+    {
+      "review_id": "R29",
+      "work_id": "KWRK-000227",
+      "disposition": "added",
+      "primary_url": "https://doi.org/10.1103/PhysRevLett.105.268104",
+      "review_depth": "Primary publisher/arXiv abstract"
+    },
+    {
+      "review_id": "R30",
+      "work_id": "KWRK-000228",
+      "disposition": "added",
+      "primary_url": "https://doi.org/10.1109/JPROC.2024.3440211",
+      "review_depth": "Primary publisher/arXiv abstract and metadata"
+    },
+    {
+      "review_id": "R31",
+      "work_id": "KWRK-000176",
+      "identifier": "doi:10.1103/physrevresearch.5.043044",
+      "disposition": "reused",
+      "primary_url": "https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.5.043044"
+    },
+    {
+      "review_id": "R32",
+      "work_id": "KWRK-000177",
+      "identifier": "doi:10.3389/fams.2022.818799",
+      "disposition": "reused",
+      "primary_url": "https://www.frontiersin.org/journals/applied-mathematics-and-statistics/articles/10.3389/fams.2022.818799/full"
+    },
+    {
+      "review_id": "R33",
+      "work_id": "KWRK-000182",
+      "identifier": "doi:10.1371/journal.pcbi.1008128",
+      "disposition": "reused",
+      "primary_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008128"
+    },
+    {
+      "review_id": "R34",
+      "work_id": "KWRK-000198",
+      "identifier": "doi:10.1371/journal.pcbi.1007655",
+      "disposition": "reused",
+      "primary_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007655"
+    },
+    {
+      "review_id": "R35",
+      "work_id": "KWRK-000179",
+      "identifier": "arxiv:2605.26733",
+      "disposition": "reused",
+      "primary_url": "https://proceedings.mlr.press/v306/yang26t.html"
+    },
+    {
+      "review_id": "R36",
+      "work_id": "KWRK-000188",
+      "identifier": "arxiv:2609.36636",
+      "disposition": "reused",
+      "primary_url": "https://arxiv.org/abs/2609.36636v1"
+    },
+    {
+      "review_id": "R37",
+      "work_id": "KWRK-000229",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2207.07061v2",
+      "review_depth": "Primary arXiv metadata and full HTML method/calibration discussion"
+    },
+    {
+      "review_id": "R38",
+      "work_id": "KWRK-000230",
+      "disposition": "added",
+      "primary_url": "https://aclanthology.org/2023.emnlp-main.362/",
+      "review_depth": "Primary ACL proceedings metadata, abstract and method scope"
+    },
+    {
+      "review_id": "R39",
+      "work_id": "KWRK-000231",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2405.20915v2",
+      "review_depth": "Primary arXiv metadata and full HTML risk assumptions/methods"
+    },
+    {
+      "review_id": "R40",
+      "work_id": "KWRK-000232",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2108.01661",
+      "review_depth": "Primary NeurIPS proceedings abstract and bibliographic metadata"
+    },
+    {
+      "review_id": "R41",
+      "work_id": "KWRK-000233",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2607.04493",
+      "review_depth": "Primary indexed arXiv abstract and identity only; direct full-text retrieval unavailable"
+    },
+    {
+      "review_id": "R42",
+      "work_id": "KWRK-000234",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2607.05457",
+      "review_depth": "Primary indexed arXiv abstract and identity only; direct full-text retrieval unavailable"
+    },
+    {
+      "review_id": "R43",
+      "work_id": "KWRK-000235",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2606.03280v1",
+      "review_depth": "Primary indexed arXiv initial abstract; later revision metadata and full methods unresolved"
+    },
+    {
+      "review_id": "R44",
+      "work_id": "KWRK-000236",
+      "disposition": "added",
+      "primary_url": "https://papers.nips.cc/paper_files/paper/2024/hash/7caf9d251b546bc78078b35b4a6f3b7e-Abstract-Conference.html",
+      "review_depth": "Primary NeurIPS proceedings metadata/abstract; full PDF fetch exceeded size limit"
+    },
+    {
+      "review_id": "R45",
+      "work_id": "KWRK-000237",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2507.01946",
+      "review_depth": "Primary NeurIPS/arXiv metadata and abstract"
+    },
+    {
+      "review_id": "R46",
+      "work_id": "KWRK-000238",
+      "disposition": "added",
+      "primary_url": "https://proceedings.mlr.press/v228/versteeg24a.html",
+      "review_depth": "Primary PMLR proceedings metadata and abstract; selected method context"
+    },
+    {
+      "review_id": "R47",
+      "work_id": "KWRK-000239",
+      "disposition": "added",
+      "primary_url": "https://arxiv.org/abs/2110.07238",
+      "review_depth": "Primary NeurIPS/arXiv abstract and canonical metadata"
+    }
+  ],
+  "unresolved_or_excluded": [
+    {
+      "identifier": "arxiv:2608.22406",
+      "label": "Generated Gramian-balanced neural-SSM application label",
+      "status": "Excluded as a verified neural-compression finding",
+      "reason": "Secondary metadata instead points to A New Generalized Low-Rank Cholesky Factor ADI Algorithm for Large-Scale Stein Equations. Primary identity/method not independently resolved; do not attribute the generated application to the paper."
+    },
+    {
+      "identifier": "Lacuna Lyapunov-halting hypothesis page",
+      "status": "Excluded as empirical prior art",
+      "reason": "A generated hypothesis/application page is not a published experimental result."
+    }
+  ],
+  "semantic_boundaries": {
+    "accepted_claims_added": 0,
+    "knowledge_evidence_added": 0,
+    "independent_replications_completed": 0,
+    "independent_entailment_audits_completed": 0,
+    "complete_world_literature_coverage_claimed": false,
+    "private_provenance_included": false
+  }
+}
