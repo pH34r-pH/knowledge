@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 174,
-    "KWRK_records_added_after_identity_checks": 94,
+    "KWRK_records_current": 187,
+    "KWRK_records_added_after_identity_checks": 107,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -75,8 +75,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "3d9a5aab99e46b088c20883ae2274eea6bcef11cf98a79da48adece314b11b43",
-      "record_count": 174
+      "sha256": "9689b6d8c721751ba780deb26ff4ba063fe77aa2294a129df733264e4b025860",
+      "record_count": 187
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
@@ -4459,9 +4459,14 @@
       "canonical_key": "arxiv:2609.04963",
       "title": "Fractal basins trap latent reasoning",
       "title_aliases": [],
-      "authors": [],
-      "publication_date": null,
-      "venue": null,
+      "authors": [
+        "Jeffrey Lai",
+        "Anthony Bao",
+        "John Quinn",
+        "William Gilpin"
+      ],
+      "publication_date": "2026-09-04",
+      "venue": "arXiv preprint",
       "canonical_identifiers": {
         "arxiv": "2609.04963"
       },
@@ -4469,20 +4474,28 @@
         "v1"
       ],
       "source_urls": [
-        "https://arxiv.org/abs/2609.04963v1"
+        "https://arxiv.org/abs/2609.04963v1",
+        "https://arxiv.org/abs/2609.04963"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000180",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [],
       "supplemental_statuses": [
         "identity lead; reconcile registry before adding"
       ],
       "source_kinds": [
-        "identity_lead"
+        "identity_lead",
+        "work"
       ],
-      "identity_status": "supplemental_identity_only",
+      "identity_status": "recorded_in_works",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
-        "arxiv:2609.04963"
+        "arxiv:2609.04963",
+        "title-author:fractal basins trap latent reasoning|jeffrey lai"
       ]
     },
     {
