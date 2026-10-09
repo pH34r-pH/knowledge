@@ -1,0 +1,199 @@
+name: Prepare final prior-art supplement
+
+# One-shot, exact-branch authoring helper. Removes itself; never writes main.
+on:
+  push:
+    branches: [research/prior-art-closure-20261009]
+    paths: [.github/workflows/prepare-prior-art-supplement.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prepare-prior-art-supplement-20261009
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: github.repository == 'pH34r-pH/knowledge' && github.ref == 'refs/heads/research/prior-art-closure-20261009'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Reconcile reviewed records and validate scoped changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ github.sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import re
+          import subprocess
+          import sys
+          import unicodedata
+          import urllib.request
+          from pathlib import Path
+
+          branch = 'research/prior-art-closure-20261009'
+          directory = Path('references/external')
+          supplement = json.loads((directory / 'prior-art-closure-supplement-2026-10-09.json').read_text(encoding='utf-8'))
+          input_path = directory / 'prior-art-closure-input-2026-10-09.json'
+          audit_path = directory / 'prior-art-closure-audit-2026-10-09.json'
+          report_path = directory / 'prior-art-closure-review-2026-10-09.md'
+          works_path = directory / 'works.jsonl'
+          payload = json.loads(input_path.read_text(encoding='utf-8'))
+          audit = json.loads(audit_path.read_text(encoding='utf-8'))
+          before = works_path.read_bytes()
+          expected = supplement['expected_registry_before']
+          if hashlib.sha256(before).hexdigest() != expected['sha256']:
+              raise SystemExit('Source registry changed: re-review rather than overwrite.')
+          raw_lines = before.splitlines(keepends=True)
+          works = [json.loads(line) for line in raw_lines if line.strip()]
+          if len(works) != expected['count'] or len(raw_lines) != len(works):
+              raise SystemExit('Unexpected record layout/count.')
+          original = b''.join(raw_lines[:200])
+          if hashlib.sha256(original).hexdigest() != payload['expected_registry_before']['sha256']:
+              raise SystemExit('Original 200-record prefix mismatch.')
+          positions = {work['id']: index for index, work in enumerate(works)}
+          by_review = {item['review_id']: item for item in payload['candidates']}
+          audit_by_review = {item['review_id']: item for item in audit['records']}
+          for correction in supplement['metadata_corrections']:
+              index = positions[correction['work_id']]
+              if index < 200:
+                  raise SystemExit('Correction would alter historical registry.')
+              item = by_review[correction['review_id']]
+              item['work'].update(correction['replace'])
+              item['work']['notes'] += ' Metadata check: ' + correction['reason']
+              works[index].update(correction['replace'])
+              works[index]['notes'] = item['work']['notes'] + ' Review depth: ' + item['review_depth'] + '.'
+              raw_lines[index] = (json.dumps(works[index], ensure_ascii=False, separators=(',', ':')) + '\n').encode('utf-8')
+              audit_by_review[correction['review_id']]['primary_url'] = works[index]['source_url']
+
+          def aliases(work):
+              result = set()
+              for field in ('arxiv', 'doi', 'pmlr', 'openreview'):
+                  value = work.get('canonical_identifiers', {}).get(field)
+                  if value:
+                      value = str(value).strip().lower()
+                      if field == 'arxiv':
+                          value = re.sub(r'v\d+$', '', value)
+                      result.add(field + ':' + value)
+              return result
+
+          def title_key(work):
+              text = work['title'] + '|' + work['authors'][0]
+              text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode()
+              return ' '.join(re.findall(r'[a-z0-9]+', text.lower()))
+
+          seen = set()
+          titles = set()
+          for work in works:
+              if seen.intersection(aliases(work)):
+                  raise SystemExit('Ambiguous existing identity.')
+              seen.update(aliases(work))
+              titles.add(title_key(work))
+          for item in supplement['candidates']:
+              if item['review_id'] in by_review or item['review_id'] in audit_by_review:
+                  raise SystemExit('Review already ingested.')
+              candidate = item['work']
+              if seen.intersection(aliases(candidate)) or title_key(candidate) in titles:
+                  raise SystemExit('Candidate exists; reconcile explicitly: ' + candidate['title'])
+              work_id = f'KWRK-{len(works) + 1:06d}'
+              work = {'schema_version':'0.1.0', 'id':work_id, 'type':'ExternalWork', **candidate,
+                      'status':'ACTIVE', 'ingested_at':payload['date']}
+              work['notes'] += ' Review depth: ' + item['review_depth'] + '.'
+              works.append(work)
+              raw_lines.append((json.dumps(work, ensure_ascii=False, separators=(',', ':')) + '\n').encode('utf-8'))
+              seen.update(aliases(work))
+              titles.add(title_key(work))
+              payload['candidates'].append(item)
+              audit['records'].append({'review_id':item['review_id'], 'work_id':work_id, 'disposition':'added',
+                                       'primary_url':work['source_url'], 'review_depth':item['review_depth']})
+          if len(works) != supplement['expected_registry_after'] or len(audit['records']) != supplement['expected_review_pool']:
+              raise SystemExit('Incomplete supplement.')
+          if len({row['review_id'] for row in audit['records']}) != 50:
+              raise SystemExit('Duplicate review identity.')
+          after = b''.join(raw_lines)
+          if not after.startswith(original):
+              raise SystemExit('Historical prefix changed.')
+          works_path.write_bytes(after)
+          payload['reviewed_pool_size'] = 50
+          payload['expected_new_works'] = 42
+          payload['supplement_input'] = 'prior-art-closure-supplement-2026-10-09.json'
+          payload['metadata_corrections'] = supplement['metadata_corrections']
+          audit.update({'reviewed_pool_size':50, 'work_records_added':42, 'work_records_after':242,
+                        'updated_registry_sha256':hashlib.sha256(after).hexdigest(),
+                        'supplement_input':payload['supplement_input'], 'metadata_corrections':supplement['metadata_corrections']})
+          audit['records'].sort(key=lambda row: row['review_id'])
+          for path, document in ((input_path,payload),(audit_path,audit)):
+              path.write_text(json.dumps(document, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          subprocess.run([sys.executable, 'tools/reconcile_public_bibliography.py', '--write'], check=True)
+          subprocess.run([sys.executable, 'tools/test_external_claim_adapter.py'], check=True)
+          subprocess.run([sys.executable, 'tools/validate_external_claim_adapter.py', '--root', '.'], check=True)
+          subprocess.run([sys.executable, 'tools/reconcile_public_bibliography.py', '--check'], check=True)
+
+          for filename in ('README.md','BUILDING.md'):
+              path = Path(filename)
+              text = path.read_text(encoding='utf-8')
+              if 'full 47-source review pool' not in text or 'maps 39 new identities' not in text:
+                  raise SystemExit('Expected navigation anchor missing.')
+              text = text.replace('full 47-source review pool','full 50-source review pool').replace('maps 39 new identities','maps 42 new identities')
+              path.write_text(text, encoding='utf-8')
+          report = report_path.read_text(encoding='utf-8')
+          replacements = {
+              'an additional 11-source':'an additional 14-source',
+              '**47 paper identities**':'**50 paper identities**',
+              '**39 new canonical Works (KWRK-000201–KWRK-000239)**':'**42 new canonical Works (KWRK-000201–KWRK-000242)**',
+              'from 200 to 239 records':'from 200 to 242 records'}
+          for old, new in replacements.items():
+              if old not in report:
+                  raise SystemExit('Expected report count anchor missing: ' + old)
+              report = report.replace(old, new)
+          section = '''### Final reference-chain addition: portable semantics and private dialects
+
+          The companion [Portable Semantics, Private Dialects](https://arxiv.org/abs/2609.11365), parent [What You Can't See Is What You Learn](https://arxiv.org/abs/2608.20054), and [sixty-society confirmation](https://arxiv.org/abs/2609.17637), **KWRK-000240–242**, supply particularly close interface-transfer controls. Primary indexed abstracts and the [author artifact](https://github.com/tokenosopher/populus-evidence-partitioning) were reviewed; models/checkpoints were not executed.
+
+          The companion distinguishes useful within-checkpoint value codes from raw interoperability across independently trained interfaces. Its frozen alignment ladder and inherited-versus-fresh interface comparison motivate explicit negative-transfer controls. The result is bounded to a 17-state near-transfer setting and shared-backbone cells, not arbitrary independently pretrained full models.
+
+          Preserve the parent release's formal preregistered floor failure. The later same-author confirmation reports a behavioral pass but unresolved usable-role attribution: marker availability does not demonstrate marker use. Success-conditioned finite packet interventions are not a complete causal mediation result. A later parent title variant, Slot-Selective Evidence Masking, remains a version-specific primary-source follow-up; the reviewed title and limitation are retained rather than asserting a latest-version full-text review.
+
+          The [supplement input](prior-art-closure-supplement-2026-10-09.json) records this family and primary-source metadata corrections: ACT's original submission is 29 March 2016; the ODIN proceedings are the 2nd NeurIPS Workshop on Symmetry and Geometry in Neural Representations. Reviewed ACT, Universal Transformer and PonderNet versions are pinned separately from original dates.
+
+          '''
+          section = '\n'.join(line[10:] if line.startswith('          ') else line for line in section.splitlines()) + '\n'
+          if '## Pass F — spiking and chaotic reconstruction boundaries' not in report:
+              raise SystemExit('Report insertion anchor missing.')
+          report = report.replace('## Pass F — spiking and chaotic reconstruction boundaries', section + '## Pass F — spiking and chaotic reconstruction boundaries')
+          report_path.write_text(report, encoding='utf-8')
+
+          token, repo, source = os.environ['GH_TOKEN'], os.environ['REPO'], os.environ['SOURCE_SHA']
+          def request(method, endpoint, data=None):
+              body = None if data is None else json.dumps(data).encode('utf-8')
+              req = urllib.request.Request('https://api.github.com/repos/' + repo + '/' + endpoint, data=body, method=method,
+                  headers={'Authorization':'Bearer ' + token, 'Accept':'application/vnd.github+json',
+                           'Content-Type':'application/json', 'X-GitHub-Api-Version':'2022-11-28'})
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  return json.load(response)
+          if request('GET','git/ref/heads/' + branch)['object']['sha'] != source:
+              raise SystemExit('Branch advanced; refusing overwrite.')
+          parent = request('GET','git/commits/' + source)
+          allowed = [str(works_path), str(input_path), str(audit_path), str(report_path),
+                     'reports/public-bibliography-identity-crosswalk-2026-10-07.json', 'README.md','BUILDING.md']
+          entries = [{'path':path,'mode':'100644','type':'blob','content':Path(path).read_text(encoding='utf-8')} for path in allowed]
+          entries.append({'path':'.github/workflows/prepare-prior-art-supplement.yml','mode':'100644','type':'blob','sha':None})
+          tree = request('POST','git/trees',{'base_tree':parent['tree']['sha'],'tree':entries})
+          commit = request('POST','git/commits',{'message':'knowledge: complete 50-source audit and preserve metadata corrections',
+                                               'tree':tree['sha'],'parents':[source]})
+          if request('GET','git/ref/heads/' + branch)['object']['sha'] != source:
+              raise SystemExit('Branch changed during preparation; objects not published.')
+          request('PATCH','git/refs/heads/' + branch,{'sha':commit['sha'],'force':False})
+          print(json.dumps({'prepared_commit':commit['sha'],'work_records_after':len(works),'review_pool':len(audit['records']),
+                            'registry_sha256':audit['updated_registry_sha256'],'original_200_unchanged':after.startswith(original),
+                            'temporary_helper_removed':True}))
+          PY
