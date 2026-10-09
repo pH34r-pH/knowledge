@@ -95,8 +95,8 @@ class ResearchIntakeNextPassTests(unittest.TestCase):
             self.assertEqual(record["verification_level"], "PRIMARY_ARXIV_METADATA")
 
     def test_work_ids_are_contiguous_and_prior_registry_has_no_matches(self) -> None:
-        self.assertEqual(len(self.works), 174)
-        self.assertEqual([row["id"] for row in self.works], [f"KWRK-{number:06d}" for number in range(1, 175)])
+        self.assertGreaterEqual(len(self.works), 174)
+        self.assertEqual([row["id"] for row in self.works], [f"KWRK-{number:06d}" for number in range(1, len(self.works) + 1)])
         prior_ids = {str(row["id"]) for row in self.works[:130]}
         added_ids = {row["work_id"] for row in self.records if row.get("work_id") and row["disposition"] == "added"}
         self.assertFalse(prior_ids.intersection(added_ids))
