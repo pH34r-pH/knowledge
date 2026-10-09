@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Recurrent-dynamics source-identity and method-boundary intake",
+  "generated_at": "2026-10-09",
+  "canonical_registry": "works.jsonl",
+  "scope": "Bounded public method comparison for random-RNN Lyapunov spectra, trained/input-driven RNN diagnostics, looped-LM stability, functional manifold geometry and cross-model communication. No private issue records or inferred adoption status.",
+  "ingestion": {
+    "work_records_before": 174,
+    "work_records_added": 13,
+    "work_records_after": 187,
+    "external_claims_added": 0,
+    "knowledge_evidence_added": 0,
+    "accepted_claims_added": 0,
+    "articles_added": 0
+  },
+  "records": [
+    {
+      "work_id": "KWRK-000175",
+      "identity_type": "arxiv",
+      "identity_value": "2610.12426",
+      "verification_level": "primary-metadata-abstract-and-author-code",
+      "source_url": "https://arxiv.org/abs/2610.12426v1"
+    },
+    {
+      "work_id": "KWRK-000176",
+      "identity_type": "arxiv",
+      "identity_value": "2006.02427",
+      "verification_level": "primary-publisher-metadata-and-abstract",
+      "source_url": "https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.5.043044"
+    },
+    {
+      "work_id": "KWRK-000177",
+      "identity_type": "arxiv",
+      "identity_value": "2006.14123",
+      "verification_level": "primary-publisher-full-text-method",
+      "source_url": "https://www.frontiersin.org/journals/applied-mathematics-and-statistics/articles/10.3389/fams.2022.818799/full"
+    },
+    {
+      "work_id": "KWRK-000178",
+      "identity_type": "doi",
+      "identity_value": "10.1007/s00521-024-09824-6",
+      "verification_level": "primary-publisher-abstract-code-pointer",
+      "source_url": "https://link.springer.com/article/10.1007/s00521-024-09824-6"
+    },
+    {
+      "work_id": "KWRK-000179",
+      "identity_type": "arxiv",
+      "identity_value": "2605.26733",
+      "verification_level": "primary-proceedings-metadata-and-abstract",
+      "source_url": "https://proceedings.mlr.press/v306/yang26t.html"
+    },
+    {
+      "work_id": "KWRK-000180",
+      "identity_type": "arxiv",
+      "identity_value": "2609.04963",
+      "verification_level": "primary-arxiv-metadata-and-abstract",
+      "source_url": "https://arxiv.org/abs/2609.04963"
+    },
+    {
+      "work_id": "KWRK-000181",
+      "identity_type": "arxiv",
+      "identity_value": "1711.09672",
+      "verification_level": "primary-journal-index-and-abstract-code-pointer",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/30057201/"
+    },
+    {
+      "work_id": "KWRK-000182",
+      "identity_type": "doi",
+      "identity_value": "10.1371/journal.pcbi.1008128",
+      "verification_level": "primary-journal-html-and-code-pointer",
+      "source_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008128"
+    },
+    {
+      "work_id": "KWRK-000183",
+      "identity_type": "doi",
+      "identity_value": "10.1162/NECO_a_00409",
+      "verification_level": "primary-publisher-and-pubmed-abstract",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/23272922/"
+    },
+    {
+      "work_id": "KWRK-000184",
+      "identity_type": "doi",
+      "identity_value": "10.64898/2026.03.02.708943",
+      "verification_level": "primary-preprint-PMC-v2-and-code-pointer",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13228304/"
+    },
+    {
+      "work_id": "KWRK-000185",
+      "identity_type": "arxiv",
+      "identity_value": "1806.05394",
+      "verification_level": "primary-proceedings-and-abstract",
+      "source_url": "https://proceedings.mlr.press/v80/chen18i.html"
+    },
+    {
+      "work_id": "KWRK-000186",
+      "identity_type": "arxiv",
+      "identity_value": "2002.00025",
+      "verification_level": "primary-PMLR-abstract",
+      "source_url": "https://proceedings.mlr.press/v107/can20a.html"
+    },
+    {
+      "work_id": "KWRK-000187",
+      "identity_type": "doi",
+      "identity_value": "10.1101/2024.05.15.594236",
+      "verification_level": "primary-preprint-PMC-abstract",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11118502/"
+    }
+  ],
+  "reused_work_ids": [
+    "KWRK-000036",
+    "KWRK-000038",
+    "KWRK-000039",
+    "KWRK-000051",
+    "KWRK-000055",
+    "KWRK-000056",
+    "KWRK-000058",
+    "KWRK-000101",
+    "KWRK-000103",
+    "KWRK-000111"
+  ],
+  "methodological_limits": [
+    "Asymptotic Lyapunov and finite-horizon Jacobian-product singular exponents differ, even for identical recurrent functions.",
+    "Autonomous iid random-network results do not automatically transfer to nonautonomous trained language models or heterogeneous cross-model translators.",
+    "Task/output sensitivity, static rank, conditional prediction quality, and manifold dimension must be measured separately.",
+    "A performance predictor must beat depth/quality/confidence/static-rank baselines on genuinely held-out examples and include its calculation costs.",
+    "Publisher-corrected 2024 AeLLE supplementary material should be used rather than an earlier erroneous supplement.",
+    "The 2024 PCIst preprint is a perturbation/learning study, not evidence of consciousness or feelings.",
+    "PDF hashes and full paper-by-paper independent claim entailment have not been collected; no claim/evidence rows are promoted."
+  ],
+  "semantic_boundaries": {
+    "source_identities_verified": true,
+    "full_independent_replication": false,
+    "external_claims_added": 0,
+    "knowledge_evidence_added": 0,
+    "articles_added": 0,
+    "adoption_relationships_asserted": false
+  }
+}

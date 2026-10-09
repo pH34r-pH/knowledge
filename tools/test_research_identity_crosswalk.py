@@ -5,7 +5,7 @@ from __future__ import annotations
 import copy
 import unittest
 
-from reconcile_public_bibliography import build_crosswalk, canonical_key, validate_crosswalk
+from reconcile_public_bibliography import WORKS_PATH, build_crosswalk, canonical_key, read_jsonl, validate_crosswalk
 
 
 class CrosswalkTests(unittest.TestCase):
@@ -16,8 +16,8 @@ class CrosswalkTests(unittest.TestCase):
     def test_reconciled_counts_match_the_reviewed_payload(self) -> None:
         coverage = self.document["coverage"]
         self.assertEqual(coverage["KWRK_records_before_reconciliation"], 80)
-        self.assertEqual(coverage["KWRK_records_current"], 174)
-        self.assertEqual(coverage["KWRK_records_added_after_identity_checks"], 94)
+        self.assertEqual(coverage["KWRK_records_current"], len(read_jsonl(WORKS_PATH)))
+        self.assertEqual(coverage["KWRK_records_added_after_identity_checks"], len(read_jsonl(WORKS_PATH)) - coverage["KWRK_records_before_reconciliation"])
         self.assertEqual(coverage["DLS_audit_records"], 75)
         self.assertEqual(coverage["matched_identity_count"], 2)
         self.assertEqual(coverage["baseline_union_rows"], 153)
