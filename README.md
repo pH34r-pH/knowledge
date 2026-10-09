@@ -10,6 +10,8 @@ Structured research corpus for experiments with graph-based lookup and retrieval
 
 **Recurrent dynamics research (2026-10-09):** [Clark Lyapunov paper and 12 published/preprint predecessors](references/external/recurrent-dynamics-intake-2026-10-09.md) — numerical Lyapunov controls, task-preserving manifolds, recurrent-depth stability and latent-state handoff, with explicit evidence boundaries; [scoped identity audit](references/external/recurrent-dynamics-intake-audit-2026-10-09.json). Canonical Work identities: `KWRK-000175`–`KWRK-000187`.
 
+**Second recurrent-dynamics literature pass (2026-10-09):** [stable non-normal transients, input-driven memory, fixed-point recall, loop-depth negative results, and CKA boundaries](references/external/recurrent-dynamics-second-pass-2026-10-09.md); [scoped source-identity audit](references/external/recurrent-dynamics-second-pass-audit-2026-10-09.json). Adds canonical Works `KWRK-000188`–`KWRK-000200`; no accepted claims or model replication.
+
 ## Citation integrity: how the corpus avoids hallucinated references
 
 Every citation in this corpus passes a gate before it is committed, because a fabricated or misgrounded reference is worse than no article. Deterministic, un-gameable checks run first; model-based checks catch the rest. Full evidence base and guard list: [citation-integrity.md](.claude/skills/populate-corpus/references/citation-integrity.md).
