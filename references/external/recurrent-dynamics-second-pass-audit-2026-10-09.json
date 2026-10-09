@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-10-09",
+  "title": "Second pass: recurrent dynamics and stability prior-art identity intake",
+  "canonical_registry": "works.jsonl",
+  "scope": "Source-qualified bibliographic identities and source-attributed method hypotheses; no private issue IDs, no accepted external claims or evidence.",
+  "ingestion": {
+    "work_records_before": 187,
+    "work_records_added": 13,
+    "work_records_after": 200,
+    "external_claims_added": 0,
+    "knowledge_evidence_added": 0,
+    "articles_added": 0,
+    "independent_reproductions_completed": 0
+  },
+  "records": [
+    {
+      "work_id": "KWRK-000188",
+      "source_url": "https://arxiv.org/abs/2609.36636v1",
+      "identity_type": "arxiv",
+      "identity_value": "2609.36636",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "preprint",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000189",
+      "source_url": "https://arxiv.org/abs/2604.15259v2",
+      "identity_type": "arxiv",
+      "identity_value": "2604.15259",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "preprint",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000190",
+      "source_url": "https://arxiv.org/abs/2603.10544v1",
+      "identity_type": "arxiv",
+      "identity_value": "2603.10544",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "preprint",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000191",
+      "source_url": "https://arxiv.org/abs/2605.18797v2",
+      "identity_type": "arxiv",
+      "identity_value": "2605.18797",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "preprint",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000192",
+      "source_url": "https://arxiv.org/abs/2606.01495v2",
+      "identity_type": "arxiv",
+      "identity_value": "2606.01495",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "preprint",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000193",
+      "source_url": "https://arxiv.org/abs/2603.21676v2",
+      "identity_type": "arxiv",
+      "identity_value": "2603.21676",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "preprint",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000194",
+      "source_url": "https://proceedings.mlr.press/v139/bai21b.html",
+      "identity_type": "arxiv",
+      "identity_value": "2106.14342",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "peer_reviewed_publication",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000195",
+      "source_url": "https://proceedings.mlr.press/v97/kornblith19a.html",
+      "identity_type": "arxiv",
+      "identity_value": "1905.00414",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "peer_reviewed_publication",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000196",
+      "source_url": "https://journals.aps.org/pre/abstract/10.1103/PhysRevE.100.062312",
+      "identity_type": "doi",
+      "identity_value": "10.1103/PhysRevE.100.062312",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "peer_reviewed_publication",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000197",
+      "source_url": "https://arxiv.org/abs/1905.12080",
+      "identity_type": "arxiv",
+      "identity_value": "1905.12080",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "peer_reviewed_publication",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000198",
+      "source_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007655",
+      "identity_type": "doi",
+      "identity_value": "10.1371/journal.pcbi.1007655",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "peer_reviewed_publication",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000199",
+      "source_url": "https://proceedings.mlr.press/v306/williams26b.html",
+      "identity_type": "pmlr",
+      "identity_value": "v306/williams26b",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "peer_reviewed_publication",
+      "conclusions_promoted": false
+    },
+    {
+      "work_id": "KWRK-000200",
+      "source_url": "https://papers.neurips.cc/paper_files/paper/2004/hash/f8da71e562ff44a2bc7edf3578c593da-Abstract.html",
+      "identity_type": "neurips",
+      "identity_value": "f8da71e562ff44a2bc7edf3578c593da",
+      "verification_level": "PRIMARY_ABSTRACT_OR_PUBLISHER_METHOD_SCOPE",
+      "source_type": "peer_reviewed_publication",
+      "conclusions_promoted": false
+    }
+  ],
+  "evidence_boundaries": [
+    "Descriptions summarize primary abstract/publisher HTML and selected article text; not independent result replications.",
+    "Autonomous Lyapunov vs non-autonomous/finite-time singular growth vs one-step Jacobian eigenvalue spectrum must be kept separate.",
+    "Transient amplification from non-normal stable systems is possible; edge-of-chaos memory optimum is task/input distribution dependent.",
+    "Recurrent-depth stability does not imply useful reasoning, better knowledge retention, or superior quality at matched resource cost.",
+    "CART is a source-reported negative example, not a universal disproof of looped models.",
+    "CKA and CCA are descriptive similarity metrics, not proof of task-state transfer or cross-model functional equivalence.",
+    "Mathematical fixed-point results have architecture-specific conditions; no general neural reasoning theorem adopted.",
+    "ICML RLTT training intervention is a research reference, not a cheap measurement or an inference-time improvement.",
+    "No PDF full-text hashes, independent quote-span/entailment audit, or model executions were produced in this intake."
+  ],
+  "related_prior_work_ids": [
+    "KWRK-000175",
+    "KWRK-000176",
+    "KWRK-000177",
+    "KWRK-000179",
+    "KWRK-000180",
+    "KWRK-000181",
+    "KWRK-000182",
+    "KWRK-000183",
+    "KWRK-000036",
+    "KWRK-000103"
+  ],
+  "semantic_boundaries": {
+    "works_only": true,
+    "accepted_claims_added": 0,
+    "knowledge_evidence_added": 0,
+    "adoption_assertions": false,
+    "independent_replication": false
+  }
+}
