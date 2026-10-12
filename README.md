@@ -1,5 +1,7 @@
 Structured research corpus for experiments with graph-based lookup and retrieval, automated research, and RAG pipelines
 
+![Knowledge — Sources, evidence, and connections for research.](docs/assets/hero.png)
+
 [Repository map and validation](AGENTS.md) describes the source/evidence boundaries, intentional `graphify-out/` products, and exact local checks.
 
 [Fleet source qualification](docs/fleet-source-contract.md) records the exact-SHA offline adapter gate and its limited coverage.
