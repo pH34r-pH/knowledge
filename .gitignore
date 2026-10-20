@@ -1,0 +1,3 @@
+# Retired navigation tool output must not be reintroduced.
+/graphify-out/
+/.graphify*

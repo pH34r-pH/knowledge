@@ -18,7 +18,7 @@ TOPICS.md / existing corpus
         -> source-resolution and audit records
         -> corpus/<pillar>/*.md
         -> README.md index and corpus/LEDGER.md
-        -> graphify-out/ derived navigation products
+        -> maintained Markdown indexes and source search
 ```
 
 | Boundary | Change here | Ownership and invariants |
@@ -27,13 +27,12 @@ TOPICS.md / existing corpus
 | `arxiv/` | Downloaded paper PDFs and matching metadata; see [`arxiv/AGENTS.md`](arxiv/AGENTS.md). | The metadata/PDF pair is a retained source identity; do not rewrite a historical source to make a current claim fit. |
 | `references/external/` | Machine-readable claims, works, evidence, schemas, and scoped import audits; see [`references/AGENTS.md`](references/AGENTS.md). | Registry records are provenance, not prose; preserve exact IDs, URLs, digests, and audit scope. |
 | `specs/` | Spec Kit plans and acceptance records for corpus procedures. | Preserve the `spec.md → plan.md → tests.md → tasks.md` authority chain and historical evidence. |
-| `graphify-out/` | Intentional derived graph reports, manifests, and visual products; see [`graphify-out/AGENTS.md`](graphify-out/AGENTS.md). | These products are not trash. They are rebuildable derived output, may be stale, and must not be treated as source authority. |
 | `.claude/skills/` | The executable research procedure and its references. | Update the procedure only when the operating loop changes; do not use it as a substitute for source evidence. |
 
 The living Markdown surface is the root guides, scoped `AGENTS.md` maps, `corpus/LEDGER.md`,
 and current articles under `corpus/{design-patterns,ml-techniques,adjacent-knowledge}/`.
-Dated citation audits, reports, spec plans, arXiv inputs, registry records, and graph
-snapshots are retained history/evidence; a newer document supersedes one only when it
+Dated citation audits, reports, spec plans, arXiv inputs, and registry records
+are retained history/evidence; a newer document supersedes one only when it
 states the scope and provides evidence for that change. Documentation CI selects only
 that living surface; it does not treat every retained artifact as current prose.
 
@@ -70,7 +69,7 @@ spec.md → plan.md → tests.md → tasks.md
 - Use explicit pathspec-scoped commits. Do not use broad staging in this shared repository.
 - Before push, run `git pull --rebase --autostash origin main`; report a rejected push or merge conflict plainly rather than masking it.
 - A corpus iteration is not complete until its approved changed paths are committed and pushed, unless external authorization or connectivity blocks that final step.
-- After source or procedure changes, run `graphify update .`. Keep semantic corpus extraction local unless the operator explicitly approves a cloud disclosure route.
+- Navigate through `README.md`, `TOPICS.md`, `corpus/LEDGER.md` and the scoped maps, then search with `rg`. Maintain these Markdown indexes when source or procedure boundaries change.
 
 ## Documentation changes and validation
 
@@ -83,9 +82,8 @@ spec.md → plan.md → tests.md → tasks.md
   article/evidence IDs remain valid in their historical or machine-readable locations.
 - Keep Markdown links relative when they point into this repository so the link
   checker exercises the map references.
-- Do not classify `graphify-out/` as disposable merely because it is generated. Its
-  cache/temp/build subdirectories are excluded from documentation scans explicitly;
-  the retained reports and manifests remain visible and classified.
+- Generated navigation graphs are retired. Preserve the original corpus, resolved
+  sources and dated research evidence; no topology refresh is a verification gate.
 
 Exact local checks for a documentation-only change are:
 
@@ -100,5 +98,5 @@ python tools/check_documentation_hygiene.py --base origin/main --head HEAD --pri
 if test -s "$DOCS_FILE"; then mapfile -t DOCS < "$DOCS_FILE"; npx --yes markdownlint-cli2@0.18.1 --config .markdownlint-cli2.mjs "${DOCS[@]}"; lychee --offline --verbose --no-progress "${DOCS[@]}"; fi
 ```
 
-Run `graphify update .` only when source or procedure changes require a refreshed
-derived graph; a documentation map alone does not justify regenerating all products.
+Use the maintained Markdown maps and `rg` for navigation. No generated index is
+required for research, documentation or source validation.
