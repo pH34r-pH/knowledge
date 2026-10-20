@@ -44,7 +44,7 @@ TEMP_SUFFIXES = {
     ".tmp",
 }
 TEMP_FILENAMES = {".DS_Store"}
-KNOWN_DERIVED_ROOTS = {"graphify-out"}
+KNOWN_DERIVED_ROOTS = {"reports"}
 LIVING_DOC_FILES = {
     "AGENTS.md",
     "README.md",
@@ -63,7 +63,6 @@ HISTORY_OR_DERIVED_PREFIXES = (
     "references/",
     "reports/",
     "specs/",
-    "graphify-out/",
     "corpus/audit/",
     "corpus/evaluation/",
 )
@@ -226,15 +225,15 @@ def _assert_rename_and_numeric_evidence(repo: Path, first: str) -> None:
 
 
 def _assert_derived_products(repo: Path, first: str) -> None:
-    (repo / "graphify-out").mkdir()
-    (repo / "graphify-out" / "GRAPH_REPORT.md").write_text("# Derived report\n", encoding="utf-8")
+    (repo / "reports").mkdir()
+    (repo / "reports" / "derived-report.md").write_text("# Derived report\n", encoding="utf-8")
     commit(repo, "derived report")
     entries, errors = run_check(repo, first, "HEAD")
-    if errors or "graphify-out/GRAPH_REPORT.md" in selected_docs(entries):
+    if errors or "reports/derived-report.md" in selected_docs(entries):
         raise AssertionError(f"derived report classification regression: entries={entries!r}, errors={errors!r}")
 
-    (repo / "graphify-out" / "cache").mkdir()
-    (repo / "graphify-out" / "cache" / "generated.md").write_text("# Cache\n", encoding="utf-8")
+    (repo / "reports" / "cache").mkdir()
+    (repo / "reports" / "cache" / "generated.md").write_text("# Cache\n", encoding="utf-8")
     commit(repo, "derived cache")
     _, errors = run_check(repo, first, "HEAD")
     if not any("artifact" in error for error in errors):
