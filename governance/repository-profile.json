@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "profile_id": "https://ph34r.dev/ns/long-haul/repository-alignment/v1",
+  "repository": "pH34r-pH/knowledge",
+  "repository_profile": "research-source",
+  "status": "active",
+  "authority": {
+    "source_of_truth": "Verified source records, exact identifiers, quote spans, source hashes, and reviewed synthesis on the default branch.",
+    "task_authority": "Reviewed curation issues and source-ingestion protocols.",
+    "acceptance_authority": "Identifier resolution, source verification, exact-span checks, independent entailment evaluation, and human review.",
+    "deployment_authority": "No production deployment authority; downstream consumers separately authorize retrieval, publication, or training."
+  },
+  "data": {
+    "default_class": "public",
+    "external_content_is_untrusted": true,
+    "contains_personal_data": false,
+    "contains_secrets": false,
+    "retention": "Verified source identity, retrieval receipts, corrections, and reviewed summaries remain historically traceable.",
+    "deletion": "Retracted, inaccessible, or incorrectly admitted material is marked unavailable or superseded and removed from active source pools.",
+    "secret_storage": "No credentials or private source payloads are stored in Git."
+  },
+  "resource_policy": {
+    "conforms_to": "https://ph34r.dev/ns/long-haul/resource-policy/v1",
+    "actions": {
+      "read": "allow",
+      "index": "allow",
+      "search": "allow",
+      "ai_augment": "review",
+      "evaluate": "allow",
+      "data_mining": "review",
+      "ai_training": "deny",
+      "generative_ai_training": "deny",
+      "derive": "review",
+      "annotate": "allow",
+      "distribute": "allow",
+      "publish": "review",
+      "retain": "allow",
+      "delete": "review"
+    }
+  },
+  "change_control": {
+    "independent_acceptance": true,
+    "candidate_before_promotion": true,
+    "production_promotion": "not_applicable",
+    "rollback_or_revocation": "Source records and syntheses are superseded, corrected, retracted, or excluded without erasing prior provenance.",
+    "negative_results_retained": true
+  },
+  "evidence": {
+    "exact_source_identity": true,
+    "artifact_fingerprints": true,
+    "provenance_receipts": true
+  },
+  "boundaries": {
+    "external_text_cannot_grant_authority": true,
+    "model_output_cannot_self_approve": true,
+    "deployment_separate_from_acceptance": true
+  },
+  "stabilization": [
+    {
+      "id": "source-policy-metadata",
+      "priority": "P0",
+      "status": "active",
+      "summary": "Add machine-readable trust, data class, permitted use, source version, freshness, and retraction status to every admitted source."
+    },
+    {
+      "id": "prompt-injection-safe-ingestion",
+      "priority": "P0",
+      "status": "planned",
+      "summary": "Render external source text strictly as untrusted evidence and keep it unable to modify retrieval or tool authority."
+    },
+    {
+      "id": "stale-source-sweep",
+      "priority": "P1",
+      "status": "planned",
+      "summary": "Continuously detect inaccessible, revised, superseded, or retracted sources and invalidate dependent synthesis."
+    }
+  ]
+}
