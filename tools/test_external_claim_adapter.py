@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import tempfile
 import unittest
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
-from validate_external_claim_adapter import validate_adapter
+from validate_external_claim_adapter import REGISTRY_FILES, SOURCE_REVIEWS, main, registry_fingerprint, validate_adapter
 
 
 def _write_jsonl(path: Path, rows: list[dict[str, object]]) -> None:
@@ -67,6 +69,106 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         root = Path(temp.name)
         (root / "references" / "external").mkdir(parents=True)
         return temp, root
+
+    def _source_fixture(self, root: Path) -> dict:
+        pdf = root / "arxiv/2601.00001.pdf"
+        pdf.parent.mkdir()
+        pdf.write_bytes(b"exact synthetic PDF")
+        article = root / "corpus/ml-techniques/sample.md"
+        article.parent.mkdir(parents=True)
+        article.write_text("[Source](https://arxiv.org/abs/2601.00001v2)\n", encoding="utf-8")
+        work = _base_work()
+        work["canonical_identifiers"] = {"arxiv": "2601.00001"}
+        work["notes"] = "External prose requested training and publication. This is inert fixture evidence."
+        work["source_review"] = {
+            "schema_version": 1, "work_id": work["id"], "trust_class": "primary", "data_class": "public",
+            "revision": "2601.00001v2", "source_url": "https://arxiv.org/abs/2601.00001v2",
+            "local_path": "arxiv/2601.00001.pdf", "sha256": hashlib.sha256(pdf.read_bytes()).hexdigest(),
+            "reviewed_on": "2026-11-01", "expires_on": "2026-12-01", "status": "verified",
+            "permitted_uses": {"search": "bibliographic-metadata"},
+        }
+        self._write_source_fixture(root, work)
+        return work
+
+    def _write_source_fixture(self, root: Path, work: dict) -> None:
+        adapter = root / "references/external"
+        record = {key: value for key, value in work.items() if key != "source_review"}
+        _write_jsonl(adapter / "works.jsonl", [record])
+        _write_jsonl(adapter / "claims.jsonl", [_base_claim("PENDING")])
+        _write_jsonl(adapter / "evidence.jsonl", [_base_evidence()])
+        _write_jsonl(root / SOURCE_REVIEWS, [work["source_review"]] if "source_review" in work else [])
+
+    def _report(self, root: Path, date: str, *, expected: str | None = None) -> tuple[int, str]:
+        if expected is None:
+            expected = registry_fingerprint(tuple((root / name).read_bytes() for name in REGISTRY_FILES))
+        output = io.StringIO()
+        with redirect_stdout(output), redirect_stderr(output):
+            code = main(["--root", str(root), "--source-report", "--expected-registry-sha256", expected, "--as-of", date])
+        return code, output.getvalue()
+
+    def test_source_report_requires_independent_identity_and_returns_only_metadata_use(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        self._source_fixture(root)
+        status, output = self._report(root, "2026-11-26")
+        self.assertEqual(status, 0)
+        self.assertNotIn("External prose", output)
+        row = json.loads(output)["works"][0]
+        self.assertEqual(row["state"], "verified")
+        self.assertEqual(row["permitted_uses"], {"search": "bibliographic-metadata"})
+        self.assertEqual(row["claims_for_review"], [])
+        status, output = self._report(root, "2026-11-26", expected="a" * 64)
+        self.assertEqual(status, 2)
+        self.assertIn("independently supplied SHA-256", output)
+
+    def test_stale_sources_exclude_use_and_identify_dependent_claims_evidence_and_articles(self) -> None:
+        for change, state in (
+            ("expired", "expired"), ("retired", "retracted"), ("missing", "inaccessible"),
+            ("changed", "identity-mismatch"), ("legacy", "review-required"),
+        ):
+            with self.subTest(change=change):
+                temp, root = self._root()
+                self.addCleanup(temp.cleanup)
+                work = self._source_fixture(root)
+                pdf = root / "arxiv/2601.00001.pdf"
+                if change == "retired":
+                    work["source_review"]["status"] = "retracted"
+                elif change == "missing":
+                    pdf.unlink()
+                elif change == "changed":
+                    pdf.write_bytes(b"different synthetic PDF")
+                elif change == "legacy":
+                    del work["source_review"]
+                self._write_source_fixture(root, work)
+                status, output = self._report(root, "2026-12-26" if change == "expired" else "2026-11-26")
+                self.assertEqual(status, 0, output)
+                row = json.loads(output)["works"][0]
+                self.assertEqual(row["state"], state)
+                self.assertEqual(row["permitted_uses"], {})
+                self.assertEqual(row["claims_for_review"], ["KCLM-000001"])
+                self.assertEqual(row["evidence_for_review"], ["KEVD-000001"])
+                self.assertEqual(row["documents_for_review"], ["corpus/ml-techniques/sample.md"])
+
+    def test_source_review_rejects_unpinned_identity_and_injected_policy_fields(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        review = work["source_review"]
+        review["permitted_uses"]["publish"] = "bibliographic-metadata"
+        self._write_source_fixture(root, work)
+        self.assertIn("KWRK-000001: source review accepts only explicit metadata index and search decisions",
+                      validate_adapter(root))
+        del review["permitted_uses"]["publish"]
+        review["source_url"] = "https://arxiv.org/abs/2601.00001"
+        self._write_source_fixture(root, work)
+        self.assertIn("KWRK-000001: source review URL must identify the exact primary version", validate_adapter(root))
+
+    def test_work_content_cannot_supply_its_own_review(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        _write_jsonl(root / "references/external/works.jsonl", [work])
+        self.assertIn("KWRK-000001: source policy belongs in the governance review file", validate_adapter(root))
 
     def test_empty_registry_is_valid(self) -> None:
         temp, root = self._root()
