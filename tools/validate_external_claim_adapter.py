@@ -4,16 +4,26 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import hmac
 import json
 import re
 import sys
 from pathlib import Path
 from typing import Any
 
+from source_admission import review_date, review_report, source_reviews
+
 WORK_RE = re.compile(r"^KWRK-[0-9]{6}$")
 CLAIM_RE = re.compile(r"^KCLM-[0-9]{6}$")
 EVID_RE = re.compile(r"^KEVD-[0-9]{6}$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+SOURCE_REVIEWS = "governance/source-reviews.jsonl"
+REGISTRY_FILES = (
+    "references/external/works.jsonl",
+    "references/external/claims.jsonl",
+    "references/external/evidence.jsonl",
+    SOURCE_REVIEWS,
+)
 OFFLINE_LEVELS = {
     "OFFLINE_FULL",
     "OFFLINE_CLAIM_EVIDENCE",
@@ -22,14 +32,24 @@ OFFLINE_LEVELS = {
 }
 
 
-def load_jsonl(path: Path) -> list[dict[str, Any]]:
+def _unique_json_fields(pairs: list[tuple[str, object]]) -> dict:
+    fields = {}
+    for key, value in pairs:
+        if key in fields:
+            raise ValueError("duplicate registry JSON field")
+        fields[key] = value
+    return fields
+
+
+def load_jsonl(path: Path, raw_bytes: bytes | None = None) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
-    for lineno, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    data = path.read_bytes() if raw_bytes is None else raw_bytes
+    for lineno, raw in enumerate(data.decode("utf-8").splitlines(), 1):
         if not raw.strip():
             continue
         try:
-            row = json.loads(raw)
-        except json.JSONDecodeError as exc:
+            row = json.loads(raw, object_pairs_hook=_unique_json_fields)
+        except ValueError as exc:
             raise ValueError(f"{path}:{lineno}: invalid JSON: {exc}") from exc
         if not isinstance(row, dict):
             raise ValueError(f"{path}:{lineno}: expected an object")
@@ -58,7 +78,7 @@ def _accepted_evidence(evidence: dict[str, Any]) -> bool:
     return (
         audit.get("resolution") == "PASSED"
         and audit.get("support_span") == "PASSED"
-        and audit.get("liveness") in {"PASSED", "ARCHIVED"}
+        and audit.get("liveness") in ("PASSED", "ARCHIVED")
         and audit.get("entailment") == "PASSED"
     )
 
@@ -101,13 +121,30 @@ def _supersession_cycles(
     return sorted(cycles)
 
 
-def validate_adapter(root: Path) -> list[str]:
-    errors: list[str] = []
-    adapter = root / "references" / "external"
-    works = load_jsonl(adapter / "works.jsonl")
-    claims = load_jsonl(adapter / "claims.jsonl")
-    evidence = load_jsonl(adapter / "evidence.jsonl")
+def _snapshot_registry(root: Path) -> tuple[bytes, ...]:
+    paths = [root / name for name in REGISTRY_FILES]
+    if any(path.is_symlink() or not path.resolve().is_relative_to(root.resolve()) for path in paths):
+        raise ValueError("canonical registry files must remain within the repository")
+    return tuple(
+        b"" if name == SOURCE_REVIEWS and not path.exists() else path.read_bytes()
+        for name, path in zip(REGISTRY_FILES, paths, strict=True)
+    )
 
+
+def registry_fingerprint(snapshot: tuple[bytes, ...]) -> str:
+    digest = hashlib.sha256()
+    for name, data in zip(REGISTRY_FILES, snapshot, strict=True):
+        digest.update(name.encode() + b"\0")
+        digest.update(hashlib.sha256(data).digest())
+    return digest.hexdigest()
+
+
+def _registry_rows(root: Path, snapshot: tuple[bytes, ...]) -> tuple[list[dict], ...]:
+    return tuple(load_jsonl(root / name, data) for name, data in zip(REGISTRY_FILES, snapshot, strict=True))
+
+
+def _validate_rows(root: Path, works: list[dict], claims: list[dict], evidence: list[dict]) -> list[str]:
+    errors: list[str] = []
     all_rows = works + claims + evidence
     seen: set[str] = set()
     duplicate_ids: set[str] = set()
@@ -130,8 +167,10 @@ def validate_adapter(root: Path) -> list[str]:
         if not WORK_RE.fullmatch(rid) or row.get("type") != "ExternalWork":
             errors.append(f"{rid}: invalid ExternalWork identity/type")
         target = row.get("supersedes")
-        if target is not None and (target not in work_ids or target == rid):
+        if target is not None and (not isinstance(target, str) or target not in work_ids or target == rid):
             errors.append(f"{rid}: invalid work supersedes target {target!r}")
+        if "source_review" in row or "permitted_uses" in row:
+            errors.append(f"{rid}: source policy belongs in the governance review file")
     for cycle in _supersession_cycles(works, work_ids, duplicate_ids):
         errors.append(f"cyclic work supersession: {' -> '.join((*cycle, cycle[0]))}")
 
@@ -140,10 +179,10 @@ def validate_adapter(root: Path) -> list[str]:
         if not CLAIM_RE.fullmatch(rid) or row.get("type") != "ExternalClaim":
             errors.append(f"{rid}: invalid ExternalClaim identity/type")
         work_id = row.get("work_id")
-        if work_id not in work_ids:
+        if not isinstance(work_id, str) or work_id not in work_ids:
             errors.append(f"{rid}: broken work_id {work_id!r}")
         target = row.get("supersedes")
-        if target is not None and (target not in claim_ids or target == rid):
+        if target is not None and (not isinstance(target, str) or target not in claim_ids or target == rid):
             errors.append(f"{rid}: invalid claim supersedes target {target!r}")
     for cycle in _supersession_cycles(claims, claim_ids, duplicate_ids):
         errors.append(f"cyclic claim supersession: {' -> '.join((*cycle, cycle[0]))}")
@@ -154,22 +193,22 @@ def validate_adapter(root: Path) -> list[str]:
         if not EVID_RE.fullmatch(rid) or row.get("type") != "KnowledgeEvidence":
             errors.append(f"{rid}: invalid KnowledgeEvidence identity/type")
         claim_id = row.get("claim_id")
-        if claim_id not in claim_ids:
+        if not isinstance(claim_id, str) or claim_id not in claim_ids:
             errors.append(f"{rid}: broken claim_id {claim_id!r}")
         elif isinstance(claim_id, str):
             evidence_by_claim.setdefault(claim_id, []).append(row)
         target = row.get("supersedes")
-        if target is not None and (target not in evidence_ids or target == rid):
+        if target is not None and (not isinstance(target, str) or target not in evidence_ids or target == rid):
             errors.append(f"{rid}: invalid evidence supersedes target {target!r}")
 
         level = row.get("offline_validation")
-        if level not in OFFLINE_LEVELS:
+        if not isinstance(level, str) or level not in OFFLINE_LEVELS:
             errors.append(f"{rid}: invalid offline_validation {level!r}")
         local_path = row.get("local_path")
         local_hash = row.get("local_content_sha256")
         if level == "OFFLINE_FULL" and not isinstance(local_path, str):
             errors.append(f"{rid}: OFFLINE_FULL requires local_path")
-        if level in {"OFFLINE_FULL", "OFFLINE_CLAIM_EVIDENCE"}:
+        if level in ("OFFLINE_FULL", "OFFLINE_CLAIM_EVIDENCE"):
             support_text = row.get("support_text")
             support_hash = row.get("support_text_sha256")
             if not isinstance(support_text, str) or not support_text.strip():
@@ -210,22 +249,72 @@ def validate_adapter(root: Path) -> list[str]:
     return errors
 
 
-def main(argv: list[str] | None = None) -> int:
+def _validate_snapshot(root: Path, rows: tuple[list[dict], ...]) -> tuple[list[str], dict[str, dict]]:
+    works, claims, evidence, policies = rows
+    errors = _validate_rows(root, works, claims, evidence)
+    if errors:
+        return errors, {}
+    try:
+        return [], source_reviews(root, works, policies)
+    except ValueError as exc:
+        return [str(exc)], {}
+
+
+def validate_adapter(root: Path) -> list[str]:
+    errors, _ = _validate_snapshot(root, _registry_rows(root, _snapshot_registry(root)))
+    return errors
+
+
+def _arguments(argv: list[str] | None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path("."))
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument("--source-report", action="store_true")
+    modes.add_argument("--registry-sha256", action="store_true", help="Print the exact registry identity")
+    parser.add_argument("--expected-registry-sha256")
+    parser.add_argument("--as-of")
     args = parser.parse_args(argv)
-    try:
-        errors = validate_adapter(args.root.resolve())
-    except (OSError, ValueError) as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
-        return 2
+    if args.source_report and (not args.expected_registry_sha256 or not args.as_of):
+        parser.error("--source-report requires --expected-registry-sha256 and --as-of")
+    if args.source_report and not SHA256_RE.fullmatch(args.expected_registry_sha256):
+        parser.error("--expected-registry-sha256 requires a lowercase SHA-256")
+    if not args.source_report and (args.expected_registry_sha256 or args.as_of):
+        parser.error("source report options require --source-report")
+    return args
+
+
+def _run(args: argparse.Namespace) -> int:
+    root = args.root.resolve()
+    snapshot = _snapshot_registry(root)
+    fingerprint = registry_fingerprint(snapshot)
+    if args.registry_sha256:
+        print(fingerprint)
+        return 0
+    if args.source_report and not hmac.compare_digest(fingerprint, args.expected_registry_sha256):
+        raise ValueError("registry differs from the independently supplied SHA-256")
+    rows = _registry_rows(root, snapshot)
+    errors, reviews = _validate_snapshot(root, rows)
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         print(f"FAILED: {len(errors)} adapter error(s)", file=sys.stderr)
         return 1
-    print("OK: external claim adapter integrity valid")
+    if args.source_report:
+        works, claims, evidence, _ = rows
+        report = review_report(root, works, claims, evidence, reviews, as_of=review_date(args.as_of))
+        print(json.dumps({**report, "registry_sha256": fingerprint}, sort_keys=True))
+    else:
+        print("OK: external claim adapter integrity valid")
     return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = _arguments(argv)
+    try:
+        return _run(args)
+    except (OSError, ValueError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

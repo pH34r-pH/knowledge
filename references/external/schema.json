@@ -8,7 +8,33 @@
     "workId": {"type": "string", "pattern": "^KWRK-[0-9]{6}$"},
     "claimId": {"type": "string", "pattern": "^KCLM-[0-9]{6}$"},
     "evidenceId": {"type": "string", "pattern": "^KEVD-[0-9]{6}$"},
-    "offlineLevel": {"enum": ["OFFLINE_FULL", "OFFLINE_CLAIM_EVIDENCE", "METADATA_ONLY", "ONLINE_REVALIDATION_REQUIRED"]}
+    "offlineLevel": {"enum": ["OFFLINE_FULL", "OFFLINE_CLAIM_EVIDENCE", "METADATA_ONLY", "ONLINE_REVALIDATION_REQUIRED"]},
+    "sourceReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "work_id", "trust_class", "data_class", "revision", "source_url", "local_path", "sha256", "reviewed_on", "expires_on", "status", "permitted_uses"],
+      "properties": {
+        "schema_version": {"const": 1},
+        "work_id": {"$ref": "#/$defs/workId"},
+        "trust_class": {"const": "primary"},
+        "data_class": {"const": "public"},
+        "revision": {"type": "string", "pattern": "^[0-9]{4}\\.[0-9]{4,5}v[1-9][0-9]*$"},
+        "source_url": {"type": "string", "format": "uri"},
+        "local_path": {"type": "string"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "reviewed_on": {"type": "string", "format": "date"},
+        "expires_on": {"type": "string", "format": "date"},
+        "status": {"enum": ["verified", "unconfirmed", "inaccessible", "revised", "retracted"]},
+        "permitted_uses": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "index": {"const": "bibliographic-metadata"},
+            "search": {"const": "bibliographic-metadata"}
+          }
+        }
+      }
+    }
   },
   "oneOf": [
     {
@@ -83,6 +109,7 @@
         "supersedes": {"$ref": "#/$defs/evidenceId"},
         "notes": {"type": "string"}
       }
-    }
+    },
+    {"$ref": "#/$defs/sourceReview"}
   ]
 }
