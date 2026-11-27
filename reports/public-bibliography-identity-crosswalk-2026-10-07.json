@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 331,
-    "KWRK_records_added_after_identity_checks": 251,
+    "KWRK_records_current": 341,
+    "KWRK_records_added_after_identity_checks": 261,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -27,7 +27,7 @@
     "nonpaper_source_pointers": 14,
     "unresolved_names_only": 14,
     "provisional_influence_unverified_candidates": 12,
-    "metadata_field_discrepancies": 22
+    "metadata_field_discrepancies": 23
   },
   "field_discrepancies": [
     {
@@ -51,6 +51,35 @@
                 {
                   "type": "ExternalWork",
                   "id": "KWRK-000245"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:1706.03762",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "NeurIPS 2017",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-045"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000332"
                 }
               ]
             }
@@ -679,8 +708,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "096c8a60ac63ebd7af509733928b8184574e385b6048d0570c18fc16392f15d6",
-      "record_count": 331
+      "sha256": "1584b14c6eefc19482f8b33f08c050afb1757ee1af658fdc0503576ad9d3aed2",
+      "record_count": 341
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
@@ -1203,7 +1232,12 @@
       "source_urls": [
         "https://arxiv.org/abs/1706.03762v7"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000332",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-045",
@@ -1212,9 +1246,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:1706.03762",
