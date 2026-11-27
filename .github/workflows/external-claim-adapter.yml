@@ -4,12 +4,15 @@ on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    - cron: '23 13 * * 1'
 
 permissions:
   contents: read
 
 jobs:
   offline-integrity:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,3 +33,33 @@ jobs:
         run: python tools/test_prior_art_closure_2026_10_09.py
       - name: Validate generated public bibliography identity crosswalk
         run: python tools/reconcile_public_bibliography.py --check
+
+  source-readback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check reviewed public sources
+        run: |
+          registry_sha=$(python tools/validate_external_claim_adapter.py --registry-sha256)
+          python tools/validate_external_claim_adapter.py --source-report --check-live \
+            --expected-registry-sha256 "$registry_sha" > source-readback.json
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          report = json.load(open("source-readback.json", encoding="utf-8"))
+          print("## Reviewed source health")
+          for row in report["works"]:
+              if row.get("live_check") or row["state"] != "review-required":
+                  print(f"- {row['work_id']} · {row['state']}")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: knowledge-source-readback-${{ github.sha }}
+          path: source-readback.json
+          if-no-files-found: error
+          retention-days: 14

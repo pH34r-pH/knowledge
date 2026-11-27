@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the knowledge external-claim adapter without network access."""
+"""Validate the external-claim registry and optionally read public source state."""
 from __future__ import annotations
 
 import argparse
@@ -8,10 +8,12 @@ import hmac
 import json
 import re
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 from source_admission import review_date, review_report, source_reviews
+from source_readback import read_arxiv
 
 WORK_RE = re.compile(r"^KWRK-[0-9]{6}$")
 CLAIM_RE = re.compile(r"^KCLM-[0-9]{6}$")
@@ -272,13 +274,15 @@ def _arguments(argv: list[str] | None) -> argparse.Namespace:
     modes.add_argument("--source-report", action="store_true")
     modes.add_argument("--registry-sha256", action="store_true", help="Print the exact registry identity")
     parser.add_argument("--expected-registry-sha256")
-    parser.add_argument("--as-of")
+    date_or_live = parser.add_mutually_exclusive_group()
+    date_or_live.add_argument("--as-of")
+    date_or_live.add_argument("--check-live", action="store_true")
     args = parser.parse_args(argv)
-    if args.source_report and (not args.expected_registry_sha256 or not args.as_of):
-        parser.error("--source-report requires --expected-registry-sha256 and --as-of")
+    if args.source_report and (not args.expected_registry_sha256 or not (args.as_of or args.check_live)):
+        parser.error("--source-report requires --expected-registry-sha256 and --as-of or --check-live")
     if args.source_report and not SHA256_RE.fullmatch(args.expected_registry_sha256):
         parser.error("--expected-registry-sha256 requires a lowercase SHA-256")
-    if not args.source_report and (args.expected_registry_sha256 or args.as_of):
+    if not args.source_report and (args.expected_registry_sha256 or args.as_of or args.check_live):
         parser.error("source report options require --source-report")
     return args
 
@@ -301,7 +305,11 @@ def _run(args: argparse.Namespace) -> int:
         return 1
     if args.source_report:
         works, claims, evidence, _ = rows
-        report = review_report(root, works, claims, evidence, reviews, as_of=review_date(args.as_of))
+        observed_at = datetime.now(timezone.utc) if args.check_live else None
+        as_of = observed_at.date() if observed_at else review_date(args.as_of)
+        report = review_report(root, works, claims, evidence, reviews, as_of, read_arxiv if observed_at else None)
+        if observed_at:
+            report["observed_at"] = observed_at.isoformat()
         print(json.dumps({**report, "registry_sha256": fingerprint}, sort_keys=True))
     else:
         print("OK: external claim adapter integrity valid")
