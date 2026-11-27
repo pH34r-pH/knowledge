@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 356,
-    "KWRK_records_added_after_identity_checks": 276,
+    "KWRK_records_current": 357,
+    "KWRK_records_added_after_identity_checks": 277,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -27,7 +27,7 @@
     "nonpaper_source_pointers": 14,
     "unresolved_names_only": 14,
     "provisional_influence_unverified_candidates": 12,
-    "metadata_field_discrepancies": 31
+    "metadata_field_discrepancies": 33
   },
   "field_discrepancies": [
     {
@@ -755,6 +755,76 @@
       ]
     },
     {
+      "canonical_key": "doi:10.18653/v1/2025.acl-long.338",
+      "fields": [
+        {
+          "field": "authors",
+          "variants": [
+            {
+              "value": [
+                "Xianzhen Luo",
+                "Yixuan Wang",
+                "Qingfu Zhu",
+                "Zhiming Zhang",
+                "Xuanyu Zhang",
+                "Qing Yang",
+                "Dongliang Xu",
+                "Wanxiang Che"
+              ],
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000031"
+                }
+              ]
+            },
+            {
+              "value": [
+                "Xianzhen Luo",
+                "Yixuan Wang",
+                "Qingfu Zhu (朱庆福)",
+                "Zhiming Zhang",
+                "Xuanyu Zhang",
+                "Qing Yang",
+                "Dongliang Xu"
+              ],
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000357"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        },
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ACL 2025, Volume 1: Long Papers",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000031"
+                }
+              ]
+            },
+            {
+              "value": "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000357"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
       "canonical_key": "doi:10.2307/1968482",
       "fields": [
         {
@@ -929,8 +999,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "3d656e01bc106c472cea9f1e4ddfda073fa153d83a60a90813de10796b622f7a",
-      "record_count": 356
+      "sha256": "0e5e33169e73383c6af22293b56ac918bdeb7fe38eff4d10862c831a97157141",
+      "record_count": 357
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
@@ -5014,7 +5084,7 @@
         "Leona Hioki"
       ],
       "publication_date": "2026-05-11",
-      "venue": "arXiv preprint (2026)",
+      "venue": "arXiv preprint",
       "canonical_identifiers": {
         "arxiv": "2605.10123"
       },
@@ -7082,15 +7152,14 @@
       "authors": [
         "Xianzhen Luo",
         "Yixuan Wang",
-        "Qingfu Zhu",
+        "Qingfu Zhu (朱庆福)",
         "Zhiming Zhang",
         "Xuanyu Zhang",
         "Qing Yang",
-        "Dongliang Xu",
-        "Wanxiang Che"
+        "Dongliang Xu"
       ],
       "publication_date": "2025-07",
-      "venue": "ACL 2025, Volume 1: Long Papers",
+      "venue": "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
       "canonical_identifiers": {
         "anthology": "2025.acl-long.338",
         "arxiv": "2408.08696",
@@ -7103,6 +7172,10 @@
       "work_records": [
         {
           "id": "KWRK-000031",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "KWRK-000357",
           "status": "ACTIVE"
         }
       ],
@@ -7428,7 +7501,7 @@
         "Hassler Whitney"
       ],
       "publication_date": "1936-07",
-      "venue": "Annals of Mathematics 37(3), 645–680",
+      "venue": "The Annals of Mathematics 37(3), 645",
       "canonical_identifiers": {
         "doi": "10.2307/1968482"
       },
@@ -7466,7 +7539,7 @@
         "Hassler Whitney"
       ],
       "publication_date": "1944-04",
-      "venue": "Annals of Mathematics 45(2), 220–246",
+      "venue": "The Annals of Mathematics 45(2), 220",
       "canonical_identifiers": {
         "doi": "10.2307/1969265"
       },
@@ -7504,7 +7577,7 @@
         "John Nash"
       ],
       "publication_date": "1956-01",
-      "venue": "Annals of Mathematics 63(1), 20–63",
+      "venue": "The Annals of Mathematics 63(1), 20",
       "canonical_identifiers": {
         "doi": "10.2307/1969989"
       },

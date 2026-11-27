@@ -123,8 +123,13 @@ class ResearchIntakeTests(unittest.TestCase):
         self.assertEqual(self.by_id["KWRK-000076"]["canonical_identifiers"]["github"], "tilde-research/momoe-release")
 
     def _assert_alias_successor(self, work: dict, previous: dict, field: str) -> None:
-        self.assertIn(field, ("arxiv", "doi", "pmlr"), f"{field} alias duplicated by {work['id']} and {previous['id']}")
+        self.assertIn(field, ("arxiv", "doi", "pmlr", "anthology"), f"{field} alias duplicated by {work['id']} and {previous['id']}")
         self.assertEqual(work.get("supersedes"), previous["id"])
+        if field == "anthology":
+            self.assertEqual(work["source_url"], previous["source_url"])
+            identifier = anthology_id(work["source_url"])
+            self.assertEqual(work["canonical_identifiers"]["doi"], f"10.18653/v1/{identifier.lower()}")
+            self.assertEqual(work["canonical_identifiers"]["doi"], previous["canonical_identifiers"]["doi"])
         if field != "arxiv":
             return
         prior = ARXIV_VERSION.search(previous["source_url"])
