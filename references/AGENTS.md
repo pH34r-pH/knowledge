@@ -60,6 +60,19 @@ metadata and withholds the approved index and search scopes when the identity
 changes or the page reports a revision, erratum, editorial note, removal, or
 retraction. [ACL Anthology corrections](https://aclanthology.org/info/corrections/)
 
+Use `pmlr-bibliographic-metadata` for a registered Proceedings of Machine
+Learning Research paper page. Match the publisher's volume, paper ID, ordered
+authors, title, publication date at the Work's precision, and supported venue
+format. The review retains the publisher's exact date and page range. The
+conference year and the publisher's publication date are separate fields.
+
+At admission, confirm the publisher PDF corresponds to the paper. The retained
+metadata pins the exact publisher PDF URL and SHA-256. Live checks fetch the
+canonical paper page and hash the corresponding PDF without storing its bytes.
+PDF replacement, a withdrawal title, or changed citation fields suppress the
+review's metadata permissions. The check covers the reviewed publisher copy and
+its citation fields. [PMLR corrections](https://proceedings.mlr.press/faq)
+
 arXiv metadata reviews use schema version 2 and the
 `arxiv-bibliographic-metadata` source kind. Retain a canonical JSON snapshot
 of the title, ordered authors, publication date, venue, and exact arXiv
@@ -85,12 +98,12 @@ python tools/validate_external_claim_adapter.py --source-report \
 ```
 
 The report checks retained source identities and identifies affected claims,
-evidence, and corpus articles with matching arXiv and DOI citations. Old dispositions
+evidence, and corpus articles with matching arXiv, DOI, and PMLR citations. Old dispositions
 remain in the registry. Expiry and reported source changes require renewed
 review. Passage text and source notes remain evidence. Publication, model
 augmentation, and training have separate approval paths.
 
-`citation_coverage` lists explicit arXiv and DOI links in current corpus
+`citation_coverage` lists explicit arXiv, DOI, and PMLR links in current corpus
 articles by normalized identifier. Each row includes the citing paths and
 registered Work IDs. Review links with no Work, only historical matches, or
 more than one active match before using them. An active Work match establishes

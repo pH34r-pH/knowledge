@@ -17,7 +17,7 @@ from source_admission import reviewed_freshness
 from source_readback import (
     ACL_KIND, ACL_ORIGINAL, acl_anthology_metadata, read_acl_anthology,
     ARXIV_KIND, CROSSREF_JOURNAL_KIND, CROSSREF_KIND, crossref_metadata, crossref_url, metadata_bytes,
-    read_arxiv, read_crossref, read_sources,
+    PMLR, PMLR_KIND, PMLR_REVISION, pmlr_metadata, read_arxiv, read_crossref, read_pmlr, read_sources,
 )
 from validate_external_claim_adapter import REGISTRY_FILES, SOURCE_REVIEWS, main, registry_fingerprint, validate_adapter
 
@@ -705,6 +705,85 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         result = read_acl_anthology({"source_url": "https://aclanthology.org.example/2025.findings-acl.1/"},
                                    read=unexpected_read)
         self.assertEqual(result["state"], "unconfirmed")
+
+    def _pmlr_fixture(self, root: Path) -> tuple[dict, dict[str, bytes]]:
+        work = self._source_fixture(root)
+        identifier = "v501/sample26a"
+        url = f"{PMLR}{identifier}.html"
+        pdf_url = f"{PMLR}{identifier}/sample26a.pdf"
+        venue = "Proceedings of the 43rd International Conference on Machine Learning"
+        work.update(source_url=url, canonical_identifiers={"pmlr": identifier},
+                    venue="ICML 2026, PMLR 501:11–20", publication_date="2026-09")
+        citation = [
+            ("title", work["title"]), ("author", work["authors"][0]), ("publisher", "PMLR"),
+            ("abstract_html_url", url), ("publication_date", "2026/09/29"),
+            ("pdf_url", pdf_url), ("firstpage", "11"), ("lastpage", "20"),
+        ]
+        tags = "".join(f'<meta name="citation_{key}" content="{value}">' for key, value in citation)
+        page = (f'<head>{tags}</head><body><div id="info"><i>{venue}</i>,'
+                '&nbsp;PMLR 501:11-20,&nbsp;2026.</div></body>').encode()
+        responses = {url: page, pdf_url: b"%PDF-1.7\nsynthetic paper bytes\n%%EOF\n"}
+        record = pmlr_metadata(url, lambda endpoint, _: responses[endpoint])
+        evidence = root / "governance/source-evidence/KWRK-000001.json"
+        evidence.parent.mkdir()
+        evidence.write_bytes(metadata_bytes(record))
+        work["source_review"].update(
+            schema_version=2, source_kind=PMLR_KIND, source_url=url, revision=PMLR_REVISION,
+            local_path=evidence.relative_to(root).as_posix(), sha256=hashlib.sha256(evidence.read_bytes()).hexdigest(),
+        )
+        (root / "corpus/ml-techniques/sample.md").write_text(f"[Source]({url})\n", encoding="utf-8")
+        self._write_source_fixture(root, work)
+        return work, responses
+
+    def test_pmlr_review_matches_work_precision_and_expires_with_dependency_impact(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work, _ = self._pmlr_fixture(root)
+        for work_date, date, expected in (
+            ("2026", "2026-11-26", "verified"),
+            ("2026-09", "2026-11-26", "verified"),
+            ("2026-09-29", "2026-11-26", "verified"),
+            ("2026-07", "2026-11-26", "identity-mismatch"),
+            ("2026-09", "2026-12-26", "expired"),
+        ):
+            with self.subTest(work_date=work_date, date=date):
+                work["publication_date"] = work_date
+                self._write_source_fixture(root, work)
+                status, output = self._report(root, date)
+                self.assertEqual(status, 0, output)
+                report = json.loads(output)
+                row, = report["works"]
+                self.assertEqual(row["state"], expected)
+                self.assertEqual(bool(row["permitted_uses"]), expected == "verified")
+                item, = report["citation_coverage"]["citations"]
+                self.assertEqual((item["kind"], item["state"]), ("pmlr", "active-work"))
+                if expected != "verified":
+                    self.assertEqual(row["claims_for_review"], ["KCLM-000001"])
+                    self.assertEqual(row["documents_for_review"], ["corpus/ml-techniques/sample.md"])
+
+    def test_pmlr_readback_detects_pdf_replacement_and_citation_changes(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work, responses = self._pmlr_fixture(root)
+        review = work["source_review"]
+        url, pdf_url = responses
+        page, pdf = responses[url], responses[pdf_url]
+        for document, body, state in (
+            (page, pdf, "verified"),
+            (page, pdf.replace(b"paper", b"edited"), "identity-mismatch"),
+            (page, b"%PDF-1.7\nbroken download", "unconfirmed"),
+            (page.replace(b"2026/09/29", b"2026/09/27"), pdf, "identity-mismatch"),
+            (page.replace(b"501:11-20", b"501:11-19"), pdf, "identity-mismatch"),
+            (page.replace(b"Synthetic validation work", b"Retracted: Synthetic validation work"), pdf, "retracted"),
+            (page.replace(pdf_url.encode(), f"{PMLR}v502/another/another.pdf".encode()), pdf, "identity-mismatch"),
+        ):
+            with self.subTest(state=state):
+                replies = {url: document, pdf_url: body}
+                observed = read_sources([review], lambda endpoint, _: replies[endpoint])
+                self.assertEqual(observed[work["id"]]["state"], state)
+        rejected = read_pmlr({"source_url": url.replace("mlr.press", "mlr.press.example")},
+                             lambda *_: self.fail("noncanonical publisher reached the fetcher"))
+        self.assertEqual(rejected["state"], "unconfirmed")
 
     def test_empty_registry_is_valid(self) -> None:
         temp, root = self._root()
