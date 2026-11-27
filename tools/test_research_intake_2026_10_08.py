@@ -2,6 +2,7 @@
 """Validate the 2026-10-08 public research intake and registry links."""
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import unittest
@@ -43,8 +44,14 @@ class ResearchIntakeTests(unittest.TestCase):
             "accepted_claims_added": 0,
         })
         self.assertEqual(len(self.intake), 47)
-        self.assertEqual(len(read_jsonl(EXTERNAL / "claims.jsonl")), 26)
-        self.assertEqual(len(read_jsonl(EXTERNAL / "evidence.jsonl")), 26)
+        historical_prefixes = {
+            "claims.jsonl": "376faf391ddbe227e6c52c7dcb6ec98249050de14bf9925b79428792c2614442",
+            "evidence.jsonl": "8109d52759db87f6a72846f9e6a63329dd60e0a5ab2d4f540d8e8b20522516ad",
+        }
+        for name, expected in historical_prefixes.items():
+            # The intake owned these bytes. Later append-only corrections have their own scope.
+            lines = (EXTERNAL / name).read_bytes().replace(b"\r\n", b"\n").splitlines(keepends=True)
+            self.assertEqual(hashlib.sha256(b"".join(lines[:26])).hexdigest(), expected)
         self.assertFalse(self.audit["semantic_boundaries"]["articles_added"])
         self.assertFalse(self.audit["semantic_boundaries"]["research_findings_added_to_articles"])
         self.assertFalse(self.audit["semantic_boundaries"]["adoption_relationships_asserted"])

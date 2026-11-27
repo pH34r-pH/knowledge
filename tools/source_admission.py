@@ -426,10 +426,13 @@ def review_report(
 ) -> dict:
     """Report source states and use exclusions without rewriting historical records."""
     targets = {row["supersedes"] for row in works if row.get("status") == "ACTIVE" and row.get("supersedes")}
+    superseded_claims = {row["supersedes"] for row in claims
+                         if row.get("status") == "ACCEPTED" and row.get("supersedes")}
     claims_by_work: dict[str, list[str]] = {}
     evidence_by_claim: dict[str, list[str]] = {}
     for claim in claims:
-        claims_by_work.setdefault(claim["work_id"], []).append(claim["id"])
+        if claim["id"] not in superseded_claims:
+            claims_by_work.setdefault(claim["work_id"], []).append(claim["id"])
     for item in evidence:
         evidence_by_claim.setdefault(item["claim_id"], []).append(item["id"])
     citations, revisions = _corpus_citations(root)

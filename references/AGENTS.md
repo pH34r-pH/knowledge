@@ -103,6 +103,12 @@ the arXiv identity, version, withdrawal notice, and exact PDF digest, or the
 Crossref deposit, bibliographic fields, and editorial notices. A failed or unconfirmed check suppresses
 the use map and lists the affected claims, evidence, and corpus articles.
 
+Use an explicit accepted claim successor to bind an unchanged audited
+proposition to a corrected Work. Record the source readback and original
+audit in the successor evidence. The impact report follows the accepted
+successor if the corrected Work later needs review. A pending successor
+keeps the original claim in scope.
+
 The public workflow saves a readback report on pushes, pull requests, and
 weekly. Its registry hash identifies the scanned checkout. Consumers supply
 their own admitted registry pin before relying on the use decisions.

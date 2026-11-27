@@ -280,6 +280,36 @@ class ExternalClaimAdapterTests(unittest.TestCase):
                 self.assertEqual(citation["active_work_ids"], expected)
                 self.assertEqual(citation["work_ids"], sorted(row["id"] for row in rows))
 
+    def test_source_impact_follows_accepted_claim_supersession(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        old_work = _base_work()
+        new_work = {**old_work, "id": "KWRK-000002", "supersedes": old_work["id"]}
+        original = _base_claim()
+        new_claim = {**original, "id": "KCLM-000002", "work_id": new_work["id"],
+                     "supersedes": original["id"]}
+        passed = dict.fromkeys(("resolution", "support_span", "liveness", "entailment"), "PASSED")
+        evidence = [{**item, "status": "ACCEPTED", "audit": passed}
+                    for item in (_base_evidence(), _base_evidence("KEVD-000002", new_claim["id"]))]
+        registry = root / "references/external"
+        _write_jsonl(registry / "works.jsonl", [old_work, new_work])
+        _write_jsonl(registry / "evidence.jsonl", evidence)
+        _write_jsonl(root / SOURCE_REVIEWS, [])
+        for status in ("PENDING", "ACCEPTED"):
+            with self.subTest(status=status):
+                _write_jsonl(registry / "claims.jsonl", [original, {**new_claim, "status": status}])
+                code, output = self._report(root, "2026-11-27")
+                self.assertEqual(code, 0, output)
+                previous, successor = json.loads(output)["works"]
+                self.assertEqual(previous["state"], "superseded")
+                self.assertEqual(previous["claims_for_review"],
+                                 [original["id"]] if status == "PENDING" else [])
+                self.assertEqual(previous["evidence_for_review"],
+                                 [evidence[0]["id"]] if status == "PENDING" else [])
+                self.assertEqual(successor["state"], "review-required")
+                self.assertEqual(successor["claims_for_review"], [new_claim["id"]])
+                self.assertEqual(successor["evidence_for_review"], [evidence[1]["id"]])
+
     def test_live_source_change_revokes_uses_and_keeps_historical_registry_intact(self) -> None:
         temp, root = self._root()
         self.addCleanup(temp.cleanup)
