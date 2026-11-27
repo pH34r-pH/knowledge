@@ -165,6 +165,15 @@ class ResearchIntakeTests(unittest.TestCase):
                 self.assertEqual(current["canonical_identifiers"], {"doi": old["canonical_identifiers"]["doi"].lower()})
                 self.assertEqual(current["authors"], old["authors"])
 
+    def test_crossref_initials_do_not_replace_historical_author_names(self) -> None:
+        for old_id, new_id in (("KWRK-000220", "KWRK-000369"), ("KWRK-000226", "KWRK-000370")):
+            with self.subTest(work=old_id):
+                old, current = self.by_id[old_id], self.by_id[new_id]
+                self.assertEqual(current["supersedes"], old_id)
+                self.assertNotEqual(old["authors"], current["authors"])
+                self.assertEqual(current["canonical_identifiers"]["doi"], old["canonical_identifiers"]["doi"].lower())
+                self.assertEqual(len(old["authors"]), len(current["authors"]))
+
     def _assert_alias_successor(self, work: dict, previous: dict, field: str) -> None:
         self.assertIn(field, ("arxiv", "doi", "pmlr", "anthology"), f"{field} alias duplicated by {work['id']} and {previous['id']}")
         self.assertEqual(work.get("supersedes"), previous["id"])
