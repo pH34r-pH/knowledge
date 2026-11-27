@@ -10,14 +10,15 @@ import unittest
 from contextlib import redirect_stderr, redirect_stdout
 from datetime import datetime, timezone
 from pathlib import Path
-from unittest.mock import patch
-from urllib.error import HTTPError
+from ssl import SSLCertVerificationError
+from unittest.mock import Mock, call, patch
+from urllib.error import HTTPError, URLError
 
 from source_admission import reviewed_freshness
 from source_readback import (
     ACL_KIND, ACL_ORIGINAL, acl_anthology_metadata, read_acl_anthology,
     ARXIV_KIND, CROSSREF_JOURNAL_KIND, CROSSREF_KIND, crossref_metadata, crossref_url, metadata_bytes,
-    PMLR, PMLR_KIND, PMLR_REVISION, pmlr_metadata, read_arxiv, read_crossref, read_pmlr, read_sources,
+    PMLR, PMLR_KIND, PMLR_REVISION, _arxiv_catalog, pmlr_metadata, read_arxiv, read_crossref, read_pmlr, read_sources,
 )
 from validate_external_claim_adapter import REGISTRY_FILES, SOURCE_REVIEWS, main, registry_fingerprint, validate_adapter
 
@@ -519,6 +520,59 @@ class ExternalClaimAdapterTests(unittest.TestCase):
                     fetch.assert_called_once_with(url, 1024 * 1024)
                 self.assertEqual((result["A"]["state"], result["B"]["state"]), states)
                 self.assertNotIn("asks for publication", json.dumps(result))
+
+    @staticmethod
+    def arxiv_batch(identifier):
+        return f'''<feed xmlns="http://www.w3.org/2005/Atom">
+          <entry><id>https://arxiv.org/abs/{identifier}v2</id><title>Synthetic title</title>
+          <published>2026-01-01T12:00:00Z</published><author><name>Test Author</name></author></entry>
+          </feed>'''.encode()
+
+    def test_arxiv_retries_one_temporary_failure_and_keeps_spacing_between_batches(self) -> None:
+        first, second = "2601.00001", "2601.00002"
+        response = io.BytesIO()
+        for failure in (URLError(TimeoutError()), HTTPError("", 503, "", {}, response), ConnectionResetError()):
+            with self.subTest(failure=type(failure)), patch("source_readback.ARXIV_BATCH_SIZE", 1), \
+                    patch("source_readback.sleep") as wait:
+                read = Mock(side_effect=[failure, self.arxiv_batch(first), self.arxiv_batch(second)])
+                observed = _arxiv_catalog([first, second], read)
+                self.assertEqual(set(observed), {first, second})
+                self.assertEqual(observed[first]["metadata"]["revision"], first + "v2")
+                self.assertEqual(observed[second]["metadata"]["revision"], second + "v2")
+                self.assertEqual(read.call_args_list[0], read.call_args_list[1])
+                self.assertNotEqual(read.call_args_list[1], read.call_args_list[2])
+                self.assertEqual(wait.call_args_list, [call(3), call(3)])
+        self.assertTrue(response.closed)
+
+    def test_arxiv_quits_requests_after_throttling_or_publisher_pause(self) -> None:
+        first, second = "2601.00001", "2601.00002"
+        for code, headers in ((429, {}), (503, {"Retry-After": "90"})):
+            with self.subTest(code=code), patch("source_readback.ARXIV_BATCH_SIZE", 1), \
+                    patch("source_readback.sleep") as wait:
+                read = Mock(side_effect=HTTPError("", code, "", headers, None))
+                observed = _arxiv_catalog([first, second], read)
+                read.assert_called_once()
+                wait.assert_not_called()
+                self.assertEqual(observed[first], {"state": "unconfirmed", "reason": f"publisher returned HTTP {code}"})
+                self.assertEqual(observed[second], {"state": "unconfirmed", "reason": "arXiv deferred further batch requests"})
+
+    def test_arxiv_failure_never_grants_use_or_retries_invalid_identity_evidence(self) -> None:
+        identifier = "2601.00001"
+        for payloads, state, sleeps in (
+            ([TimeoutError(), TimeoutError()], "unconfirmed", [call(3)]),
+            ([HTTPError("", 404, "", {}, None)], "inaccessible", []),
+            ([URLError(SSLCertVerificationError())], "unconfirmed", []),
+            ([SSLCertVerificationError()], "unconfirmed", []),
+            ([self.arxiv_batch("2601.00002")], "unconfirmed", []),
+            ([b"<feed"], "unconfirmed", []),
+        ):
+            with self.subTest(payloads=payloads), patch("source_readback.sleep") as wait:
+                read = Mock(side_effect=payloads)
+                observed = _arxiv_catalog([identifier], read)
+                self.assertEqual(observed[identifier]["state"], state)
+                self.assertNotIn("metadata", observed[identifier])
+                self.assertEqual(read.call_count, len(payloads))
+                self.assertEqual(wait.call_args_list, sleeps)
 
     def test_crossref_snapshot_must_match_the_registered_work(self) -> None:
         temp, root = self._root()

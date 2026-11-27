@@ -84,7 +84,11 @@ original venue field remains part of the historical Work record.
 
 Live readback batches canonical modern and historical arXiv identifiers
 through the publisher's Atom API and reports withdrawals, revised versions,
-and metadata changes. This profile supports approved bibliographic indexing
+and metadata changes. An eligible transport or temporary service failure
+gets one retry on the same batch. Requests stay sequential with at least
+three seconds between them. Rate limiting or a publisher request to wait
+defers remaining batches in that run. Unconfirmed sources require review.
+This profile supports approved bibliographic indexing
 and search. [arXiv identifiers](https://info.arxiv.org/help/arxiv_identifier.html) · [arXiv API terms](https://info.arxiv.org/help/api/tou.html)
 
 Obtain the registry SHA-256 from an independently reviewed checkout using

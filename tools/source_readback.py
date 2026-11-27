@@ -8,6 +8,7 @@ import unicodedata
 from datetime import date, datetime
 from html.parser import HTMLParser
 from http.client import HTTPException
+from ssl import SSLError
 from time import sleep
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, unquote, urlencode
@@ -26,6 +27,9 @@ ARXIV_API = "https://export.arxiv.org/api/query?"
 ARXIV_KIND = "arxiv-bibliographic-metadata"
 ARXIV_FIELDS = {"arxiv", "title", "authors", "publication_date", "venue", "revision"}
 ARXIV_BATCH_SIZE = 64
+ARXIV_REQUEST_GAP = 3
+ARXIV_RETRY_STATUSES = {408, 500, 502, 503, 504}
+ARXIV_TRANSPORT_ERRORS = (URLError, HTTPException, TimeoutError, ConnectionError, SSLError)
 ATOM_NAMES = {"a": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom"}
 WITHDRAWAL = re.compile(
     r"(?:withdrawn\b|(?:this|the) (?:paper|article|submission|manuscript|work) "
@@ -54,6 +58,9 @@ PMLR_FIELDS = {
 
 class Unavailable(Exception):
     """The pinned publisher did not return source evidence."""
+
+
+ARXIV_READ_ERRORS = ARXIV_TRANSPORT_ERRORS + (Unavailable, ValueError, ElementTree.ParseError)
 
 
 class SourceFinding(ValueError):
@@ -465,18 +472,43 @@ def arxiv_atom_catalog(raw: bytes, identifiers: set[str]) -> dict[str, dict]:
     return catalog
 
 
+def _arxiv_requests_deferred(exc: HTTPError) -> bool:
+    return exc.code == 429 or (exc.headers is not None and bool(exc.headers.get("Retry-After")))
+
+
+def _read_arxiv_batch(url: str, read) -> bytes:
+    try:
+        return read(url, 1024 * 1024)
+    except ARXIV_TRANSPORT_ERRORS as exc:
+        if isinstance(exc, HTTPError):
+            if exc.code not in ARXIV_RETRY_STATUSES or _arxiv_requests_deferred(exc):
+                raise
+            exc.close()
+        elif isinstance(exc, SSLError) or (isinstance(exc, URLError) and isinstance(exc.reason, SSLError)):
+            raise
+        sleep(ARXIV_REQUEST_GAP)
+        return read(url, 1024 * 1024)
+
+
 def _arxiv_catalog(identifiers: list[str], read) -> dict[str, dict]:
     catalog = {}
     for first in range(0, len(identifiers), ARXIV_BATCH_SIZE):
         if first:
-            sleep(3)
+            sleep(ARXIV_REQUEST_GAP)
         batch = identifiers[first:first + ARXIV_BATCH_SIZE]
         query = urlencode({"id_list": ",".join(batch), "max_results": len(batch)}, safe=",")
         try:
-            catalog.update(arxiv_atom_catalog(read(ARXIV_API + query, 1024 * 1024), set(batch)))
+            raw = _read_arxiv_batch(ARXIV_API + query, read)
+            catalog.update(arxiv_atom_catalog(raw, set(batch)))
         except HTTPError as exc:
+            exc.close()
             catalog.update(dict.fromkeys(batch, _http_failure(exc)))
-        except (ValueError, ElementTree.ParseError, URLError, HTTPException, TimeoutError, Unavailable):
+            if _arxiv_requests_deferred(exc):
+                catalog.update(dict.fromkeys(identifiers[first + len(batch):], {
+                    "state": "unconfirmed", "reason": "arXiv deferred further batch requests",
+                }))
+                break
+        except ARXIV_READ_ERRORS:
             catalog.update(dict.fromkeys(batch, {"state": "unconfirmed", "reason": "arXiv Atom readback failed"}))
     return catalog
 
