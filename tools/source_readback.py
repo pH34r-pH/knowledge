@@ -34,6 +34,9 @@ WITHDRAWAL = re.compile(
 CROSSREF = "https://api.crossref.org/works/"
 CROSSREF_FIELDS = {"doi", "title", "authors", "publication_date", "venue", "revision"}
 CROSSREF_KIND = "crossref-bibliographic-metadata"
+CROSSREF_JOURNAL_KIND = "crossref-journal-bibliographic-metadata"
+CROSSREF_KINDS = (CROSSREF_KIND, CROSSREF_JOURNAL_KIND)
+JOURNAL_LOCATOR_FIELDS = ("volume", "issue", "page", "article-number")
 
 
 class Unavailable(Exception):
@@ -106,7 +109,7 @@ def _publication_date(work: dict) -> str:
     return exact.isoformat()[:{1: 4, 2: 7, 3: 10}[len(parts)]]
 
 
-def crossref_metadata(raw: bytes, doi: str) -> dict:
+def crossref_metadata(raw: bytes, doi: str, *, journal_locator: bool = False) -> dict:
     """Project the bibliographic data covered by a Crossref source review."""
     response = json.loads(raw)
     work = response["message"]
@@ -122,9 +125,40 @@ def crossref_metadata(raw: bytes, doi: str) -> dict:
                for author in work["author"]]
     if not title or not authors or not all(authors):
         raise ValueError("Crossref record lacks bibliographic metadata")
-    return {"doi": doi, "title": title, "authors": authors, "publication_date": _publication_date(work),
-            "venue": work.get("container-title", [""])[0],
-            "revision": crossref_revision(work["deposited"]["date-time"])}
+    metadata = {
+        "doi": doi, "title": title, "authors": authors, "publication_date": _publication_date(work),
+        "venue": _container_title(work),
+        "revision": crossref_revision(work["deposited"]["date-time"]),
+    }
+    if journal_locator:
+        metadata["journal_locator"] = _journal_locator(work, metadata["venue"])
+    return metadata
+
+
+def _container_title(work: dict) -> str:
+    titles = work.get("container-title", [])
+    if not isinstance(titles, list) or not all(isinstance(name, str) for name in titles):
+        raise ValueError("Crossref container titles must be strings")
+    return titles[0] if titles else ""
+
+
+def _journal_locator(work: dict, venue: str) -> dict[str, str]:
+    if work.get("type") != "journal-article" or not venue.strip():
+        raise ValueError("A Crossref journal citation needs a named journal article")
+    locator = {field: work[field] for field in JOURNAL_LOCATOR_FIELDS if field in work}
+    if not valid_journal_locator(locator):
+        raise ValueError("Crossref journal metadata lacks a supported article locator")
+    return locator
+
+
+def valid_journal_locator(locator: object) -> bool:
+    if not isinstance(locator, dict) or not set(locator) <= set(JOURNAL_LOCATOR_FIELDS):
+        return False
+    return (
+        "volume" in locator and ("page" in locator or "article-number" in locator)
+        and all(isinstance(value, str) and re.fullmatch(r"[0-9A-Za-z][-0-9A-Za-z.\u2013]{0,39}", value)
+                for value in locator.values())
+    )
 
 
 def metadata_bytes(metadata: dict) -> bytes:
@@ -146,7 +180,9 @@ def read_crossref(review: dict, read=fetch) -> dict:
         doi = unquote(url.removeprefix(CROSSREF))
         if url != crossref_url(doi):
             return {"state": "unconfirmed", "reason": "invalid pinned Crossref URL"}
-        metadata = crossref_metadata(read(url, 512 * 1024), doi)
+        metadata = crossref_metadata(
+            read(url, 512 * 1024), doi, journal_locator=review.get("source_kind") == CROSSREF_JOURNAL_KIND,
+        )
     except SourceFinding as exc:
         return {"state": exc.state, "reason": str(exc)}
     except HTTPError as exc:
@@ -266,7 +302,7 @@ def read_sources(reviews: list[dict], read=fetch) -> dict[str, dict]:
             item = catalog.get(arxiv_ids[work_id],
                                {"state": "unconfirmed", "reason": "arXiv entry is missing"})
             observation = _metadata_observation(review, item["metadata"]) if "metadata" in item else item
-        elif review.get("source_kind") == CROSSREF_KIND:
+        elif review.get("source_kind") in CROSSREF_KINDS:
             observation = read_crossref(review, read=read)
         else:
             observation = read_arxiv(review, read=read)
