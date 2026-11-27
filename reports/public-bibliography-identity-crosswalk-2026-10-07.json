@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 242,
-    "KWRK_records_added_after_identity_checks": 162,
+    "KWRK_records_current": 331,
+    "KWRK_records_added_after_identity_checks": 251,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -27,9 +27,299 @@
     "nonpaper_source_pointers": 14,
     "unresolved_names_only": 14,
     "provisional_influence_unverified_candidates": 12,
-    "metadata_field_discrepancies": 1
+    "metadata_field_discrepancies": 22
   },
   "field_discrepancies": [
+    {
+      "canonical_key": "arxiv:1603.01025",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "arXiv preprint (2016)",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-044"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000245"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:1909.01377",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "NeurIPS 2019",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-017"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000250"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:1909.11942",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ICLR 2020",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-016"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000251"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2104.09864",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "Neurocomputing 2024",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-010"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000262"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2105.13626",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "TACL 2022",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-002"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000263"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2106.04392",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "AAAI 2022",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-007"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000264"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2106.12672",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ICLR 2022",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-003"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000267"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2305.07185",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "NeurIPS 2023",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-004"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000279"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2305.13245",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "arXiv preprint (2023)",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-048"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000281"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2305.19534",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ICML 2023",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-018"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000285"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
     {
       "canonical_key": "arxiv:2410.01131",
       "fields": [
@@ -58,6 +348,320 @@
           "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
         }
       ]
+    },
+    {
+      "canonical_key": "arxiv:2412.09871",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ICLR 2025",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-005"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000306"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2502.11646",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ICML 2025",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-014"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000310"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2511.17388",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ICLR 2026",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-011"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000319"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2605.10123",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "arXiv preprint (2026)",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-009"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000328"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:2608.10010",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "arXiv preprint (2026)",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-043"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000330"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "doi:10.1007/s11265-020-01557-8",
+      "fields": [
+        {
+          "field": "publication_date",
+          "variants": [
+            {
+              "value": "2020",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-068"
+                }
+              ]
+            },
+            {
+              "value": "2020-07-20",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000331"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        },
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "Journal of Signal Processing Systems 92 (2020)",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-068"
+                }
+              ]
+            },
+            {
+              "value": "Journal of Signal Processing Systems",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000331"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "doi:10.1109/icassp40776.2020.9054008",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ICASSP 2020",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-006"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000252"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "doi:10.1109/icassp49357.2023.10095349",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "ICASSP 2023",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-008"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000286"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "doi:10.1109/jproc.2022.3209104",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "Proceedings of the IEEE 2022",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-019"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000265"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "doi:10.1162/tacl_a_00448",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "TACL 2022",
+              "sources": [
+                {
+                  "type": "public_audit_record",
+                  "id": "dsl-pub-001"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000259"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
     }
   ],
   "semantic_boundaries": {
@@ -75,8 +679,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "a513d3512e8367ac12de1b8643a23a9a9967e7fd76ad0e1049b260d6d19a1fae",
-      "record_count": 242
+      "sha256": "096c8a60ac63ebd7af509733928b8184574e385b6048d0570c18fc16392f15d6",
+      "record_count": 331
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
@@ -343,7 +947,12 @@
       "source_urls": [
         "https://arxiv.org/abs/1603.01025v2"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000245",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-044",
@@ -352,9 +961,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "technical report"
+        "technical report",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:1603.01025",
@@ -913,7 +1523,12 @@
       "source_urls": [
         "https://arxiv.org/abs/1909.01377v2"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000250",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-017",
@@ -922,9 +1537,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:1909.01377",
@@ -954,7 +1570,12 @@
       "source_urls": [
         "https://arxiv.org/abs/1909.11942v6"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000251",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-016",
@@ -963,9 +1584,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:1909.11942",
@@ -1346,7 +1968,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2104.09864v5"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000262",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-010",
@@ -1355,9 +1982,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "journal article"
+        "journal article",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2104.09864",
@@ -1389,7 +2017,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2105.13626v3"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000263",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-002",
@@ -1398,9 +2031,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "journal article"
+        "journal article",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2105.13626",
@@ -1469,7 +2103,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2106.04392v2"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000264",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-007",
@@ -1478,9 +2117,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2106.04392",
@@ -1514,7 +2154,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2106.12672v3"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000267",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-003",
@@ -1523,9 +2168,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2106.12672",
@@ -2180,7 +2826,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2305.07185v2"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000279",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-004",
@@ -2189,9 +2840,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2305.07185",
@@ -2300,7 +2952,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2305.13245v3"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000281",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-048",
@@ -2309,9 +2966,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "technical report"
+        "technical report",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2305.13245",
@@ -2370,7 +3028,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2305.19534v1"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000285",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-018",
@@ -2379,9 +3042,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2305.19534",
@@ -3188,7 +3852,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2412.09871v1"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000306",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-005",
@@ -3197,9 +3866,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2412.09871",
@@ -3384,7 +4054,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2502.11646v3"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000310",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-014",
@@ -3393,9 +4068,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2502.11646",
@@ -3718,7 +4394,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2511.17388v3"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000319",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-011",
@@ -3727,9 +4408,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2511.17388",
@@ -4081,7 +4763,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2605.10123v2"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000328",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-009",
@@ -4090,9 +4777,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "technical report"
+        "technical report",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2605.10123",
@@ -4343,7 +5031,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2608.10010v2"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000330",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-043",
@@ -4352,9 +5045,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "technical report"
+        "technical report",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2608.10010",
@@ -5086,7 +5780,12 @@
       "source_urls": [
         "https://doi.org/10.1007/s11265-020-01557-8"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000331",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-068",
@@ -5095,9 +5794,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "journal article"
+        "journal article",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "doi:10.1007/s11265-020-01557-8",
@@ -5410,7 +6110,12 @@
       "source_urls": [
         "https://arxiv.org/abs/1910.10202v2"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000252",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-006",
@@ -5419,9 +6124,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:1910.10202",
@@ -5449,7 +6155,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2306.09827v1"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000286",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-008",
@@ -5458,9 +6169,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "proceedings paper"
+        "proceedings paper",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2306.09827",
@@ -5497,7 +6209,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2106.05268v2"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000265",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-019",
@@ -5506,9 +6223,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "journal article"
+        "journal article",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2106.05268",
@@ -5801,7 +6519,12 @@
       "source_urls": [
         "https://arxiv.org/abs/2103.06874v4"
       ],
-      "work_records": [],
+      "work_records": [
+        {
+          "id": "KWRK-000259",
+          "status": "ACTIVE"
+        }
+      ],
       "public_audit_records": [
         {
           "id": "dsl-pub-001",
@@ -5810,9 +6533,10 @@
       ],
       "supplemental_statuses": [],
       "source_kinds": [
-        "journal article"
+        "journal article",
+        "work"
       ],
-      "identity_status": "recorded_in_public_audit",
+      "identity_status": "recorded_in_works_and_audit",
       "adoption_status": "not_asserted",
       "deduplication_aliases": [
         "arxiv:2103.06874",
