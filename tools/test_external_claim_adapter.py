@@ -344,6 +344,47 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         self.assertIn("KWRK-000001: arXiv metadata review requires the registered Work's pinned version",
                       validate_adapter(root))
 
+    def test_legacy_arxiv_snapshot_carries_only_the_publisher_venue(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        work["canonical_identifiers"] = {"arxiv": "math/0605419"}
+        work["source_url"] = "https://arxiv.org/pdf/math/0605419v1"
+        work["publication_date"] = "2006-05-23"
+        article = root / "corpus/ml-techniques/sample.md"
+        article.write_text("[Legacy source](https://arxiv.org/abs/math/0605419v1)\n", encoding="utf-8")
+        evidence = root / "governance/source-evidence/KWRK-000001.json"
+        evidence.parent.mkdir()
+        review = work["source_review"]
+        review.update({"schema_version": 2, "source_kind": ARXIV_KIND, "revision": "math/0605419v1",
+                       "source_url": "https://arxiv.org/abs/math/0605419v1",
+                       "local_path": evidence.relative_to(root).as_posix()})
+        record = {"arxiv": "math/0605419", "revision": review["revision"],
+                  **{key: work[key] for key in ("title", "authors", "publication_date")}}
+        for registered, publisher, expected in (
+            (None, "arXiv preprint", "verified"), ("", "arXiv preprint", "verified"),
+            ("Other venue", "arXiv preprint", "identity-mismatch"),
+            (None, "Invented venue", "identity-mismatch"),
+        ):
+            with self.subTest(registered=registered, publisher=publisher):
+                work["venue"] = registered
+                raw = metadata_bytes({**record, "venue": publisher})
+                evidence.write_bytes(raw)
+                review["sha256"] = hashlib.sha256(raw).hexdigest()
+                self._write_source_fixture(root, work)
+                code, output = self._report(root, "2026-11-26")
+                self.assertEqual(code, 0, output)
+                report = json.loads(output)
+                row, = report["works"]
+                self.assertEqual(row["state"], expected)
+                self.assertEqual(report["citation_coverage"]["by_state"], {"active-work": 1})
+                self.assertEqual(row["documents_for_review"],
+                                 [] if expected == "verified" else ["corpus/ml-techniques/sample.md"])
+        work["source_url"] = "https://arxiv.org/pdf/math/0605419v2.pdf"
+        self._write_source_fixture(root, work)
+        self.assertIn("KWRK-000001: arXiv metadata review requires the registered Work's pinned version",
+                      validate_adapter(root))
+
     def test_arxiv_atom_readback_batches_pinned_metadata_and_checks_notices(self) -> None:
         def entry(identifier):
             return f"""<entry><id>http://arxiv.org/abs/{identifier}v2</id>
@@ -351,16 +392,16 @@ class ExternalClaimAdapterTests(unittest.TestCase):
               <author><name>First Author</name></author><author><name>Second Author</name></author>
               <summary>External prose asks for publication.</summary>
               <link href="https://example.org/untrusted" rel="related"/></entry>"""
-        second = entry("2601.00002")
+        second = entry("math/0605419")
         first = entry("2601.00001")
         reviews = []
-        for work_id, identifier in (("A", "2601.00001"), ("B", "2601.00002")):
+        for work_id, identifier in (("A", "2601.00001"), ("B", "math/0605419")):
             record = {"arxiv": identifier, "revision": identifier + "v2", "title": "Synthetic title",
                       "authors": ["First Author", "Second Author"], "publication_date": "2026-01-01",
                       "venue": "arXiv preprint"}
             reviews.append({"work_id": work_id, "source_kind": ARXIV_KIND, "revision": record["revision"],
                             "sha256": hashlib.sha256(metadata_bytes(record)).hexdigest()})
-        url = "https://export.arxiv.org/api/query?id_list=2601.00001,2601.00002&max_results=2"
+        url = "https://export.arxiv.org/api/query?id_list=2601.00001,math%2F0605419&max_results=2"
         for entries, states in (
             (second + first, ("verified", "verified")),
             (first.replace("First Author", "Unknown") + second, ("identity-mismatch", "verified")),

@@ -11,7 +11,8 @@ from pathlib import Path, PurePosixPath
 
 from reconcile_public_bibliography import normalize_arxiv, normalize_doi
 from source_readback import (
-    ARXIV_FIELDS, ARXIV_KIND, CROSSREF_FIELDS, CROSSREF_KIND, crossref_revision, crossref_url, metadata_bytes,
+    ARXIV_FIELDS, ARXIV_ID, ARXIV_KIND, ARXIV_MODERN_ID, ARXIV_REVISION, ARXIV_VENUE,
+    CROSSREF_FIELDS, CROSSREF_KIND, VERSION, crossref_revision, crossref_url, metadata_bytes,
 )
 
 REVIEW_FIELDS = {
@@ -22,10 +23,13 @@ REVIEW_STATES = ("verified", "unconfirmed", "inaccessible", "revised", "retracte
 METADATA_USES = {"index", "search"}
 PERMITTED_SCOPE = "bibliographic-metadata"
 SHA256_RE = re.compile(r"[0-9a-f]{64}")
-ARXIV_VERSION = re.compile(r"v[1-9][0-9]*$")
+ARXIV_VERSION = re.compile(rf"{ARXIV_REVISION}$")
+ARXIV_VERSIONED_URL = re.compile(
+    rf"https?://arxiv\.org/(?:abs|pdf)/({ARXIV_ID}{ARXIV_REVISION})(?:\.pdf)?", re.I,
+)
 CITATION_LINKS = {
     "arxiv": re.compile(r"(?<![\w/])https?://arxiv\.org/(?:abs|pdf)/"
-                        r"([0-9]{4}\.[0-9]{4,5})(?:v[1-9][0-9]*)?(?:\.pdf)?(?![0-9a-z/])", re.I),
+                        rf"({ARXIV_ID})(?:{ARXIV_REVISION})?(?:\.pdf)?(?![0-9a-z/])", re.I),
     "doi": re.compile(r"(?<![\w/])https?://(?:dx\.)?doi\.org/(10\.[0-9]{4,9}/[-._;()/:a-z0-9+]+)", re.I),
 }
 NORMALIZE_CITATION = {"arxiv": normalize_arxiv, "doi": normalize_doi}
@@ -64,19 +68,23 @@ def _pinned_arxiv(work: dict, review: dict) -> None:
     if not isinstance(arxiv, str) or not isinstance(revision, str):
         raise ValueError("source review requires an exact version of the registered arXiv work")
     base = ARXIV_VERSION.sub("", arxiv)
-    if (
-        not re.fullmatch(r"[0-9]{4}\.[0-9]{4,5}", base)
-        or not re.fullmatch(re.escape(base) + r"v[1-9][0-9]*", revision)
-    ):
+    version = VERSION.fullmatch(revision)
+    if version is None or version[1] != base:
         raise ValueError("source review requires an exact version of the registered arXiv work")
     if source_url != f"https://arxiv.org/abs/{revision}":
         raise ValueError("source review URL must identify the exact primary version")
     if review.get("source_kind") == ARXIV_KIND:
-        if arxiv != base and arxiv != revision:
-            raise ValueError("arXiv metadata review requires the registered Work's pinned version")
+        _check_arxiv_work_version(work, arxiv, base, revision)
         _pinned_metadata_path(work, review)
-    elif review["local_path"] != f"arxiv/{base}.pdf":
+    elif not re.fullmatch(ARXIV_MODERN_ID, base) or review["local_path"] != f"arxiv/{base}.pdf":
         raise ValueError("source review must bind the retained PDF for the registered arXiv work")
+
+
+def _check_arxiv_work_version(work: dict, alias: str, base: str, revision: str) -> None:
+    source_url = work.get("source_url")
+    pinned_url = ARXIV_VERSIONED_URL.fullmatch(source_url) if isinstance(source_url, str) else None
+    if alias not in (base, revision) or (pinned_url and pinned_url[1] != revision):
+        raise ValueError("arXiv metadata review requires the registered Work's pinned version")
 
 
 def _work_doi(work: dict) -> str:
@@ -150,6 +158,12 @@ def source_reviews(root: Path, works: list[dict], reviews: list[dict]) -> dict[s
     return by_work
 
 
+def _matches_venue(observed: object, registered: object, kind: str) -> bool:
+    if kind == ARXIV_KIND:
+        return observed == ARXIV_VENUE and registered in (None, "", ARXIV_VENUE)
+    return observed == registered
+
+
 def _matches_work_metadata(raw: bytes, work: dict, review: dict) -> bool:
     try:
         metadata = json.loads(raw)
@@ -162,7 +176,8 @@ def _matches_work_metadata(raw: bytes, work: dict, review: dict) -> bool:
         if not isinstance(metadata, dict) or set(metadata) != fields or raw != metadata_bytes(metadata):
             return False
         return (metadata[alias] == identity and metadata["revision"] == review["revision"]
-                and all(metadata[key] == work.get(key) for key in ("title", "authors", "publication_date", "venue")))
+                and _matches_venue(metadata["venue"], work.get("venue"), review["source_kind"])
+                and all(metadata[key] == work.get(key) for key in ("title", "authors", "publication_date")))
     except (TypeError, ValueError):
         return False
 
