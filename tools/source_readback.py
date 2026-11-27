@@ -37,6 +37,11 @@ CROSSREF_KIND = "crossref-bibliographic-metadata"
 CROSSREF_JOURNAL_KIND = "crossref-journal-bibliographic-metadata"
 CROSSREF_KINDS = (CROSSREF_KIND, CROSSREF_JOURNAL_KIND)
 JOURNAL_LOCATOR_FIELDS = ("volume", "issue", "page", "article-number")
+ACL = "https://aclanthology.org/"
+ACL_KIND = "acl-anthology-bibliographic-metadata"
+ACL_FIELDS = CROSSREF_FIELDS | {"anthology", "first_page", "last_page"}
+ACL_ORIGINAL = "original-publication"
+ACL_ID = r"(?:[0-9]{4}\.[a-z0-9-]+\.[0-9]+|[A-Z][0-9]{2}-[0-9]{4})"
 
 
 class Unavailable(Exception):
@@ -192,6 +197,112 @@ def read_crossref(review: dict, read=fetch) -> dict:
     return _metadata_observation(review, metadata)
 
 
+def anthology_id(url: str) -> str:
+    match = re.fullmatch(rf"{re.escape(ACL)}({ACL_ID})/", url)
+    if match is None:
+        raise ValueError("expected a canonical ACL Anthology paper URL")
+    return match[1]
+
+
+class AnthologyMetadata(HTMLParser):
+    """Collect publisher citation fields and editorial markers without evaluating page content."""
+
+    def __init__(self, raw: bytes):
+        super().__init__()
+        self.fields: dict[str, list[str]] = {}
+        self.canonical: list[str] = []
+        self.in_head = False
+        self.in_label = False
+        self.labels: list[str] = []
+        self.alert = False
+        self.editorial_note = False
+        self.feed(raw.decode("utf-8"))
+        self.close()
+
+    def handle_starttag(self, tag, attrs):
+        values = dict(attrs)
+        name = values.get("name") or ""
+        if tag == "head":
+            self.in_head = True
+        if self.in_head and tag == "meta" and name.startswith("citation_"):
+            self.fields.setdefault(name, []).append(" ".join((values.get("content") or "").split()))
+        if self.in_head and tag == "link" and values.get("rel") == "canonical":
+            self.canonical.append(values.get("href") or "")
+        if tag == "dt":
+            self.in_label = True
+            self.labels.append("")
+        classes = (values.get("class") or "").split()
+        self.alert |= values.get("role") == "alert" and "alert-danger" in classes
+        self.editorial_note |= "acl-editorial-note" in classes
+
+    def handle_endtag(self, tag):
+        if tag == "head":
+            self.in_head = False
+        if tag == "dt":
+            self.in_label = False
+
+    def handle_data(self, text):
+        if self.in_label:
+            self.labels[-1] += text
+
+    def value(self, field: str) -> str:
+        values = self.fields.get(f"citation_{field}", [])
+        if len(values) != 1 or not values[0]:
+            raise ValueError("ACL Anthology citation field is missing or ambiguous")
+        return values[0]
+
+
+def acl_anthology_metadata(raw: bytes, url: str) -> dict:
+    identifier = anthology_id(url)
+    page = AnthologyMetadata(raw)
+    if page.canonical != [url]:
+        raise SourceFinding("identity-mismatch", "ACL Anthology canonical paper identity changed")
+    if page.alert:
+        raise SourceFinding("retracted", "ACL Anthology reports a retraction or removal")
+    labels = {label.strip() for label in page.labels}
+    if "Anthology ID:" not in labels:
+        raise ValueError("ACL Anthology article details are missing")
+    if page.editorial_note or any(re.fullmatch(r"(?:Original|Version [0-9]+|Erratum e[0-9]+):", label)
+                                  for label in labels):
+        raise SourceFinding("revised", "ACL Anthology reports an editorial notice, revision, or erratum")
+    doi = page.value("doi").lower()
+    if doi != f"10.18653/v1/{identifier.lower()}" or page.value("pdf_url") != url[:-1] + ".pdf":
+        raise SourceFinding("identity-mismatch", "ACL Anthology DOI or paper link changed")
+    date_value = page.value("publication_date")
+    if not re.fullmatch(r"[0-9]{4}(?:/[0-9]{1,2}){0,2}", date_value):
+        raise ValueError("ACL Anthology citation date is malformed")
+    parts = [int(part) for part in date_value.split("/")]
+    exact_date = date(*(parts + [1] * (3 - len(parts)))).isoformat()[:{1: 4, 2: 7, 3: 10}[len(parts)]]
+    authors = page.fields.get("citation_author", [])
+    first, last = page.value("firstpage"), page.value("lastpage")
+    if not authors or not all(authors) or not valid_acl_pages(first, last):
+        raise ValueError("ACL Anthology article lacks ordered authors or exact pages")
+    return {
+        "anthology": identifier, "doi": doi, "revision": ACL_ORIGINAL, "title": page.value("title"),
+        "authors": authors, "publication_date": exact_date, "venue": page.value("conference_title"),
+        "first_page": first, "last_page": last,
+    }
+
+
+def valid_acl_pages(first: object, last: object) -> bool:
+    return (all(isinstance(page, str) and re.fullmatch(r"[1-9][0-9]{0,6}", page) for page in (first, last))
+            and int(first) <= int(last))
+
+
+def read_acl_anthology(review: dict, read=fetch) -> dict:
+    url = review["source_url"]
+    try:
+        anthology_id(url)
+        metadata = acl_anthology_metadata(read(url, 512 * 1024), url)
+    except SourceFinding as exc:
+        return {"state": exc.state, "reason": str(exc)}
+    except HTTPError as exc:
+        return _http_failure(exc)
+    except (ValueError, URLError, HTTPException, TimeoutError, Unavailable):
+        return {"state": "unconfirmed", "reason": "ACL Anthology metadata was unavailable or incomplete"}
+    return _metadata_observation(review, metadata)
+
+
 def _atom_text(item, name: str, *, required: bool = True) -> str:
     fields = item.findall(name, ATOM_NAMES)
     if not fields and not required:
@@ -304,6 +415,8 @@ def read_sources(reviews: list[dict], read=fetch) -> dict[str, dict]:
             observation = _metadata_observation(review, item["metadata"]) if "metadata" in item else item
         elif review.get("source_kind") in CROSSREF_KINDS:
             observation = read_crossref(review, read=read)
+        elif review.get("source_kind") == ACL_KIND:
+            observation = read_acl_anthology(review, read=read)
         else:
             observation = read_arxiv(review, read=read)
         observations[work_id] = observation

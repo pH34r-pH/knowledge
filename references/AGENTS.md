@@ -46,6 +46,15 @@ optional issue and publication year. The match allows an omitted leading
 authors and date must also match. Live verification pins the snapshot and treats any
 locator change or editorial notice as requiring review. [Crossref metadata fields](https://github.com/CrossRef/rest-api-doc/blob/master/api_format.md#work)
 
+Use `acl-anthology-bibliographic-metadata` for original proceedings papers
+with an ACL Anthology paper URL and DOI. The snapshot binds the publisher's
+Anthology ID, DOI, title, ordered authors, publication date, proceedings
+title, and page range. The Work's venue may use one of the reviewed
+proceedings abbreviations. Live readback checks the publisher's citation
+metadata and withholds the approved index and search scopes when the identity
+changes or the page reports a revision, erratum, editorial note, removal, or
+retraction. [ACL Anthology corrections](https://aclanthology.org/info/corrections/)
+
 arXiv metadata reviews use schema version 2 and the
 `arxiv-bibliographic-metadata` source kind. Retain a canonical JSON snapshot
 of the title, ordered authors, publication date, venue, and exact arXiv

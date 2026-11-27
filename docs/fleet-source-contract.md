@@ -8,7 +8,7 @@ This check covers adapter code and canonical registries offline. It does **not**
 
 The same workflow runs `source-readback` on repository changes and weekly. The
 report checks reviewed arXiv versions and retained PDF bytes or bibliographic
-snapshots, plus reviewed Crossref bibliographic snapshots. It lists dependencies
+snapshots, plus reviewed Crossref and ACL Anthology bibliographic snapshots. It lists dependencies
 that need review when a source changes or becomes unavailable. The
 `reviewed-source-freshness` job succeeds only when each declared metadata use
 still has current, verified evidence. Fleet can read this conclusion through
