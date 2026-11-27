@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+from collections.abc import Callable
 from datetime import date
 from pathlib import Path, PurePosixPath
 
@@ -19,6 +20,7 @@ ARXIV_CITATION = re.compile(
     r"https://arxiv\.org/(?:abs|pdf)/([0-9]{4}\.[0-9]{4,5})(?:v[1-9][0-9]*)?(?![0-9a-z/])"
 )
 CORPUS_PILLARS = ("design-patterns", "ml-techniques", "adjacent-knowledge")
+LiveReview = Callable[[dict], dict]
 
 
 def review_date(value: object) -> date:
@@ -148,6 +150,7 @@ def _affected_documents(work: dict, by_arxiv: dict[str, list[str]]) -> list[str]
 def review_report(
     root: Path, works: list[dict], claims: list[dict], evidence: list[dict],
     reviews: dict[str, dict], as_of: date,
+    live_review: LiveReview | None = None,
 ) -> dict:
     """Report source states and use exclusions without rewriting historical records."""
     targets = {row["supersedes"] for row in works if row.get("status") == "ACTIVE" and row.get("supersedes")}
@@ -162,6 +165,10 @@ def review_report(
     for work in works:
         work_id = work["id"]
         status = _source_state(root, work, reviews.get(work_id), as_of, targets)
+        observation = None
+        if status == "verified" and live_review is not None:
+            observation = live_review(reviews[work_id])
+            status = observation["state"]
         affected_claims = sorted(claims_by_work.get(work_id, [])) if status != "verified" else []
         affected_evidence = sorted(item for claim_id in affected_claims for item in evidence_by_claim.get(claim_id, []))
         results.append({
@@ -171,5 +178,6 @@ def review_report(
             "claims_for_review": affected_claims,
             "evidence_for_review": affected_evidence,
             "documents_for_review": _affected_documents(work, by_arxiv) if status != "verified" else [],
+            **({"live_check": observation} if observation is not None else {}),
         })
     return {"as_of": as_of.isoformat(), "works": sorted(results, key=lambda item: item["work_id"])}

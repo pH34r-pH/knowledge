@@ -45,3 +45,13 @@ evidence, and corpus articles with matching arXiv citations. Old dispositions
 remain in the registry. Expiry and reported source changes require renewed
 review. Passage text and source notes remain evidence. Publication, model
 augmentation, and training have separate approval paths.
+
+For a current UTC report, replace `--as-of <date>` with `--check-live`. A live
+check uses the same registry pin and existing metadata permissions. It compares
+the primary arXiv identity, current version, withdrawal notice, and exact PDF
+digest against the retained review. A failed or unconfirmed check suppresses
+the use map and lists the affected claims, evidence, and corpus articles.
+
+The public workflow saves a readback report on pushes, pull requests, and
+weekly. Its registry hash identifies the scanned checkout. Consumers supply
+their own admitted registry pin before relying on the use decisions.

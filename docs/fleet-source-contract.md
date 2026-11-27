@@ -6,5 +6,11 @@ The public `external-claim-adapter` workflow runs on every `main` push; its stab
 
 This check covers adapter code and canonical registries offline. It does **not** independently re-resolve every article DOI, citation or scientific claim in the corpus. If a Portfolio release consumes other Knowledge paths such as `corpus/**` or `reports/**`, its private Fleet publication policy must separately identify and validate those inputs and record their SHA/digest; do not call the adapter gate a full-corpus integrity proof. Public Knowledge CI has no Azure OIDC or private Fleet dispatch credential. Fleet #177 owns polling, cross-repository pinning, receipts and protected publication.
 
+The same workflow runs `source-readback` on repository changes and weekly. The
+report checks reviewed arXiv versions and PDF bytes and lists dependencies that
+need review when a source changes or becomes unavailable. Source use decisions
+are bound to the independently admitted registry and each review's expiry.
+See [reviewed source metadata](../references/AGENTS.md#reviewed-source-metadata).
+
 
 For Fleet's current polling cadence, operator retry path, receipt location, and deployment boundary, see the [Fleet workflow and deployed-surface map](https://github.com/pH34r-pH/long-haul-fleet/blob/main/docs/workflow-and-surface-map.md).

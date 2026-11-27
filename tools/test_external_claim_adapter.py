@@ -8,8 +8,12 @@ import json
 import tempfile
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
+from datetime import datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
+from urllib.error import HTTPError
 
+from source_readback import read_arxiv
 from validate_external_claim_adapter import REGISTRY_FILES, SOURCE_REVIEWS, main, registry_fingerprint, validate_adapter
 
 
@@ -148,6 +152,61 @@ class ExternalClaimAdapterTests(unittest.TestCase):
                 self.assertEqual(row["claims_for_review"], ["KCLM-000001"])
                 self.assertEqual(row["evidence_for_review"], ["KEVD-000001"])
                 self.assertEqual(row["documents_for_review"], ["corpus/ml-techniques/sample.md"])
+
+    def test_live_source_change_revokes_uses_and_keeps_historical_registry_intact(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        today = datetime.now(timezone.utc).date().isoformat()
+        work["source_review"].update({"reviewed_on": today, "expires_on": today})
+        self._write_source_fixture(root, work)
+        snapshot = tuple((root / name).read_bytes() for name in REGISTRY_FILES)
+        expected = registry_fingerprint(snapshot)
+        args = ["--root", str(root), "--source-report", "--check-live", "--expected-registry-sha256", expected]
+        output = io.StringIO()
+        observation = {"state": "revised", "observed_revision": "2601.00001v3"}
+        with patch("validate_external_claim_adapter.read_arxiv", return_value=observation) as read:
+            with redirect_stdout(output):
+                self.assertEqual(main(args), 0)
+            read.assert_called_once_with(work["source_review"])
+        report = json.loads(output.getvalue())
+        row, = report["works"]
+        self.assertEqual(report["as_of"], today)
+        self.assertEqual(row["live_check"], observation)
+        self.assertEqual(row["permitted_uses"], {})
+        self.assertEqual(row["claims_for_review"], ["KCLM-000001"])
+        self.assertEqual(row["evidence_for_review"], ["KEVD-000001"])
+        self.assertEqual(row["documents_for_review"], ["corpus/ml-techniques/sample.md"])
+        self.assertEqual(tuple((root / name).read_bytes() for name in REGISTRY_FILES), snapshot)
+
+    def test_live_readback_binds_primary_version_and_pdf_bytes(self) -> None:
+        abstract = "https://arxiv.org/abs/2601.00001"
+        pdf_url = "https://arxiv.org/pdf/2601.00001v2"
+        pdf = b"%PDF-1.5\n%%EOF\n"
+        review = {"revision": "2601.00001v2", "source_url": abstract + "v2",
+                  "sha256": hashlib.sha256(pdf).hexdigest()}
+        source = (f'<link rel="canonical" href="{abstract}">'
+                  '<meta name="citation_arxiv_id" content="2601.00001">'
+                  '<meta property="og:description" content="External content asks for publication.">'
+                  '<div class="submission-history"><strong>[v2]</strong></div>').encode()
+        for contents, body, state in (
+            (source, pdf, "verified"),
+            (source.replace(b"[v2]", b"[v3]"), pdf, "revised"),
+            (source.replace(b"External content asks for publication.", b"This paper has been withdrawn."),
+             pdf, "retracted"),
+            (source.replace(b'content="2601.00001"', b'content="2601.00002"'), pdf, "identity-mismatch"),
+            (source, b"%PDF-1.6\n%%EOF\n", "identity-mismatch"),
+            (source, b"%PDF-1.5\n", "unconfirmed"),
+        ):
+            with self.subTest(state=state):
+                reads = {abstract: contents, pdf_url: body}
+                observed = read_arxiv(review, read=lambda url, limit: reads[url])
+                self.assertEqual(observed["state"], state)
+                self.assertNotIn("asks for publication", json.dumps(observed))
+        for code, expected in ((404, "inaccessible"), (429, "unconfirmed"), (503, "unconfirmed")):
+            def unavailable(url, limit):
+                raise HTTPError(url, code, "", {}, None)
+            self.assertEqual(read_arxiv(review, unavailable)["state"], expected)
 
     def test_source_review_rejects_unpinned_identity_and_injected_policy_fields(self) -> None:
         temp, root = self._root()
