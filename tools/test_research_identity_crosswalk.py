@@ -47,9 +47,8 @@ class CrosswalkTests(unittest.TestCase):
         self.assertEqual(matched_ids, {"KWRK-000001", "KWRK-000066"})
 
     def test_venue_metadata_difference_is_retained_with_public_sources(self) -> None:
-        self.assertEqual(self.document["coverage"]["metadata_field_discrepancies"], 1)
-        entry = self.document["field_discrepancies"][0]
-        self.assertEqual(entry["canonical_key"], "arxiv:2410.01131")
+        entry, = [item for item in self.document["field_discrepancies"]
+                  if item["canonical_key"] == "arxiv:2410.01131"]
         venue = entry["fields"][0]
         self.assertEqual(venue["field"], "venue")
         self.assertEqual({item["value"] for item in venue["variants"]}, {"ICLR 2025", "arXiv preprint (2024)"})

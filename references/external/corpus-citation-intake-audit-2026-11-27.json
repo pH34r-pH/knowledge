@@ -1,0 +1,1099 @@
+{
+  "schema_version": "1.0.0",
+  "observed_at": "2026-11-27T03:37:13.308965+00:00",
+  "source_commit": "f920ce4986aab446d6f480c4283d682feaed50fc",
+  "scope": "Register exact identities for explicit arXiv and DOI links in current corpus articles.",
+  "registry": {
+    "previous_count": 242,
+    "registered_count": 89,
+    "previous_sha256": "a513d3512e8367ac12de1b8643a23a9a9967e7fd76ad0e1049b260d6d19a1fae",
+    "result_sha256": "096c8a60ac63ebd7af509733928b8184574e385b6048d0570c18fc16392f15d6"
+  },
+  "metadata_responses": [
+    {
+      "url": "https://export.arxiv.org/api/query?id_list=1008.1459%2C1502.05767%2C1603.01025%2C1603.09320%2C1604.06174%2C1709.06560%2C1902.00751%2C1909.01377%2C1909.11942%2C1910.10202%2C2003.12206%2C2004.04906%2C2006.06903%2C2006.16236%2C2006.16668%2C2101.03961%2C2103.06874%2C2104.01146%2C2104.08663%2C2104.09864%2C2105.13626%2C2106.04392%2C2106.05268%2C2106.09685%2C2106.12672%2C2111.00396%2C2202.09368%2C2203.02155%2C2207.07048%2C2209.11895%2C2210.07316%2C2211.15841%2C2211.17192%2C2302.10866%2C2302.12173%2C2304.03442%2C2305.07185%2C2305.11206%2C2305.13245%2C2305.14314%2C2305.16291%2C2305.18290%2C2305.19534%2C2306.09827%2C2307.03172%2C2307.08621%2C2307.09702%2C2309.06180%2C2310.08560%2C2312.06635%2C2401.04088%2C2402.09353%2C2404.07362%2C2405.14831%2C2405.21060%2C2406.07327%2C2406.09279%2C2406.10109%2C2406.12045%2C2407.16833%2C2409.01666%2C2409.05014%2C2412.06000%2C2412.09871%2C2412.13147%2C2501.12948%2C2501.19393%2C2502.11646%2C2503.16419%2C2503.18813%2C2504.13837%2C2505.22954%2C2506.06941%2C2506.09250%2C2507.04023%2C2507.14417%2C2511.17388%2C2512.18746%2C2601.11868%2C2603.07980%2C2603.28052%2C2604.06132%2C2604.08377%2C2604.14862%2C2604.17091%2C2605.10123%2C2605.22794%2C2608.10010&max_results=88",
+      "response_sha256": "6f4c5ba8caacd007888237c45d3e48428c2c68ad1177abc116574bf5d86fe811"
+    },
+    {
+      "url": "https://export.arxiv.org/api/query?id_list=2501.12948v1%2C2604.14862v2%2C2605.10123v2&max_results=3",
+      "response_sha256": "70af1819ab2c6bd4f4956528ae2d1168a2282fd6533522688b4a52c58dbf3216"
+    },
+    {
+      "url": "https://api.crossref.org/works/10.1007/s11265-020-01557-8",
+      "response_sha256": "1c47a6dcca6eb46afc8c4fbe73bdb574d988ecdbc6a6d7ba6328a86c6c6c9daf"
+    }
+  ],
+  "records": [
+    {
+      "work_id": "KWRK-000243",
+      "kind": "arxiv",
+      "identifier": "1008.1459",
+      "source_url": "https://arxiv.org/abs/1008.1459v38",
+      "documents": [
+        "corpus/design-patterns/actor-model-vs-csp.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v38",
+      "latest_revision_observed": "v38"
+    },
+    {
+      "work_id": "KWRK-000244",
+      "kind": "arxiv",
+      "identifier": "1502.05767",
+      "source_url": "https://arxiv.org/abs/1502.05767v4",
+      "documents": [
+        "corpus/ml-techniques/backpropagation-autodiff.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v4",
+      "latest_revision_observed": "v4"
+    },
+    {
+      "work_id": "KWRK-000245",
+      "kind": "arxiv",
+      "identifier": "1603.01025",
+      "source_url": "https://arxiv.org/abs/1603.01025v2",
+      "documents": [
+        "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000246",
+      "kind": "arxiv",
+      "identifier": "1603.09320",
+      "source_url": "https://arxiv.org/abs/1603.09320v4",
+      "documents": [
+        "corpus/ml-techniques/rag-retrieval-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v4",
+      "latest_revision_observed": "v4"
+    },
+    {
+      "work_id": "KWRK-000247",
+      "kind": "arxiv",
+      "identifier": "1604.06174",
+      "source_url": "https://arxiv.org/abs/1604.06174v2",
+      "documents": [
+        "corpus/ml-techniques/backpropagation-autodiff.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000248",
+      "kind": "arxiv",
+      "identifier": "1709.06560",
+      "source_url": "https://arxiv.org/abs/1709.06560v3",
+      "documents": [
+        "corpus/ml-techniques/agent-evaluation-methodology.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000249",
+      "kind": "arxiv",
+      "identifier": "1902.00751",
+      "source_url": "https://arxiv.org/abs/1902.00751v2",
+      "documents": [
+        "corpus/ml-techniques/fine-tuning-strategies.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000250",
+      "kind": "arxiv",
+      "identifier": "1909.01377",
+      "source_url": "https://arxiv.org/abs/1909.01377v2",
+      "documents": [
+        "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000251",
+      "kind": "arxiv",
+      "identifier": "1909.11942",
+      "source_url": "https://arxiv.org/abs/1909.11942v6",
+      "documents": [
+        "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v6",
+      "latest_revision_observed": "v6"
+    },
+    {
+      "work_id": "KWRK-000252",
+      "kind": "arxiv",
+      "identifier": "1910.10202",
+      "source_url": "https://arxiv.org/abs/1910.10202v2",
+      "documents": [
+        "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000253",
+      "kind": "arxiv",
+      "identifier": "2003.12206",
+      "source_url": "https://arxiv.org/abs/2003.12206v4",
+      "documents": [
+        "corpus/ml-techniques/agent-evaluation-methodology.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v4",
+      "latest_revision_observed": "v4"
+    },
+    {
+      "work_id": "KWRK-000254",
+      "kind": "arxiv",
+      "identifier": "2004.04906",
+      "source_url": "https://arxiv.org/abs/2004.04906v3",
+      "documents": [
+        "corpus/ml-techniques/rag-retrieval-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000255",
+      "kind": "arxiv",
+      "identifier": "2006.06903",
+      "source_url": "https://arxiv.org/abs/2006.06903v2",
+      "documents": [
+        "corpus/ml-techniques/backpropagation-autodiff.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000256",
+      "kind": "arxiv",
+      "identifier": "2006.16236",
+      "source_url": "https://arxiv.org/abs/2006.16236v3",
+      "documents": [
+        "corpus/ml-techniques/state-space-models-linear-attention.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000257",
+      "kind": "arxiv",
+      "identifier": "2006.16668",
+      "source_url": "https://arxiv.org/abs/2006.16668v1",
+      "documents": [
+        "corpus/ml-techniques/mixture-of-experts-routing.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000258",
+      "kind": "arxiv",
+      "identifier": "2101.03961",
+      "source_url": "https://arxiv.org/abs/2101.03961v3",
+      "documents": [
+        "corpus/ml-techniques/mixture-of-experts-routing.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000259",
+      "kind": "arxiv",
+      "identifier": "2103.06874",
+      "source_url": "https://arxiv.org/abs/2103.06874v4",
+      "documents": [
+        "corpus/ml-techniques/representation-architecture-co-design-language-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v4",
+      "latest_revision_observed": "v4"
+    },
+    {
+      "work_id": "KWRK-000260",
+      "kind": "arxiv",
+      "identifier": "2104.01146",
+      "source_url": "https://arxiv.org/abs/2104.01146v1",
+      "documents": [
+        "corpus/design-patterns/cqrs-event-sourcing.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000261",
+      "kind": "arxiv",
+      "identifier": "2104.08663",
+      "source_url": "https://arxiv.org/abs/2104.08663v4",
+      "documents": [
+        "corpus/ml-techniques/rag-retrieval-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v4",
+      "latest_revision_observed": "v4"
+    },
+    {
+      "work_id": "KWRK-000262",
+      "kind": "arxiv",
+      "identifier": "2104.09864",
+      "source_url": "https://arxiv.org/abs/2104.09864v5",
+      "documents": [
+        "corpus/ml-techniques/attention-transformers.md",
+        "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md",
+        "corpus/ml-techniques/representation-architecture-co-design-language-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v5",
+      "latest_revision_observed": "v5"
+    },
+    {
+      "work_id": "KWRK-000263",
+      "kind": "arxiv",
+      "identifier": "2105.13626",
+      "source_url": "https://arxiv.org/abs/2105.13626v3",
+      "documents": [
+        "corpus/ml-techniques/representation-architecture-co-design-language-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000264",
+      "kind": "arxiv",
+      "identifier": "2106.04392",
+      "source_url": "https://arxiv.org/abs/2106.04392v2",
+      "documents": [
+        "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000265",
+      "kind": "arxiv",
+      "identifier": "2106.05268",
+      "source_url": "https://arxiv.org/abs/2106.05268v2",
+      "documents": [
+        "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000266",
+      "kind": "arxiv",
+      "identifier": "2106.09685",
+      "source_url": "https://arxiv.org/abs/2106.09685v2",
+      "documents": [
+        "corpus/ml-techniques/fine-tuning-strategies.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000267",
+      "kind": "arxiv",
+      "identifier": "2106.12672",
+      "source_url": "https://arxiv.org/abs/2106.12672v3",
+      "documents": [
+        "corpus/ml-techniques/representation-architecture-co-design-language-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000268",
+      "kind": "arxiv",
+      "identifier": "2111.00396",
+      "source_url": "https://arxiv.org/abs/2111.00396v3",
+      "documents": [
+        "corpus/ml-techniques/state-space-models-linear-attention.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000269",
+      "kind": "arxiv",
+      "identifier": "2202.09368",
+      "source_url": "https://arxiv.org/abs/2202.09368v2",
+      "documents": [
+        "corpus/ml-techniques/mixture-of-experts-routing.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000270",
+      "kind": "arxiv",
+      "identifier": "2203.02155",
+      "source_url": "https://arxiv.org/abs/2203.02155v1",
+      "documents": [
+        "corpus/ml-techniques/fine-tuning-strategies.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000271",
+      "kind": "arxiv",
+      "identifier": "2207.07048",
+      "source_url": "https://arxiv.org/abs/2207.07048v1",
+      "documents": [
+        "corpus/ml-techniques/agent-evaluation-methodology.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000272",
+      "kind": "arxiv",
+      "identifier": "2209.11895",
+      "source_url": "https://arxiv.org/abs/2209.11895v1",
+      "documents": [
+        "corpus/ml-techniques/attention-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000273",
+      "kind": "arxiv",
+      "identifier": "2210.07316",
+      "source_url": "https://arxiv.org/abs/2210.07316v3",
+      "documents": [
+        "corpus/ml-techniques/rag-retrieval-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000274",
+      "kind": "arxiv",
+      "identifier": "2211.15841",
+      "source_url": "https://arxiv.org/abs/2211.15841v1",
+      "documents": [
+        "corpus/ml-techniques/mixture-of-experts-routing.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000275",
+      "kind": "arxiv",
+      "identifier": "2211.17192",
+      "source_url": "https://arxiv.org/abs/2211.17192v2",
+      "documents": [
+        "corpus/ml-techniques/llm-inference-optimization.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000276",
+      "kind": "arxiv",
+      "identifier": "2302.10866",
+      "source_url": "https://arxiv.org/abs/2302.10866v3",
+      "documents": [
+        "corpus/ml-techniques/state-space-models-linear-attention.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000277",
+      "kind": "arxiv",
+      "identifier": "2302.12173",
+      "source_url": "https://arxiv.org/abs/2302.12173v2",
+      "documents": [
+        "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000278",
+      "kind": "arxiv",
+      "identifier": "2304.03442",
+      "source_url": "https://arxiv.org/abs/2304.03442v2",
+      "documents": [
+        "corpus/ml-techniques/agent-memory-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000279",
+      "kind": "arxiv",
+      "identifier": "2305.07185",
+      "source_url": "https://arxiv.org/abs/2305.07185v2",
+      "documents": [
+        "corpus/ml-techniques/representation-architecture-co-design-language-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000280",
+      "kind": "arxiv",
+      "identifier": "2305.11206",
+      "source_url": "https://arxiv.org/abs/2305.11206v1",
+      "documents": [
+        "corpus/ml-techniques/preference-optimization.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000281",
+      "kind": "arxiv",
+      "identifier": "2305.13245",
+      "source_url": "https://arxiv.org/abs/2305.13245v3",
+      "documents": [
+        "corpus/ml-techniques/attention-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000282",
+      "kind": "arxiv",
+      "identifier": "2305.14314",
+      "source_url": "https://arxiv.org/abs/2305.14314v1",
+      "documents": [
+        "corpus/ml-techniques/fine-tuning-strategies.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000283",
+      "kind": "arxiv",
+      "identifier": "2305.16291",
+      "source_url": "https://arxiv.org/abs/2305.16291v2",
+      "documents": [
+        "corpus/ml-techniques/agent-memory-architectures.md",
+        "corpus/ml-techniques/self-evolving-agent-systems.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000284",
+      "kind": "arxiv",
+      "identifier": "2305.18290",
+      "source_url": "https://arxiv.org/abs/2305.18290v3",
+      "documents": [
+        "corpus/ml-techniques/fine-tuning-strategies.md",
+        "corpus/ml-techniques/preference-optimization.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000285",
+      "kind": "arxiv",
+      "identifier": "2305.19534",
+      "source_url": "https://arxiv.org/abs/2305.19534v1",
+      "documents": [
+        "corpus/ml-techniques/representation-architecture-co-design-language-models.md",
+        "corpus/ml-techniques/vector-symbolic-algebra-aware-neural-processing.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000286",
+      "kind": "arxiv",
+      "identifier": "2306.09827",
+      "source_url": "https://arxiv.org/abs/2306.09827v1",
+      "documents": [
+        "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000287",
+      "kind": "arxiv",
+      "identifier": "2307.03172",
+      "source_url": "https://arxiv.org/abs/2307.03172v3",
+      "documents": [
+        "corpus/ml-techniques/rag-retrieval-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000288",
+      "kind": "arxiv",
+      "identifier": "2307.08621",
+      "source_url": "https://arxiv.org/abs/2307.08621v4",
+      "documents": [
+        "corpus/ml-techniques/state-space-models-linear-attention.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v4",
+      "latest_revision_observed": "v4"
+    },
+    {
+      "work_id": "KWRK-000289",
+      "kind": "arxiv",
+      "identifier": "2307.09702",
+      "source_url": "https://arxiv.org/abs/2307.09702v4",
+      "documents": [
+        "corpus/ml-techniques/structured-outputs-constrained-decoding.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v4",
+      "latest_revision_observed": "v4"
+    },
+    {
+      "work_id": "KWRK-000290",
+      "kind": "arxiv",
+      "identifier": "2309.06180",
+      "source_url": "https://arxiv.org/abs/2309.06180v1",
+      "documents": [
+        "corpus/ml-techniques/llm-inference-optimization.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000291",
+      "kind": "arxiv",
+      "identifier": "2310.08560",
+      "source_url": "https://arxiv.org/abs/2310.08560v2",
+      "documents": [
+        "corpus/ml-techniques/agent-memory-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000292",
+      "kind": "arxiv",
+      "identifier": "2312.06635",
+      "source_url": "https://arxiv.org/abs/2312.06635v6",
+      "documents": [
+        "corpus/ml-techniques/state-space-models-linear-attention.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v6",
+      "latest_revision_observed": "v6"
+    },
+    {
+      "work_id": "KWRK-000293",
+      "kind": "arxiv",
+      "identifier": "2401.04088",
+      "source_url": "https://arxiv.org/abs/2401.04088v1",
+      "documents": [
+        "corpus/ml-techniques/mixture-of-experts-routing.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000294",
+      "kind": "arxiv",
+      "identifier": "2402.09353",
+      "source_url": "https://arxiv.org/abs/2402.09353v6",
+      "documents": [
+        "corpus/ml-techniques/fine-tuning-strategies.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v6",
+      "latest_revision_observed": "v6"
+    },
+    {
+      "work_id": "KWRK-000295",
+      "kind": "arxiv",
+      "identifier": "2404.07362",
+      "source_url": "https://arxiv.org/abs/2404.07362v1",
+      "documents": [
+        "corpus/ml-techniques/structured-outputs-constrained-decoding.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000296",
+      "kind": "arxiv",
+      "identifier": "2405.14831",
+      "source_url": "https://arxiv.org/abs/2405.14831v3",
+      "documents": [
+        "corpus/ml-techniques/rag-retrieval-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000297",
+      "kind": "arxiv",
+      "identifier": "2405.21060",
+      "source_url": "https://arxiv.org/abs/2405.21060v1",
+      "documents": [
+        "corpus/ml-techniques/state-space-models-linear-attention.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000298",
+      "kind": "arxiv",
+      "identifier": "2406.07327",
+      "source_url": "https://arxiv.org/abs/2406.07327v2",
+      "documents": [
+        "corpus/ml-techniques/preference-optimization.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000299",
+      "kind": "arxiv",
+      "identifier": "2406.09279",
+      "source_url": "https://arxiv.org/abs/2406.09279v2",
+      "documents": [
+        "corpus/ml-techniques/preference-optimization.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000300",
+      "kind": "arxiv",
+      "identifier": "2406.10109",
+      "source_url": "https://arxiv.org/abs/2406.10109v1",
+      "documents": [
+        "corpus/adjacent-knowledge/software-supply-chain-security.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000301",
+      "kind": "arxiv",
+      "identifier": "2406.12045",
+      "source_url": "https://arxiv.org/abs/2406.12045v1",
+      "documents": [
+        "corpus/ml-techniques/agent-evaluation-methodology.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000302",
+      "kind": "arxiv",
+      "identifier": "2407.16833",
+      "source_url": "https://arxiv.org/abs/2407.16833v2",
+      "documents": [
+        "corpus/ml-techniques/rag-retrieval-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000303",
+      "kind": "arxiv",
+      "identifier": "2409.01666",
+      "source_url": "https://arxiv.org/abs/2409.01666v1",
+      "documents": [
+        "corpus/ml-techniques/rag-retrieval-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000304",
+      "kind": "arxiv",
+      "identifier": "2409.05014",
+      "source_url": "https://arxiv.org/abs/2409.05014v2",
+      "documents": [
+        "corpus/adjacent-knowledge/software-supply-chain-security.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000305",
+      "kind": "arxiv",
+      "identifier": "2412.06000",
+      "source_url": "https://arxiv.org/abs/2412.06000v1",
+      "documents": [
+        "corpus/ml-techniques/preference-optimization.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000306",
+      "kind": "arxiv",
+      "identifier": "2412.09871",
+      "source_url": "https://arxiv.org/abs/2412.09871v1",
+      "documents": [
+        "corpus/ml-techniques/representation-architecture-co-design-language-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000307",
+      "kind": "arxiv",
+      "identifier": "2412.13147",
+      "source_url": "https://arxiv.org/abs/2412.13147v5",
+      "documents": [
+        "corpus/ml-techniques/reasoning-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v5",
+      "latest_revision_observed": "v5"
+    },
+    {
+      "work_id": "KWRK-000308",
+      "kind": "arxiv",
+      "identifier": "2501.12948",
+      "source_url": "https://arxiv.org/abs/2501.12948v1",
+      "documents": [
+        "corpus/ml-techniques/reasoning-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000309",
+      "kind": "arxiv",
+      "identifier": "2501.19393",
+      "source_url": "https://arxiv.org/abs/2501.19393v3",
+      "documents": [
+        "corpus/ml-techniques/reasoning-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000310",
+      "kind": "arxiv",
+      "identifier": "2502.11646",
+      "source_url": "https://arxiv.org/abs/2502.11646v3",
+      "documents": [
+        "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000311",
+      "kind": "arxiv",
+      "identifier": "2503.16419",
+      "source_url": "https://arxiv.org/abs/2503.16419v4",
+      "documents": [
+        "corpus/ml-techniques/reasoning-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v4",
+      "latest_revision_observed": "v4"
+    },
+    {
+      "work_id": "KWRK-000312",
+      "kind": "arxiv",
+      "identifier": "2503.18813",
+      "source_url": "https://arxiv.org/abs/2503.18813v2",
+      "documents": [
+        "corpus/adjacent-knowledge/prompt-injection-lethal-trifecta.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000313",
+      "kind": "arxiv",
+      "identifier": "2504.13837",
+      "source_url": "https://arxiv.org/abs/2504.13837v5",
+      "documents": [
+        "corpus/ml-techniques/reasoning-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v5",
+      "latest_revision_observed": "v5"
+    },
+    {
+      "work_id": "KWRK-000314",
+      "kind": "arxiv",
+      "identifier": "2505.22954",
+      "source_url": "https://arxiv.org/abs/2505.22954v3",
+      "documents": [
+        "corpus/ml-techniques/self-evolving-agent-systems.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000315",
+      "kind": "arxiv",
+      "identifier": "2506.06941",
+      "source_url": "https://arxiv.org/abs/2506.06941v3",
+      "documents": [
+        "corpus/ml-techniques/reasoning-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000316",
+      "kind": "arxiv",
+      "identifier": "2506.09250",
+      "source_url": "https://arxiv.org/abs/2506.09250v2",
+      "documents": [
+        "corpus/ml-techniques/reasoning-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000317",
+      "kind": "arxiv",
+      "identifier": "2507.04023",
+      "source_url": "https://arxiv.org/abs/2507.04023v3",
+      "documents": [
+        "corpus/ml-techniques/reasoning-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000318",
+      "kind": "arxiv",
+      "identifier": "2507.14417",
+      "source_url": "https://arxiv.org/abs/2507.14417v2",
+      "documents": [
+        "corpus/ml-techniques/reasoning-models.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000319",
+      "kind": "arxiv",
+      "identifier": "2511.17388",
+      "source_url": "https://arxiv.org/abs/2511.17388v3",
+      "documents": [
+        "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v3",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000320",
+      "kind": "arxiv",
+      "identifier": "2512.18746",
+      "source_url": "https://arxiv.org/abs/2512.18746v1",
+      "documents": [
+        "corpus/ml-techniques/agent-memory-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000321",
+      "kind": "arxiv",
+      "identifier": "2601.11868",
+      "source_url": "https://arxiv.org/abs/2601.11868v1",
+      "documents": [
+        "corpus/ml-techniques/agent-evaluation-methodology.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000322",
+      "kind": "arxiv",
+      "identifier": "2603.07980",
+      "source_url": "https://arxiv.org/abs/2603.07980v2",
+      "documents": [
+        "corpus/ml-techniques/agent-evaluation-methodology.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000323",
+      "kind": "arxiv",
+      "identifier": "2603.28052",
+      "source_url": "https://arxiv.org/abs/2603.28052v1",
+      "documents": [
+        "corpus/ml-techniques/self-evolving-agent-systems.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000324",
+      "kind": "arxiv",
+      "identifier": "2604.06132",
+      "source_url": "https://arxiv.org/abs/2604.06132v4",
+      "documents": [
+        "corpus/ml-techniques/agent-evaluation-methodology.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v4",
+      "latest_revision_observed": "v4"
+    },
+    {
+      "work_id": "KWRK-000325",
+      "kind": "arxiv",
+      "identifier": "2604.08377",
+      "source_url": "https://arxiv.org/abs/2604.08377v2",
+      "documents": [
+        "corpus/ml-techniques/self-evolving-agent-systems.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000326",
+      "kind": "arxiv",
+      "identifier": "2604.14862",
+      "source_url": "https://arxiv.org/abs/2604.14862v2",
+      "documents": [
+        "corpus/ml-techniques/structured-outputs-constrained-decoding.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000327",
+      "kind": "arxiv",
+      "identifier": "2604.17091",
+      "source_url": "https://arxiv.org/abs/2604.17091v1",
+      "documents": [
+        "corpus/ml-techniques/agent-memory-architectures.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v1",
+      "latest_revision_observed": "v1"
+    },
+    {
+      "work_id": "KWRK-000328",
+      "kind": "arxiv",
+      "identifier": "2605.10123",
+      "source_url": "https://arxiv.org/abs/2605.10123v2",
+      "documents": [
+        "corpus/ml-techniques/complex-phase-aware-hyperspherical-transformers.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v3"
+    },
+    {
+      "work_id": "KWRK-000329",
+      "kind": "arxiv",
+      "identifier": "2605.22794",
+      "source_url": "https://arxiv.org/abs/2605.22794v2",
+      "documents": [
+        "corpus/ml-techniques/self-evolving-agent-systems.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000330",
+      "kind": "arxiv",
+      "identifier": "2608.10010",
+      "source_url": "https://arxiv.org/abs/2608.10010v2",
+      "documents": [
+        "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+      ],
+      "disposition": "identity-only",
+      "source_revision": "v2",
+      "latest_revision_observed": "v2"
+    },
+    {
+      "work_id": "KWRK-000331",
+      "kind": "doi",
+      "identifier": "10.1007/s11265-020-01557-8",
+      "source_url": "https://doi.org/10.1007/s11265-020-01557-8",
+      "documents": [
+        "corpus/ml-techniques/logarithmic-closed-numerical-representations.md"
+      ],
+      "disposition": "identity-only"
+    }
+  ]
+}
