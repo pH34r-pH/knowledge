@@ -12,6 +12,15 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-11-27 — Reconcile three pinned arXiv revisions
+
+- **Status** Current citation revisions for four articles.
+- **Method** Compare pinned and current primary sources. A separate verifier checked the benchmark figures and the experimental scope.
+- **Files** [Reasoning models](ml-techniques/reasoning-models.md), [preference optimization](ml-techniques/preference-optimization.md), [structured outputs](ml-techniques/structured-outputs-constrained-decoding.md), and [complex attention](ml-techniques/complex-phase-aware-hyperspherical-transformers.md).
+- **DeepSeek-R1-Zero** The AIME 2024 baseline was 15.6%. Version 1 reported 71.0% pass@1 with 86.7% at cons@64. Version 2 and Nature report 77.9% pass@1 and 86.7% at cons@16 in Fig. 1a. The general AIME benchmark protocol in the v2 appendix separately describes cons@64. The corpus attributes the consensus label to Fig. 1a. [arXiv v1, Table 2](https://arxiv.org/html/2501.12948v1#S2.T2) · [arXiv v2, Fig. 1](https://arxiv.org/html/2501.12948v2#S2.F1) · [arXiv v2, Appendix D.1](https://arxiv.org/html/2501.12948v2#A4.SS1) · [Nature](https://www.nature.com/articles/s41586-025-09422-z)
+- **Schema-key wording** Version 3 updates the title and bounds the changes in accuracy to the tested models and tasks. GSM8K has stronger evidence than Math500. [arXiv v2](https://arxiv.org/abs/2604.14862v2) · [arXiv v3, §§4.2–4.5](https://arxiv.org/html/2604.14862v3#S4.SS2)
+- **Phase-Coherent Transformer** Version 3 retains the complex cosine and sigmoid gate. The depth result applies to the reported ListOps sweep at depths 2, 4, 6, 10, 14, and 20. The small evaluation batch limits a depth-scaling claim. [arXiv v2](https://arxiv.org/abs/2605.10123v2) · [arXiv v3, §3.3.1](https://arxiv.org/html/2605.10123v3#S3.SS3.SSS1) · [arXiv v3, Table 7](https://arxiv.org/html/2605.10123v3#S4.T7)
+
 ### 2026-09-07 — Minimality background interfaces
 - **Status:** current scoped external attribution
 - **Method:** pre-resolved author sources; independent entailment and visual checks

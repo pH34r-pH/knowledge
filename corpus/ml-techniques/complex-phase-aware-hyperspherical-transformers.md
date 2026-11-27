@@ -54,7 +54,7 @@ s_ij = Re⟨q̄_i, k̄_j⟩ · √d
 out_i = W_o Σ_j α_ij v_j
 ```
 
-Because the gate is applied independently, the weights in a row do not compete for a unit softmax mass. The paper compares this cell with real and complex softmax and screening variants under its parameter-fair setup, and reports no accuracy collapse over its tested depth range [4]. Those are author-reported results from a recent single-author preprint, not yet a general verdict on non-competing complex attention.
+Because the gate is applied independently, the weights in a row do not compete for a unit softmax mass. The preprint compares six real and complex attention cells using softmax, sigmoid, and screening gates. The author reports no accuracy collapse at the six tested depths from 2 to 20 on ListOps and notes that the small evaluation batch limits conclusions about how accuracy scales with depth [4].
 
 ### Positional phase is a smaller commitment
 
@@ -157,7 +157,7 @@ The point is not to insist on Euclidean, real-valued, fixed-depth Transformers. 
 1. Muqiao Yang, Martin Q. Ma, Dongyu Li, Yao-Hung Hubert Tsai, and Ruslan Salakhutdinov — *Complex Transformer: A Framework for Modeling Complex-Valued Sequence* (2019 preprint; v2 revised 2021), arXiv:1910.10202v2 — https://arxiv.org/abs/1910.10202v2
 2. Yihong Dong, Ying Peng, Muqiao Yang, Songtao Lu, and Qingjiang Shi — *Signal Transformer: Complex-valued Attention and Meta-Learning for Signal Recognition* (2021 preprint), arXiv:2106.04392v2 — https://arxiv.org/abs/2106.04392v2
 3. Florian Eilers and Xiaoyi Jiang — *Building Blocks for a Complex-Valued Transformer Architecture* (2023 preprint), arXiv:2306.09827v1 — https://arxiv.org/abs/2306.09827v1
-4. Leona Hioki — *Complex-Valued Phase-Coherent Transformer* (2026 preprint), arXiv:2605.10123v2 — https://arxiv.org/abs/2605.10123v2
+4. Leona Hioki — *Complex-Valued Phase-Coherent Transformer* (2026 preprint, v3, §§3.2–3.3 and 4.7) — https://arxiv.org/abs/2605.10123v3
 5. Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu — *RoFormer: Enhanced Transformer with Rotary Position Embedding* (arXiv preprint; first posted 2021, v5 updated 2023), arXiv:2104.09864v5 — https://arxiv.org/abs/2104.09864v5
 6. Sajad Movahedi, Timur Carstensen, Arshia Afzal, Frank Hutter, Antonio Orvieto, and Volkan Cevher — *Selective Rotary Position Embedding* (ICLR 2026), arXiv:2511.17388v3 — https://arxiv.org/abs/2511.17388v3
 7. Ilya Loshchilov, Cheng-Ping Hsieh, Simeng Sun, and Boris Ginsburg — *nGPT: Normalized Transformer with Representation Learning on the Hypersphere* (ICLR 2025), arXiv:2410.01131v2 — https://arxiv.org/abs/2410.01131v2

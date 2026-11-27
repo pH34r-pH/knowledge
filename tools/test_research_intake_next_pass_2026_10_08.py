@@ -143,9 +143,12 @@ class ResearchIntakeNextPassTests(unittest.TestCase):
 
     def test_stable_source_aliases_are_unique(self) -> None:
         aliases: dict[tuple[str, ...], str] = {}
+        superseded = {work.get("supersedes") for work in self.works if work.get("status") == "ACTIVE"}
         for work in self.works:
             identifiers = work.get("canonical_identifiers", {})
             for field in ("arxiv", "doi", "url"):
+                if field == "arxiv" and work["id"] in superseded:
+                    continue
                 value = identifiers.get(field)
                 if not value:
                     continue

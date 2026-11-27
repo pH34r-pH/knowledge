@@ -23,7 +23,7 @@ The honest framing up front: there is **no universal winner.** The choice is a r
 
 Route on your **reward signal** and your **data**, not on which paper is newest.
 
-- **Verifiable, programmatically-checkable reward** (math answers, code that compiles and passes tests) → **GRPO / RLVR.** A rule-based checker sidesteps the learned reward model entirely, and dodging the reward model dodges reward hacking (see Trade-offs) [3][5].
+- **Verifiable, programmatically-checkable reward** (math answers, code that compiles and passes tests) → **GRPO / RLVR.** A rule-based checker can supply the reward signal directly when correctness is verifiable [3][5].
 - **A static preference dataset and no appetite for an RL loop** → **DPO.** But you own one condition: the data must cover the response distribution your policy will actually produce, or you inherit the off-policy failure mode below [2][8].
 - **Neither** — no verifiable reward, no good preference data → **fix your SFT data first.** LIMA is the load-bearing result here: 1,000 curated SFT examples, no RL and no preference modeling at all, reached parity-or-better with strong models in a large fraction of head-to-heads [10]. For many tasks the preference-optimization slice is the last few points on top of SFT, not the main event.
 - **Top of the quality curve with a real tuning budget** → **PPO.** A well-tuned PPO holds a real edge, but "well-tuned" is doing heavy lifting (see below) [4].
@@ -58,7 +58,7 @@ The language model is its own implicit reward model. This deletes **four** piece
 A_i = (r_i − mean(r)) / std(r)
 ```
 
-This "foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources" [3]. GRPO also moves the KL penalty **out of the reward and directly into the loss** via Schulman's unbiased positive KL estimator. DeepSeekMath's settings: 64 outputs per question, KL coefficient 0.04, policy learning rate 1e-6 [3]. The concrete gain: DeepSeekMath-RL 7B reached 88.2% on GSM8K and 51.7% on MATH (chain-of-thought, no tools), up from the Instruct model's 82.9% / 46.8%, trained only on GSM8K/MATH CoT data [3]. DeepSeek-R1 then scaled the same algorithm from a base model using **rule-based rewards only** — an accuracy reward checking correctness plus a format reward enforcing `<think></think>` tags — driving AIME 2024 pass@1 from 15.6% to 71.0% (86.7% with majority voting over 64 samples) [5]. Critically, the authors *deliberately avoided* a neural reward model because it "may suffer from reward hacking in the large-scale reinforcement learning process" [5]. That is the whole argument for verifiable rewards: at scale, a learned RM is a surface to be gamed.
+This "foregoes the critic model, instead estimating the baseline from group scores, significantly reducing training resources" [3]. GRPO also moves the KL penalty **out of the reward and directly into the loss** via Schulman's unbiased positive KL estimator. DeepSeekMath's settings: 64 outputs per question, KL coefficient 0.04, policy learning rate 1e-6 [3]. The concrete gain: DeepSeekMath-RL 7B reached 88.2% on GSM8K and 51.7% on MATH (chain-of-thought, no tools), up from the Instruct model's 82.9% / 46.8%, trained only on GSM8K/MATH CoT data [3]. DeepSeek-R1-Zero applied GRPO to a base model using rule-based rewards for answer accuracy and for the required reasoning tags. The v2 report gives AIME 2024 pass@1 of 77.9%, up from 15.6%. Fig. 1a labels the 86.7% consensus result cons@16. The authors avoided learned reward models for these reasoning tasks because of their susceptibility to reward hacking [5].
 
 ## Trade-offs
 
@@ -70,7 +70,7 @@ This "foregoes the critic model, instead estimating the baseline from group scor
 
 **GRPO's "canonical" objective is already contested.** Vanilla GRPO's normalization injects two biases: dividing the advantage by `std(r)` introduces a question-difficulty bias, and per-response length normalization introduces a length bias. Dr. GRPO and DAPO correct these with token-level or constant-length normalization. TRL now flags both biases, exposes the corrected loss variants, and **defaults `β = 0` (no KL term)**, citing evidence that the KL term isn't essential for reasoning training [9]. GRPO's cost is also real: it needs many samples per prompt for a stable group-relative gradient (DeepSeekMath used 64), raising generation cost, and it works best with verifiable rewards rather than a neural RM [3][9]. R1-Zero (pure RL, no SFT) also shipped with poor readability and language mixing — evidence that plain online RL, even when it maxes verifiable benchmarks, is not a deployable assistant on its own [5].
 
-**Learned RM vs rule-based reward is a real fork, not a contradiction.** InstructGPT centers a learned Bradley-Terry RM [1]; DeepSeek-R1 refuses one to avoid reward hacking [5]. Both are correct for their domain: subjective-quality alignment needs a learned RM; verifiable-reasoning RL can and should drop it.
+**Choose the reward for the task.** InstructGPT uses a learned Bradley-Terry reward model to score human preferences [1]. DeepSeek-R1-Zero uses rule-based scores for verifiable reasoning [5].
 
 ## In practice
 
@@ -88,7 +88,7 @@ The blind spot in all three research-frame debates is that they argue at frontie
 2. Direct Preference Optimization: Your Language Model is Secretly a Reward Model — Rafailov et al. 2023, NeurIPS (closed-form optimal policy, implicit reward reparameterization, BCE loss) — https://arxiv.org/abs/2305.18290
 3. DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models — Shao et al. 2024 (introduces GRPO: group-relative advantage, critic removal, KL-in-loss, GSM8K/MATH gains) — https://arxiv.org/html/2402.03300v3
 4. Is DPO Superior to PPO for LLM Alignment? A Comprehensive Study — Xu et al. 2024, ICML (PPO surpasses other alignment methods in all their cases; CodeContest SOTA, OOD-exploitation, three PPO factors) — https://arxiv.org/html/2404.10719v3
-5. DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning — DeepSeek-AI 2025 (rule-based rewards, AIME 15.6%→71.0%, reward-hacking rationale, R1-Zero readability/language-mixing) — https://arxiv.org/html/2501.12948v1
+5. DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning — arXiv v2 (rule-based rewards, R1-Zero’s AIME 2024 results, readability and language mixing) — https://arxiv.org/html/2501.12948v2
 6. Unpacking DPO and PPO: Disentangling Best Practices for Learning from Preference Feedback — Ivison et al. 2024 (measured gap: PPO ahead by up to 2.5% math / 1.2% general) — https://arxiv.org/abs/2406.09279
 7. Group Relative Policy Optimization (GRPO) — Cameron R. Wolfe (engineering deep-dive on critic-free RL and the memory savings from dropping the value network) — https://cameronrwolfe.substack.com/p/grpo
 8. 3D-Properties: Identifying Challenges in DPO and Charting a Path Forward — Yan et al. 2024, ICLR 2025 (Drastic-drop / Degradation / Dispersion pathologies of offline DPO; gradient interaction) — https://arxiv.org/abs/2406.07327
