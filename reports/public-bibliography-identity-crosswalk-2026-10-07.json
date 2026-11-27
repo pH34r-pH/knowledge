@@ -934,12 +934,12 @@
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
-      "sha256": "9403f66fdc4c1445a9f78201bb752d891dcead1569275d61878565c682f6c942",
+      "sha256": "f65dcd576c4362ad15fd0f66b68cd92d4c196283a9eaf6677414f28c57c530aa",
       "record_count": 75
     },
     {
       "path": "reports/research-identity-reconciliation-input-2026-10-07.json",
-      "sha256": "29744cb00c821ecac9d69e11f43602fd854580641bbaf592cdcc7b68f534733e",
+      "sha256": "a8250b15cbf90d8841ef210cbd9b471fc333b871b7fe6b15a425f86ff57c9e09",
       "record_count": 33
     }
   ],
