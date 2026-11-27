@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from source_admission import review_date, review_report, source_reviews
+from source_admission import review_date, review_report, reviewed_freshness, source_reviews
 from source_readback import read_arxiv
 
 WORK_RE = re.compile(r"^KWRK-[0-9]{6}$")
@@ -310,6 +310,7 @@ def _run(args: argparse.Namespace) -> int:
         report = review_report(root, works, claims, evidence, reviews, as_of, read_arxiv if observed_at else None)
         if observed_at:
             report["observed_at"] = observed_at.isoformat()
+            report["reviewed_freshness"] = reviewed_freshness(report, reviews)
         print(json.dumps({**report, "registry_sha256": fingerprint}, sort_keys=True))
     else:
         print("OK: external claim adapter integrity valid")

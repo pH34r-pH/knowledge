@@ -13,6 +13,7 @@ from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
 
+from source_admission import reviewed_freshness
 from source_readback import read_arxiv
 from validate_external_claim_adapter import REGISTRY_FILES, SOURCE_REVIEWS, main, registry_fingerprint, validate_adapter
 
@@ -177,7 +178,26 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         self.assertEqual(row["claims_for_review"], ["KCLM-000001"])
         self.assertEqual(row["evidence_for_review"], ["KEVD-000001"])
         self.assertEqual(row["documents_for_review"], ["corpus/ml-techniques/sample.md"])
+        self.assertEqual(report["reviewed_freshness"], {
+            "state": "needs-review", "approved_sources": 1, "blocked_work_ids": [row["work_id"]],
+        })
         self.assertEqual(tuple((root / name).read_bytes() for name in REGISTRY_FILES), snapshot)
+
+    def test_freshness_requires_live_verification_of_each_approved_use(self) -> None:
+        reviews = {
+            "approved": {"status": "verified", "permitted_uses": {"search": "bibliographic-metadata"}},
+            "revoked": {"status": "retracted", "permitted_uses": {"search": "bibliographic-metadata"}},
+            "metadata-not-approved": {"status": "verified", "permitted_uses": {}},
+        }
+        works = [{"work_id": "approved", "state": "expired"}, {"work_id": "revoked", "state": "retracted"},
+                 {"work_id": "metadata-not-approved", "state": "expired"}]
+        self.assertEqual(reviewed_freshness({"works": works}, reviews), {
+            "state": "needs-review", "approved_sources": 1, "blocked_work_ids": ["approved"],
+        })
+        works[0].update({"state": "verified", "live_check": {"state": "verified"}})
+        self.assertEqual(reviewed_freshness({"works": works}, reviews), {
+            "state": "current", "approved_sources": 1, "blocked_work_ids": [],
+        })
 
     def test_live_readback_binds_primary_version_and_pdf_bytes(self) -> None:
         abstract = "https://arxiv.org/abs/2601.00001"
