@@ -10,7 +10,9 @@ from datetime import date
 from pathlib import Path, PurePosixPath
 
 from reconcile_public_bibliography import normalize_arxiv, normalize_doi
-from source_readback import CROSSREF_FIELDS, CROSSREF_KIND, crossref_revision, crossref_url, metadata_bytes
+from source_readback import (
+    ARXIV_FIELDS, ARXIV_KIND, CROSSREF_FIELDS, CROSSREF_KIND, crossref_revision, crossref_url, metadata_bytes,
+)
 
 REVIEW_FIELDS = {
     "schema_version", "work_id", "trust_class", "data_class", "revision", "source_url",
@@ -28,7 +30,7 @@ CITATION_LINKS = {
 }
 NORMALIZE_CITATION = {"arxiv": normalize_arxiv, "doi": normalize_doi}
 CORPUS_PILLARS = ("design-patterns", "ml-techniques", "adjacent-knowledge")
-LiveReview = Callable[[dict], dict]
+LiveReview = Callable[[list[dict]], dict[str, dict]]
 Citation = tuple[str, str]
 
 
@@ -69,7 +71,11 @@ def _pinned_arxiv(work: dict, review: dict) -> None:
         raise ValueError("source review requires an exact version of the registered arXiv work")
     if source_url != f"https://arxiv.org/abs/{revision}":
         raise ValueError("source review URL must identify the exact primary version")
-    if review["local_path"] != f"arxiv/{base}.pdf":
+    if review.get("source_kind") == ARXIV_KIND:
+        if arxiv != base and arxiv != revision:
+            raise ValueError("arXiv metadata review requires the registered Work's pinned version")
+        _pinned_metadata_path(work, review)
+    elif review["local_path"] != f"arxiv/{base}.pdf":
         raise ValueError("source review must bind the retained PDF for the registered arXiv work")
 
 
@@ -87,8 +93,12 @@ def _pinned_crossref(work: dict, review: dict) -> None:
     if not isinstance(review["revision"], str):
         raise ValueError("Crossref deposit revision must be an exact UTC timestamp")
     crossref_revision(review["revision"])
+    _pinned_metadata_path(work, review)
+
+
+def _pinned_metadata_path(work: dict, review: dict) -> None:
     if review["local_path"] != f"governance/source-evidence/{work['id']}.json":
-        raise ValueError("Crossref review must bind the registered Work's retained metadata")
+        raise ValueError("source review must bind the registered Work's retained metadata")
 
 
 def _metadata_uses(value: object) -> None:
@@ -113,12 +123,12 @@ def _validate_source_review(root: Path, work: dict, review: dict) -> None:
         raise ValueError("source review requires a recognized freshness or retraction state")
     if review_date(review["reviewed_on"]) > review_date(review["expires_on"]):
         raise ValueError("source review expiry precedes its review date")
-    if version == 2:
-        if review["source_kind"] != CROSSREF_KIND:
-            raise ValueError("unsupported metadata source kind")
+    if version == 1 or review["source_kind"] == ARXIV_KIND:
+        _pinned_arxiv(work, review)
+    elif review["source_kind"] == CROSSREF_KIND:
         _pinned_crossref(work, review)
     else:
-        _pinned_arxiv(work, review)
+        raise ValueError("unsupported metadata source kind")
     if not isinstance(review["sha256"], str) or not SHA256_RE.fullmatch(review["sha256"]):
         raise ValueError("source review requires the full SHA-256 of the retained source")
     _source_path(root, review["local_path"])
@@ -143,9 +153,15 @@ def source_reviews(root: Path, works: list[dict], reviews: list[dict]) -> dict[s
 def _matches_work_metadata(raw: bytes, work: dict, review: dict) -> bool:
     try:
         metadata = json.loads(raw)
-        if not isinstance(metadata, dict) or set(metadata) != CROSSREF_FIELDS or raw != metadata_bytes(metadata):
+        if review["source_kind"] == ARXIV_KIND:
+            fields, alias = ARXIV_FIELDS, "arxiv"
+            identity = ARXIV_VERSION.sub("", work["canonical_identifiers"][alias])
+        else:
+            fields, alias = CROSSREF_FIELDS, "doi"
+            identity = _work_doi(work)
+        if not isinstance(metadata, dict) or set(metadata) != fields or raw != metadata_bytes(metadata):
             return False
-        return (metadata["doi"] == _work_doi(work) and metadata["revision"] == review["revision"]
+        return (metadata[alias] == identity and metadata["revision"] == review["revision"]
                 and all(metadata[key] == work.get(key) for key in ("title", "authors", "publication_date", "venue")))
     except (TypeError, ValueError):
         return False
@@ -250,13 +266,17 @@ def review_report(
     for item in evidence:
         evidence_by_claim.setdefault(item["claim_id"], []).append(item["id"])
     citations = _corpus_citations(root)
+    source_states = {work["id"]: _source_state(root, work, reviews.get(work["id"]), as_of, targets)
+                     for work in works}
+    live_sources = [reviews[work_id] for work_id, state in source_states.items() if state == "verified"]
+    observations = live_review(live_sources) if live_review is not None else {}
     results = []
     for work in works:
         work_id = work["id"]
-        status = _source_state(root, work, reviews.get(work_id), as_of, targets)
+        status = source_states[work_id]
         observation = None
         if status == "verified" and live_review is not None:
-            observation = live_review(reviews[work_id])
+            observation = observations.get(work_id, {"state": "unconfirmed", "reason": "missing source readback"})
             status = observation["state"]
         affected_claims, affected_evidence, affected_documents = [], [], []
         permitted_uses = {}

@@ -7,8 +7,9 @@ The public `external-claim-adapter` workflow runs on every `main` push; its stab
 This check covers adapter code and canonical registries offline. It does **not** independently re-resolve every article DOI, citation or scientific claim in the corpus. If a Portfolio release consumes other Knowledge paths such as `corpus/**` or `reports/**`, its private Fleet publication policy must separately identify and validate those inputs and record their SHA/digest; do not call the adapter gate a full-corpus integrity proof. Public Knowledge CI has no Azure OIDC or private Fleet dispatch credential. Fleet #177 owns polling, cross-repository pinning, receipts and protected publication.
 
 The same workflow runs `source-readback` on repository changes and weekly. The
-report checks reviewed arXiv versions and PDF bytes and lists dependencies that
-need review when a source changes or becomes unavailable. The
+report checks reviewed arXiv versions and retained PDF bytes or bibliographic
+snapshots, plus reviewed Crossref bibliographic snapshots. It lists dependencies
+that need review when a source changes or becomes unavailable. The
 `reviewed-source-freshness` job succeeds only when each declared metadata use
 still has current, verified evidence. Fleet can read this conclusion through
 the public Actions API. The report includes the affected Work IDs and remains

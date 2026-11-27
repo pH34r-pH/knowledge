@@ -35,6 +35,9 @@ jobs:
         run: python tools/reconcile_public_bibliography.py --check
 
   source-readback:
+    concurrency:
+      group: knowledge-reviewed-source-readback
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     timeout-minutes: 4
     outputs:

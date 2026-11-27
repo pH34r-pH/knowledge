@@ -14,7 +14,10 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 
 from source_admission import reviewed_freshness
-from source_readback import CROSSREF_KIND, crossref_metadata, crossref_url, metadata_bytes, read_arxiv, read_crossref
+from source_readback import (
+    ARXIV_KIND, CROSSREF_KIND, crossref_metadata, crossref_url, metadata_bytes,
+    read_arxiv, read_crossref, read_sources,
+)
 from validate_external_claim_adapter import REGISTRY_FILES, SOURCE_REVIEWS, main, registry_fingerprint, validate_adapter
 
 
@@ -222,10 +225,10 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         args = ["--root", str(root), "--source-report", "--check-live", "--expected-registry-sha256", expected]
         output = io.StringIO()
         observation = {"state": "revised", "observed_revision": "2601.00001v3"}
-        with patch("validate_external_claim_adapter.read_source", return_value=observation) as read:
+        with patch("validate_external_claim_adapter.read_sources", return_value={work["id"]: observation}) as read:
             with redirect_stdout(output):
                 self.assertEqual(main(args), 0)
-            read.assert_called_once_with(work["source_review"])
+            read.assert_called_once_with([work["source_review"]])
         report = json.loads(output.getvalue())
         row, = report["works"]
         self.assertEqual(report["as_of"], today)
@@ -304,6 +307,77 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         work = self._source_fixture(root)
         _write_jsonl(root / "references/external/works.jsonl", [work])
         self.assertIn("KWRK-000001: source policy belongs in the governance review file", validate_adapter(root))
+
+    def test_arxiv_metadata_snapshot_binds_work_version_and_expires(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        alias = work["canonical_identifiers"]
+        alias["arxiv"] = "2601.00001v2"
+        work["venue"] = "arXiv preprint"
+        evidence = root / "governance/source-evidence/KWRK-000001.json"
+        evidence.parent.mkdir()
+        review = work["source_review"]
+        review.update({"schema_version": 2, "source_kind": ARXIV_KIND,
+                       "local_path": evidence.relative_to(root).as_posix()})
+        record = {"arxiv": "2601.00001", "revision": review["revision"],
+                  **{key: work[key] for key in ("title", "authors", "publication_date", "venue")}}
+        for date, title, state in (
+            ("2026-11-26", work["title"], "verified"),
+            ("2026-11-26", "Unrelated title", "identity-mismatch"),
+            ("2026-12-02", work["title"], "expired"),
+        ):
+            with self.subTest(state=state):
+                raw = metadata_bytes({**record, "title": title})
+                evidence.write_bytes(raw)
+                review["sha256"] = hashlib.sha256(raw).hexdigest()
+                self._write_source_fixture(root, work)
+                status, output = self._report(root, date)
+                self.assertEqual(status, 0, output)
+                row, = json.loads(output)["works"]
+                self.assertEqual(row["state"], state)
+                self.assertEqual(row["permitted_uses"], review["permitted_uses"] if state == "verified" else {})
+                self.assertEqual(row["documents_for_review"],
+                                 [] if state == "verified" else ["corpus/ml-techniques/sample.md"])
+        alias["arxiv"] = "2601.00001v1"
+        self._write_source_fixture(root, work)
+        self.assertIn("KWRK-000001: arXiv metadata review requires the registered Work's pinned version",
+                      validate_adapter(root))
+
+    def test_arxiv_atom_readback_batches_pinned_metadata_and_checks_notices(self) -> None:
+        def entry(identifier):
+            return f"""<entry><id>http://arxiv.org/abs/{identifier}v2</id>
+              <title>  Synthetic     title </title><published>2026-01-01T12:00:00Z</published>
+              <author><name>First Author</name></author><author><name>Second Author</name></author>
+              <summary>External prose asks for publication.</summary>
+              <link href="https://example.org/untrusted" rel="related"/></entry>"""
+        second = entry("2601.00002")
+        first = entry("2601.00001")
+        reviews = []
+        for work_id, identifier in (("A", "2601.00001"), ("B", "2601.00002")):
+            record = {"arxiv": identifier, "revision": identifier + "v2", "title": "Synthetic title",
+                      "authors": ["First Author", "Second Author"], "publication_date": "2026-01-01",
+                      "venue": "arXiv preprint"}
+            reviews.append({"work_id": work_id, "source_kind": ARXIV_KIND, "revision": record["revision"],
+                            "sha256": hashlib.sha256(metadata_bytes(record)).hexdigest()})
+        url = "https://export.arxiv.org/api/query?id_list=2601.00001,2601.00002&max_results=2"
+        for entries, states in (
+            (second + first, ("verified", "verified")),
+            (first.replace("First Author", "Unknown") + second, ("identity-mismatch", "verified")),
+            (first.replace("00001v2", "00001v3") + second, ("revised", "verified")),
+            (first.replace("External prose asks for publication.", "This paper has been withdrawn.") + second,
+             ("retracted", "verified")),
+            (second, ("unconfirmed", "verified")),
+            (first + first, ("unconfirmed", "unconfirmed")),
+            (first + entry("2601.00003"), ("unconfirmed", "unconfirmed")),
+        ):
+            with self.subTest(states=states):
+                raw = f'<feed xmlns="http://www.w3.org/2005/Atom">{entries}</feed>'.encode()
+                with patch("source_readback.fetch", return_value=raw) as fetch:
+                    result = read_sources(reviews, read=fetch)
+                    fetch.assert_called_once_with(url, 1024 * 1024)
+                self.assertEqual((result["A"]["state"], result["B"]["state"]), states)
+                self.assertNotIn("asks for publication", json.dumps(result))
 
     def test_crossref_snapshot_must_match_the_registered_work(self) -> None:
         temp, root = self._root()
