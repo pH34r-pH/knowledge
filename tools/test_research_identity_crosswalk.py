@@ -78,6 +78,13 @@ class CrosswalkTests(unittest.TestCase):
         entry, = [row for row in self.document["field_discrepancies"] if row["canonical_key"] == key]
         self.assertIn("authors", {field["field"] for field in entry["fields"]})
 
+    def test_weighted_automata_successor_preserves_identity(self) -> None:
+        key = "doi:10.1109/lics.2015.70"
+        source, = [row for row in self.document["sources"] if row["canonical_key"] == key]
+        self.assertEqual(source["publication_date"], "2015-07")
+        self.assertEqual(source["venue"], "2015 30th Annual ACM/IEEE Symposium on Logic in Computer Science")
+        self.assertEqual({work["id"] for work in source["work_records"]}, {"KWRK-000024", "KWRK-000358"})
+
     def test_verified_identity_additions_link_to_canonical_works(self) -> None:
         refs = {
             work["id"]: row["canonical_key"]
