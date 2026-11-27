@@ -15,6 +15,7 @@ from urllib.error import HTTPError
 
 from source_admission import reviewed_freshness
 from source_readback import (
+    ACL_KIND, ACL_ORIGINAL, acl_anthology_metadata, read_acl_anthology,
     ARXIV_KIND, CROSSREF_JOURNAL_KIND, CROSSREF_KIND, crossref_metadata, crossref_url, metadata_bytes,
     read_arxiv, read_crossref, read_sources,
 )
@@ -596,6 +597,72 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         ):
             with self.subTest(changes=changes):
                 self.assertEqual(read_crossref(review, lambda _url, _limit: response(changes))["state"], state)
+
+    def test_acl_anthology_preflight_matches_publisher_citation_and_fails_closed(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        identifier = "2025.findings-acl.1"
+        url = f"https://aclanthology.org/{identifier}/"
+        doi = f"10.18653/v1/{identifier}"
+        venue = "Findings of the Association for Computational Linguistics: ACL 2025"
+        work.update(source_url=url, canonical_identifiers={"anthology": identifier, "doi": doi},
+                    venue="Findings of ACL 2025", publication_date="2025-07")
+        citation = [
+            ("title", work["title"]), ("author", work["authors"][0]), ("conference_title", venue),
+            ("publication_date", "2025/7"), ("pdf_url", url[:-1] + ".pdf"), ("doi", doi),
+            ("firstpage", "11"), ("lastpage", "20"),
+        ]
+        tags = "".join(f'<meta name="citation_{name}" content="{value}">' for name, value in citation)
+        page = (f'<html><head><link rel="canonical" href="{url}">{tags}</head>'
+                '<body><dl><dt>Anthology ID:</dt><dd>synthetic</dd></dl></body></html>').encode()
+        record = acl_anthology_metadata(page, url)
+        self.assertEqual(record["publication_date"], "2025-07")
+        evidence = root / "governance/source-evidence/KWRK-000001.json"
+        evidence.parent.mkdir()
+        evidence.write_bytes(metadata_bytes(record))
+        review = work["source_review"]
+        review.update(schema_version=2, source_kind=ACL_KIND, source_url=url, revision=ACL_ORIGINAL,
+                      local_path=evidence.relative_to(root).as_posix(),
+                      sha256=hashlib.sha256(evidence.read_bytes()).hexdigest())
+        for work_venue, published, state in (
+            ("Findings of ACL 2025", "2025-07", "verified"),
+            (venue, "2025-07", "verified"),
+            ("Findings of ACL 2024", "2025-07", "identity-mismatch"),
+            ("Findings of ACL 2025", "2025", "identity-mismatch"),
+        ):
+            with self.subTest(work_venue=work_venue, published=published):
+                work.update(venue=work_venue, publication_date=published)
+                self._write_source_fixture(root, work)
+                code, output = self._report(root, "2026-11-26")
+                self.assertEqual(code, 0, output)
+                row, = json.loads(output)["works"]
+                self.assertEqual(row["state"], state)
+                self.assertEqual(bool(row["permitted_uses"]), state == "verified")
+
+        for response, state in (
+            (page, "verified"),
+            (page.replace(b"2025/7", b"2025/8"), "identity-mismatch"),
+            (page.replace(b"Test Author", b"Another Author"), "identity-mismatch"),
+            (page.replace(b'content="20"', b'content="19"'), "identity-mismatch"),
+            (page.replace(doi.encode(), b"10.18653/v1/2025.findings-acl.2"), "identity-mismatch"),
+            (page.replace(b"</head>", b'<meta name="citation_firstpage" content="12"></head>'), "unconfirmed"),
+            (page.replace(b"</dl>", b"<dt>Version 2:</dt></dl>"), "revised"),
+            (page.replace(b"</dl>", b"<dt>Erratum e1:</dt></dl>"), "revised"),
+            (page.replace(b"<body>", b'<body><div class="acl-editorial-note"></div>'), "revised"),
+            (page.replace(b"<body>", b'<body><div role="alert" class="alert alert-danger"></div>'), "retracted"),
+        ):
+            with self.subTest(state=state, response=response):
+                live = read_sources([review], lambda *_: response)
+                self.assertEqual(live[work["id"]]["state"], state)
+
+    def test_acl_anthology_rejects_invalid_publisher_url_before_fetching(self) -> None:
+        def unexpected_read(*_):
+            self.fail("noncanonical source URL reached the fetcher")
+
+        result = read_acl_anthology({"source_url": "https://aclanthology.org.example/2025.findings-acl.1/"},
+                                   read=unexpected_read)
+        self.assertEqual(result["state"], "unconfirmed")
 
     def test_empty_registry_is_valid(self) -> None:
         temp, root = self._root()

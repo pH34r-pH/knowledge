@@ -11,9 +11,10 @@ from pathlib import Path, PurePosixPath
 
 from reconcile_public_bibliography import normalize_arxiv, normalize_doi
 from source_readback import (
+    ACL_FIELDS, ACL_KIND, ACL_ORIGINAL, anthology_id,
     ARXIV_FIELDS, ARXIV_ID, ARXIV_KIND, ARXIV_MODERN_ID, ARXIV_REVISION, ARXIV_VENUE,
     CROSSREF_FIELDS, CROSSREF_JOURNAL_KIND, CROSSREF_KINDS, VERSION, crossref_revision, crossref_url,
-    metadata_bytes, valid_journal_locator,
+    metadata_bytes, valid_acl_pages, valid_journal_locator,
 )
 
 REVIEW_FIELDS = {
@@ -37,6 +38,17 @@ NORMALIZE_CITATION = {"arxiv": normalize_arxiv, "doi": normalize_doi}
 CORPUS_PILLARS = ("design-patterns", "ml-techniques", "adjacent-knowledge")
 LiveReview = Callable[[list[dict]], dict[str, dict]]
 Citation = tuple[str, str]
+ACL_VENUE_ALIASES = {
+    "Findings of the Association for Computational Linguistics: ACL 2025": "Findings of ACL 2025",
+    "Findings of the Association for Computational Linguistics: EMNLP 2024": "Findings of EMNLP 2024",
+    "Proceedings of the 19th Conference of the European Chapter of the Association for Computational "
+    "Linguistics (Volume 1: Long Papers)": "EACL 2026, Volume 1: Long Papers",
+    "Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics "
+    "(Volume 1: Long Papers)": "ACL 2024, Volume 1: Long Papers",
+    "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing": "EMNLP 2024",
+    "Proceedings of the 2019 Conference of the North American Chapter of the Association for "
+    "Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)": "NAACL-HLT 2019",
+}
 
 
 def review_date(value: object) -> date:
@@ -92,7 +104,7 @@ def _work_doi(work: dict) -> str:
     aliases = work.get("canonical_identifiers")
     doi = aliases.get("doi") if isinstance(aliases, dict) else None
     if not isinstance(doi, str):
-        raise ValueError("Crossref source review needs a DOI in the registered Work")
+        raise ValueError("source review needs a DOI in the registered Work")
     return normalize_doi(doi)
 
 
@@ -105,9 +117,30 @@ def _pinned_crossref(work: dict, review: dict) -> None:
     _pinned_metadata_path(work, review)
 
 
+def _pinned_acl_anthology(work: dict, review: dict) -> None:
+    url = work.get("source_url")
+    if not isinstance(url, str) or url != review["source_url"]:
+        raise ValueError("ACL Anthology source review must bind the registered paper URL")
+    identifier = anthology_id(url)
+    doi = _work_doi(work)
+    alias = work["canonical_identifiers"].get("anthology", identifier)
+    if alias != identifier or doi != f"10.18653/v1/{identifier.lower()}":
+        raise ValueError("ACL Anthology source review requires the matching Anthology ID and DOI")
+    if review["revision"] != ACL_ORIGINAL:
+        raise ValueError("ACL Anthology source review requires the original publication")
+    _pinned_metadata_path(work, review)
+
+
 def _pinned_metadata_path(work: dict, review: dict) -> None:
     if review["local_path"] != f"governance/source-evidence/{work['id']}.json":
         raise ValueError("source review must bind the registered Work's retained metadata")
+
+
+IDENTITY_VALIDATORS = {
+    ARXIV_KIND: _pinned_arxiv,
+    ACL_KIND: _pinned_acl_anthology,
+    **dict.fromkeys(CROSSREF_KINDS, _pinned_crossref),
+}
 
 
 def _metadata_uses(value: object) -> None:
@@ -132,12 +165,11 @@ def _validate_source_review(root: Path, work: dict, review: dict) -> None:
         raise ValueError("source review requires a recognized freshness or retraction state")
     if review_date(review["reviewed_on"]) > review_date(review["expires_on"]):
         raise ValueError("source review expiry precedes its review date")
-    if version == 1 or review["source_kind"] == ARXIV_KIND:
-        _pinned_arxiv(work, review)
-    elif review["source_kind"] in CROSSREF_KINDS:
-        _pinned_crossref(work, review)
-    else:
+    kind = ARXIV_KIND if version == 1 else review["source_kind"]
+    check_identity = IDENTITY_VALIDATORS.get(kind) if isinstance(kind, str) else None
+    if check_identity is None:
         raise ValueError("unsupported metadata source kind")
+    check_identity(work, review)
     if not isinstance(review["sha256"], str) or not SHA256_RE.fullmatch(review["sha256"]):
         raise ValueError("source review requires the full SHA-256 of the retained source")
     _source_path(root, review["local_path"])
@@ -181,24 +213,36 @@ def _matches_venue(metadata: dict, registered: object, kind: str) -> bool:
         return observed == ARXIV_VENUE and registered in (None, "", ARXIV_VENUE)
     if kind == CROSSREF_JOURNAL_KIND:
         return isinstance(registered, str) and registered.replace("\u2013", "-") in _journal_venues(metadata)
+    if kind == ACL_KIND:
+        return isinstance(observed, str) and bool(observed) and (
+            observed == registered or ACL_VENUE_ALIASES.get(observed, observed) == registered
+        )
     return observed == registered
 
 
 def _matches_work_metadata(raw: bytes, work: dict, review: dict) -> bool:
     try:
         metadata = json.loads(raw)
-        if review["source_kind"] == ARXIV_KIND:
+        kind = review["source_kind"]
+        if kind == ARXIV_KIND:
             fields, alias = ARXIV_FIELDS, "arxiv"
             identity = ARXIV_VERSION.sub("", work["canonical_identifiers"][alias])
         else:
             fields, alias = CROSSREF_FIELDS, "doi"
             identity = _work_doi(work)
-        if review["source_kind"] == CROSSREF_JOURNAL_KIND:
+        if kind == CROSSREF_JOURNAL_KIND:
             fields = fields | {"journal_locator"}
+        elif kind == ACL_KIND:
+            fields = ACL_FIELDS
         if not isinstance(metadata, dict) or set(metadata) != fields or raw != metadata_bytes(metadata):
             return False
+        if kind == ACL_KIND and (
+            metadata["anthology"] != anthology_id(review["source_url"])
+            or not valid_acl_pages(metadata["first_page"], metadata["last_page"])
+        ):
+            return False
         return (metadata[alias] == identity and metadata["revision"] == review["revision"]
-                and _matches_venue(metadata, work.get("venue"), review["source_kind"])
+                and _matches_venue(metadata, work.get("venue"), kind)
                 and all(metadata[key] == work.get(key) for key in ("title", "authors", "publication_date")))
     except (AttributeError, TypeError, ValueError):
         return False
