@@ -7,8 +7,6 @@ confidence: high
 date: 2026-08-07
 ---
 
-# Structured outputs and constrained decoding: syntax guarantees, semantic limits
-
 ## What it is
 
 Structured generation constrains a language model's next-token choices so its output belongs to a required language: commonly JSON, a JSON Schema-shaped subset, a regular expression, or a context-free grammar. It turns “please return valid JSON” from an instruction the model may ignore into a decoding-time invariant. Willard and Louf formulate guided generation as transitions in a finite-state machine, allowing regular expressions and context-free grammars to constrain decoding while indexing the model vocabulary against the allowed language.[1]
@@ -47,6 +45,6 @@ Test schema changes as behavior changes. Use representative prompts, adversarial
 
 ## Further reading
 
-1. Willard & Louf — *Efficient Guided Generation for Large Language Models* (finite-state formulation; regex/CFG guidance; vocabulary index) — https://arxiv.org/abs/2307.09702v4
-2. Liu et al. — *“We Need Structured Output”: Towards User-centered Constraints on Large Language Model Output* (51 practitioners; 134 use cases; low- and high-level constraints) — https://arxiv.org/abs/2404.07362v1
-3. Le — *Schema-Key Wording as an Instruction Channel in Structured Generation under Constrained Decoding* (v3, controlled schema-key and prompt experiments) — https://arxiv.org/abs/2604.14862v3
+1. Willard & Louf — *Efficient Guided Generation for Large Language Models* (finite-state formulation; regex/CFG guidance; vocabulary index) — <https://arxiv.org/abs/2307.09702v4>
+2. Liu et al. — *“We Need Structured Output”: Towards User-centered Constraints on Large Language Model Output* (51 practitioners; 134 use cases; low- and high-level constraints) — <https://arxiv.org/abs/2404.07362v1>
+3. Le — *Schema-Key Wording as an Instruction Channel in Structured Generation under Constrained Decoding* (v3, controlled schema-key and prompt experiments) — <https://arxiv.org/abs/2604.14862v3>
