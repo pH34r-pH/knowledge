@@ -506,8 +506,19 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         review = work["source_review"]
         review.update({"schema_version": 2, "source_kind": CROSSREF_KIND, "source_url": crossref_url(doi),
                        "local_path": evidence.relative_to(root).as_posix(), "revision": record["revision"]})
-        for title, state in ((work["title"], "verified"), ("Different source title", "identity-mismatch")):
-            raw = metadata_bytes({**record, "title": title})
+        for title, registered, published, state in (
+            (work["title"], "2026-01-01", "2026-01-01", "verified"),
+            (work["title"], "2026-01", "2026-01-01", "verified"),
+            (work["title"], "2026", "2026-01-01", "verified"),
+            (work["title"], "2025", "2026-01-01", "identity-mismatch"),
+            (work["title"], "2026-02", "2026-01-01", "identity-mismatch"),
+            (work["title"], "2026-01-02", "2026-01-01", "identity-mismatch"),
+            (work["title"], "2026-01-01", "2026-01", "identity-mismatch"),
+            (work["title"], "2026", "2026-02-30", "identity-mismatch"),
+            ("Different source title", "2026", "2026-01-01", "identity-mismatch"),
+        ):
+            work["publication_date"] = registered
+            raw = metadata_bytes({**record, "title": title, "publication_date": published})
             evidence.write_bytes(raw)
             review["sha256"] = hashlib.sha256(raw).hexdigest()
             self._write_source_fixture(root, work)
@@ -572,17 +583,17 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         review.update(schema_version=2, source_kind=CROSSREF_JOURNAL_KIND, source_url=crossref_url(doi),
                       local_path=evidence.relative_to(root).as_posix(), revision=metadata["revision"],
                       sha256=hashlib.sha256(raw).hexdigest())
-        for venue, state in (
-            ("Test Journal 24(2), 7\u201318", "verified"),
-            ("The Test Journal 24:001", "verified"),
-            ("The Test Journal 24, 001 (2026)", "verified"),
-            ("A Different Journal 24, 001", "identity-mismatch"),
-            ("The Test Journal 24(3), 7-18", "identity-mismatch"),
-            ("The Test Journal 24, 009", "identity-mismatch"),
-            ("The Test Journal 24, 001 (2025)", "identity-mismatch"),
+        for venue, published, state in (
+            ("Test Journal 24(2), 7\u201318", "2026-01-01", "verified"),
+            ("The Test Journal 24:001", "2026-01-01", "verified"),
+            ("The Test Journal 24, 001 (2026)", "2026", "verified"),
+            ("A Different Journal 24, 001", "2026", "identity-mismatch"),
+            ("The Test Journal 24(3), 7-18", "2026", "identity-mismatch"),
+            ("The Test Journal 24, 009", "2026", "identity-mismatch"),
+            ("The Test Journal 24, 001 (2025)", "2026", "identity-mismatch"),
         ):
-            with self.subTest(venue=venue):
-                work["venue"] = venue
+            with self.subTest(venue=venue, published=published):
+                work.update(venue=venue, publication_date=published)
                 self._write_source_fixture(root, work)
                 code, output = self._report(root, "2026-11-26")
                 self.assertEqual(code, 0, output)
@@ -592,6 +603,7 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         for changes, state in (
             ({}, "verified"), ({"page": "7-19"}, "identity-mismatch"),
             ({"article-number": "009"}, "identity-mismatch"),
+            ({"published": {"date-parts": [[2026, 1, 2]]}}, "identity-mismatch"),
             ({"container-title": []}, "unconfirmed"), ({"type": "posted-content"}, "unconfirmed"),
             ({"updated-by": [{"type": "retraction"}]}, "retracted"),
         ):

@@ -37,6 +37,11 @@ timestamp, and SHA-256 of the retained bibliographic JSON under
 publication date and venue recorded by the Work. This profile covers those
 metadata fields for approved index or search use.
 
+If the Work cites only a year or month, the Crossref publication date must
+agree at that precision. The snapshot retains the publication date at the
+precision supplied by Crossref. Any change to that snapshot still requires
+review, including a date change within the cited year or month.
+
 Use `crossref-journal-bibliographic-metadata` when the Work's venue is a
 formatted journal reference. The snapshot retains the publisher's journal title
 and its exact volume, optional issue, and page range or article number. The Work
