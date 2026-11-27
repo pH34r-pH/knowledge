@@ -181,3 +181,14 @@ def review_report(
             **({"live_check": observation} if observation is not None else {}),
         })
     return {"as_of": as_of.isoformat(), "works": sorted(results, key=lambda item: item["work_id"])}
+
+
+def reviewed_freshness(report: dict, reviews: dict[str, dict]) -> dict:
+    """Count declared uses that still need fresh verified source evidence."""
+    approved = {key for key, review in reviews.items()
+                if review["status"] == "verified" and review["permitted_uses"]}
+    fresh = {row["work_id"] for row in report["works"]
+             if row.get("live_check", {}).get("state") == "verified"}
+    blocked = sorted(approved - fresh)
+    return {"state": "needs-review" if blocked else "current",
+            "approved_sources": len(approved), "blocked_work_ids": blocked}

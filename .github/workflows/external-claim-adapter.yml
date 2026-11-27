@@ -37,6 +37,8 @@ jobs:
   source-readback:
     runs-on: ubuntu-latest
     timeout-minutes: 4
+    outputs:
+      freshness: ${{ steps.readback.outputs.freshness }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,13 +47,17 @@ jobs:
         with:
           python-version: "3.12"
       - name: Check reviewed public sources
+        id: readback
         run: |
           registry_sha=$(python tools/validate_external_claim_adapter.py --registry-sha256)
           python tools/validate_external_claim_adapter.py --source-report --check-live \
             --expected-registry-sha256 "$registry_sha" > source-readback.json
-          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
-          import json
+          python - "$GITHUB_OUTPUT" <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, sys
           report = json.load(open("source-readback.json", encoding="utf-8"))
+          freshness = report["reviewed_freshness"]
+          with open(sys.argv[1], "a", encoding="utf-8") as output:
+              output.write(f"freshness={freshness['state']}\n")
           print("## Reviewed source health")
           for row in report["works"]:
               if row.get("live_check") or row["state"] != "review-required":
@@ -59,7 +65,21 @@ jobs:
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: knowledge-source-readback-${{ github.sha }}
+          name: knowledge-source-readback-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: source-readback.json
           if-no-files-found: error
           retention-days: 14
+
+  reviewed-source-freshness:
+    needs: source-readback
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Require current evidence for reviewed metadata use
+        env:
+          FRESHNESS: ${{ needs.source-readback.outputs.freshness }}
+        run: |
+          if [ "$FRESHNESS" != current ]; then
+            echo "::error::A declared metadata use needs source review. See the source-readback report."
+            exit 1
+          fi
