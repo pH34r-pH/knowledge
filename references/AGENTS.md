@@ -30,6 +30,13 @@ metadata index and search decisions. Older Work records remain historical
 identities and require review for use. Unconfirmed, inaccessible, revised, or
 retracted sources have an empty use map.
 
+Crossref reviews use schema version 2 and the
+`crossref-bibliographic-metadata` source kind. They bind the exact DOI, deposit
+timestamp, and SHA-256 of the retained bibliographic JSON under
+`governance/source-evidence/`. The checked fields are the title, authors,
+publication date and venue recorded by the Work. This profile covers those
+metadata fields for approved index or search use.
+
 Obtain the registry SHA-256 from an independently reviewed checkout using
 `python tools/validate_external_claim_adapter.py --registry-sha256`. The value
 binds the raw Work, Claim, Evidence, and review files together. Use that exact identity
@@ -40,7 +47,7 @@ python tools/validate_external_claim_adapter.py --source-report \
   --expected-registry-sha256 <reviewed-registry-sha256> --as-of 2026-11-26
 ```
 
-The report checks retained PDF identities and identifies affected claims,
+The report checks retained source identities and identifies affected claims,
 evidence, and corpus articles with matching arXiv and DOI citations. Old dispositions
 remain in the registry. Expiry and reported source changes require renewed
 review. Passage text and source notes remain evidence. Publication, model
@@ -55,8 +62,8 @@ version, and permitted uses.
 
 For a current UTC report, replace `--as-of <date>` with `--check-live`. A live
 check uses the same registry pin and existing metadata permissions. It compares
-the primary arXiv identity, current version, withdrawal notice, and exact PDF
-digest against the retained review. A failed or unconfirmed check suppresses
+the arXiv identity, version, withdrawal notice, and exact PDF digest, or the
+Crossref deposit, bibliographic fields, and editorial notices. A failed or unconfirmed check suppresses
 the use map and lists the affected claims, evidence, and corpus articles.
 
 The public workflow saves a readback report on pushes, pull requests, and
