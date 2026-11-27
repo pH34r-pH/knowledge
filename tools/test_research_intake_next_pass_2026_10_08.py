@@ -147,7 +147,7 @@ class ResearchIntakeNextPassTests(unittest.TestCase):
         for work in self.works:
             identifiers = work.get("canonical_identifiers", {})
             for field in ("arxiv", "doi", "url"):
-                if field == "arxiv" and work["id"] in superseded:
+                if field in {"arxiv", "doi"} and work["id"] in superseded:
                     continue
                 value = identifiers.get(field)
                 if not value:
