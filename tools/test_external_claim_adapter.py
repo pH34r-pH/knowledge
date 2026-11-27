@@ -706,6 +706,34 @@ class ExternalClaimAdapterTests(unittest.TestCase):
                                    read=unexpected_read)
         self.assertEqual(result["state"], "unconfirmed")
 
+    def test_anthology_citations_track_published_work_and_review_impact(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        url = "https://aclanthology.org/N19-1423/"
+        work.update(source_url=url, canonical_identifiers={"doi": "10.18653/v1/N19-1423"})
+        del work["source_review"]
+        self._write_source_fixture(root, work)
+        page, pdf = "corpus/ml-techniques/sample.md", "corpus/ml-techniques/pdf.md"
+        (root / page).write_text(f"[Publisher]({url}) [Again]({url[:-1]})\n", encoding="utf-8")
+        (root / pdf).write_text(
+            f"<{url[:-1]}.pdf#page=2> https://aclanthology.org/2025.findings-acl.999/.\n"
+            "https://aclanthology.org.example/N19-1423/ https://aclanthology.org/N19-1423/extra\n"
+            "https://aclanthology.org/N19-1423.pdf.html https://aclanthology.org/N19-1423v2.pdf\n",
+            encoding="utf-8",
+        )
+        code, output = self._report(root, "2026-11-26")
+        self.assertEqual(code, 0, output)
+        report = json.loads(output)
+        missing, registered = report["citation_coverage"]["citations"]
+        self.assertEqual((missing["identifier"], missing["state"]), ("2025.findings-acl.999", "unregistered"))
+        self.assertEqual((registered["kind"], registered["identifier"]), ("anthology", "N19-1423"))
+        self.assertEqual(registered["active_work_ids"], [work["id"]])
+        self.assertEqual(registered["documents"], [pdf, page])
+        row, = report["works"]
+        self.assertEqual(row["documents_for_review"], [pdf, page])
+        self.assertEqual(row["permitted_uses"], {})
+
     def _pmlr_fixture(self, root: Path) -> tuple[dict, dict[str, bytes]]:
         work = self._source_fixture(root)
         identifier = "v501/sample26a"

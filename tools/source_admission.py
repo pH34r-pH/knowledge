@@ -11,7 +11,7 @@ from pathlib import Path, PurePosixPath
 
 from reconcile_public_bibliography import normalize_arxiv, normalize_doi
 from source_readback import (
-    ACL_FIELDS, ACL_KIND, ACL_ORIGINAL, anthology_id,
+    ACL, ACL_FIELDS, ACL_ID, ACL_KIND, ACL_ORIGINAL, anthology_id,
     ARXIV_FIELDS, ARXIV_ID, ARXIV_KIND, ARXIV_MODERN_ID, ARXIV_REVISION, ARXIV_VENUE,
     CROSSREF_FIELDS, CROSSREF_JOURNAL_KIND, CROSSREF_KINDS, VERSION, crossref_revision, crossref_url,
     PMLR, PMLR_FIELDS, PMLR_ID, PMLR_KIND, PMLR_REVISION, metadata_bytes, pmlr_id, pmlr_pdf_url,
@@ -35,8 +35,11 @@ _ARXIV_LINK = re.compile(
     rf"(?<![\w/]){_ARXIV_ENTRY_URL}({ARXIV_ID})({ARXIV_REVISION})?(?:\.pdf)?(?![0-9a-z/])", re.I,
 )
 _DOI_LINK = re.compile(r"(?<![\w/])https?://(?:dx\.)?doi\.org/(10\.[0-9]{4,9}/[-._;()/:a-z0-9+]+)", re.I)
+_ACL_LINK = re.compile(
+    rf"(?<![\w/]){re.escape(ACL)}({ACL_ID})(?:\.pdf|/)?(?=$|[\s<>\"')\]?#,;!]|\.(?=$|\s))"
+)
 _PMLR_LINK = re.compile(rf"(?<![\w/]){re.escape(PMLR)}({PMLR_ID})\.html(?![\w/-]|\.[\w])")
-NORMALIZE_CITATION = {"arxiv": normalize_arxiv, "doi": normalize_doi, "pmlr": str}
+NORMALIZE_CITATION = {"anthology": str, "arxiv": normalize_arxiv, "doi": normalize_doi, "pmlr": str}
 CORPUS_PILLARS = ("design-patterns", "ml-techniques", "adjacent-knowledge")
 LiveReview = Callable[[list[dict]], dict[str, dict]]
 Citation = tuple[str, str]
@@ -359,6 +362,7 @@ def _corpus_citations(root: Path) -> tuple[dict[Citation, list[str]], dict[str, 
             arxiv = {(normalize_arxiv(base.lower()), version.lower()) for base, version in _ARXIV_LINK.findall(source)}
             identifiers = {("arxiv", base) for base, _ in arxiv}
             identifiers.update(("doi", normalize_doi(doi)) for doi in _DOI_LINK.findall(source))
+            identifiers.update(("anthology", item) for item in _ACL_LINK.findall(source))
             identifiers.update(("pmlr", item) for item in _PMLR_LINK.findall(source))
             for identifier in identifiers:
                 indexed.setdefault(identifier, []).append(document)
@@ -372,8 +376,12 @@ def _work_citations(work: dict) -> list[Citation]:
     identifiers = work.get("canonical_identifiers")
     if not isinstance(identifiers, dict):
         return []
-    return [(kind, normalize(value)) for kind, normalize in NORMALIZE_CITATION.items()
-            if isinstance(value := identifiers.get(kind), str) and value]
+    citations = [(kind, normalize(value)) for kind, normalize in NORMALIZE_CITATION.items()
+                 if isinstance(value := identifiers.get(kind), str) and value]
+    url = work.get("source_url")
+    if "anthology" not in identifiers and isinstance(url, str) and (match := _ACL_LINK.fullmatch(url)):
+        citations.append(("anthology", match[1]))
+    return citations
 
 
 def _affected_documents(work: dict, citations: dict[Citation, list[str]]) -> list[str]:

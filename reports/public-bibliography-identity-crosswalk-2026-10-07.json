@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 350,
-    "KWRK_records_added_after_identity_checks": 270,
+    "KWRK_records_current": 352,
+    "KWRK_records_added_after_identity_checks": 272,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -770,8 +770,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "17e1803ed904e47eee0611116a40574af69a6a18fd362bb8d83adbf8954149c9",
-      "record_count": 350
+      "sha256": "4fb126e50187c536c47f926ad3d75c29d7ae2d98e5adf24d2f366cbb39331c2c",
+      "record_count": 352
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
