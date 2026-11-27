@@ -187,6 +187,69 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         row, = report["works"]
         self.assertEqual(row["documents_for_review"], [second, "corpus/ml-techniques/sample.md"])
         self.assertEqual(row["permitted_uses"], {})
+        pinned = report["arxiv_revision_coverage"]
+        self.assertEqual(pinned["revision_count"], 2)
+        self.assertEqual(pinned["by_state"], {"expired": 1, "unregistered-revision": 1})
+        self.assertEqual(pinned["documents_for_review"], [second, "corpus/ml-techniques/sample.md"])
+        self.assertTrue(all(not item["permitted_uses"] for item in pinned["citations"]))
+
+    def test_pinned_citation_does_not_inherit_a_different_versions_review(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        old = "corpus/ml-techniques/prior.md"
+        (root / old).write_text(
+            "[Prior](https://arxiv.org/abs/2601.00001v1) and https://arxiv.org/pdf/2601.00001v1.pdf\n",
+            encoding="utf-8",
+        )
+        code, output = self._report(root, "2026-11-26")
+        self.assertEqual(code, 0, output)
+        report = json.loads(output)
+        self.assertEqual(report["citation_coverage"]["by_state"], {"active-work": 1})
+        pinned = report["arxiv_revision_coverage"]
+        self.assertEqual(pinned["documents_for_review"], [old])
+        prior, current = pinned["citations"]
+        self.assertEqual(prior["revision"], "2601.00001v1")
+        self.assertEqual(prior["state"], "unregistered-revision")
+        self.assertEqual(prior["documents"], [old])
+        self.assertEqual(prior["permitted_uses"], {})
+        self.assertEqual(current["revision"], "2601.00001v2")
+        self.assertEqual(current["state"], "verified")
+        self.assertEqual(current["permitted_uses"], {"search": "bibliographic-metadata"})
+
+        work["source_url"] = "https://arxiv.org/abs/2601.00001v1"
+        self._write_source_fixture(root, work)
+        code, output = self._report(root, "2026-11-26")
+        self.assertEqual(code, 0, output)
+        revised = json.loads(output)["arxiv_revision_coverage"]["citations"]
+        self.assertEqual(revised[0]["state"], "review-version-mismatch")
+        self.assertEqual(revised[0]["active_work_ids"], [work["id"]])
+        self.assertEqual(revised[0]["permitted_uses"], {})
+
+    def test_pinned_citation_exposes_superseded_and_ambiguous_exact_matches(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        work.pop("source_review")
+        work["source_url"] = "https://arxiv.org/abs/2601.00001v2"
+        self._write_source_fixture(root, work)
+        replacement = {**work, "id": "KWRK-000002", "supersedes": work["id"],
+                       "source_url": "https://arxiv.org/abs/2601.00001v3"}
+        registry = root / "references/external/works.jsonl"
+        duplicate = {**work, "id": "KWRK-000003"}
+        for rows, state, active in (
+            ([work, replacement], "superseded-revision", []),
+            ([work, duplicate], "ambiguous-active-revision", [work["id"], duplicate["id"]]),
+        ):
+            with self.subTest(state=state):
+                _write_jsonl(registry, rows)
+                code, output = self._report(root, "2026-11-26")
+                self.assertEqual(code, 0, output)
+                row, = json.loads(output)["arxiv_revision_coverage"]["citations"]
+                self.assertEqual(row["state"], state)
+                self.assertEqual(row["active_work_ids"], active)
+                self.assertEqual(row["permitted_uses"], {})
+                self.assertEqual(row["documents"], ["corpus/ml-techniques/sample.md"])
 
     def test_citation_coverage_reports_retired_and_ambiguous_matches(self) -> None:
         temp, root = self._root()
@@ -240,6 +303,9 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         self.assertEqual(report["reviewed_freshness"], {
             "state": "needs-review", "approved_sources": 1, "blocked_work_ids": [row["work_id"]],
         })
+        pinned, = report["arxiv_revision_coverage"]["citations"]
+        self.assertEqual(pinned["state"], "revised")
+        self.assertEqual(pinned["permitted_uses"], {})
         self.assertEqual(tuple((root / name).read_bytes() for name in REGISTRY_FILES), snapshot)
 
     def test_freshness_requires_live_verification_of_each_approved_use(self) -> None:

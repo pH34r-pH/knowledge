@@ -69,7 +69,12 @@ jobs:
           print(f"\n## Corpus citation coverage ({coverage['identifier_count']} distinct identifiers)")
           for state, count in coverage["by_state"].items():
               print(f"- {state} · {count}")
-          print("\nThe report lists the citing articles and matching Work IDs.")
+          pinned = report["arxiv_revision_coverage"]
+          print(f"\n## Exact arXiv citation revisions ({pinned['revision_count']})")
+          for state, count in pinned["by_state"].items():
+              print(f"- {state} · {count}")
+          print(f"\nArticles with a cited revision requiring review · {len(pinned['documents_for_review'])}")
+          print("The report lists the citing articles and matching Work IDs.")
           PY
       - uses: actions/upload-artifact@v4
         with:

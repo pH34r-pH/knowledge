@@ -27,11 +27,9 @@ ARXIV_VERSION = re.compile(rf"{ARXIV_REVISION}$")
 ARXIV_VERSIONED_URL = re.compile(
     rf"https?://arxiv\.org/(?:abs|pdf)/({ARXIV_ID}{ARXIV_REVISION})(?:\.pdf)?", re.I,
 )
-CITATION_LINKS = {
-    "arxiv": re.compile(r"(?<![\w/])https?://arxiv\.org/(?:abs|pdf)/"
-                        rf"({ARXIV_ID})(?:{ARXIV_REVISION})?(?:\.pdf)?(?![0-9a-z/])", re.I),
-    "doi": re.compile(r"(?<![\w/])https?://(?:dx\.)?doi\.org/(10\.[0-9]{4,9}/[-._;()/:a-z0-9+]+)", re.I),
-}
+_ARXIV_LINK = re.compile(r"(?<![\w/])https?://arxiv\.org/(?:abs|pdf)/"
+                         rf"({ARXIV_ID})({ARXIV_REVISION})?(?:\.pdf)?(?![0-9a-z/])", re.I)
+_DOI_LINK = re.compile(r"(?<![\w/])https?://(?:dx\.)?doi\.org/(10\.[0-9]{4,9}/[-._;()/:a-z0-9+]+)", re.I)
 NORMALIZE_CITATION = {"arxiv": normalize_arxiv, "doi": normalize_doi}
 CORPUS_PILLARS = ("design-patterns", "ml-techniques", "adjacent-knowledge")
 LiveReview = Callable[[list[dict]], dict[str, dict]]
@@ -213,8 +211,9 @@ def _source_state(root: Path, work: dict, review: dict | None, as_of: date, supe
     return _evidence_state(path, work, review)
 
 
-def _corpus_citations(root: Path) -> dict[Citation, list[str]]:
+def _corpus_citations(root: Path) -> tuple[dict[Citation, list[str]], dict[str, list[str]]]:
     indexed: dict[Citation, list[str]] = {}
+    revisions: dict[str, list[str]] = {}
     for pillar in CORPUS_PILLARS:
         directory = root / "corpus" / pillar
         if directory.is_symlink() or not directory.resolve().is_relative_to(root.resolve()):
@@ -223,11 +222,16 @@ def _corpus_citations(root: Path) -> dict[Citation, list[str]]:
             if path.is_symlink():
                 raise ValueError("corpus citation documents must be ordinary repository files")
             source = path.read_text(encoding="utf-8")
-            identifiers = {(kind, NORMALIZE_CITATION[kind](match)) for kind, pattern in CITATION_LINKS.items()
-                           for match in pattern.findall(source)}
+            document = path.relative_to(root).as_posix()
+            arxiv = {(normalize_arxiv(base.lower()), version.lower()) for base, version in _ARXIV_LINK.findall(source)}
+            identifiers = {("arxiv", base) for base, _ in arxiv}
+            identifiers.update(("doi", normalize_doi(doi)) for doi in _DOI_LINK.findall(source))
             for identifier in identifiers:
-                indexed.setdefault(identifier, []).append(path.relative_to(root).as_posix())
-    return indexed
+                indexed.setdefault(identifier, []).append(document)
+            for base, version in arxiv:
+                if version:
+                    revisions.setdefault(base + version, []).append(document)
+    return indexed, revisions
 
 
 def _work_citations(work: dict) -> list[Citation]:
@@ -267,6 +271,63 @@ def _citation_coverage(
     return {"identifier_count": len(rows), "by_state": dict(sorted(counts.items())), "citations": rows}
 
 
+def _registered_arxiv_revision(work: dict, review: dict) -> str | None:
+    """Use a declared Work revision, falling back to a review for an unversioned Work."""
+    identifiers = work.get("canonical_identifiers")
+    alias = identifiers.get("arxiv") if isinstance(identifiers, dict) else None
+    if not isinstance(alias, str):
+        return None
+    base = normalize_arxiv(alias.lower())
+    url = work.get("source_url")
+    url_match = ARXIV_VERSIONED_URL.fullmatch(url) if isinstance(url, str) else None
+    candidates = (alias, url_match[1] if url_match else "")
+    declared = {match[0] for value in candidates if (match := VERSION.fullmatch(value.lower()))}
+    if len(declared) > 1:
+        return None
+    revision = next(iter(declared), review.get("revision", ""))
+    exact = VERSION.fullmatch(revision)
+    return revision if exact and exact[1] == base else None
+
+
+def _pinned_citation_state(revision: str, matches: list[str], active: list[str],
+                           reports: dict[str, dict], reviews: dict[str, dict]) -> tuple[str, dict]:
+    if not active:
+        return ("superseded-revision" if matches else "unregistered-revision"), {}
+    if len(active) != 1:
+        return "ambiguous-active-revision", {}
+    work_id = active[0]
+    report = reports[work_id]
+    if report["state"] != "verified":
+        return report["state"], {}
+    if reviews[work_id]["revision"] != revision:
+        return "review-version-mismatch", {}
+    return "verified", report["permitted_uses"]
+
+
+def _revision_coverage(citations: dict[str, list[str]], works: list[dict], reports: dict[str, dict],
+                       reviews: dict[str, dict]) -> dict:
+    registered: dict[str, list[str]] = {}
+    for work in works:
+        work_id = work["id"]
+        revision = _registered_arxiv_revision(work, reviews.get(work_id, {}))
+        if revision:
+            registered.setdefault(revision, []).append(work_id)
+
+    rows = []
+    needs_review = set()
+    for revision, paths in sorted(citations.items()):
+        matches = sorted(registered.get(revision, []))
+        active = [work_id for work_id in matches if reports[work_id]["state"] != "superseded"]
+        state, uses = _pinned_citation_state(revision, matches, active, reports, reviews)
+        if state != "verified":
+            needs_review.update(paths)
+        rows.append({"revision": revision, "state": state, "work_ids": matches, "active_work_ids": active,
+                     "permitted_uses": uses, "documents": sorted(paths)})
+    counts = Counter(row["state"] for row in rows)
+    return {"revision_count": len(rows), "by_state": dict(sorted(counts.items())), "citations": rows,
+            "documents_for_review": sorted(needs_review)}
+
+
 def _read_verified_sources(statuses: dict[str, str], reviews: dict[str, dict], read: LiveReview) -> dict[str, dict]:
     eligible = [reviews[work_id] for work_id, state in statuses.items() if state == "verified"]
     observations = read(eligible)
@@ -287,7 +348,7 @@ def review_report(
         claims_by_work.setdefault(claim["work_id"], []).append(claim["id"])
     for item in evidence:
         evidence_by_claim.setdefault(item["claim_id"], []).append(item["id"])
-    citations = _corpus_citations(root)
+    citations, revisions = _corpus_citations(root)
     source_states = {work["id"]: _source_state(root, work, reviews.get(work["id"]), as_of, targets)
                      for work in works}
     observations = _read_verified_sources(source_states, reviews, live_review) if live_review is not None else {}
@@ -316,7 +377,10 @@ def review_report(
         })
     states = {row["work_id"]: row["state"] for row in results}
     return {"as_of": as_of.isoformat(), "works": sorted(results, key=lambda item: item["work_id"]),
-            "citation_coverage": _citation_coverage(citations, works, states)}
+            "citation_coverage": _citation_coverage(citations, works, states),
+            "arxiv_revision_coverage": _revision_coverage(
+                revisions, works, {row["work_id"]: row for row in results}, reviews,
+            )}
 
 
 def reviewed_freshness(report: dict, reviews: dict[str, dict]) -> dict:
