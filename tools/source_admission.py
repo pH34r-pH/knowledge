@@ -252,6 +252,13 @@ def _citation_coverage(
     return {"identifier_count": len(rows), "by_state": dict(sorted(counts.items())), "citations": rows}
 
 
+def _read_verified_sources(statuses: dict[str, str], reviews: dict[str, dict], read: LiveReview) -> dict[str, dict]:
+    eligible = [reviews[work_id] for work_id, state in statuses.items() if state == "verified"]
+    observations = read(eligible)
+    return {row["work_id"]: observations.get(row["work_id"], {"state": "unconfirmed", "reason": "missing source readback"})
+            for row in eligible}
+
+
 def review_report(
     root: Path, works: list[dict], claims: list[dict], evidence: list[dict],
     reviews: dict[str, dict], as_of: date,
@@ -268,16 +275,12 @@ def review_report(
     citations = _corpus_citations(root)
     source_states = {work["id"]: _source_state(root, work, reviews.get(work["id"]), as_of, targets)
                      for work in works}
-    live_sources = [reviews[work_id] for work_id, state in source_states.items() if state == "verified"]
-    observations = live_review(live_sources) if live_review is not None else {}
+    observations = _read_verified_sources(source_states, reviews, live_review) if live_review is not None else {}
     results = []
     for work in works:
         work_id = work["id"]
-        status = source_states[work_id]
-        observation = None
-        if status == "verified" and live_review is not None:
-            observation = observations.get(work_id, {"state": "unconfirmed", "reason": "missing source readback"})
-            status = observation["state"]
+        observation = observations.get(work_id)
+        status = observation["state"] if observation is not None else source_states[work_id]
         affected_claims, affected_evidence, affected_documents = [], [], []
         permitted_uses = {}
         if status == "verified":
