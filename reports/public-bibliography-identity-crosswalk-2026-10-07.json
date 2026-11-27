@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 352,
-    "KWRK_records_added_after_identity_checks": 272,
+    "KWRK_records_current": 356,
+    "KWRK_records_added_after_identity_checks": 276,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -27,7 +27,7 @@
     "nonpaper_source_pointers": 14,
     "unresolved_names_only": 14,
     "provisional_influence_unverified_candidates": 12,
-    "metadata_field_discrepancies": 25
+    "metadata_field_discrepancies": 31
   },
   "field_discrepancies": [
     {
@@ -753,6 +753,165 @@
           "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
         }
       ]
+    },
+    {
+      "canonical_key": "doi:10.2307/1968482",
+      "fields": [
+        {
+          "field": "publication_date",
+          "variants": [
+            {
+              "value": "1936",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000008"
+                }
+              ]
+            },
+            {
+              "value": "1936-07",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000353"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        },
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "Annals of Mathematics 37(3), 645–680",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000008"
+                }
+              ]
+            },
+            {
+              "value": "The Annals of Mathematics 37(3), 645",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000353"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "doi:10.2307/1969265",
+      "fields": [
+        {
+          "field": "publication_date",
+          "variants": [
+            {
+              "value": "1944",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000009"
+                }
+              ]
+            },
+            {
+              "value": "1944-04",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000354"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        },
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "Annals of Mathematics 45(2), 220–246",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000009"
+                }
+              ]
+            },
+            {
+              "value": "The Annals of Mathematics 45(2), 220",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000354"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "doi:10.2307/1969989",
+      "fields": [
+        {
+          "field": "publication_date",
+          "variants": [
+            {
+              "value": "1956",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000013"
+                }
+              ]
+            },
+            {
+              "value": "1956-01",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000355"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        },
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "Annals of Mathematics 63(1), 20–63",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000013"
+                }
+              ]
+            },
+            {
+              "value": "The Annals of Mathematics 63(1), 20",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000355"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
     }
   ],
   "semantic_boundaries": {
@@ -770,17 +929,17 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "4fb126e50187c536c47f926ad3d75c29d7ae2d98e5adf24d2f366cbb39331c2c",
-      "record_count": 352
+      "sha256": "3d656e01bc106c472cea9f1e4ddfda073fa153d83a60a90813de10796b622f7a",
+      "record_count": 356
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
-      "sha256": "f65dcd576c4362ad15fd0f66b68cd92d4c196283a9eaf6677414f28c57c530aa",
+      "sha256": "9403f66fdc4c1445a9f78201bb752d891dcead1569275d61878565c682f6c942",
       "record_count": 75
     },
     {
       "path": "reports/research-identity-reconciliation-input-2026-10-07.json",
-      "sha256": "a8250b15cbf90d8841ef210cbd9b471fc333b871b7fe6b15a425f86ff57c9e09",
+      "sha256": "29744cb00c821ecac9d69e11f43602fd854580641bbaf592cdcc7b68f534733e",
       "record_count": 33
     }
   ],
@@ -7268,7 +7427,7 @@
       "authors": [
         "Hassler Whitney"
       ],
-      "publication_date": "1936",
+      "publication_date": "1936-07",
       "venue": "Annals of Mathematics 37(3), 645–680",
       "canonical_identifiers": {
         "doi": "10.2307/1968482"
@@ -7280,6 +7439,10 @@
       "work_records": [
         {
           "id": "KWRK-000008",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "KWRK-000353",
           "status": "ACTIVE"
         }
       ],
@@ -7302,7 +7465,7 @@
       "authors": [
         "Hassler Whitney"
       ],
-      "publication_date": "1944",
+      "publication_date": "1944-04",
       "venue": "Annals of Mathematics 45(2), 220–246",
       "canonical_identifiers": {
         "doi": "10.2307/1969265"
@@ -7314,6 +7477,10 @@
       "work_records": [
         {
           "id": "KWRK-000009",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "KWRK-000354",
           "status": "ACTIVE"
         }
       ],
@@ -7336,7 +7503,7 @@
       "authors": [
         "John Nash"
       ],
-      "publication_date": "1956",
+      "publication_date": "1956-01",
       "venue": "Annals of Mathematics 63(1), 20–63",
       "canonical_identifiers": {
         "doi": "10.2307/1969989"
@@ -7348,6 +7515,10 @@
       "work_records": [
         {
           "id": "KWRK-000013",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "KWRK-000355",
           "status": "ACTIVE"
         }
       ],
