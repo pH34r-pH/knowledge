@@ -24,11 +24,13 @@ METADATA_USES = {"index", "search"}
 PERMITTED_SCOPE = "bibliographic-metadata"
 SHA256_RE = re.compile(r"[0-9a-f]{64}")
 ARXIV_VERSION = re.compile(rf"{ARXIV_REVISION}$")
+_ARXIV_ENTRY_URL = r"https?://(?:arxiv\.org/(?:abs|html|pdf)|ar5iv\.labs\.arxiv\.org/html)/"
 ARXIV_VERSIONED_URL = re.compile(
-    rf"https?://arxiv\.org/(?:abs|pdf)/({ARXIV_ID}{ARXIV_REVISION})(?:\.pdf)?", re.I,
+    rf"{_ARXIV_ENTRY_URL}({ARXIV_ID}{ARXIV_REVISION})(?:\.pdf)?(?:[?#][^\s]*)?", re.I,
 )
-_ARXIV_LINK = re.compile(r"(?<![\w/])https?://arxiv\.org/(?:abs|pdf)/"
-                         rf"({ARXIV_ID})({ARXIV_REVISION})?(?:\.pdf)?(?![0-9a-z/])", re.I)
+_ARXIV_LINK = re.compile(
+    rf"(?<![\w/]){_ARXIV_ENTRY_URL}({ARXIV_ID})({ARXIV_REVISION})?(?:\.pdf)?(?![0-9a-z/])", re.I,
+)
 _DOI_LINK = re.compile(r"(?<![\w/])https?://(?:dx\.)?doi\.org/(10\.[0-9]{4,9}/[-._;()/:a-z0-9+]+)", re.I)
 NORMALIZE_CITATION = {"arxiv": normalize_arxiv, "doi": normalize_doi}
 CORPUS_PILLARS = ("design-patterns", "ml-techniques", "adjacent-knowledge")
