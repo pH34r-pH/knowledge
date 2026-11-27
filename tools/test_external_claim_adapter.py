@@ -464,6 +464,11 @@ class ExternalClaimAdapterTests(unittest.TestCase):
                   **{key: work[key] for key in ("title", "authors", "publication_date")}}
         for registered, publisher, expected in (
             (None, "arXiv preprint", "verified"), ("", "arXiv preprint", "verified"),
+            ("arXiv preprint v1", "arXiv preprint", "verified"),
+            ("arXiv preprint; reviewed v1", "arXiv preprint", "verified"),
+            ("arXiv preprint v2", "arXiv preprint", "identity-mismatch"),
+            ("arXiv preprint; reviewed v2", "arXiv preprint", "identity-mismatch"),
+            ("arXiv preprint v1; published elsewhere", "arXiv preprint", "identity-mismatch"),
             ("Other venue", "arXiv preprint", "identity-mismatch"),
             (None, "Invented venue", "identity-mismatch"),
         ):
