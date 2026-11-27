@@ -15,6 +15,13 @@ still has current, verified evidence. Fleet can read this conclusion through
 the public Actions API. The report includes the affected Work IDs and remains
 available when the freshness job fails.
 
+The identifier coverage shows whether a corpus link resolves to an active
+Work. The report also lists exact arXiv revisions cited by articles in
+`arxiv_revision_coverage`. A revision carries bibliographic permissions
+only when it has one active matching Work with a verified review of that
+same revision. Missing, superseded, ambiguous, and stale revisions list
+their dependent articles for review.
+
 Use the newest push or scheduled freshness job for the exact main SHA when
 deciding present use. Retain the exact push evidence for historical source
 qualification. A successful freshness job confers no use beyond the registry's
