@@ -74,6 +74,8 @@ Rank by **marginal value to an LLM with a training cutoff**, not importance in t
 
 ## External evidence maintenance
 
+- [x] Reconcile three pinned arXiv revisions cited in four articles. The [citation audit](corpus/LEDGER.md#2026-11-27--reconcile-three-pinned-arxiv-revisions) records the benchmark and scope changes.
+
 - [x] Pin scoped formal-campaign prior art — six claim/evidence triples audited on 2026-09-07; preserve hypothesis and version boundaries rather than treating paper identity as theorem support.
 
 - [x] Pin classical embedding/delay/projection imports — four scoped claim/evidence triples; distinguish zero-dimensional Whitney exceptions, generic-pair delay reconstruction and finite Euclidean approximate distances.

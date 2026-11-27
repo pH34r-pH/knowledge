@@ -7,8 +7,6 @@ confidence: high
 date: 2026-08-07
 ---
 
-# Structured outputs and constrained decoding: syntax guarantees, semantic limits
-
 ## What it is
 
 Structured generation constrains a language model's next-token choices so its output belongs to a required language: commonly JSON, a JSON Schema-shaped subset, a regular expression, or a context-free grammar. It turns “please return valid JSON” from an instruction the model may ignore into a decoding-time invariant. Willard and Louf formulate guided generation as transitions in a finite-state machine, allowing regular expressions and context-free grammars to constrain decoding while indexing the model vocabulary against the allowed language.[1]
@@ -27,7 +25,7 @@ At every decoding step, a conventional autoregressive model assigns probabilitie
 
 The constraint language determines the guarantee. A regular expression can express a fixed lexical shape. A grammar can additionally represent recursively nested syntax. A JSON Schema-oriented runtime normally compiles the schema into a grammar or equivalent automaton, so its guarantee is only as strong as the schema and compiler support. It does not imply arbitrary cross-field predicates, database facts, or policies that depend on tool results. Design schemas to make invalid states hard to express—closed enums, explicit nullable fields, bounded arrays, and distinct variants—then run conventional validation after parsing.
 
-Schemas also influence the model before they constrain it. Their literals, field names, descriptions, ordering, and examples all become part of the model’s context. A 2026 controlled study held prompt, model, output structure, and decoding setup fixed and found that changing only schema-key wording could substantially change mathematical-reasoning accuracy; the effect varied by model family and interacted non-additively with prompt-level instructions.[3] Treat names and descriptions as part of the task specification, not cosmetic metadata. This is a reason to version schemas and test them like prompts.
+Schemas also influence the model before they constrain it. Their literals, field names, descriptions, ordering, and examples all become part of the model’s context. A 2026 study tested seven models with the task input, output structure, and decoding engine held fixed for each comparison. In the main greedy-decoding runs, changing only the decoder-enforced key wording improved accuracy for some models and reduced it for others. Key wording and prompt instructions interacted non-additively. The evidence was stronger on GSM8K than on Math500.[3] Treat names and descriptions as part of the task specification, not cosmetic metadata. This is a reason to version schemas and test them like prompts.
 
 ## Trade-offs
 
@@ -47,6 +45,6 @@ Test schema changes as behavior changes. Use representative prompts, adversarial
 
 ## Further reading
 
-1. Willard & Louf — *Efficient Guided Generation for Large Language Models* (finite-state formulation; regex/CFG guidance; vocabulary index) — https://arxiv.org/abs/2307.09702v4
-2. Liu et al. — *“We Need Structured Output”: Towards User-centered Constraints on Large Language Model Output* (51 practitioners; 134 use cases; low- and high-level constraints) — https://arxiv.org/abs/2404.07362v1
-3. Le — *Schema Key Wording as an Instruction Channel in Structured Generation under Constrained Decoding* (schema keys affect accuracy while structure is fixed) — https://arxiv.org/abs/2604.14862v2
+1. Willard & Louf — *Efficient Guided Generation for Large Language Models* (finite-state formulation; regex/CFG guidance; vocabulary index) — <https://arxiv.org/abs/2307.09702v4>
+2. Liu et al. — *“We Need Structured Output”: Towards User-centered Constraints on Large Language Model Output* (51 practitioners; 134 use cases; low- and high-level constraints) — <https://arxiv.org/abs/2404.07362v1>
+3. Le — *Schema-Key Wording as an Instruction Channel in Structured Generation under Constrained Decoding* (v3, controlled schema-key and prompt experiments) — <https://arxiv.org/abs/2604.14862v3>

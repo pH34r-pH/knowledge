@@ -98,7 +98,16 @@ class ResearchIntakeTests(unittest.TestCase):
                 normalized = value.casefold()
                 if field == "arxiv":
                     normalized = ARXIV_VERSION.sub("", normalized)
-                self.assertNotIn(normalized, aliases, f"{field} alias duplicated by {work['id']} and {aliases.get(normalized)}")
+                previous_id = aliases.get(normalized)
+                if previous_id is not None:
+                    self.assertEqual(field, "arxiv", f"{field} alias duplicated by {work['id']} and {previous_id}")
+                    self.assertEqual(work.get("supersedes"), previous_id,
+                                     f"{work['id']} must supersede {previous_id} to reuse arXiv alias {normalized}")
+                    prior = ARXIV_VERSION.search(self.by_id[previous_id]["source_url"])
+                    current = ARXIV_VERSION.search(work["source_url"])
+                    self.assertIsNotNone(prior, previous_id)
+                    self.assertIsNotNone(current, work["id"])
+                    self.assertGreater(int(current[0][1:]), int(prior[0][1:]))
                 aliases[normalized] = work["id"]
 
         for work in self.intake:

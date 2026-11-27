@@ -28,6 +28,8 @@ Every citation in this corpus passes a gate before it is committed, because a fa
 
 First full audit (119 citations across all 10 articles, 2026-07-01): **zero fabricated sources**; 6 over-citation / misattribution issues found and fixed. Report: [corpus/CITATION-AUDIT-2026-07-01.md](corpus/CITATION-AUDIT-2026-07-01.md).
 
+The [November citation audit](corpus/LEDGER.md#2026-11-27--reconcile-three-pinned-arxiv-revisions) records the changes across three arXiv revisions cited in four articles.
+
 ## Corpus
 
 General-knowledge articles on software engineering design patterns, ML techniques, and adjacent high-value engineering knowledge — separate from the arXiv paper pipeline in `arxiv/`/`reports/`. Backlog: [TOPICS.md](TOPICS.md). Run ledger: [corpus/LEDGER.md](corpus/LEDGER.md). Protocol: [specs/001-corpus-population-loop/spec.md](specs/001-corpus-population-loop/spec.md), runnable as the `populate-corpus` skill.

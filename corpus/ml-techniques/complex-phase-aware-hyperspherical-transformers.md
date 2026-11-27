@@ -12,11 +12,11 @@ confidence: medium
 “Geometric Transformer” is not one mechanism. At least four separable design axes are often grouped under that label:
 
 1. **Positional rotation:** keep the model real-valued, but rotate pairs of query and key coordinates so attention scores encode relative position. RoPE is the canonical example [5].
-2. **Complex-valued computation:** carry real and imaginary components through projections, attention, normalization, activations, and value aggregation. Complex Transformer, CAMEL, the Eilers–Jiang building blocks, and the Phase-Coherent Transformer make different choices at each of those interfaces [1][2][3][4].
-3. **Hyperspherical state constraints:** constrain some or all learned vectors to fixed norm, so direction carries the representation and the update rule must return states to the sphere. nGPT and Hyper-SET are examples, but they do not implement the same update or depth semantics [7][8].
-4. **Shared or implicit depth:** apply one transformation repeatedly, optionally with adaptive halting, or solve directly for its fixed point. Universal Transformers, ALBERT, and Deep Equilibrium Models occupy different points on this axis [9][10][11].
+2. **Complex-valued computation:** carry real and imaginary components through projections, attention, normalization, activations, and value aggregation. Complex Transformer, CAMEL, the Eilers–Jiang building blocks, and the Phase-Coherent Transformer make different choices at each of those interfaces [1] [2] [3] [4].
+3. **Hyperspherical state constraints:** constrain some or all learned vectors to fixed norm, so direction carries the representation and the update rule must return states to the sphere. nGPT and Hyper-SET are examples, but they do not implement the same update or depth semantics [7] [8].
+4. **Shared or implicit depth:** apply one transformation repeatedly, optionally with adaptive halting, or solve directly for its fixed point. Universal Transformers, ALBERT, and Deep Equilibrium Models occupy different points on this axis [9] [10] [11].
 
-These axes can interact, but none implies another. RoPE uses two-dimensional rotation algebra without making the network complex-valued [5]. nGPT normalizes vectors throughout its Transformer, whereas Hyper-SET explicitly adds shared recurrent depth [7][8]. ALBERT shares parameters across a fixed stack without requiring its hidden states to converge [10]. Hyper-SET combines hyperspherical constraints with shared recurrent depth and an energy-derived operator, so its package result cannot identify which ingredient matters [8].
+These axes can interact, but none implies another. RoPE uses two-dimensional rotation algebra without making the network complex-valued [5]. nGPT normalizes vectors throughout its Transformer, whereas Hyper-SET explicitly adds shared recurrent depth [7] [8]. ALBERT shares parameters across a fixed stack without requiring its hidden states to converge [10]. Hyper-SET combines hyperspherical constraints with shared recurrent depth and an energy-derived operator, so its package result cannot identify which ingredient matters [8].
 
 The durable design rule is:
 
@@ -24,7 +24,7 @@ The durable design rule is:
 
 ## When to reach for it
 
-Consider **complex-valued blocks** when amplitude and phase are part of the input’s native semantics—for example, Fourier-domain audio or in-phase/quadrature radio measurements—and the intended operator should respect their coupling. The early Complex Transformer, CAMEL, and Eilers–Jiang experiments are concentrated in music and signal-recognition settings, which makes them relevant precedents but not general language-model evidence [1][2][3].
+Consider **complex-valued blocks** when amplitude and phase are part of the input’s native semantics—for example, Fourier-domain audio or in-phase/quadrature radio measurements—and the intended operator should respect their coupling. The early Complex Transformer, CAMEL, and Eilers–Jiang experiments are concentrated in music and signal-recognition settings, which makes them relevant precedents but not general language-model evidence [1] [2] [3].
 
 Consider **rotary phase at a narrow interface** when the need is relative positional structure rather than a complex-valued model. RoPE rotates projected queries and keys while the rest of the Transformer can remain real [5]. Selective RoPE is narrower still: it makes those rotations input-dependent inside gated linear or recurrent attention and composes them with an existing decay mechanism [6].
 
@@ -54,7 +54,7 @@ s_ij = Re⟨q̄_i, k̄_j⟩ · √d
 out_i = W_o Σ_j α_ij v_j
 ```
 
-Because the gate is applied independently, the weights in a row do not compete for a unit softmax mass. The paper compares this cell with real and complex softmax and screening variants under its parameter-fair setup, and reports no accuracy collapse over its tested depth range [4]. Those are author-reported results from a recent single-author preprint, not yet a general verdict on non-competing complex attention.
+Because the gate is applied independently, the weights in a row do not compete for a unit softmax mass. The preprint compares six real and complex attention cells using softmax, sigmoid, and screening gates. The author reports no accuracy collapse at the six tested depths from 2 to 20 on ListOps and notes that the small evaluation batch limits conclusions about how accuracy scales with depth [4].
 
 ### Positional phase is a smaller commitment
 
@@ -80,15 +80,15 @@ A Deep Equilibrium Model directly seeks a state `z*` satisfying `z* = fθ(z*; x)
 
 ### Phase-first
 
-The phase-first view starts from data whose amplitude and phase have physical or mathematical meaning. A complex substrate makes their coupling explicit, and Hermitian products offer joint-rotation invariance that independent real channels do not automatically express [3]. Complex Transformer, CAMEL, and PCT show several viable ways to carry complex values through attention [1][2][4].
+The phase-first view starts from data whose amplitude and phase have physical or mathematical meaning. A complex substrate makes their coupling explicit, and Hermitian products offer joint-rotation invariance that independent real channels do not automatically express [3]. Complex Transformer, CAMEL, and PCT show several viable ways to carry complex values through attention [1] [2] [4].
 
-Its weak point is the real-decision bottleneck. Attention weights, gates, losses, and many activations eventually require a choice about how complex state controls a real magnitude or decision. Magnitude, real-part, min–max, softmax, and sigmoid-gate choices discard or preserve different information [1][2][3][4]. A model is not “more phase-aware” merely because its tensors use a complex dtype.
+Its weak point is the real-decision bottleneck. Attention weights, gates, losses, and many activations eventually require a choice about how complex state controls a real magnitude or decision. Magnitude, real-part, min–max, softmax, and sigmoid-gate choices discard or preserve different information [1] [2] [3] [4]. A model is not “more phase-aware” merely because its tensors use a complex dtype.
 
 ### Geometry-first
 
-The geometry-first view treats scale as a nuisance and direction as the useful state. nGPT makes this commitment throughout its Transformer, while Hyper-SET uses hyperspherical constraints inside an explicit energy-minimization story [7][8]. Bounded dot products and explicit renormalization can make state evolution easier to inspect.
+The geometry-first view treats scale as a nuisance and direction as the useful state. nGPT makes this commitment throughout its Transformer, while Hyper-SET uses hyperspherical constraints inside an explicit energy-minimization story [7] [8]. Bounded dot products and explicit renormalization can make state evolution easier to inspect.
 
-Its weak point is causal attribution. nGPT and Hyper-SET alter more than radius: their updates, normalization, attention or feed-forward structure, and—in Hyper-SET—depth sharing also change [7][8]. A spherical package result is not evidence that removing radius alone caused the outcome.
+Its weak point is causal attribution. nGPT and Hyper-SET alter more than radius: their updates, normalization, attention or feed-forward structure, and—in Hyper-SET—depth sharing also change [7] [8]. A spherical package result is not evidence that removing radius alone caused the outcome.
 
 ### Control-first
 
@@ -126,9 +126,9 @@ One useful progression is: real baseline → paired-real implementation → nati
 
 **Treating RoPE as evidence for a fully complex model.** RoPE establishes a useful positional rotation inside projected queries and keys [5]. It does not validate complex activations, complex normalization, or complex value paths.
 
-**Calling two real channels a sufficient control without matching operations.** Complex multiplication couples the channels in a particular way. A paired-real baseline must match parameter count and expose whether that coupling, rather than doubled width, matters [1][3].
+**Calling two real channels a sufficient control without matching operations.** Complex multiplication couples the channels in a particular way. A paired-real baseline must match parameter count and expose whether that coupling, rather than doubled width, matters [1] [3].
 
-**Hiding the `C → R` map.** “Complex softmax” is incomplete unless it states whether scores use magnitude, real part, imaginary part, or another function [2][3].
+**Hiding the `C → R` map.** “Complex softmax” is incomplete unless it states whether scores use magnitude, real part, imaginary part, or another function [2] [3].
 
 **Equating query/key normalization with a spherical network.** PCT L2-normalizes queries and keys for its cosine gate [4]. nGPT constrains embeddings, hidden states, and matrix vectors throughout the model [7]. These are different interventions.
 
@@ -136,16 +136,16 @@ One useful progression is: real baseline → paired-real implementation → nati
 
 **Attributing a bundled result to geometry.** Hyper-SET combines energy objectives, symmetric modules, RMS normalization, shared recurrent depth, and hyperspherical constraints [8]. nGPT also changes its hidden-state update and parameter normalization [7]. Keep package claims at package scope.
 
-**Exporting signal-domain evidence to language.** MusicNet, RadioML, and private IQ results establish feasibility in their evaluated domains, not general language-model superiority [1][2][3]. PCT broadens the tested task mix, but remains a recent author report [4].
+**Exporting signal-domain evidence to language.** MusicNet, RadioML, and private IQ results establish feasibility in their evaluated domains, not general language-model superiority [1] [2] [3]. PCT broadens the tested task mix, but remains a recent author report [4].
 
 ## In practice: a decision sequence
 
 Suppose a team wants a phase-aware recurrent language model.
 
-1. **Specify the phase.** Is it physical phase, positional phase, or a learned binding coordinate? If only position is intended, begin with RoPE or a selective rotary control rather than a fully complex stack [5][6].
-2. **Specify the real decision.** Write down the exact `C → R` score function and whether tokens compete through row normalization [2][3][4].
+1. **Specify the phase.** Is it physical phase, positional phase, or a learned binding coordinate? If only position is intended, begin with RoPE or a selective rotary control rather than a fully complex stack [5] [6].
+2. **Specify the real decision.** Write down the exact `C → R` score function and whether tokens compete through row normalization [2] [3] [4].
 3. **Choose radius semantics independently.** Compare free-radius and unit-sphere states without changing depth sharing. If only queries and keys are normalized, say so.
-4. **Choose depth semantics independently.** Compare an untied stack, a tied finite unroll, adaptive finite steps, and a fixed-point solve as separate systems [9][10][11].
+4. **Choose depth semantics independently.** Compare an untied stack, a tied finite unroll, adaptive finite steps, and a fixed-point solve as separate systems [9] [10] [11].
 5. **Charge the package honestly.** Count real parameters, solver or iteration work, memory, and kernel maturity—not just nominal layer count.
 6. **Test the claimed boundary.** Include at least one phase-native workload and one negative control where phase should not help. Include an out-of-training-depth or convergence stress test only if variable or implicit depth is claimed.
 7. **Narrow the conclusion.** A successful selective-rotation ablation supports selective rotation. A successful complex-plus-sphere-plus-recurrence package supports that package until the off-diagonal controls say more.
@@ -154,14 +154,14 @@ The point is not to insist on Euclidean, real-valued, fixed-depth Transformers. 
 
 ## Further reading
 
-1. Muqiao Yang, Martin Q. Ma, Dongyu Li, Yao-Hung Hubert Tsai, and Ruslan Salakhutdinov — *Complex Transformer: A Framework for Modeling Complex-Valued Sequence* (2019 preprint; v2 revised 2021), arXiv:1910.10202v2 — https://arxiv.org/abs/1910.10202v2
-2. Yihong Dong, Ying Peng, Muqiao Yang, Songtao Lu, and Qingjiang Shi — *Signal Transformer: Complex-valued Attention and Meta-Learning for Signal Recognition* (2021 preprint), arXiv:2106.04392v2 — https://arxiv.org/abs/2106.04392v2
-3. Florian Eilers and Xiaoyi Jiang — *Building Blocks for a Complex-Valued Transformer Architecture* (2023 preprint), arXiv:2306.09827v1 — https://arxiv.org/abs/2306.09827v1
-4. Leona Hioki — *Complex-Valued Phase-Coherent Transformer* (2026 preprint), arXiv:2605.10123v2 — https://arxiv.org/abs/2605.10123v2
-5. Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu — *RoFormer: Enhanced Transformer with Rotary Position Embedding* (arXiv preprint; first posted 2021, v5 updated 2023), arXiv:2104.09864v5 — https://arxiv.org/abs/2104.09864v5
-6. Sajad Movahedi, Timur Carstensen, Arshia Afzal, Frank Hutter, Antonio Orvieto, and Volkan Cevher — *Selective Rotary Position Embedding* (ICLR 2026), arXiv:2511.17388v3 — https://arxiv.org/abs/2511.17388v3
-7. Ilya Loshchilov, Cheng-Ping Hsieh, Simeng Sun, and Boris Ginsburg — *nGPT: Normalized Transformer with Representation Learning on the Hypersphere* (ICLR 2025), arXiv:2410.01131v2 — https://arxiv.org/abs/2410.01131v2
-8. Yunzhe Hu, Difan Zou, and Dong Xu — *Hyper-SET: Designing Transformers via Hyperspherical Energy Minimization* (2025 preprint), arXiv:2502.11646v3 — https://arxiv.org/abs/2502.11646v3
-9. Mostafa Dehghani, Stephan Gouws, Oriol Vinyals, Jakob Uszkoreit, and Łukasz Kaiser — *Universal Transformers* (ICLR 2019), arXiv:1807.03819v3 — https://arxiv.org/abs/1807.03819v3
-10. Zhenzhong Lan, Mingda Chen, Sebastian Goodman, Kevin Gimpel, Piyush Sharma, and Radu Soricut — *ALBERT: A Lite BERT for Self-supervised Learning of Language Representations* (ICLR 2020), arXiv:1909.11942v6 — https://arxiv.org/abs/1909.11942v6
-11. Shaojie Bai, J. Zico Kolter, and Vladlen Koltun — *Deep Equilibrium Models* (NeurIPS 2019), arXiv:1909.01377v2 — https://arxiv.org/abs/1909.01377v2
+1. Muqiao Yang, Martin Q. Ma, Dongyu Li, Yao-Hung Hubert Tsai, and Ruslan Salakhutdinov — *Complex Transformer: A Framework for Modeling Complex-Valued Sequence* (2019 preprint; v2 revised 2021), arXiv:1910.10202v2 — <https://arxiv.org/abs/1910.10202v2>
+2. Yihong Dong, Ying Peng, Muqiao Yang, Songtao Lu, and Qingjiang Shi — *Signal Transformer: Complex-valued Attention and Meta-Learning for Signal Recognition* (2021 preprint), arXiv:2106.04392v2 — <https://arxiv.org/abs/2106.04392v2>
+3. Florian Eilers and Xiaoyi Jiang — *Building Blocks for a Complex-Valued Transformer Architecture* (2023 preprint), arXiv:2306.09827v1 — <https://arxiv.org/abs/2306.09827v1>
+4. Leona Hioki — *Complex-Valued Phase-Coherent Transformer* (2026 preprint, v3, §§3.2–3.3 and 4.7) — <https://arxiv.org/abs/2605.10123v3>
+5. Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu — *RoFormer: Enhanced Transformer with Rotary Position Embedding* (arXiv preprint; first posted 2021, v5 updated 2023), arXiv:2104.09864v5 — <https://arxiv.org/abs/2104.09864v5>
+6. Sajad Movahedi, Timur Carstensen, Arshia Afzal, Frank Hutter, Antonio Orvieto, and Volkan Cevher — *Selective Rotary Position Embedding* (ICLR 2026), arXiv:2511.17388v3 — <https://arxiv.org/abs/2511.17388v3>
+7. Ilya Loshchilov, Cheng-Ping Hsieh, Simeng Sun, and Boris Ginsburg — *nGPT: Normalized Transformer with Representation Learning on the Hypersphere* (ICLR 2025), arXiv:2410.01131v2 — <https://arxiv.org/abs/2410.01131v2>
+8. Yunzhe Hu, Difan Zou, and Dong Xu — *Hyper-SET: Designing Transformers via Hyperspherical Energy Minimization* (2025 preprint), arXiv:2502.11646v3 — <https://arxiv.org/abs/2502.11646v3>
+9. Mostafa Dehghani, Stephan Gouws, Oriol Vinyals, Jakob Uszkoreit, and Łukasz Kaiser — *Universal Transformers* (ICLR 2019), arXiv:1807.03819v3 — <https://arxiv.org/abs/1807.03819v3>
+10. Zhenzhong Lan, Mingda Chen, Sebastian Goodman, Kevin Gimpel, Piyush Sharma, and Radu Soricut — *ALBERT: A Lite BERT for Self-supervised Learning of Language Representations* (ICLR 2020), arXiv:1909.11942v6 — <https://arxiv.org/abs/1909.11942v6>
+11. Shaojie Bai, J. Zico Kolter, and Vladlen Koltun — *Deep Equilibrium Models* (NeurIPS 2019), arXiv:1909.01377v2 — <https://arxiv.org/abs/1909.01377v2>

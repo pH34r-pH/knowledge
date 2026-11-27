@@ -12,7 +12,17 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 
 ## Entries
 
+### 2026-11-27 — Reconcile three pinned arXiv revisions
+
+- **Status** Current citation revisions for four articles.
+- **Method** Compare pinned and current primary sources. A separate verifier checked the benchmark figures and the experimental scope.
+- **Files** [Reasoning models](ml-techniques/reasoning-models.md), [preference optimization](ml-techniques/preference-optimization.md), [structured outputs](ml-techniques/structured-outputs-constrained-decoding.md), and [complex attention](ml-techniques/complex-phase-aware-hyperspherical-transformers.md).
+- **DeepSeek-R1-Zero** The AIME 2024 baseline was 15.6%. Version 1 reported 71.0% pass@1 with 86.7% at cons@64. Version 2 and Nature report 77.9% pass@1 and 86.7% at cons@16 in Fig. 1a. The general AIME benchmark protocol in the v2 appendix separately describes cons@64. The corpus attributes the consensus label to Fig. 1a. [arXiv v1, Table 2](https://arxiv.org/html/2501.12948v1#S2.T2) · [arXiv v2, Fig. 1](https://arxiv.org/html/2501.12948v2#S2.F1) · [arXiv v2, Appendix D.1](https://arxiv.org/html/2501.12948v2#A4.SS1) · [Nature](https://www.nature.com/articles/s41586-025-09422-z)
+- **Schema-key wording** Version 3 updates the title and bounds the changes in accuracy to the tested models and tasks. GSM8K has stronger evidence than Math500. [arXiv v2](https://arxiv.org/abs/2604.14862v2) · [arXiv v3, §§4.2–4.5](https://arxiv.org/html/2604.14862v3#S4.SS2)
+- **Phase-Coherent Transformer** Version 3 retains the complex cosine and sigmoid gate. The depth result applies to the reported ListOps sweep at depths 2, 4, 6, 10, 14, and 20. The small evaluation batch limits a depth-scaling claim. [arXiv v2](https://arxiv.org/abs/2605.10123v2) · [arXiv v3, §3.3.1](https://arxiv.org/html/2605.10123v3#S3.SS3.SSS1) · [arXiv v3, Table 7](https://arxiv.org/html/2605.10123v3#S4.T7)
+
 ### 2026-09-07 — Minimality background interfaces
+
 - **Status:** current scoped external attribution
 - **Method:** pre-resolved author sources; independent entailment and visual checks
 - **Sources:** 2 accepted · **Confidence:** high within explicit scopes
@@ -20,8 +30,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Citation audit:** independent matching PDF hashes; finite real exact WFA scope and zero-function boundary; countable positive-support statistical specialization, with a.e. general-model caveat. Legacy lecture date remains unverified; no false Fall2023 assignment.
 - **Excluded:** inaccessible MIT Dudley binary (HTTP429), broader claim not used. Same-family verifier, graphify unavailable, no private vault or full copyrighted PDF redistribution.
 
-
 ### 2026-09-07 — Conditional nonlinear CCA citation boundary
+
 - **Status:** current scoped external attribution
 - **Method:** pre-resolved primary proceedings, independent entailment and visual scope checks
 - **Sources:** 1 · **Confidence:** high for source attribution; published-proof completeness not certified
@@ -29,8 +39,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Citation audit:** matching 36-page primary PDF downloads, exact ten-word quote, Gaussian and spectral assumptions, full function-class/population conditions, canonical alignment and residual-noise boundary. Independent audit found abbreviated independent-coordinate handling in AppendixF Step2; retained explicitly.
 - **Residual limits:** no noise-free semantic recovery, arbitrary-prior guarantee or trained-encoder result; same-family verification; graphify unavailable. No private vault or full copyrighted PDF redistributed.
 
-
 ### 2026-09-07 — Discrete self-information and Shannon entropy
+
 - **Status:** current scoped external evidence
 - **Method:** primary author course notes, visual proof and independent narrowed entailment checks
 - **Sources:** 1 · **Confidence:** high for the countably point-supported identity
@@ -38,8 +48,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Citation audit:** live MIT author/version resolution, equal independent download hashes, printed p.24 direct nonnegative-term calculation, exact three-word quote. Independent verifier explicitly accepted infinite entropy without subtraction and the countable measurable support restriction.
 - **Residual limits:** abstract non-point atoms, differential entropy and unrestricted chapter kernel assumptions are excluded. Same-family verification; graphify update . unavailable. The deterministic adapter and all five tests passed. No private vault consulted.
 
-
 ### 2026-09-07 — Conditional geometric product canonicity
+
 - **Status:** current scoped external evidence
 - **Method:** pre-resolved primary research, visual and independent entailment checks
 - **Sources:** 1 · **Confidence:** high for the explicitly scoped classical restatement
@@ -47,8 +57,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Citation audit:** live explicit arXiv version1, two matching downloads, pp.1-2 visually checked, fourteen-word exact normalized quote. Independent verifier accepted classical statement; rejected interpreting absence of its hypotheses as universal nonidentifiability.
 - **Residual limits:** original de Rham proof remains imported; no semantic names/statistical factors inferred; same-family verification; graphify update . unavailable. Deterministic adapter validation and all five tests passed. No private vault consulted.
 
-
 ### 2026-09-07 — Finite set-cover decision boundary
+
 - **Status:** current scoped external evidence
 - **Method:** primary original scan, deterministic OCR, visual and independent entailment checks
 - **Sources:** 1 · **Confidence:** high within explicit finite decision encodings
@@ -56,8 +66,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Citation audit:** Crossref/publisher DOI metadata resolved; two downloads match the 10879201-byte hash; p.94 theorem/problem visually checked; nine-word quote matched by local OCR after whitespace normalization. Independent verifier accepted with explicit-universe and positive-k distinctions.
 - **Residual limits:** no P!=NP proof, approximation hardness or universal sensor-selection claim; same-family verification; graphify update . unavailable; deterministic adapter and all five tests passed. No private vault consulted.
 
-
 ### 2026-09-07 — Scalar Gaussian capacity boundary
+
 - **Status:** current scoped external evidence
 - **Method:** primary author notes, rendered theorem and independent entailment verification
 - **Sources:** 1 · **Confidence:** high within the explicit real stationary memoryless channel model
@@ -66,8 +76,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Residual limits:** no fixed-error strong converse, expected-across-message operational claim, peak-amplitude substitution or bits/second conversion. Source block-noise sentence omits variance scale; scalar theorem retained. Same-family verification; graphify update . unavailable; deterministic adapter and five tests passed.
 - **Vault cross-links:** none
 
-
 ### 2026-09-07 — Invariance of domain and continuous encoding
+
 - **Status:** current scoped external evidence; semantic graph refresh unavailable
 - **Method:** author-resolved source, rendered theorem inspection and independent entailment verification
 - **Sources:** 1 · **Confidence:** high within the stated Euclidean open-domain scope
@@ -76,8 +86,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Residual limits:** lower-dimension consequence needs nonempty source; no arbitrary subset or boundary-half-chart substitution. Cor2B4 is not imported and its omitted nonempty-source premise is recorded. Same-family verifier; `graphify update .` unavailable; deterministic adapter checks remain independent.
 - **Vault cross-links:** none
 
-
 ### 2026-09-07 — Hyperbolic polar volume and dimensional growth boundary
+
 - **Status:** current scoped external evidence; semantic graph refresh unavailable
 - **Method:** resolved primary source, rendered formula inspection and independent entailment verification
 - **Sources:** 1 · **Confidence:** high within the exact hyperbolic model
@@ -86,8 +96,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Residual limits:** n>=2 is required for positive exponential growth; n=1 is linear. No variable-curvature comparison, packing/embedding existence or learning advantage. Same-family verifier; `graphify update .` unavailable, deterministic adapter checks remain independent.
 - **Vault cross-links:** none
 
-
 ### 2026-09-07 — Principal angles and orthogonal-complement bookkeeping
+
 - **Status:** current scoped external evidence; semantic graph refresh unavailable
 - **Method:** primary resolved-source pool, rendered theorem inspection and independent entailment verification
 - **Sources:** 1 · **Confidence:** high within finite-dimensional positive-definite scope
@@ -96,8 +106,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Residual limits:** no oblique/indefinite/infinite-dimensional extension; empty-angle maximum needs convention. Same-family verifier. `graphify update .` unavailable; deterministic adapter/schema validation remains independent.
 - **Vault cross-links:** none
 
-
 ### 2026-09-07 — Real Grassmann graph atlas and complement
+
 - **Status:** current scoped source evidence; local semantic graph refresh unavailable
 - **Method:** resolved source/version pool, primary-page inspection and independent entailment review
 - **Sources:** 2 · **Confidence:** high within the exact real finite-dimensional scope
@@ -106,8 +116,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Residual limits:** same-family verifier; no complex-holomorphic complement claim or full source redistribution. `graphify update .` remains unavailable, with adapter/schema tests independent.
 - **Vault cross-links:** none
 
-
 ### 2026-09-07 — Regularity and globality of imported geometry
+
 - **Status:** current scoped source evidence; local semantic graph refresh unavailable
 - **Method:** source/version resolution, live primary rendering and separate entailment review; bounded external adapter extension
 - **Sources:** 3 · **Confidence:** high within recorded hypotheses
@@ -116,8 +126,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Residual limits:** same-family verifier; Lee theorem is stated with attribution rather than reproved. The zero-dimensional qualification is retained despite its omission in the displayed draft theorem. No full copyrighted PDFs committed. `graphify update .` is unavailable; adapter validation remains independent.
 - **Vault cross-links:** none
 
-
 ### 2026-09-07 — Scoped embedding, delay and finite projection evidence
+
 - **Status:** current source evidence; local semantic graph refresh unavailable
 - **Method:** primary retrieval, deterministic DOI/title/span/liveness verification and separate entailment review; external-claim adapter extension, not a new survey article
 - **Sources:** 4 · **Confidence:** high for the recorded narrow statements
@@ -126,8 +136,8 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Residual limits:** same-family independent verifier. No full PDFs committed. `graphify update .` is unavailable on this desktop; adapter/schema validation remains independent. No cloud extraction substituted.
 - **Vault cross-links:** none; no personal vault accessed
 
-
 ### 2026-09-07 — Scoped formal-theory external adapter evidence
+
 - **Status:** current source evidence; local semantic graph refresh unavailable
 - **Method:** primary retrieval → deterministic resolution/span/liveness → independent entailment; bounded extension of the external-claim adapter, not a new survey article
 - **Sources:** 6 · **Confidence:** high for stated narrow attribution
@@ -136,10 +146,10 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Residual limits:** independent verifier used the same model family. Full source PDFs remain local scratch; only permitted short excerpts and source hashes are committed. `graphify update .` could not run because the CLI is absent; no cloud disclosure route was substituted. Source adapter validation is independent of that optional local semantic index.
 - **Vault cross-links:** none; no personal vault accessed
 
-
 <!-- newest first. Template per run:
 
 ### YYYY-MM-DD — <topic>
+
 - **Status:** current
 - **Pillar:** design-patterns | ml-techniques | adjacent-knowledge
 - **Method:** vault-adapt | deep-research | storm | deep-research + storm
@@ -152,6 +162,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 -->
 
 ### 2026-09-02 — Vector-symbolic representations and algebra-aware neural processing
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research
@@ -163,6 +174,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** no provenance-backed source runs the full learned-dense versus HRR/FHRR state × generic versus algebra-aware operator factorial on one matched workload; Hrrformer's evidence remains long-sequence classification rather than autoregressive language modeling.
 
 ### 2026-09-02 — Complex, phase-aware, and hyperspherical Transformer computation
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research + storm
@@ -174,6 +186,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** no cited study runs one budget-matched factorial spanning real versus complex state, fixed versus selective rotation, free versus fixed radius, and untied versus shared versus equilibrium depth; PCT's broadest evidence remains a recent single-author preprint.
 
 ### 2026-09-02 — Representation–architecture co-design for language models
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research + storm
@@ -185,6 +198,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** no cited study runs one shared, budget-matched representation × operator factorial across tokenization, geometric state constraints, and algebra-aware operators; the proposed crossed protocol remains a synthesis to be tested.
 
 ### 2026-09-02 — Logarithmic and closed numerical representations for neural arithmetic
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research
@@ -196,6 +210,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** whether closed-product savings survive memory, interconnect, scale transport, conversion, and realistic utilization in an independently reproduced accelerator.
 
 ### 2026-08-07 — Actor model versus CSP channels
+
 - **Status:** current
 - **Pillar:** design-patterns
 - **Method:** storm
@@ -206,6 +221,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Builds on / supersedes:** —
 
 ### 2026-08-07 — Structured concurrency
+
 - **Status:** current
 - **Pillar:** design-patterns
 - **Method:** deep-research + storm
@@ -216,6 +232,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Builds on / supersedes:** —
 
 ### 2026-08-07 — OpenTelemetry interoperability
+
 - **Status:** current
 - **Pillar:** adjacent-knowledge
 - **Method:** deep-research
@@ -226,6 +243,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Builds on / supersedes:** —
 
 ### 2026-08-07 — Software supply-chain security
+
 - **Status:** current
 - **Pillar:** adjacent-knowledge
 - **Method:** deep-research
@@ -236,6 +254,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Builds on / supersedes:** —
 
 ### 2026-08-07 — Fine-tuning strategies
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research + storm
@@ -246,6 +265,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Builds on / supersedes:** extends preference-optimization with parameter-surface and data-signal selection
 
 ### 2026-08-07 — Self-evolving agent systems
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** vault-adapt + deep-research
@@ -256,6 +276,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Builds on / supersedes:** —
 
 ### 2026-08-07 — Agent memory architectures
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research + storm
@@ -266,6 +287,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Builds on / supersedes:** —
 
 ### 2026-08-07 — State-space models and linear attention
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research + storm
@@ -276,6 +298,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Builds on / supersedes:** extends attention-transformers with long-sequence alternatives
 
 ### 2026-08-07 — Mixture-of-Experts routing
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research
@@ -286,6 +309,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Builds on / supersedes:** —
 
 ### 2026-08-07 — Structured outputs and constrained decoding
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research
@@ -297,6 +321,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** how much grammar-constrained decoding latency varies by grammar complexity and serving runtime; the cited guided-generation result does not establish a universal cost bound.
 
 ### 2026-07-02 — Reasoning / test-time-compute models
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** storm (3 perspectives: test-time-compute proponent / cost-generality skeptic / deployment practitioner)
@@ -308,6 +333,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** whether the overthinking/inverse-scaling failure modes are a fixable reward-design problem or structural — the field is not settled; the collapse-vs-measurement-artifact dispute (Apple vs the rebuttals) is live.
 
 ### 2026-07-02 — Preference optimization: RLHF vs DPO vs GRPO
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research + storm (first dual-harness reconcile: mechanism from deep-research, DPO-vs-PPO contradiction map from STORM)
@@ -319,6 +345,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** the DPO-vs-PPO gap itself — the re-runs favoring PPO lean on math/code evals where PPO's edge is biggest, and much of the disagreement traces to eval-suite and length-normalization choices rather than the optimizer.
 
 ### 2026-07-01 — Prompt injection and the lethal trifecta
+
 - **Status:** current
 - **Pillar:** adjacent-knowledge
 - **Method:** deep-research
@@ -330,6 +357,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** whether CaMeL-style capability/taint runtimes can become ergonomic enough for real adoption — the AgentDojo utility figures and developer-authored policies are early evidence.
 
 ### 2026-07-01 — LLM inference optimization: continuous batching, paged KV-cache, speculative decoding
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research
@@ -341,6 +369,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** the continuous-batching-vs-speculative-decoding architectural tension (high batch for throughput vs low batch for latency) — MagicDec-style resolutions unverified; exact PagedAttention gather overhead unquantified from a primary source.
 
 ### 2026-07-01 — Durable execution engines (Temporal, Restate, DBOS)
+
 - **Status:** current
 - **Pillar:** design-patterns
 - **Method:** deep-research
@@ -352,6 +381,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** vendor-reported performance figures (Restate ~94K steps/s; DBOS ~25x vs Step Functions) have no independent reproduction; DBOS's exactly-once semantics for non-Postgres external calls not pinned from a single primary source.
 
 ### 2026-07-01 — Model Context Protocol (MCP): the agent–tool integration standard
+
 - **Status:** current
 - **Pillar:** adjacent-knowledge
 - **Method:** deep-research
@@ -363,6 +393,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** how much of the self-reported adoption (10,000+ public servers, 97M+ monthly SDK downloads) reflects production use rather than experimentation — figures are Anthropic's own, no independent audit located.
 
 ### 2026-07-01 — Evaluating agents and models rigorously (baselines, significance, honest reporting)
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** vault-adapt (generalized from `~/brain/wiki/concepts/agent-evaluation-methodology.md`; extended with public reproducibility/leakage literature + this repo's local Claw-Eval / Terminal-Bench / OneMillion-Bench papers)
@@ -373,6 +404,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** no source gives a cost/benefit rule for how much eval rigor a decision justifies — when a cheap single-outcome check beats expensive trajectory-aware Pass^k grading with a human-calibrated judge is left to the reader.
 
 ### 2026-07-01 — System design fundamentals: load balancing, caching, sharding, consistent hashing
+
 - **Status:** current
 - **Pillar:** adjacent-knowledge
 - **Method:** deep-research
@@ -383,6 +415,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** rebalancing/data-streaming mechanics under consistent-hashing ring membership change (Dynamo/Cassandra operational cost) were not deep-dived and warrant a dedicated source.
 
 ### 2026-07-01 — RAG retrieval architectures: vector, graph, and hybrid
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** storm (3 perspectives: dense-vector proponent / GraphRAG proponent / hybrid-retrieval-quality pragmatist)
@@ -393,6 +426,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** no cited result runs dense-hybrid+rerank, GraphRAG/LazyGraphRAG, and long-context+router on one held-out mixed workload, nor prices total cost of ownership (index freshness, re-embedding, permission filtering) on a live, mutating, permissioned corpus.
 
 ### 2026-07-01 — Attention and the Transformer architecture, internals
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research
@@ -403,6 +437,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** whether induction heads remain the dominant in-context-learning mechanism at frontier scale (causal only for small attention-only models), and how well the √d_k unit-variance assumption survives real trained weights.
 
 ### 2026-07-01 — Idempotency keys and exactly-once-effect APIs
+
 - **Status:** current
 - **Pillar:** design-patterns
 - **Method:** deep-research
@@ -413,6 +448,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** when mutations need fencing tokens on top of idempotency keys, and what the key should be derived from (client UUID vs content hash) to survive a client's own retries.
 
 ### 2026-07-01 — The Saga pattern for distributed transactions
+
 - **Status:** current
 - **Pillar:** design-patterns
 - **Method:** deep-research
@@ -423,6 +459,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** where the boundary sits between saga-level business recovery and the underlying durable-execution layer for technical failures, and how durable engines like Temporal blur it.
 
 ### 2026-07-01 — Backpropagation and automatic differentiation
+
 - **Status:** current
 - **Pillar:** ml-techniques
 - **Method:** deep-research
@@ -433,6 +470,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** reverse-mode accumulation order under fp16/bf16 mixed precision — no retrieved source covers the numerical-stability interaction (vanishing/exploding gradients are a property of the composed Jacobian, not the AD algorithm).
 
 ### 2026-07-01 — CQRS and event sourcing
+
 - **Status:** current
 - **Pillar:** design-patterns
 - **Method:** storm (3 perspectives: proponent / pragmatist-skeptic / production operator)
@@ -443,6 +481,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** no source gives a quantitative break-even (event volume, retention horizon, regulatory class, team size) for event sourcing over CRUD-plus-audit-table, nor costs it against temporal tables / CDC as the middle option.
 
 ### 2026-07-01 — Resilience patterns: circuit breaker, retry with jitter, timeout budgets
+
 - **Status:** current
 - **Pillar:** design-patterns
 - **Method:** deep-research
@@ -453,6 +492,7 @@ All 119 citations across the 10 articles below were audited on 2026-07-01 agains
 - **Open question:** the authoritative composition order (timeout/bulkhead/breaker/budgeted-retry) and whether it should differ for control-plane vs data-plane calls is settled by no single source; no published percentile-style derivation exists for breaker thresholds comparable to AWS's timeout rule.
 
 ### 2026-07-01 — Graceful degradation: ranked fallback chains
+
 - **Status:** current
 - **Pillar:** adjacent-knowledge
 - **Method:** vault-adapt (generalized from `~/brain/wiki/concepts/graceful-degradation.md`, corroborated with public sources)
