@@ -14,7 +14,8 @@ from source_readback import (
     ACL_FIELDS, ACL_KIND, ACL_ORIGINAL, anthology_id,
     ARXIV_FIELDS, ARXIV_ID, ARXIV_KIND, ARXIV_MODERN_ID, ARXIV_REVISION, ARXIV_VENUE,
     CROSSREF_FIELDS, CROSSREF_JOURNAL_KIND, CROSSREF_KINDS, VERSION, crossref_revision, crossref_url,
-    metadata_bytes, valid_acl_pages, valid_journal_locator,
+    PMLR, PMLR_FIELDS, PMLR_ID, PMLR_KIND, PMLR_REVISION, metadata_bytes, pmlr_id, pmlr_pdf_url,
+    valid_citation_pages, valid_journal_locator,
 )
 
 REVIEW_FIELDS = {
@@ -34,7 +35,8 @@ _ARXIV_LINK = re.compile(
     rf"(?<![\w/]){_ARXIV_ENTRY_URL}({ARXIV_ID})({ARXIV_REVISION})?(?:\.pdf)?(?![0-9a-z/])", re.I,
 )
 _DOI_LINK = re.compile(r"(?<![\w/])https?://(?:dx\.)?doi\.org/(10\.[0-9]{4,9}/[-._;()/:a-z0-9+]+)", re.I)
-NORMALIZE_CITATION = {"arxiv": normalize_arxiv, "doi": normalize_doi}
+_PMLR_LINK = re.compile(rf"(?<![\w/]){re.escape(PMLR)}({PMLR_ID})\.html(?![\w/-]|\.[\w])")
+NORMALIZE_CITATION = {"arxiv": normalize_arxiv, "doi": normalize_doi, "pmlr": str}
 CORPUS_PILLARS = ("design-patterns", "ml-techniques", "adjacent-knowledge")
 LiveReview = Callable[[list[dict]], dict[str, dict]]
 Citation = tuple[str, str]
@@ -131,6 +133,17 @@ def _pinned_acl_anthology(work: dict, review: dict) -> None:
     _pinned_metadata_path(work, review)
 
 
+def _pinned_pmlr(work: dict, review: dict) -> None:
+    url = review["source_url"]
+    if not isinstance(url, str) or url != work.get("source_url"):
+        raise ValueError("PMLR review must bind the registered paper page")
+    if pmlr_id(url) != work.get("canonical_identifiers", {}).get("pmlr"):
+        raise ValueError("PMLR review must bind the registered volume and paper identifier")
+    if review["revision"] != PMLR_REVISION:
+        raise ValueError("PMLR review requires the published proceedings")
+    _pinned_metadata_path(work, review)
+
+
 def _pinned_metadata_path(work: dict, review: dict) -> None:
     if review["local_path"] != f"governance/source-evidence/{work['id']}.json":
         raise ValueError("source review must bind the registered Work's retained metadata")
@@ -139,6 +152,7 @@ def _pinned_metadata_path(work: dict, review: dict) -> None:
 IDENTITY_VALIDATORS = {
     ARXIV_KIND: _pinned_arxiv,
     ACL_KIND: _pinned_acl_anthology,
+    PMLR_KIND: _pinned_pmlr,
     **dict.fromkeys(CROSSREF_KINDS, _pinned_crossref),
 }
 
@@ -221,7 +235,7 @@ def _matches_venue(metadata: dict, registered: object, kind: str) -> bool:
 
 
 def _matches_publication_date(observed: object, registered: object, kind: str) -> bool:
-    if kind not in CROSSREF_KINDS:
+    if kind not in CROSSREF_KINDS and kind != PMLR_KIND:
         return observed == registered
     if not isinstance(observed, str) or not isinstance(registered, str):
         return False
@@ -231,10 +245,45 @@ def _matches_publication_date(observed: object, registered: object, kind: str) -
     return observed == registered or observed.startswith(registered + "-")
 
 
+def _pmlr_venues(metadata: dict, volume: str) -> set[str]:
+    venue, year = metadata["venue"], metadata["venue_year"]
+    pages = f"{volume}:{metadata['first_page']}-{metadata['last_page']}"
+    labels = {f"{venue} (PMLR {volume})", f"{venue}, PMLR {pages} ({year})"}
+    if re.fullmatch(r"Proceedings of the [0-9]+(?:st|nd|rd|th) International Conference on Machine Learning", venue):
+        labels.update((f"ICML {year}, PMLR {volume}", f"ICML {year}, PMLR {pages}",
+                       f"ICML {year}, Proceedings of Machine Learning Research {pages}"))
+    return labels
+
+
+def _matches_pmlr_metadata(metadata: dict, work: dict, review: dict) -> bool:
+    identifier = pmlr_id(review["source_url"])
+    if set(metadata) != PMLR_FIELDS or metadata["pmlr"] != identifier:
+        return False
+    volume = identifier.split("/")[0][1:]
+    venue, year = metadata["venue"], metadata["venue_year"]
+    pdf = metadata["pdf_url"]
+    return all((
+        metadata["revision"] == review["revision"] == PMLR_REVISION,
+        metadata["title"] == work.get("title"),
+        metadata["authors"] == work.get("authors"),
+        _matches_publication_date(metadata["publication_date"], work.get("publication_date"), PMLR_KIND),
+        valid_citation_pages(metadata["first_page"], metadata["last_page"]),
+        isinstance(venue, str) and bool(venue.strip()),
+        isinstance(year, str) and bool(re.fullmatch(r"[0-9]{4}", year)),
+        work.get("venue", "").replace("\u2013", "-") in _pmlr_venues(metadata, volume),
+        pdf == pmlr_pdf_url(identifier, pdf),
+        isinstance(metadata["pdf_sha256"], str) and bool(SHA256_RE.fullmatch(metadata["pdf_sha256"])),
+    ))
+
+
 def _matches_work_metadata(raw: bytes, work: dict, review: dict) -> bool:
     try:
         metadata = json.loads(raw)
         kind = review["source_kind"]
+        if not isinstance(metadata, dict) or raw != metadata_bytes(metadata):
+            return False
+        if kind == PMLR_KIND:
+            return _matches_pmlr_metadata(metadata, work, review)
         if kind == ARXIV_KIND:
             fields, alias = ARXIV_FIELDS, "arxiv"
             identity = ARXIV_VERSION.sub("", work["canonical_identifiers"][alias])
@@ -245,11 +294,11 @@ def _matches_work_metadata(raw: bytes, work: dict, review: dict) -> bool:
             fields = fields | {"journal_locator"}
         elif kind == ACL_KIND:
             fields = ACL_FIELDS
-        if not isinstance(metadata, dict) or set(metadata) != fields or raw != metadata_bytes(metadata):
+        if set(metadata) != fields:
             return False
         if kind == ACL_KIND and (
             metadata["anthology"] != anthology_id(review["source_url"])
-            or not valid_acl_pages(metadata["first_page"], metadata["last_page"])
+            or not valid_citation_pages(metadata["first_page"], metadata["last_page"])
         ):
             return False
         return all((
@@ -310,6 +359,7 @@ def _corpus_citations(root: Path) -> tuple[dict[Citation, list[str]], dict[str, 
             arxiv = {(normalize_arxiv(base.lower()), version.lower()) for base, version in _ARXIV_LINK.findall(source)}
             identifiers = {("arxiv", base) for base, _ in arxiv}
             identifiers.update(("doi", normalize_doi(doi)) for doi in _DOI_LINK.findall(source))
+            identifiers.update(("pmlr", item) for item in _PMLR_LINK.findall(source))
             for identifier in identifiers:
                 indexed.setdefault(identifier, []).append(document)
             for base, version in arxiv:

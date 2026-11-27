@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 345,
-    "KWRK_records_added_after_identity_checks": 265,
+    "KWRK_records_current": 350,
+    "KWRK_records_added_after_identity_checks": 270,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -27,7 +27,7 @@
     "nonpaper_source_pointers": 14,
     "unresolved_names_only": 14,
     "provisional_influence_unverified_candidates": 12,
-    "metadata_field_discrepancies": 24
+    "metadata_field_discrepancies": 25
   },
   "field_discrepancies": [
     {
@@ -466,6 +466,35 @@
       ]
     },
     {
+      "canonical_key": "arxiv:2602.23785",
+      "fields": [
+        {
+          "field": "publication_date",
+          "variants": [
+            {
+              "value": "2026-08-17",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000023"
+                }
+              ]
+            },
+            {
+              "value": "2026-08-06",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000346"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
       "canonical_key": "arxiv:2605.10123",
       "fields": [
         {
@@ -741,8 +770,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "af73977d048313bbf6a099264605463010278f563108884dde2a8a7a774d0c46",
-      "record_count": 345
+      "sha256": "17e1803ed904e47eee0611116a40574af69a6a18fd362bb8d83adbf8954149c9",
+      "record_count": 350
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
@@ -4716,19 +4745,24 @@
         "Stefan Matthes",
         "Hao Shen"
       ],
-      "publication_date": "2026-08-17",
-      "venue": null,
+      "publication_date": "2026-08-06",
+      "venue": "Proceedings of the 42nd Conference on Uncertainty in Artificial Intelligence, PMLR 337:1947–1982 (2026)",
       "canonical_identifiers": {
         "arxiv": "2602.23785",
         "pmlr": "v337/han26a"
       },
       "arxiv_versions": [],
       "source_urls": [
-        "https://raw.githubusercontent.com/mlresearch/v337/main/assets/han26a/han26a.pdf"
+        "https://raw.githubusercontent.com/mlresearch/v337/main/assets/han26a/han26a.pdf",
+        "https://proceedings.mlr.press/v337/han26a.html"
       ],
       "work_records": [
         {
           "id": "KWRK-000023",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "KWRK-000346",
           "status": "ACTIVE"
         }
       ],

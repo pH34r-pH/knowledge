@@ -107,15 +107,7 @@ class ResearchIntakeTests(unittest.TestCase):
                     normalized = ARXIV_VERSION.sub("", normalized)
                 previous_id = aliases.get(normalized)
                 if previous_id is not None:
-                    self.assertIn(field, ("arxiv", "doi"), f"{field} alias duplicated by {work['id']} and {previous_id}")
-                    self.assertEqual(work.get("supersedes"), previous_id,
-                                     f"{work['id']} must supersede {previous_id} to reuse {field} alias {normalized}")
-                    if field == "arxiv":
-                        prior = ARXIV_VERSION.search(self.by_id[previous_id]["source_url"])
-                        current = ARXIV_VERSION.search(work["source_url"])
-                        self.assertIsNotNone(prior, previous_id)
-                        self.assertIsNotNone(current, work["id"])
-                        self.assertGreater(int(current[0][1:]), int(prior[0][1:]))
+                    self._assert_alias_successor(work, self.by_id[previous_id], field)
                 aliases[normalized] = work["id"]
 
         for work in self.intake:
@@ -127,6 +119,22 @@ class ResearchIntakeTests(unittest.TestCase):
         self.assertEqual(self.by_id["KWRK-000051"]["canonical_identifiers"]["arxiv"], "2608.20617")
         self.assertEqual(self.by_id["KWRK-000060"]["canonical_identifiers"]["report"], "Aleph Alpha technical report; no arXiv identifier verified")
         self.assertEqual(self.by_id["KWRK-000076"]["canonical_identifiers"]["github"], "tilde-research/momoe-release")
+
+    def _assert_alias_successor(self, work: dict, previous: dict, field: str) -> None:
+        self.assertIn(field, ("arxiv", "doi", "pmlr"), f"{field} alias duplicated by {work['id']} and {previous['id']}")
+        self.assertEqual(work.get("supersedes"), previous["id"])
+        if field != "arxiv":
+            return
+        prior = ARXIV_VERSION.search(previous["source_url"])
+        current = ARXIV_VERSION.search(work["source_url"])
+        proceedings = work["canonical_identifiers"].get("pmlr")
+        if prior is None and current is None and proceedings == previous["canonical_identifiers"].get("pmlr"):
+            self.assertTrue(proceedings)
+            self.assertEqual(work["source_url"], f"https://proceedings.mlr.press/{proceedings}.html")
+            return
+        self.assertIsNotNone(prior, previous["id"])
+        self.assertIsNotNone(current, work["id"])
+        self.assertGreater(int(current[0][1:]), int(prior[0][1:]))
 
     def test_identity_type_totals_match_the_intake_classification(self) -> None:
         self.assertEqual(Counter(row["identity_type"] for row in self.audit["records"]), {

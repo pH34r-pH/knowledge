@@ -42,6 +42,14 @@ ACL_KIND = "acl-anthology-bibliographic-metadata"
 ACL_FIELDS = CROSSREF_FIELDS | {"anthology", "first_page", "last_page"}
 ACL_ORIGINAL = "original-publication"
 ACL_ID = r"(?:[0-9]{4}\.[a-z0-9-]+\.[0-9]+|[A-Z][0-9]{2}-[0-9]{4})"
+PMLR = "https://proceedings.mlr.press/"
+PMLR_ID = r"v[1-9][0-9]{0,5}/[a-z0-9][a-z0-9-]{0,79}"
+PMLR_KIND = "pmlr-bibliographic-metadata"
+PMLR_REVISION = "published-proceedings"
+PMLR_FIELDS = {
+    "pmlr", "title", "authors", "publication_date", "venue", "venue_year", "first_page",
+    "last_page", "pdf_url", "pdf_sha256", "revision",
+}
 
 
 class Unavailable(Exception):
@@ -204,18 +212,14 @@ def anthology_id(url: str) -> str:
     return match[1]
 
 
-class AnthologyMetadata(HTMLParser):
-    """Collect publisher citation fields and editorial markers without evaluating page content."""
+class CitationPageMetadata(HTMLParser):
+    """Read citation fields from the document head."""
 
     def __init__(self, raw: bytes):
         super().__init__()
         self.fields: dict[str, list[str]] = {}
         self.canonical: list[str] = []
         self.in_head = False
-        self.in_label = False
-        self.labels: list[str] = []
-        self.alert = False
-        self.editorial_note = False
         self.feed(raw.decode("utf-8"))
         self.close()
 
@@ -228,6 +232,31 @@ class AnthologyMetadata(HTMLParser):
             self.fields.setdefault(name, []).append(" ".join((values.get("content") or "").split()))
         if self.in_head and tag == "link" and values.get("rel") == "canonical":
             self.canonical.append(values.get("href") or "")
+
+    def handle_endtag(self, tag):
+        if tag == "head":
+            self.in_head = False
+
+    def value(self, field: str) -> str:
+        values = self.fields.get(f"citation_{field}", [])
+        if len(values) != 1 or not values[0]:
+            raise ValueError("Publisher citation field is missing or ambiguous")
+        return values[0]
+
+
+class AnthologyMetadata(CitationPageMetadata):
+    """Collect ACL's editorial markers alongside its citation metadata."""
+
+    def __init__(self, raw: bytes):
+        self.in_label = False
+        self.labels: list[str] = []
+        self.alert = False
+        self.editorial_note = False
+        super().__init__(raw)
+
+    def handle_starttag(self, tag, attrs):
+        super().handle_starttag(tag, attrs)
+        values = dict(attrs)
         if tag == "dt":
             self.in_label = True
             self.labels.append("")
@@ -236,20 +265,13 @@ class AnthologyMetadata(HTMLParser):
         self.editorial_note |= "acl-editorial-note" in classes
 
     def handle_endtag(self, tag):
-        if tag == "head":
-            self.in_head = False
+        super().handle_endtag(tag)
         if tag == "dt":
             self.in_label = False
 
     def handle_data(self, text):
         if self.in_label:
             self.labels[-1] += text
-
-    def value(self, field: str) -> str:
-        values = self.fields.get(f"citation_{field}", [])
-        if len(values) != 1 or not values[0]:
-            raise ValueError("ACL Anthology citation field is missing or ambiguous")
-        return values[0]
 
 
 def acl_anthology_metadata(raw: bytes, url: str) -> dict:
@@ -275,7 +297,7 @@ def acl_anthology_metadata(raw: bytes, url: str) -> dict:
     exact_date = date(*(parts + [1] * (3 - len(parts)))).isoformat()[:{1: 4, 2: 7, 3: 10}[len(parts)]]
     authors = page.fields.get("citation_author", [])
     first, last = page.value("firstpage"), page.value("lastpage")
-    if not authors or not all(authors) or not valid_acl_pages(first, last):
+    if not authors or not all(authors) or not valid_citation_pages(first, last):
         raise ValueError("ACL Anthology article lacks ordered authors or exact pages")
     return {
         "anthology": identifier, "doi": doi, "revision": ACL_ORIGINAL, "title": page.value("title"),
@@ -284,7 +306,7 @@ def acl_anthology_metadata(raw: bytes, url: str) -> dict:
     }
 
 
-def valid_acl_pages(first: object, last: object) -> bool:
+def valid_citation_pages(first: object, last: object) -> bool:
     return (all(isinstance(page, str) and re.fullmatch(r"[1-9][0-9]{0,6}", page) for page in (first, last))
             and int(first) <= int(last))
 
@@ -300,6 +322,98 @@ def read_acl_anthology(review: dict, read=fetch) -> dict:
         return _http_failure(exc)
     except (ValueError, URLError, HTTPException, TimeoutError, Unavailable):
         return {"state": "unconfirmed", "reason": "ACL Anthology metadata was unavailable or incomplete"}
+    return _metadata_observation(review, metadata)
+
+
+class PmlrPageMetadata(CitationPageMetadata):
+    """Collect the displayed proceedings citation to corroborate the head fields."""
+
+    def __init__(self, raw: bytes):
+        self.citations: list[str] = []
+        self.in_citation = False
+        super().__init__(raw)
+
+    def handle_starttag(self, tag, attrs):
+        super().handle_starttag(tag, attrs)
+        if tag == "div" and dict(attrs).get("id") == "info":
+            self.in_citation = True
+            self.citations.append("")
+
+    def handle_endtag(self, tag):
+        super().handle_endtag(tag)
+        if tag == "div":
+            self.in_citation = False
+
+    def handle_data(self, text):
+        if self.in_citation:
+            self.citations[-1] += text
+
+
+def pmlr_id(url: str) -> str:
+    match = re.fullmatch(rf"{re.escape(PMLR)}({PMLR_ID})\.html", url)
+    if match is None:
+        raise ValueError("expected a canonical PMLR paper URL")
+    return match[1]
+
+
+def pmlr_pdf_url(identifier: str, url: str) -> str:
+    volume, slug = identifier.split("/")
+    proceedings = f"{PMLR}{identifier}/{slug}.pdf"
+    volume_asset = f"https://raw.githubusercontent.com/mlresearch/{volume}/main/assets/{slug}/{slug}.pdf"
+    if url == proceedings.replace("https://", "http://", 1):
+        return proceedings
+    if url in (proceedings, volume_asset):
+        return url
+    raise SourceFinding("identity-mismatch", "PMLR paper link no longer matches the registered proceedings")
+
+
+def _pmlr_proceedings(page: PmlrPageMetadata, identifier: str) -> dict:
+    if len(page.citations) != 1:
+        raise ValueError("PMLR proceedings citation is missing or ambiguous")
+    text = " ".join(page.citations[0].split())
+    match = re.fullmatch(r"(.+), PMLR ([0-9]+):([0-9]+)[-–]([0-9]+), ([0-9]{4})\.", text)
+    if match is None:
+        raise ValueError("PMLR proceedings citation is malformed")
+    venue, volume, first, last, year = match.groups()
+    if (identifier.split("/")[0] != f"v{volume}" or not valid_citation_pages(first, last)
+            or (first, last) != (page.value("firstpage"), page.value("lastpage"))):
+        raise SourceFinding("identity-mismatch", "PMLR volume or pages disagree with the paper citation")
+    return {"venue": venue, "venue_year": year, "first_page": first, "last_page": last}
+
+
+def pmlr_metadata(url: str, read=fetch) -> dict:
+    identifier = pmlr_id(url)
+    page = PmlrPageMetadata(read(url, 512 * 1024))
+    if (page.value("abstract_html_url") != url or page.value("publisher") != "PMLR"
+            or (page.canonical and page.canonical != [url])):
+        raise SourceFinding("identity-mismatch", "PMLR publisher or paper identity changed")
+    title = page.value("title")
+    if title.lower().startswith(("retracted:", "withdrawn:")) or WITHDRAWAL.search(title):
+        raise SourceFinding("retracted", "PMLR title announces a withdrawal or retraction")
+    authors = page.fields.get("citation_author", [])
+    if not authors or not all(authors):
+        raise ValueError("PMLR paper lacks an ordered author list")
+    publication = date.fromisoformat(page.value("publication_date").replace("/", "-")).isoformat()
+    proceedings = _pmlr_proceedings(page, identifier)
+    pdf_url = pmlr_pdf_url(identifier, page.value("pdf_url"))
+    pdf = read(pdf_url, 16 * 1024 * 1024)
+    if not _complete_pdf(pdf):
+        raise Unavailable("PMLR did not return a complete PDF")
+    return {
+        **proceedings, "pmlr": identifier, "title": title, "authors": authors, "publication_date": publication,
+        "pdf_url": pdf_url, "pdf_sha256": hashlib.sha256(pdf).hexdigest(), "revision": PMLR_REVISION,
+    }
+
+
+def read_pmlr(review: dict, read=fetch) -> dict:
+    try:
+        metadata = pmlr_metadata(review["source_url"], read)
+    except SourceFinding as exc:
+        return {"state": exc.state, "reason": str(exc)}
+    except HTTPError as exc:
+        return _http_failure(exc)
+    except (ValueError, URLError, HTTPException, TimeoutError, Unavailable):
+        return {"state": "unconfirmed", "reason": "PMLR metadata or publication bytes were unavailable or incomplete"}
     return _metadata_observation(review, metadata)
 
 
@@ -367,6 +481,10 @@ def _arxiv_catalog(identifiers: list[str], read) -> dict[str, dict]:
     return catalog
 
 
+def _complete_pdf(pdf: bytes) -> bool:
+    return pdf.startswith(b"%PDF-") and pdf.rstrip().endswith(b"%%EOF")
+
+
 def read_arxiv(review: dict, read=fetch) -> dict:
     match = PDF_VERSION.fullmatch(review.get("revision", ""))
     if match is None or review.get("source_url") != f"{ARXIV}/abs/{match[0]}":
@@ -394,7 +512,7 @@ def read_arxiv(review: dict, read=fetch) -> dict:
         return _http_failure(exc)
     except (URLError, HTTPException, TimeoutError, Unavailable, UnicodeError):
         return {"state": "unconfirmed", "reason": "publisher response was unavailable or incomplete"}
-    if not pdf.startswith(b"%PDF-") or not pdf.rstrip().endswith(b"%%EOF"):
+    if not _complete_pdf(pdf):
         return {"state": "unconfirmed", "reason": "publisher did not return a complete PDF"}
     observed_digest = hashlib.sha256(pdf).hexdigest()
     state = "verified" if observed_digest == review["sha256"] else "identity-mismatch"
@@ -417,6 +535,8 @@ def read_sources(reviews: list[dict], read=fetch) -> dict[str, dict]:
             observation = read_crossref(review, read=read)
         elif review.get("source_kind") == ACL_KIND:
             observation = read_acl_anthology(review, read=read)
+        elif review.get("source_kind") == PMLR_KIND:
+            observation = read_pmlr(review, read=read)
         else:
             observation = read_arxiv(review, read=read)
         observations[work_id] = observation
