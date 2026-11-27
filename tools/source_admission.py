@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 from collections import Counter
 from collections.abc import Callable
@@ -9,6 +10,7 @@ from datetime import date
 from pathlib import Path, PurePosixPath
 
 from reconcile_public_bibliography import normalize_arxiv, normalize_doi
+from source_readback import CROSSREF_FIELDS, CROSSREF_KIND, crossref_revision, crossref_url, metadata_bytes
 
 REVIEW_FIELDS = {
     "schema_version", "work_id", "trust_class", "data_class", "revision", "source_url",
@@ -38,25 +40,25 @@ def review_date(value: object) -> date:
 
 def _source_path(root: Path, value: object) -> Path:
     if not isinstance(value, str) or any(char in value for char in "\\:\r\n\x00"):
-        raise ValueError("reviewed local source must be a normalized file under arxiv/")
+        raise ValueError("reviewed local source must use a normalized evidence path")
     relative = PurePosixPath(value)
     if (
-        len(relative.parts) != 2 or relative.parts[0] != "arxiv"
-        or relative.suffix != ".pdf" or value != relative.as_posix()
+        relative.parts[:-1] not in (("arxiv",), ("governance", "source-evidence"))
+        or value != relative.as_posix() or relative.name in {"", ".."}
     ):
-        raise ValueError("reviewed local source must be a normalized file under arxiv/")
+        raise ValueError("reviewed local source must use a normalized evidence path")
     path = root / value
-    if path.is_symlink() or path.parent.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
+    paths = [path, *(root / parent for parent in relative.parents if parent.parts)]
+    if any(member.is_symlink() for member in paths) or not path.resolve().is_relative_to(root.resolve()):
         raise ValueError("reviewed local source must be an ordinary retained file")
     return path
 
 
-def _pinned_identity(work: dict, review: dict) -> None:
+def _pinned_arxiv(work: dict, review: dict) -> None:
     identifiers = work.get("canonical_identifiers")
     arxiv = identifiers.get("arxiv") if isinstance(identifiers, dict) else None
     revision = review["revision"]
     source_url = review["source_url"]
-    digest = review["sha256"]
     if not isinstance(arxiv, str) or not isinstance(revision, str):
         raise ValueError("source review requires an exact version of the registered arXiv work")
     base = ARXIV_VERSION.sub("", arxiv)
@@ -69,8 +71,24 @@ def _pinned_identity(work: dict, review: dict) -> None:
         raise ValueError("source review URL must identify the exact primary version")
     if review["local_path"] != f"arxiv/{base}.pdf":
         raise ValueError("source review must bind the retained PDF for the registered arXiv work")
-    if not isinstance(digest, str) or not SHA256_RE.fullmatch(digest):
-        raise ValueError("source review requires the full SHA-256 of the retained source")
+
+
+def _work_doi(work: dict) -> str:
+    aliases = work.get("canonical_identifiers")
+    doi = aliases.get("doi") if isinstance(aliases, dict) else None
+    if not isinstance(doi, str):
+        raise ValueError("Crossref source review needs a DOI in the registered Work")
+    return normalize_doi(doi)
+
+
+def _pinned_crossref(work: dict, review: dict) -> None:
+    if review["source_url"] != crossref_url(_work_doi(work)):
+        raise ValueError("Crossref source review must use the registered DOI URL")
+    if not isinstance(review["revision"], str):
+        raise ValueError("Crossref deposit revision must be an exact UTC timestamp")
+    crossref_revision(review["revision"])
+    if review["local_path"] != f"governance/source-evidence/{work['id']}.json":
+        raise ValueError("Crossref review must bind the registered Work's retained metadata")
 
 
 def _metadata_uses(value: object) -> None:
@@ -81,17 +99,28 @@ def _metadata_uses(value: object) -> None:
 
 
 def _validate_source_review(root: Path, work: dict, review: dict) -> None:
-    if not isinstance(review, dict) or set(review) != REVIEW_FIELDS:
+    if not isinstance(review, dict):
         raise ValueError("source review has missing or unrecognized fields")
-    if type(review["schema_version"]) is not int or review["schema_version"] != 1:
+    version = review.get("schema_version")
+    if type(version) is not int or version not in (1, 2):
         raise ValueError("unsupported source review version")
+    fields = REVIEW_FIELDS | {"source_kind"} if version == 2 else REVIEW_FIELDS
+    if set(review) != fields:
+        raise ValueError("source review has missing or unrecognized fields")
     if review["trust_class"] != "primary" or review["data_class"] != "public":
         raise ValueError("this source-review profile requires a public primary source")
     if review["status"] not in REVIEW_STATES:
         raise ValueError("source review requires a recognized freshness or retraction state")
     if review_date(review["reviewed_on"]) > review_date(review["expires_on"]):
         raise ValueError("source review expiry precedes its review date")
-    _pinned_identity(work, review)
+    if version == 2:
+        if review["source_kind"] != CROSSREF_KIND:
+            raise ValueError("unsupported metadata source kind")
+        _pinned_crossref(work, review)
+    else:
+        _pinned_arxiv(work, review)
+    if not isinstance(review["sha256"], str) or not SHA256_RE.fullmatch(review["sha256"]):
+        raise ValueError("source review requires the full SHA-256 of the retained source")
     _source_path(root, review["local_path"])
     _metadata_uses(review["permitted_uses"])
 
@@ -111,6 +140,31 @@ def source_reviews(root: Path, works: list[dict], reviews: list[dict]) -> dict[s
     return by_work
 
 
+def _matches_work_metadata(raw: bytes, work: dict, review: dict) -> bool:
+    try:
+        metadata = json.loads(raw)
+        if not isinstance(metadata, dict) or set(metadata) != CROSSREF_FIELDS or raw != metadata_bytes(metadata):
+            return False
+        return (metadata["doi"] == _work_doi(work) and metadata["revision"] == review["revision"]
+                and all(metadata[key] == work.get(key) for key in ("title", "authors", "publication_date", "venue")))
+    except (TypeError, ValueError):
+        return False
+
+
+def _evidence_state(path: Path, work: dict, review: dict) -> str:
+    try:
+        with path.open("rb") as handle:
+            if review["schema_version"] == 2:
+                raw = handle.read(65_537)
+                match = (len(raw) <= 65_536 and hashlib.sha256(raw).hexdigest() == review["sha256"]
+                         and _matches_work_metadata(raw, work, review))
+            else:
+                match = hashlib.file_digest(handle, "sha256").hexdigest() == review["sha256"]
+    except OSError:
+        return "inaccessible"
+    return "verified" if match else "identity-mismatch"
+
+
 def _source_state(root: Path, work: dict, review: dict | None, as_of: date, superseded: set[str]) -> str:
     if work.get("status") != "ACTIVE" or work["id"] in superseded:
         return "superseded"
@@ -125,12 +179,7 @@ def _source_state(root: Path, work: dict, review: dict | None, as_of: date, supe
     path = _source_path(root, review["local_path"])
     if not path.is_file():
         return "inaccessible"
-    try:
-        with path.open("rb") as handle:
-            observed = hashlib.file_digest(handle, "sha256").hexdigest()
-    except OSError:
-        return "inaccessible"
-    return "verified" if observed == review["sha256"] else "identity-mismatch"
+    return _evidence_state(path, work, review)
 
 
 def _corpus_citations(root: Path) -> dict[Citation, list[str]]:

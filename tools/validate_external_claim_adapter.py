@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from source_admission import review_date, review_report, reviewed_freshness, source_reviews
-from source_readback import read_arxiv
+from source_readback import read_source
 
 WORK_RE = re.compile(r"^KWRK-[0-9]{6}$")
 CLAIM_RE = re.compile(r"^KCLM-[0-9]{6}$")
@@ -307,7 +307,7 @@ def _run(args: argparse.Namespace) -> int:
         works, claims, evidence, _ = rows
         observed_at = datetime.now(timezone.utc) if args.check_live else None
         as_of = observed_at.date() if observed_at else review_date(args.as_of)
-        report = review_report(root, works, claims, evidence, reviews, as_of, read_arxiv if observed_at else None)
+        report = review_report(root, works, claims, evidence, reviews, as_of, read_source if observed_at else None)
         if observed_at:
             report["observed_at"] = observed_at.isoformat()
             report["reviewed_freshness"] = reviewed_freshness(report, reviews)

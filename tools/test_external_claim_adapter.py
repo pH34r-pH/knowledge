@@ -14,7 +14,7 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 
 from source_admission import reviewed_freshness
-from source_readback import read_arxiv
+from source_readback import CROSSREF_KIND, crossref_metadata, crossref_url, metadata_bytes, read_arxiv, read_crossref
 from validate_external_claim_adapter import REGISTRY_FILES, SOURCE_REVIEWS, main, registry_fingerprint, validate_adapter
 
 
@@ -222,7 +222,7 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         args = ["--root", str(root), "--source-report", "--check-live", "--expected-registry-sha256", expected]
         output = io.StringIO()
         observation = {"state": "revised", "observed_revision": "2601.00001v3"}
-        with patch("validate_external_claim_adapter.read_arxiv", return_value=observation) as read:
+        with patch("validate_external_claim_adapter.read_source", return_value=observation) as read:
             with redirect_stdout(output):
                 self.assertEqual(main(args), 0)
             read.assert_called_once_with(work["source_review"])
@@ -304,6 +304,63 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         work = self._source_fixture(root)
         _write_jsonl(root / "references/external/works.jsonl", [work])
         self.assertIn("KWRK-000001: source policy belongs in the governance review file", validate_adapter(root))
+
+    def test_crossref_snapshot_must_match_the_registered_work(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        doi = "10.5555/source"
+        work["canonical_identifiers"] = {"doi": doi}
+        work["venue"] = "Test Journal"
+        evidence = root / "governance/source-evidence/KWRK-000001.json"
+        evidence.parent.mkdir()
+        record = {"doi": doi, "revision": "2026-11-25T12:01:31Z",
+                  **{key: work[key] for key in ("title", "authors", "publication_date", "venue")}}
+        article = root / "corpus/ml-techniques/sample.md"
+        article.write_text("https://doi.org/10.5555/source\n", encoding="utf-8")
+        review = work["source_review"]
+        review.update({"schema_version": 2, "source_kind": CROSSREF_KIND, "source_url": crossref_url(doi),
+                       "local_path": evidence.relative_to(root).as_posix(), "revision": record["revision"]})
+        for title, state in ((work["title"], "verified"), ("Different source title", "identity-mismatch")):
+            raw = metadata_bytes({**record, "title": title})
+            evidence.write_bytes(raw)
+            review["sha256"] = hashlib.sha256(raw).hexdigest()
+            self._write_source_fixture(root, work)
+            status, output = self._report(root, "2026-11-26")
+            self.assertEqual(status, 0, output)
+            row, = json.loads(output)["works"]
+            self.assertEqual(row["state"], state)
+            if state == "verified":
+                self.assertEqual(row["permitted_uses"], {"search": "bibliographic-metadata"})
+            else:
+                self.assertEqual(row["permitted_uses"], {})
+                self.assertEqual(row["documents_for_review"], ["corpus/ml-techniques/sample.md"])
+
+    def test_crossref_readback_uses_only_pinned_metadata_and_checks_notices(self) -> None:
+        doi = "10.5555/source"
+        revision = "2026-11-25T12:01:31Z"
+        work = {"DOI": doi.upper(), "title": ["Test paper"], "author": [{"family": "Author", "given": "Test"}],
+                "published": {"date-parts": [[2026, 11]]}, "deposited": {"date-time": revision},
+                "container-title": ["Test Journal"]}
+        def response(row):
+            return json.dumps({"message-type": "work", "message": row}).encode()
+        metadata = crossref_metadata(response(work), doi)
+        url = crossref_url(doi)
+        review = {"source_url": url, "revision": revision, "sha256": hashlib.sha256(metadata_bytes(metadata)).hexdigest()}
+        for metadata_change, state in (
+            ({"indexed": {"date-time": "2026-11-26T00:00:00Z"}, "link": [{"URL": "https://example.org"}]}, "verified"),
+            ({"DOI": "10.5555/other"}, "identity-mismatch"),
+            ({"title": ["Different metadata"]}, "identity-mismatch"),
+            ({"deposited": {"date-time": "2026-11-26T00:00:00Z"}}, "revised"),
+            ({"updated-by": [{"type": "correction"}]}, "revised"),
+            ({"updated-by": [{"type": "retraction"}]}, "retracted"),
+            ({"author": []}, "unconfirmed"),
+        ):
+            with self.subTest(state=state):
+                def read(target, limit):
+                    self.assertEqual(target, url)
+                    return response({**work, **metadata_change})
+                self.assertEqual(read_crossref(review, read)["state"], state)
 
     def test_empty_registry_is_valid(self) -> None:
         temp, root = self._root()
