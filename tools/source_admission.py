@@ -255,7 +255,7 @@ def _coverage_state(matches: list[str], active: list[str]) -> str:
 
 
 def _citation_coverage(
-    citations: dict[Citation, list[str]], works: list[dict], source_states: dict[str, str],
+    citations: dict[Citation, list[str]], works: list[dict], reports: dict[str, dict],
 ) -> dict:
     registered: dict[Citation, list[str]] = {}
     for work in works:
@@ -264,7 +264,7 @@ def _citation_coverage(
     rows = []
     for (kind, identifier), paths in sorted(citations.items()):
         matches = sorted(registered.get((kind, identifier), []))
-        active = [match for match in matches if source_states[match] != "superseded"]
+        active = [match for match in matches if reports[match]["state"] != "superseded"]
         rows.append({"kind": kind, "identifier": identifier, "state": _coverage_state(matches, active),
                      "work_ids": matches, "active_work_ids": active, "documents": sorted(paths)})
     counts = Counter(row["state"] for row in rows)
@@ -352,7 +352,7 @@ def review_report(
     source_states = {work["id"]: _source_state(root, work, reviews.get(work["id"]), as_of, targets)
                      for work in works}
     observations = _read_verified_sources(source_states, reviews, live_review) if live_review is not None else {}
-    results = []
+    reports = {}
     for work in works:
         work_id = work["id"]
         observation = observations.get(work_id)
@@ -366,7 +366,7 @@ def review_report(
             affected_evidence = sorted(item for claim_id in affected_claims
                                        for item in evidence_by_claim.get(claim_id, []))
             affected_documents = _affected_documents(work, citations)
-        results.append({
+        reports[work_id] = {
             "work_id": work_id,
             "state": status,
             "permitted_uses": permitted_uses,
@@ -374,13 +374,10 @@ def review_report(
             "evidence_for_review": affected_evidence,
             "documents_for_review": affected_documents,
             **({"live_check": observation} if observation is not None else {}),
-        })
-    states = {row["work_id"]: row["state"] for row in results}
-    return {"as_of": as_of.isoformat(), "works": sorted(results, key=lambda item: item["work_id"]),
-            "citation_coverage": _citation_coverage(citations, works, states),
-            "arxiv_revision_coverage": _revision_coverage(
-                revisions, works, {row["work_id"]: row for row in results}, reviews,
-            )}
+        }
+    return {"as_of": as_of.isoformat(), "works": [reports[work_id] for work_id in sorted(reports)],
+            "citation_coverage": _citation_coverage(citations, works, reports),
+            "arxiv_revision_coverage": _revision_coverage(revisions, works, reports, reviews)}
 
 
 def reviewed_freshness(report: dict, reviews: dict[str, dict]) -> dict:
