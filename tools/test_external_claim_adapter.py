@@ -199,25 +199,28 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         work = self._source_fixture(root)
         old = "corpus/ml-techniques/prior.md"
         (root / old).write_text(
-            "[Prior](https://arxiv.org/abs/2601.00001v1) and https://arxiv.org/pdf/2601.00001v1.pdf\n",
+            "[Prior](https://arxiv.org/html/2601.00001v1#S2)\n"
+            "https://arxiv.org.example/html/2601.00001v4\n",
             encoding="utf-8",
         )
+        mirror = "corpus/ml-techniques/mirror.md"
+        (root / mirror).write_text("https://ar5iv.labs.arxiv.org/html/2601.00001v1#S2", encoding="utf-8")
         code, output = self._report(root, "2026-11-26")
         self.assertEqual(code, 0, output)
         report = json.loads(output)
         self.assertEqual(report["citation_coverage"]["by_state"], {"active-work": 1})
         pinned = report["arxiv_revision_coverage"]
-        self.assertEqual(pinned["documents_for_review"], [old])
+        self.assertEqual(pinned["documents_for_review"], [mirror, old])
         prior, current = pinned["citations"]
         self.assertEqual(prior["revision"], "2601.00001v1")
         self.assertEqual(prior["state"], "unregistered-revision")
-        self.assertEqual(prior["documents"], [old])
+        self.assertEqual(prior["documents"], [mirror, old])
         self.assertEqual(prior["permitted_uses"], {})
         self.assertEqual(current["revision"], "2601.00001v2")
         self.assertEqual(current["state"], "verified")
         self.assertEqual(current["permitted_uses"], {"search": "bibliographic-metadata"})
 
-        work["source_url"] = "https://arxiv.org/abs/2601.00001v1"
+        work["source_url"] = "https://arxiv.org/html/2601.00001v1#S2"
         self._write_source_fixture(root, work)
         code, output = self._report(root, "2026-11-26")
         self.assertEqual(code, 0, output)

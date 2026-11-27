@@ -17,7 +17,8 @@ available when the freshness job fails.
 
 The identifier coverage shows whether a corpus link resolves to an active
 Work. The report also lists exact arXiv revisions cited by articles in
-`arxiv_revision_coverage`. A revision carries bibliographic permissions
+`arxiv_revision_coverage`, including links to arXiv HTML and ar5iv. A revision
+carries bibliographic permissions
 only when it has one active matching Work with a verified review of that
 same revision. Missing, superseded, ambiguous, and stale revisions list
 their dependent articles for review.
