@@ -37,6 +37,16 @@ timestamp, and SHA-256 of the retained bibliographic JSON under
 publication date and venue recorded by the Work. This profile covers those
 metadata fields for approved index or search use.
 
+arXiv metadata reviews use schema version 2 and the
+`arxiv-bibliographic-metadata` source kind. Retain a canonical JSON snapshot
+of the title, ordered authors, publication date, venue, and exact arXiv
+revision under `governance/source-evidence/`. Match the registered Work
+and any explicitly cited version before adding a review. Live readback batches
+approved arXiv identifiers through the publisher's Atom API and reports
+withdrawals, revised versions, and metadata changes. This profile supports
+approved metadata indexing and search.
+[arXiv API terms](https://info.arxiv.org/help/api/tou.html)
+
 Obtain the registry SHA-256 from an independently reviewed checkout using
 `python tools/validate_external_claim_adapter.py --registry-sha256`. The value
 binds the raw Work, Claim, Evidence, and review files together. Use that exact identity
