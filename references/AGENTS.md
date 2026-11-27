@@ -81,6 +81,9 @@ title, ordered authors, publication date, and any version pinned by the Work
 or explicitly cited in the corpus before adding a review. A Work with an
 omitted venue can use the publisher snapshot's arXiv preprint venue. The
 original venue field remains part of the historical Work record.
+The registered forms `arXiv preprint vN` and `arXiv preprint; reviewed vN`
+also match only when N is the snapshot's exact revision. Other venue claims
+are not established by this metadata profile.
 
 Live readback batches canonical modern and historical arXiv identifiers
 through the publisher's Atom API and reports withdrawals, revised versions,

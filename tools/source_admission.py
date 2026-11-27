@@ -227,7 +227,15 @@ def _journal_venues(metadata: dict) -> set[str]:
 def _matches_venue(metadata: dict, registered: object, kind: str) -> bool:
     observed = metadata["venue"]
     if kind == ARXIV_KIND:
-        return observed == ARXIV_VENUE and registered in (None, "", ARXIV_VENUE)
+        if observed != ARXIV_VENUE:
+            return False
+        if registered in (None, "", ARXIV_VENUE):
+            return True
+        if not isinstance(registered, str):
+            return False
+        match = re.fullmatch(r"arXiv preprint(?: |; reviewed )(v[1-9][0-9]*)", registered)
+        revision = VERSION.fullmatch(metadata.get("revision", ""))
+        return bool(match and revision and revision[2] == match[1])
     if kind == CROSSREF_JOURNAL_KIND:
         return isinstance(registered, str) and registered.replace("\u2013", "-") in _journal_venues(metadata)
     if kind == ACL_KIND:
