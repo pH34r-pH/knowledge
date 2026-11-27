@@ -151,6 +151,20 @@ class ResearchIntakeTests(unittest.TestCase):
         self.assertEqual(old["authors"], ["Peiyan Zhang"])
         self.assertEqual(current["authors"], ["Peiyan Zhang", "Jason Xin"])
 
+    def test_journal_metadata_successors_preserve_day_level_history(self) -> None:
+        for old_id, new_id, old_date, month in (
+            ("KWRK-000181", "KWRK-000366", "2018-08-08", "2018-08"),
+            ("KWRK-000183", "KWRK-000367", "2013-03-01", "2013-03"),
+            ("KWRK-000219", "KWRK-000368", "2019-02-12", "2019-04"),
+        ):
+            with self.subTest(work=old_id):
+                old, current = self.by_id[old_id], self.by_id[new_id]
+                self.assertEqual(current["supersedes"], old_id)
+                self.assertEqual(old["publication_date"], old_date)
+                self.assertEqual(current["publication_date"], month)
+                self.assertEqual(current["canonical_identifiers"], {"doi": old["canonical_identifiers"]["doi"].lower()})
+                self.assertEqual(current["authors"], old["authors"])
+
     def _assert_alias_successor(self, work: dict, previous: dict, field: str) -> None:
         self.assertIn(field, ("arxiv", "doi", "pmlr", "anthology"), f"{field} alias duplicated by {work['id']} and {previous['id']}")
         self.assertEqual(work.get("supersedes"), previous["id"])
