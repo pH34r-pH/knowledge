@@ -15,7 +15,7 @@ from urllib.error import HTTPError
 
 from source_admission import reviewed_freshness
 from source_readback import (
-    ARXIV_KIND, CROSSREF_KIND, crossref_metadata, crossref_url, metadata_bytes,
+    ARXIV_KIND, CROSSREF_JOURNAL_KIND, CROSSREF_KIND, crossref_metadata, crossref_url, metadata_bytes,
     read_arxiv, read_crossref, read_sources,
 )
 from validate_external_claim_adapter import REGISTRY_FILES, SOURCE_REVIEWS, main, registry_fingerprint, validate_adapter
@@ -529,6 +529,7 @@ class ExternalClaimAdapterTests(unittest.TestCase):
         def response(row):
             return json.dumps({"message-type": "work", "message": row}).encode()
         metadata = crossref_metadata(response(work), doi)
+        self.assertEqual(crossref_metadata(response({**work, "container-title": []}), doi)["venue"], "")
         url = crossref_url(doi)
         review = {"source_url": url, "revision": revision, "sha256": hashlib.sha256(metadata_bytes(metadata)).hexdigest()}
         for metadata_change, state in (
@@ -545,6 +546,56 @@ class ExternalClaimAdapterTests(unittest.TestCase):
                     self.assertEqual(target, url)
                     return response({**work, **metadata_change})
                 self.assertEqual(read_crossref(review, read)["state"], state)
+
+    def test_crossref_journal_locator_matches_the_registered_citation(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        doi = "10.5555/source"
+        work.update(canonical_identifiers={"doi": doi}, publication_date="2026-01-01")
+        evidence = root / "governance/source-evidence/KWRK-000001.json"
+        evidence.parent.mkdir()
+        review = work["source_review"]
+        publisher = {
+            "DOI": doi, "type": "journal-article", "title": [work["title"]],
+            "author": [{"name": name} for name in work["authors"]], "container-title": ["The Test Journal"],
+            "published": {"date-parts": [[2026, 1, 1]]},
+            "deposited": {"date-time": "2026-11-25T12:01:31Z"},
+            "volume": "24", "issue": "2", "page": "7-18", "article-number": "001",
+        }
+        def response(changes):
+            return json.dumps({"message-type": "work", "message": {**publisher, **changes}}).encode()
+        metadata = crossref_metadata(response({}), doi, journal_locator=True)
+        raw = metadata_bytes(metadata)
+        evidence.write_bytes(raw)
+        review.update(schema_version=2, source_kind=CROSSREF_JOURNAL_KIND, source_url=crossref_url(doi),
+                      local_path=evidence.relative_to(root).as_posix(), revision=metadata["revision"],
+                      sha256=hashlib.sha256(raw).hexdigest())
+        for venue, state in (
+            ("Test Journal 24(2), 7\u201318", "verified"),
+            ("The Test Journal 24:001", "verified"),
+            ("The Test Journal 24, 001 (2026)", "verified"),
+            ("A Different Journal 24, 001", "identity-mismatch"),
+            ("The Test Journal 24(3), 7-18", "identity-mismatch"),
+            ("The Test Journal 24, 009", "identity-mismatch"),
+            ("The Test Journal 24, 001 (2025)", "identity-mismatch"),
+        ):
+            with self.subTest(venue=venue):
+                work["venue"] = venue
+                self._write_source_fixture(root, work)
+                code, output = self._report(root, "2026-11-26")
+                self.assertEqual(code, 0, output)
+                row, = json.loads(output)["works"]
+                self.assertEqual(row["state"], state)
+                self.assertEqual(bool(row["permitted_uses"]), state == "verified")
+        for changes, state in (
+            ({}, "verified"), ({"page": "7-19"}, "identity-mismatch"),
+            ({"article-number": "009"}, "identity-mismatch"),
+            ({"container-title": []}, "unconfirmed"), ({"type": "posted-content"}, "unconfirmed"),
+            ({"updated-by": [{"type": "retraction"}]}, "retracted"),
+        ):
+            with self.subTest(changes=changes):
+                self.assertEqual(read_crossref(review, lambda _url, _limit: response(changes))["state"], state)
 
     def test_empty_registry_is_valid(self) -> None:
         temp, root = self._root()

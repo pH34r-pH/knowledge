@@ -37,6 +37,15 @@ timestamp, and SHA-256 of the retained bibliographic JSON under
 publication date and venue recorded by the Work. This profile covers those
 metadata fields for approved index or search use.
 
+Use `crossref-journal-bibliographic-metadata` when the Work's venue is a
+formatted journal reference. The snapshot retains the publisher's journal title
+and its exact volume, optional issue, and page range or article number. The Work
+venue must match those components in the supported citation forms, including
+optional issue and publication year. The match allows an omitted leading
+`The` and equivalent hyphen and en dash typography. The DOI, title, ordered
+authors and date must also match. Live verification pins the snapshot and treats any
+locator change or editorial notice as requiring review. [Crossref metadata fields](https://github.com/CrossRef/rest-api-doc/blob/master/api_format.md#work)
+
 arXiv metadata reviews use schema version 2 and the
 `arxiv-bibliographic-metadata` source kind. Retain a canonical JSON snapshot
 of the title, ordered authors, publication date, venue, and exact arXiv

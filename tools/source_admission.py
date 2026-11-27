@@ -12,7 +12,8 @@ from pathlib import Path, PurePosixPath
 from reconcile_public_bibliography import normalize_arxiv, normalize_doi
 from source_readback import (
     ARXIV_FIELDS, ARXIV_ID, ARXIV_KIND, ARXIV_MODERN_ID, ARXIV_REVISION, ARXIV_VENUE,
-    CROSSREF_FIELDS, CROSSREF_KIND, VERSION, crossref_revision, crossref_url, metadata_bytes,
+    CROSSREF_FIELDS, CROSSREF_JOURNAL_KIND, CROSSREF_KINDS, VERSION, crossref_revision, crossref_url,
+    metadata_bytes, valid_journal_locator,
 )
 
 REVIEW_FIELDS = {
@@ -133,7 +134,7 @@ def _validate_source_review(root: Path, work: dict, review: dict) -> None:
         raise ValueError("source review expiry precedes its review date")
     if version == 1 or review["source_kind"] == ARXIV_KIND:
         _pinned_arxiv(work, review)
-    elif review["source_kind"] == CROSSREF_KIND:
+    elif review["source_kind"] in CROSSREF_KINDS:
         _pinned_crossref(work, review)
     else:
         raise ValueError("unsupported metadata source kind")
@@ -158,9 +159,28 @@ def source_reviews(root: Path, works: list[dict], reviews: list[dict]) -> dict[s
     return by_work
 
 
-def _matches_venue(observed: object, registered: object, kind: str) -> bool:
+def _journal_venues(metadata: dict) -> set[str]:
+    venue, locator = metadata["venue"], metadata["journal_locator"]
+    if not isinstance(venue, str) or not venue.strip() or not valid_journal_locator(locator):
+        return set()
+    volume = locator["volume"]
+    volumes = (volume, f"{volume}({locator['issue']})") if "issue" in locator else (volume,)
+    titles = (venue, venue.removeprefix("The "))
+    addresses = [locator[field] for field in ("page", "article-number") if field in locator]
+    rendered = {
+        f"{title} {number}{separator}{address}".replace("\u2013", "-")
+        for title in titles for number in volumes for separator in (", ", ":") for address in addresses
+    }
+    year = metadata["publication_date"].split("-")[0]
+    return rendered | {f"{label} ({year})" for label in rendered}
+
+
+def _matches_venue(metadata: dict, registered: object, kind: str) -> bool:
+    observed = metadata["venue"]
     if kind == ARXIV_KIND:
         return observed == ARXIV_VENUE and registered in (None, "", ARXIV_VENUE)
+    if kind == CROSSREF_JOURNAL_KIND:
+        return isinstance(registered, str) and registered.replace("\u2013", "-") in _journal_venues(metadata)
     return observed == registered
 
 
@@ -173,12 +193,14 @@ def _matches_work_metadata(raw: bytes, work: dict, review: dict) -> bool:
         else:
             fields, alias = CROSSREF_FIELDS, "doi"
             identity = _work_doi(work)
+        if review["source_kind"] == CROSSREF_JOURNAL_KIND:
+            fields = fields | {"journal_locator"}
         if not isinstance(metadata, dict) or set(metadata) != fields or raw != metadata_bytes(metadata):
             return False
         return (metadata[alias] == identity and metadata["revision"] == review["revision"]
-                and _matches_venue(metadata["venue"], work.get("venue"), review["source_kind"])
+                and _matches_venue(metadata, work.get("venue"), review["source_kind"])
                 and all(metadata[key] == work.get(key) for key in ("title", "authors", "publication_date")))
-    except (TypeError, ValueError):
+    except (AttributeError, TypeError, ValueError):
         return False
 
 
