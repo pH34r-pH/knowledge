@@ -40,12 +40,16 @@ metadata fields for approved index or search use.
 arXiv metadata reviews use schema version 2 and the
 `arxiv-bibliographic-metadata` source kind. Retain a canonical JSON snapshot
 of the title, ordered authors, publication date, venue, and exact arXiv
-revision under `governance/source-evidence/`. Match the registered Work
-and any explicitly cited version before adding a review. Live readback batches
-approved arXiv identifiers through the publisher's Atom API and reports
-withdrawals, revised versions, and metadata changes. This profile supports
-approved metadata indexing and search.
-[arXiv API terms](https://info.arxiv.org/help/api/tou.html)
+revision under `governance/source-evidence/`. Match the registered identity,
+title, ordered authors, publication date, and any version pinned by the Work
+or explicitly cited in the corpus before adding a review. A Work with an
+omitted venue can use the publisher snapshot's arXiv preprint venue. The
+original venue field remains part of the historical Work record.
+
+Live readback batches canonical modern and historical arXiv identifiers
+through the publisher's Atom API and reports withdrawals, revised versions,
+and metadata changes. This profile supports approved bibliographic indexing
+and search. [arXiv identifiers](https://info.arxiv.org/help/arxiv_identifier.html) · [arXiv API terms](https://info.arxiv.org/help/api/tou.html)
 
 Obtain the registry SHA-256 from an independently reviewed checkout using
 `python tools/validate_external_claim_adapter.py --registry-sha256`. The value

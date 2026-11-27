@@ -15,7 +15,13 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 from xml.etree import ElementTree
 
 ARXIV = "https://arxiv.org"
-VERSION = re.compile(r"([0-9]{4}\.[0-9]{4,5})(v[1-9][0-9]*)")
+ARXIV_MODERN_ID = r"[0-9]{4}\.[0-9]{4,5}"
+ARXIV_ID = rf"(?:{ARXIV_MODERN_ID}|[a-z]+(?:-[a-z]+)*/[0-9]{{7}})"
+ARXIV_REVISION = r"v[1-9][0-9]*"
+VERSION = re.compile(rf"({ARXIV_ID})({ARXIV_REVISION})")
+PDF_VERSION = re.compile(rf"({ARXIV_MODERN_ID})({ARXIV_REVISION})")
+ATOM_ID = re.compile(rf"https?://arxiv\.org/abs/({ARXIV_ID})({ARXIV_REVISION})")
+ARXIV_VENUE = "arXiv preprint"
 ARXIV_API = "https://export.arxiv.org/api/query?"
 ARXIV_KIND = "arxiv-bibliographic-metadata"
 ARXIV_FIELDS = {"arxiv", "title", "authors", "publication_date", "venue", "revision"}
@@ -176,7 +182,7 @@ def _arxiv_item(entry, identifier: str, revision: str) -> dict:
     except ValueError:
         return {"state": "unconfirmed", "reason": "arXiv entry lacks exact bibliographic fields"}
     return {"metadata": {"arxiv": identifier, "revision": revision, "title": title, "authors": authors,
-                         "publication_date": published.date().isoformat(), "venue": "arXiv preprint"}}
+                         "publication_date": published.date().isoformat(), "venue": ARXIV_VENUE}}
 
 
 def arxiv_atom_catalog(raw: bytes, identifiers: set[str]) -> dict[str, dict]:
@@ -190,7 +196,7 @@ def arxiv_atom_catalog(raw: bytes, identifiers: set[str]) -> dict[str, dict]:
     catalog = {}
     for entry in feed.findall("a:entry", ATOM_NAMES):
         url = _atom_text(entry, "a:id")
-        version = re.fullmatch(r"https?://arxiv\.org/abs/([0-9]{4}\.[0-9]{4,5})(v[1-9][0-9]*)", url)
+        version = ATOM_ID.fullmatch(url)
         if version is None or version[1] not in identifiers or version[1] in catalog:
             raise ValueError("arXiv response has unexpected or duplicate identity")
         identifier, suffix = version.groups()
@@ -215,7 +221,7 @@ def _arxiv_catalog(identifiers: list[str], read) -> dict[str, dict]:
 
 
 def read_arxiv(review: dict, read=fetch) -> dict:
-    match = VERSION.fullmatch(review.get("revision", ""))
+    match = PDF_VERSION.fullmatch(review.get("revision", ""))
     if match is None or review.get("source_url") != f"{ARXIV}/abs/{match[0]}":
         return {"state": "unconfirmed", "reason": "invalid pinned publisher identity"}
     identifier, version = match.groups()
