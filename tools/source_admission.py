@@ -3,9 +3,12 @@ from __future__ import annotations
 
 import hashlib
 import re
+from collections import Counter
 from collections.abc import Callable
 from datetime import date
 from pathlib import Path, PurePosixPath
+
+from reconcile_public_bibliography import normalize_arxiv, normalize_doi
 
 REVIEW_FIELDS = {
     "schema_version", "work_id", "trust_class", "data_class", "revision", "source_url",
@@ -16,11 +19,15 @@ METADATA_USES = {"index", "search"}
 PERMITTED_SCOPE = "bibliographic-metadata"
 SHA256_RE = re.compile(r"[0-9a-f]{64}")
 ARXIV_VERSION = re.compile(r"v[1-9][0-9]*$")
-ARXIV_CITATION = re.compile(
-    r"https://arxiv\.org/(?:abs|pdf)/([0-9]{4}\.[0-9]{4,5})(?:v[1-9][0-9]*)?(?![0-9a-z/])"
-)
+CITATION_LINKS = {
+    "arxiv": re.compile(r"(?<![\w/])https?://arxiv\.org/(?:abs|pdf)/"
+                        r"([0-9]{4}\.[0-9]{4,5})(?:v[1-9][0-9]*)?(?:\.pdf)?(?![0-9a-z/])", re.I),
+    "doi": re.compile(r"(?<![\w/])https?://(?:dx\.)?doi\.org/(10\.[0-9]{4,9}/[-._;()/:a-z0-9+]+)", re.I),
+}
+NORMALIZE_CITATION = {"arxiv": normalize_arxiv, "doi": normalize_doi}
 CORPUS_PILLARS = ("design-patterns", "ml-techniques", "adjacent-knowledge")
 LiveReview = Callable[[dict], dict]
+Citation = tuple[str, str]
 
 
 def review_date(value: object) -> date:
@@ -126,8 +133,8 @@ def _source_state(root: Path, work: dict, review: dict | None, as_of: date, supe
     return "verified" if observed == review["sha256"] else "identity-mismatch"
 
 
-def _corpus_citations(root: Path) -> dict[str, list[str]]:
-    indexed: dict[str, list[str]] = {}
+def _corpus_citations(root: Path) -> dict[Citation, list[str]]:
+    indexed: dict[Citation, list[str]] = {}
     for pillar in CORPUS_PILLARS:
         directory = root / "corpus" / pillar
         if directory.is_symlink() or not directory.resolve().is_relative_to(root.resolve()):
@@ -135,16 +142,49 @@ def _corpus_citations(root: Path) -> dict[str, list[str]]:
         for path in sorted(directory.glob("*.md")):
             if path.is_symlink():
                 raise ValueError("corpus citation documents must be ordinary repository files")
-            identifiers = set(ARXIV_CITATION.findall(path.read_text(encoding="utf-8")))
+            source = path.read_text(encoding="utf-8")
+            identifiers = {(kind, NORMALIZE_CITATION[kind](match)) for kind, pattern in CITATION_LINKS.items()
+                           for match in pattern.findall(source)}
             for identifier in identifiers:
                 indexed.setdefault(identifier, []).append(path.relative_to(root).as_posix())
     return indexed
 
 
-def _affected_documents(work: dict, by_arxiv: dict[str, list[str]]) -> list[str]:
+def _work_citations(work: dict) -> list[Citation]:
     identifiers = work.get("canonical_identifiers")
-    arxiv = identifiers.get("arxiv") if isinstance(identifiers, dict) else None
-    return sorted(by_arxiv.get(ARXIV_VERSION.sub("", arxiv), [])) if isinstance(arxiv, str) else []
+    if not isinstance(identifiers, dict):
+        return []
+    return [(kind, normalize(value)) for kind, normalize in NORMALIZE_CITATION.items()
+            if isinstance(value := identifiers.get(kind), str) and value]
+
+
+def _affected_documents(work: dict, citations: dict[Citation, list[str]]) -> list[str]:
+    return sorted({path for key in _work_citations(work) for path in citations.get(key, ())})
+
+
+def _coverage_state(matches: list[str], active: list[str]) -> str:
+    if len(active) > 1:
+        return "ambiguous-active-work"
+    if active:
+        return "active-work"
+    return "no-active-work" if matches else "unregistered"
+
+
+def _citation_coverage(
+    citations: dict[Citation, list[str]], works: list[dict], source_states: dict[str, str],
+) -> dict:
+    registered: dict[Citation, list[str]] = {}
+    for work in works:
+        for citation in _work_citations(work):
+            registered.setdefault(citation, []).append(work["id"])
+    rows = []
+    for (kind, identifier), paths in sorted(citations.items()):
+        matches = sorted(registered.get((kind, identifier), []))
+        active = [match for match in matches if source_states[match] != "superseded"]
+        rows.append({"kind": kind, "identifier": identifier, "state": _coverage_state(matches, active),
+                     "work_ids": matches, "active_work_ids": active, "documents": sorted(paths)})
+    counts = Counter(row["state"] for row in rows)
+    return {"identifier_count": len(rows), "by_state": dict(sorted(counts.items())), "citations": rows}
 
 
 def review_report(
@@ -160,7 +200,7 @@ def review_report(
         claims_by_work.setdefault(claim["work_id"], []).append(claim["id"])
     for item in evidence:
         evidence_by_claim.setdefault(item["claim_id"], []).append(item["id"])
-    by_arxiv = _corpus_citations(root)
+    citations = _corpus_citations(root)
     results = []
     for work in works:
         work_id = work["id"]
@@ -169,18 +209,27 @@ def review_report(
         if status == "verified" and live_review is not None:
             observation = live_review(reviews[work_id])
             status = observation["state"]
-        affected_claims = sorted(claims_by_work.get(work_id, [])) if status != "verified" else []
-        affected_evidence = sorted(item for claim_id in affected_claims for item in evidence_by_claim.get(claim_id, []))
+        affected_claims, affected_evidence, affected_documents = [], [], []
+        permitted_uses = {}
+        if status == "verified":
+            permitted_uses = reviews[work_id]["permitted_uses"]
+        else:
+            affected_claims = sorted(claims_by_work.get(work_id, []))
+            affected_evidence = sorted(item for claim_id in affected_claims
+                                       for item in evidence_by_claim.get(claim_id, []))
+            affected_documents = _affected_documents(work, citations)
         results.append({
             "work_id": work_id,
             "state": status,
-            "permitted_uses": reviews[work_id]["permitted_uses"] if status == "verified" else {},
+            "permitted_uses": permitted_uses,
             "claims_for_review": affected_claims,
             "evidence_for_review": affected_evidence,
-            "documents_for_review": _affected_documents(work, by_arxiv) if status != "verified" else [],
+            "documents_for_review": affected_documents,
             **({"live_check": observation} if observation is not None else {}),
         })
-    return {"as_of": as_of.isoformat(), "works": sorted(results, key=lambda item: item["work_id"])}
+    states = {row["work_id"]: row["state"] for row in results}
+    return {"as_of": as_of.isoformat(), "works": sorted(results, key=lambda item: item["work_id"]),
+            "citation_coverage": _citation_coverage(citations, works, states)}
 
 
 def reviewed_freshness(report: dict, reviews: dict[str, dict]) -> dict:

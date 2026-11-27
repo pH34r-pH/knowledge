@@ -154,6 +154,62 @@ class ExternalClaimAdapterTests(unittest.TestCase):
                 self.assertEqual(row["evidence_for_review"], ["KEVD-000001"])
                 self.assertEqual(row["documents_for_review"], ["corpus/ml-techniques/sample.md"])
 
+    def test_citation_coverage_separates_gaps_from_source_use_decisions(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        work["canonical_identifiers"]["doi"] = "10.5555/source"
+        self._write_source_fixture(root, work)
+        directory = root / "corpus/ml-techniques"
+        second = "corpus/ml-techniques/citations.md"
+        (root / second).write_text(
+            "https://arxiv.org/abs/2601.00001v1 https://arxiv.org/pdf/2601.00001v2.pdf\n"
+            "[Alias](http://dx.doi.org/10.5555/SOURCE)\n"
+            "[Unknown](https://arxiv.org/abs/2601.00002) https://doi.org/10.5555/Unknown.\n",
+            encoding="utf-8",
+        )
+        (directory.parent / "CITATION-AUDIT.md").write_text(
+            "History only https://arxiv.org/abs/2601.00009\n", encoding="utf-8")
+        status, output = self._report(root, "2026-12-26")
+        self.assertEqual(status, 0, output)
+        report = json.loads(output)
+        coverage = report["citation_coverage"]
+        self.assertEqual(coverage["identifier_count"], 4)
+        self.assertEqual(coverage["by_state"], {"active-work": 2, "unregistered": 2})
+        arxiv, unknown, doi, unknown_doi = coverage["citations"]
+        self.assertEqual(arxiv["documents"], [second, "corpus/ml-techniques/sample.md"])
+        self.assertEqual(doi["active_work_ids"], ["KWRK-000001"])
+        self.assertEqual(unknown["active_work_ids"], [])
+        self.assertEqual(unknown_doi["identifier"], "10.5555/unknown")
+        row, = report["works"]
+        self.assertEqual(row["documents_for_review"], [second, "corpus/ml-techniques/sample.md"])
+        self.assertEqual(row["permitted_uses"], {})
+
+    def test_citation_coverage_reports_retired_and_ambiguous_matches(self) -> None:
+        temp, root = self._root()
+        self.addCleanup(temp.cleanup)
+        work = self._source_fixture(root)
+        registry = root / "references/external/works.jsonl"
+        active = json.loads(registry.read_text(encoding="utf-8"))
+        historical = {**active, "id": "KWRK-000002", "status": "SUPERSEDED"}
+        duplicate = {**active, "id": "KWRK-000003"}
+        for rows, state, expected in (
+            ([historical], "no-active-work", []),
+            ([active, historical], "active-work", [work["id"]]),
+            ([active, historical, duplicate], "ambiguous-active-work", [work["id"], duplicate["id"]]),
+        ):
+            with self.subTest(state=state):
+                _write_jsonl(registry, rows)
+                _write_jsonl(registry.with_name("claims.jsonl"), [])
+                _write_jsonl(registry.with_name("evidence.jsonl"), [])
+                _write_jsonl(root / SOURCE_REVIEWS, [])
+                status, output = self._report(root, "2026-11-26")
+                self.assertEqual(status, 0, output)
+                citation, = json.loads(output)["citation_coverage"]["citations"]
+                self.assertEqual(citation["state"], state)
+                self.assertEqual(citation["active_work_ids"], expected)
+                self.assertEqual(citation["work_ids"], sorted(row["id"] for row in rows))
+
     def test_live_source_change_revokes_uses_and_keeps_historical_registry_intact(self) -> None:
         temp, root = self._root()
         self.addCleanup(temp.cleanup)

@@ -62,6 +62,11 @@ jobs:
           for row in report["works"]:
               if row.get("live_check") or row["state"] != "review-required":
                   print(f"- {row['work_id']} · {row['state']}")
+          coverage = report["citation_coverage"]
+          print(f"\n## Corpus citation coverage ({coverage['identifier_count']} distinct identifiers)")
+          for state, count in coverage["by_state"].items():
+              print(f"- {state} · {count}")
+          print("\nThe report lists the citing articles and matching Work IDs.")
           PY
       - uses: actions/upload-artifact@v4
         with:
