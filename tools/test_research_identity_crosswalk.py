@@ -69,6 +69,15 @@ class CrosswalkTests(unittest.TestCase):
         del invalid["field_discrepancies"][0]["fields"][0]["variants"][0]["sources"]
         self.assertTrue(any("invalid discrepancy" in error for error in validate_crosswalk(invalid)))
 
+    def test_corrected_author_list_is_displayed_without_erasing_history(self) -> None:
+        key = "doi:10.18653/v1/2025.acl-long.338"
+        source, = [row for row in self.document["sources"] if row["canonical_key"] == key]
+        self.assertEqual(source["authors"][-1], "Dongliang Xu")
+        self.assertNotIn("Wanxiang Che", source["authors"])
+        self.assertEqual({work["id"] for work in source["work_records"]}, {"KWRK-000031", "KWRK-000357"})
+        entry, = [row for row in self.document["field_discrepancies"] if row["canonical_key"] == key]
+        self.assertIn("authors", {field["field"] for field in entry["fields"]})
+
     def test_verified_identity_additions_link_to_canonical_works(self) -> None:
         refs = {
             work["id"]: row["canonical_key"]
