@@ -9,6 +9,8 @@ import unittest
 from collections import Counter
 from pathlib import Path
 
+from source_readback import ACL, anthology_id
+
 
 ROOT = Path(__file__).resolve().parents[1]
 EXTERNAL = ROOT / "references" / "external"
@@ -127,10 +129,17 @@ class ResearchIntakeTests(unittest.TestCase):
             return
         prior = ARXIV_VERSION.search(previous["source_url"])
         current = ARXIV_VERSION.search(work["source_url"])
-        proceedings = work["canonical_identifiers"].get("pmlr")
-        if prior is None and current is None and proceedings == previous["canonical_identifiers"].get("pmlr"):
-            self.assertTrue(proceedings)
+        identifiers = work["canonical_identifiers"]
+        proceedings = identifiers.get("pmlr")
+        if prior is None and current is None and proceedings and proceedings == previous["canonical_identifiers"].get("pmlr"):
             self.assertEqual(work["source_url"], f"https://proceedings.mlr.press/{proceedings}.html")
+            return
+        if prior is None and current is None and work["source_url"].startswith(ACL):
+            identifier = anthology_id(work["source_url"])
+            self.assertEqual(work["source_url"], previous["source_url"])
+            self.assertEqual(identifiers["anthology"], identifier)
+            self.assertEqual(identifiers["doi"], f"10.18653/v1/{identifier.lower()}")
+            self.assertEqual(identifiers["doi"], previous["canonical_identifiers"]["doi"])
             return
         self.assertIsNotNone(prior, previous["id"])
         self.assertIsNotNone(current, work["id"])
