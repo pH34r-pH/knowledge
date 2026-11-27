@@ -712,7 +712,7 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "6d842abb7364e1401612a5a0eae40fff9bfa0223a4deda6b53857b6c80bd811f",
+      "sha256": "b7c21c4a5ec71954d5a7a1ee96040ecca6f1e64960b554fe263bf85dcd6dfc4e",
       "record_count": 344
     },
     {
@@ -5965,7 +5965,7 @@
       "authors": [
         "George J. Pappas"
       ],
-      "publication_date": "2003-11",
+      "publication_date": "2003-12",
       "venue": "Automatica 39, 2035–2047",
       "canonical_identifiers": {
         "doi": "10.1016/j.automatica.2003.07.003"
