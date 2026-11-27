@@ -98,17 +98,21 @@ python tools/validate_external_claim_adapter.py --source-report \
 ```
 
 The report checks retained source identities and identifies affected claims,
-evidence, and corpus articles with matching arXiv, DOI, and PMLR citations. Old dispositions
+evidence, and corpus articles with matching arXiv, DOI, ACL Anthology, and PMLR citations. Old dispositions
 remain in the registry. Expiry and reported source changes require renewed
 review. Passage text and source notes remain evidence. Publication, model
 augmentation, and training have separate approval paths.
 
-`citation_coverage` lists explicit arXiv, DOI, and PMLR links in current corpus
+`citation_coverage` lists explicit arXiv, DOI, ACL Anthology, and PMLR links in current corpus
 articles by normalized identifier. Each row includes the citing paths and
 registered Work IDs. Review links with no Work, only historical matches, or
 more than one active match before using them. An active Work match establishes
 registry coverage. Consult the separate Work decision for source review,
 version, and permitted uses.
+
+The Anthology paper page and its original PDF link use the same publication
+ID. When the corpus cites both a proceedings publication and an arXiv preprint,
+review each cited identity on its own evidence.
 
 For a current UTC report, replace `--as-of <date>` with `--check-live`. A live
 check uses the same registry pin and existing metadata permissions. It compares
