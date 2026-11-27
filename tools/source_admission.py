@@ -252,10 +252,14 @@ def _matches_work_metadata(raw: bytes, work: dict, review: dict) -> bool:
             or not valid_acl_pages(metadata["first_page"], metadata["last_page"])
         ):
             return False
-        return (metadata[alias] == identity and metadata["revision"] == review["revision"]
-                and _matches_venue(metadata, work.get("venue"), kind)
-                and _matches_publication_date(metadata["publication_date"], work.get("publication_date"), kind)
-                and all(metadata[key] == work.get(key) for key in ("title", "authors")))
+        return all((
+            metadata[alias] == identity,
+            metadata["revision"] == review["revision"],
+            _matches_venue(metadata, work.get("venue"), kind),
+            _matches_publication_date(metadata["publication_date"], work.get("publication_date"), kind),
+            metadata["title"] == work.get("title"),
+            metadata["authors"] == work.get("authors"),
+        ))
     except (AttributeError, TypeError, ValueError):
         return False
 
