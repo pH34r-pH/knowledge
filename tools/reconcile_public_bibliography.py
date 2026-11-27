@@ -400,6 +400,19 @@ def _add_source_record(
         title_alias_map.setdefault(alias, index)
 
 
+def _prefer_corrected_publication_dates(groups: list[dict[str, Any]], works: list[dict[str, Any]]) -> None:
+    replacements = {row["id"]: row for row in works if row["status"] == "ACTIVE" and row.get("supersedes")}
+    superseded = {row["supersedes"] for row in replacements.values()}
+    for group in groups:
+        ids = {item["id"] for item in group["work_records"]}
+        current = [
+            replacements[work_id] for work_id in (ids & replacements.keys()) - superseded
+            if replacements[work_id]["supersedes"] in ids
+        ]
+        if len(current) == 1 and current[0].get("publication_date"):
+            group["publication_date"] = current[0]["publication_date"]
+
+
 def _build_source_groups(
     works: list[dict[str, Any]], audit_rows: list[dict[str, Any]], payload: dict[str, Any]
 ) -> tuple[list[dict[str, Any]], int, int]:
@@ -436,6 +449,7 @@ def _build_source_groups(
         work_row = _work_row(row)
         if _find_group(work_row, groups, stable_alias_map, title_alias_map) is not None:
             _add_source_record(work_row, "work", groups, stable_alias_map, title_alias_map)
+    _prefer_corrected_publication_dates(groups, works)
     return groups, baseline_matches, union_count
 
 

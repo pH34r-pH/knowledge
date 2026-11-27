@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 344,
-    "KWRK_records_added_after_identity_checks": 264,
+    "KWRK_records_current": 345,
+    "KWRK_records_added_after_identity_checks": 265,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -27,7 +27,7 @@
     "nonpaper_source_pointers": 14,
     "unresolved_names_only": 14,
     "provisional_influence_unverified_candidates": 12,
-    "metadata_field_discrepancies": 23
+    "metadata_field_discrepancies": 24
   },
   "field_discrepancies": [
     {
@@ -581,6 +581,35 @@
       ]
     },
     {
+      "canonical_key": "doi:10.1016/j.automatica.2003.07.003",
+      "fields": [
+        {
+          "field": "publication_date",
+          "variants": [
+            {
+              "value": "2003-11",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000002"
+                }
+              ]
+            },
+            {
+              "value": "2003-12",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000345"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
       "canonical_key": "doi:10.1109/icassp40776.2020.9054008",
       "fields": [
         {
@@ -712,8 +741,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "b7c21c4a5ec71954d5a7a1ee96040ecca6f1e64960b554fe263bf85dcd6dfc4e",
-      "record_count": 344
+      "sha256": "af73977d048313bbf6a099264605463010278f563108884dde2a8a7a774d0c46",
+      "record_count": 345
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
@@ -5977,6 +6006,10 @@
       "work_records": [
         {
           "id": "KWRK-000002",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "KWRK-000345",
           "status": "ACTIVE"
         }
       ],

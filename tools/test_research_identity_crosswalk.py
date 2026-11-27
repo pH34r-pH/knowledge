@@ -55,6 +55,15 @@ class CrosswalkTests(unittest.TestCase):
         source_ids = {source["id"] for item in venue["variants"] for source in item["sources"] if "id" in source}
         self.assertEqual(source_ids, {"KWRK-000001", "dsl-pub-013"})
 
+    def test_current_work_supersession_preserves_historical_date_as_evidence(self) -> None:
+        key = "doi:10.1016/j.automatica.2003.07.003"
+        source, = [row for row in self.document["sources"] if row["canonical_key"] == key]
+        self.assertEqual(source["publication_date"], "2003-12")
+        self.assertEqual({work["id"] for work in source["work_records"]}, {"KWRK-000002", "KWRK-000345"})
+        entry, = [row for row in self.document["field_discrepancies"] if row["canonical_key"] == key]
+        dates, = [field for field in entry["fields"] if field["field"] == "publication_date"]
+        self.assertEqual({item["value"] for item in dates["variants"]}, {"2003-11", "2003-12"})
+
     def test_metadata_difference_requires_attributed_variants(self) -> None:
         invalid = copy.deepcopy(self.document)
         del invalid["field_discrepancies"][0]["fields"][0]["variants"][0]["sources"]
