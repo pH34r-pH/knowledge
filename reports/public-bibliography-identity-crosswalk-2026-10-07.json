@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 357,
-    "KWRK_records_added_after_identity_checks": 277,
+    "KWRK_records_current": 358,
+    "KWRK_records_added_after_identity_checks": 278,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -999,8 +999,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "0e5e33169e73383c6af22293b56ac918bdeb7fe38eff4d10862c831a97157141",
-      "record_count": 357
+      "sha256": "286cde271bc8bd20d011cfd12e72d259b3ac9ef1f16e6e53e02487e3ac4def4b",
+      "record_count": 358
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
@@ -6584,8 +6584,8 @@
         "Prakash Panangaden",
         "Doina Precup"
       ],
-      "publication_date": null,
-      "venue": null,
+      "publication_date": "2015-07",
+      "venue": "2015 30th Annual ACM/IEEE Symposium on Logic in Computer Science",
       "canonical_identifiers": {
         "doi": "10.1109/lics.2015.70"
       },
@@ -6596,6 +6596,10 @@
       "work_records": [
         {
           "id": "KWRK-000024",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "KWRK-000358",
           "status": "ACTIVE"
         }
       ],
