@@ -122,6 +122,14 @@ class ResearchIntakeTests(unittest.TestCase):
         self.assertEqual(self.by_id["KWRK-000060"]["canonical_identifiers"]["report"], "Aleph Alpha technical report; no arXiv identifier verified")
         self.assertEqual(self.by_id["KWRK-000076"]["canonical_identifiers"]["github"], "tilde-research/momoe-release")
 
+    def test_cachebridge_v2_preserves_the_v1_identity(self) -> None:
+        old, current = self.by_id["KWRK-000101"], self.by_id["KWRK-000359"]
+        self.assertEqual(current["supersedes"], old["id"])
+        self.assertTrue(old["source_url"].endswith("2609.00891v1"))
+        self.assertTrue(current["source_url"].endswith("2609.00891v2"))
+        self.assertNotEqual(old["title"], current["title"])
+        self.assertEqual(old["authors"], current["authors"])
+
     def _assert_alias_successor(self, work: dict, previous: dict, field: str) -> None:
         self.assertIn(field, ("arxiv", "doi", "pmlr", "anthology"), f"{field} alias duplicated by {work['id']} and {previous['id']}")
         self.assertEqual(work.get("supersedes"), previous["id"])
