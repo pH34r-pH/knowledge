@@ -143,6 +143,14 @@ class ResearchIntakeTests(unittest.TestCase):
                 self.assertEqual(old["canonical_identifiers"]["arxiv"], current["canonical_identifiers"]["arxiv"])
         self.assertNotEqual(self.by_id["KWRK-000193"]["title"], self.by_id["KWRK-000364"]["title"])
 
+    def test_activation_transfer_v2_preserves_v1_author_history(self) -> None:
+        old, current = self.by_id["KWRK-000235"], self.by_id["KWRK-000365"]
+        self.assertEqual(current["supersedes"], old["id"])
+        self.assertTrue(old["source_url"].endswith("2606.03280v1"))
+        self.assertTrue(current["source_url"].endswith("2606.03280v2"))
+        self.assertEqual(old["authors"], ["Peiyan Zhang"])
+        self.assertEqual(current["authors"], ["Peiyan Zhang", "Jason Xin"])
+
     def _assert_alias_successor(self, work: dict, previous: dict, field: str) -> None:
         self.assertIn(field, ("arxiv", "doi", "pmlr", "anthology"), f"{field} alias duplicated by {work['id']} and {previous['id']}")
         self.assertEqual(work.get("supersedes"), previous["id"])
