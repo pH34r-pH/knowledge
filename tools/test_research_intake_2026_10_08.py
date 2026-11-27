@@ -198,6 +198,11 @@ class ResearchIntakeTests(unittest.TestCase):
             self.assertEqual(identifiers["doi"], f"10.18653/v1/{identifier.lower()}")
             self.assertEqual(identifiers["doi"], previous["canonical_identifiers"]["doi"])
             return
+        if previous["id"] == "KWRK-000083":
+            self.assertIsNone(prior)
+            self.assertIn("(v1)", previous["notes"])
+            self.assertEqual(current.group(), "v2")
+            return
         self.assertIsNotNone(prior, previous["id"])
         self.assertIsNotNone(current, work["id"])
         self.assertGreater(int(current[0][1:]), int(prior[0][1:]))
