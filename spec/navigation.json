@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "label": "Overview",
+      "document": "knowledge/overview"
+    },
+    {
+      "label": "External claim adapter",
+      "document": "knowledge/external-claim-adapter"
+    }
+  ]
+}

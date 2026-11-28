@@ -28,6 +28,8 @@ ARTIFACT_SEGMENTS = {
     ".pytest_cache",
     ".venv",
 }
+# Specified Development feature records are tracked source, not build output.
+FEATURE_RECORD = re.compile(r"^build/[a-z0-9]+(?:-[a-z0-9]+)*/(?:plan|tests|tasks)\.md$")
 TEMP_SUFFIXES = {
     ".bak",
     ".crdownload",
@@ -145,7 +147,7 @@ def validate_paths(entries: Iterable[tuple[str, str, bool]]) -> list[str]:
         path_obj = Path(path)
         if path_obj.name in TEMP_FILENAMES or path_obj.suffix.lower() in TEMP_SUFFIXES:
             errors.append(f"{status}: new path has a temporary filename or suffix: {path}")
-        if any(part in ARTIFACT_SEGMENTS for part in path_obj.parts):
+        if any(part in ARTIFACT_SEGMENTS for part in path_obj.parts) and not FEATURE_RECORD.fullmatch(path):
             errors.append(f"{status}: new path is inside a cache/temp/build artifact directory: {path}")
         if is_markdown(path) and is_living_doc(path) and ISSUE_ONLY.fullmatch(path_obj.stem):
             errors.append(f"{status}: new living documentation path has no descriptive name: {path}")
@@ -268,7 +270,18 @@ def _assert_control_path(repo: Path, first: str) -> None:
         raise AssertionError("control-character path was not rejected")
 
 
+def _assert_feature_records() -> None:
+    for record in ("plan.md", "tests.md", "tasks.md"):
+        if validate_paths([("A", f"build/external-claim-adapter/{record}", True)]):
+            raise AssertionError("a feature record under build was rejected")
+    for rejected in ("build/lib/module.py", "build/external-claim-adapter/notes.md",
+                     "build/external-claim-adapter/cache/plan.md", "build/plan.md", "build/Bad_Name/plan.md"):
+        if not validate_paths([("A", rejected, True)]):
+            raise AssertionError(f"build output was not rejected: {rejected}")
+
+
 def self_test(root: Path) -> None:
+    _assert_feature_records()
     check_fixture(root)
     with tempfile.TemporaryDirectory(prefix="documentation-hygiene-") as temporary:
         repo = Path(temporary)

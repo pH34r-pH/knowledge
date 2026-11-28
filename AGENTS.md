@@ -26,6 +26,7 @@ TOPICS.md / existing corpus
 | `corpus/` | Sourced, mechanism-first articles, audit records, and the append-only ledger; see [`corpus/AGENTS.md`](corpus/AGENTS.md). | Article claims stay within their resolved evidence; history is retained and dated. |
 | `arxiv/` | Downloaded paper PDFs and matching metadata; see [`arxiv/AGENTS.md`](arxiv/AGENTS.md). | The metadata/PDF pair is a retained source identity; do not rewrite a historical source to make a current claim fit. |
 | `references/external/` | Machine-readable claims, works, evidence, schemas, and scoped import audits; see [`references/AGENTS.md`](references/AGENTS.md). | Registry records are provenance, not prose; preserve exact IDs, URLs, digests, and audit scope. |
+| `spec/`, `build/` | Living specification, plan and independent test contract for features mapped so far; see the Spec Kit contract below. | Edit the specification first; unmapped features stay in `specs/`. |
 | `specs/` | Spec Kit plans and acceptance records for corpus procedures. | Preserve the `spec.md → plan.md → tests.md → tasks.md` authority chain and historical evidence. |
 | `.claude/skills/` | The executable research procedure and its references. | Update the procedure only when the operating loop changes; do not use it as a substitute for source evidence. |
 
@@ -61,6 +62,7 @@ spec.md → plan.md → tests.md → tasks.md
 
 - For this Markdown corpus, `tests.md` can define manual or deterministic content-validation evidence when no executable test harness applies.
 - `spec.md` owns corpus behavior and acceptance; `plan.md` owns the operating mechanism; `tests.md` owns validation; `tasks.md` owns executable work.
+- Features mapped into the living [Specified Development](https://github.com/pH34r-pH/specified-development) layout keep their behavior in `spec/features/<feature>/index.md`, written in present tense, with `build/<feature>/plan.md` and `tests.md` beside it and `onboarding.json` recording the mapping. Today only [`external-claim-adapter`](spec/features/external-claim-adapter/index.md) (its offline registry integrity) is mapped; its `specs/002-external-claim-adapter/` package is retained history. Change mapped behavior spec-first: edit the living specification, then the plan and test contract, then a failing test, then the code. Every unmapped feature is still governed by its `specs/<NNN-feature>/` package.
 - The inherited security-oriented `.specify` constitution is not the corpus operating procedure. Treat `BUILDING.md`, the corpus skill, and the feature package as the relevant local authority unless a corpus-specific constitution replaces it.
 
 ## Git and verification discipline
