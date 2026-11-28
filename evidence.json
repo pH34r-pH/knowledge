@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "kind": "requirement-evidence",
+  "revision": "dcaede5cb62f0bf0b83cf81957b86eb9af260478",
+  "features": [
+    "external-claim-adapter"
+  ],
+  "cases": {
+    "ECA-001": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-001",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-002": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-002",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-003": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-003",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-004": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-004",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-005": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-005",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-006": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-006",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-007": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-007",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-008": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-008",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-009": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-009",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-010": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-010",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-011": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-011",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    },
+    "ECA-012": {
+      "requirements": [
+        "external-claim-adapter#ECA-FR-012",
+        "external-claim-adapter#ECA-SC-001"
+      ]
+    }
+  },
+  "tasks": {},
+  "results": {
+    "revision": "dcaede5cb62f0bf0b83cf81957b86eb9af260478",
+    "requirement_hashes": {
+      "external-claim-adapter#ECA-FR-001": "ac50c30f70dcd3770a1dd3032b64cb093509393b77e83d8541e6d1bd1e285d60",
+      "external-claim-adapter#ECA-FR-002": "79892ee95c4f09aa82ce0b08b45f950d92963919de400dacb4cfcf69408c6ac8",
+      "external-claim-adapter#ECA-FR-003": "e6c3267139fdc229256aab2234942a4232362a18f132b3d2adba30b6a9ccf2bd",
+      "external-claim-adapter#ECA-FR-004": "bb1eeaa093102b344e105760c1d97dff29123c193c0fa3eca67194dffe93dbb4",
+      "external-claim-adapter#ECA-FR-005": "167d3bc7c6a5079e2a5f708ea3ce118649010f8aeefe68074b12efe1d66e48c8",
+      "external-claim-adapter#ECA-FR-006": "ac456c0f7900a3bbbe789eeb8fcee332f47aa20b67e823d8c1de7c820d14b42d",
+      "external-claim-adapter#ECA-FR-007": "65e2355eec5a858e7afcb9ecc9d9e653d26d4e4bc9fc306a148953e26d4f62cc",
+      "external-claim-adapter#ECA-FR-008": "031579c36a723093309006a8ee27a5af33203b7705272481edfb6eced8665481",
+      "external-claim-adapter#ECA-FR-009": "4fd77ae3aabf22de93ac7ea1e90a73bac58edf3a1a6d0df207bf2131caca5e65",
+      "external-claim-adapter#ECA-FR-010": "4b464a8cc3d0d0d36d07e4960ed4f299afdce9a5b7225e1d083d193406711448",
+      "external-claim-adapter#ECA-FR-011": "c909ac206cdc76b459bebb0a7559606b09c54441ecf3dbd6b9e13f11240a0fd5",
+      "external-claim-adapter#ECA-FR-012": "e303437719e54014183467031bbd6c133a5aea2d3588b59cfba9fbc8ffa24656",
+      "external-claim-adapter#ECA-SC-001": "68c1b425a9c4a8e261b476e464374e5dcc59bf468c8c47f6919aa4a2c9b51cc5"
+    },
+    "cases": {
+      "ECA-001": "pass",
+      "ECA-002": "pass",
+      "ECA-003": "pass",
+      "ECA-004": "pass",
+      "ECA-005": "pass",
+      "ECA-006": "pass",
+      "ECA-007": "pass",
+      "ECA-008": "pass",
+      "ECA-009": "pass",
+      "ECA-010": "pass",
+      "ECA-011": "pass",
+      "ECA-012": "pass"
+    }
+  }
+}
