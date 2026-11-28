@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "documents": {
+    "knowledge/overview": {
+      "path": "index.md",
+      "role": "overview",
+      "normative_dependencies": [],
+      "assets": [],
+      "visibility": "public"
+    },
+    "knowledge/external-claim-adapter": {
+      "path": "features/external-claim-adapter/index.md",
+      "role": "feature",
+      "normative_dependencies": [],
+      "assets": [],
+      "visibility": "public"
+    }
+  },
+  "features": {
+    "external-claim-adapter": {
+      "root": "knowledge/external-claim-adapter"
+    }
+  },
+  "assets": {}
+}

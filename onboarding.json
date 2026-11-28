@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "kind": "brownfield-onboarding-record",
+  "repository": "pH34r-pH/knowledge",
+  "baseline_revision": "007b10bd27fd573438ab54f4c4ad74b616f65e21",
+  "areas": [
+    {
+      "feature_id": "external-claim-adapter",
+      "paths": [
+        "tools/validate_external_claim_adapter.py"
+      ]
+    }
+  ],
+  "requirements": {
+    "external-claim-adapter#ECA-FR-001": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/spec.md FR-007, FR-008"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-002": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/spec.md FR-007"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-003": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/spec.md FR-001"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-004": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/spec.md FR-003, FR-004"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-005": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/spec.md FR-009"
+        },
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/tests.md T-008"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-006": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/spec.md FR-004, FR-010"
+        },
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/tests.md T-006"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-007": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/tests.md T-004"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-008": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/spec.md FR-005, FR-006"
+        },
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/tests.md T-005, T-007"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-009": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "references/AGENTS.md reviewed source metadata"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-010": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "docs/fleet-source-contract.md"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-011": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": ".github/workflows/external-claim-adapter.yml registry identity"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-FR-012": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "specs/002-external-claim-adapter/spec.md FR-007; specs/002-external-claim-adapter/tests.md T-001"
+        },
+        {
+          "kind": "code",
+          "reference": "tools/validate_external_claim_adapter.py"
+        }
+      ]
+    },
+    "external-claim-adapter#ECA-SC-001": {
+      "sources": [
+        {
+          "kind": "documentation",
+          "reference": "build/external-claim-adapter/tests.md"
+        }
+      ]
+    }
+  },
+  "known_defects": [],
+  "oracle": [
+    {
+      "case": "ECA-001",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-001",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "accepted-spec"
+    },
+    {
+      "case": "ECA-002",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-002",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "adopted-existing-test",
+      "reference": "tools/test_external_claim_adapter.py::test_empty_registry_is_valid (+1 more)"
+    },
+    {
+      "case": "ECA-003",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-003",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "adopted-existing-test",
+      "reference": "tools/test_external_claim_adapter.py::test_duplicate_adapter_id_fails_closed (+1 more)"
+    },
+    {
+      "case": "ECA-004",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-004",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "adopted-existing-test",
+      "reference": "tools/test_external_claim_adapter.py::test_broken_references_fail_closed"
+    },
+    {
+      "case": "ECA-005",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-005",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "adopted-existing-test",
+      "reference": "tools/test_external_claim_adapter.py::test_self_supersession_fails_for_each_record_type (+2 more)"
+    },
+    {
+      "case": "ECA-006",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-006",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "adopted-existing-test",
+      "reference": "tools/test_external_claim_adapter.py::test_support_hash_mismatch_fails (+2 more)"
+    },
+    {
+      "case": "ECA-007",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-007",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "accepted-spec"
+    },
+    {
+      "case": "ECA-008",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-008",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "adopted-existing-test",
+      "reference": "tools/test_external_claim_adapter.py::test_accepted_claim_requires_fully_audited_evidence (+3 more)"
+    },
+    {
+      "case": "ECA-009",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-009",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "adopted-existing-test",
+      "reference": "tools/test_external_claim_adapter.py::test_work_content_cannot_supply_its_own_review"
+    },
+    {
+      "case": "ECA-010",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-010",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "accepted-spec"
+    },
+    {
+      "case": "ECA-011",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-011",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "accepted-spec"
+    },
+    {
+      "case": "ECA-012",
+      "requirements": [
+        "external-claim-adapter#ECA-FR-012",
+        "external-claim-adapter#ECA-SC-001"
+      ],
+      "expected_source": "accepted-spec"
+    }
+  ],
+  "acceptance": {
+    "state": "candidate"
+  },
+  "initial_gaps": [],
+  "spec_kit_layout": {
+    "source": "specs/",
+    "features": {
+      "002-external-claim-adapter": "external-claim-adapter"
+    },
+    "history_preserved": true,
+    "constitution_preserved": true
+  }
+}
