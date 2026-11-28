@@ -102,7 +102,7 @@ class CrosswalkTests(unittest.TestCase):
         by_key = {row["canonical_key"]: row for row in self.document["sources"]}
         self.assertEqual(by_key["arxiv:2609.16247"]["arxiv_versions"], ["v2"])
         self.assertEqual(by_key["doi:10.1162/tacl_a_00448"]["arxiv_versions"], ["v4"])
-        self.assertEqual(by_key["arxiv:1908.08962"]["arxiv_versions"], ["v1"])
+        self.assertEqual(by_key["arxiv:1908.08962"]["arxiv_versions"], ["v1", "v2"])
 
     def test_provisional_candidates_remain_unverified_and_outside_work_registry(self) -> None:
         candidates = self.document["provisional_candidate_register"]

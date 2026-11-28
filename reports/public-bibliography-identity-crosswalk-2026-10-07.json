@@ -15,8 +15,8 @@
   },
   "coverage": {
     "KWRK_records_before_reconciliation": 80,
-    "KWRK_records_current": 370,
-    "KWRK_records_added_after_identity_checks": 290,
+    "KWRK_records_current": 371,
+    "KWRK_records_added_after_identity_checks": 291,
     "DLS_audit_records": 75,
     "matched_identity_count": 2,
     "baseline_union_rows": 153,
@@ -27,7 +27,7 @@
     "nonpaper_source_pointers": 14,
     "unresolved_names_only": 14,
     "provisional_influence_unverified_candidates": 12,
-    "metadata_field_discrepancies": 33
+    "metadata_field_discrepancies": 34
   },
   "field_discrepancies": [
     {
@@ -80,6 +80,39 @@
                 {
                   "type": "ExternalWork",
                   "id": "KWRK-000332"
+                }
+              ]
+            }
+          ],
+          "resolution": "Both public metadata values are retained; the difference is not adjudicated by this identity crosswalk."
+        }
+      ]
+    },
+    {
+      "canonical_key": "arxiv:1908.08962",
+      "fields": [
+        {
+          "field": "venue",
+          "variants": [
+            {
+              "value": "arXiv technical report (2019)",
+              "sources": [
+                {
+                  "type": "reviewed_transfer_payload",
+                  "canonical_key": "arxiv:1908.08962"
+                },
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000083"
+                }
+              ]
+            },
+            {
+              "value": "arXiv preprint",
+              "sources": [
+                {
+                  "type": "ExternalWork",
+                  "id": "KWRK-000371"
                 }
               ]
             }
@@ -999,8 +1032,8 @@
   "input_snapshots": [
     {
       "path": "references/external/works.jsonl",
-      "sha256": "373e32397afc01bcb490fc1e203a93cfb86556a7f084bd61d3f3165d1d8f0905",
-      "record_count": 370
+      "sha256": "3eef4ee29fcc650779544a41c5f371091bdcb683b7d9546aa0cf9be3f2529b77",
+      "record_count": 371
     },
     {
       "path": "reports/domain-scaling-lab-literature-audit-2026-09-01.json",
@@ -1798,19 +1831,25 @@
         "Kristina Toutanova"
       ],
       "publication_date": "2019-08-23",
-      "venue": "arXiv technical report (2019)",
+      "venue": "arXiv preprint",
       "canonical_identifiers": {
         "arxiv": "1908.08962"
       },
       "arxiv_versions": [
-        "v1"
+        "v1",
+        "v2"
       ],
       "source_urls": [
-        "https://arxiv.org/abs/1908.08962"
+        "https://arxiv.org/abs/1908.08962",
+        "https://arxiv.org/abs/1908.08962v2"
       ],
       "work_records": [
         {
           "id": "KWRK-000083",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "KWRK-000371",
           "status": "ACTIVE"
         }
       ],
